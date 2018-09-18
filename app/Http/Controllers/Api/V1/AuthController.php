@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Api\V1;
 
 use App\Events\Frontend\Auth\UserLoggedOut;
+use App\Http\Requests\Api\Auth\UpdateNonVerifyMobileRequest;
 use App\Http\Requests\Api\Auth\UserLoginRequest;
 use App\Http\Requests\Api\Auth\UserMobileVerificationRequest;
 use App\Models\Access\User\User;
@@ -119,6 +120,34 @@ class AuthController extends APIController
             [
                 'status_code' => 402,
                 'message' => 'Verification code is wrong.',
+                'success' => false,
+                'message_title' => 'Error'
+            ]
+        );
+    }
+
+    /**
+     * Update non verfied mobile number
+     */
+    public function updateNonVerifiedNum(UpdateNonVerifyMobileRequest $request)
+    {
+        $isUserConfirmed = (boolean)\Auth::user()->confirmed;
+        if (!$isUserConfirmed) {
+            $user = User::find(\Auth::id());
+            $user->mobile = $request->mobile;
+            $user->save();
+            return $this->respond([
+                'message_title' => "Success",
+                'message' => 'Phone number updated.',
+                'status_code' => 200,
+                'success' => true,
+                'user' => \Auth::user()
+            ]);
+        }
+        return response()->json(
+            [
+                'status_code' => 402,
+                'message' => 'Phone already verified.',
                 'success' => false,
                 'message_title' => 'Error'
             ]
