@@ -16,9 +16,9 @@ Route::group(['namespace' => 'Api\V1', 'prefix' => 'v1', 'as' => 'v1.'], functio
     //Registration
     Route::post('register', 'RegisterController@register');
     Route::post('login', 'AuthController@login');
-    //Verify mobile number
-    Route::post('phone-verify', 'AuthController@verifyMobile');
     Route::group(['middleware' => ['jwt.auth']], function () {
+        //Verify mobile number
+        Route::post('phone-verify', 'AuthController@verifyMobile');
         Route::group(['prefix' => 'auth'], function () {
             Route::post('logout', 'AuthController@logout');
             Route::post('refresh', 'AuthController@refresh');
