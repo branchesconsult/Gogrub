@@ -14,6 +14,7 @@ class CreateCuisinesTable extends Migration
     public function up()
     {
         Schema::create('cuisines', function (Blueprint $table) {
+            $table->engine = 'InnoDB';
             $table->increments('id');
             $table->string('name', 50);
             $table->string('description')->nullable();

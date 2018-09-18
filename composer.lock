@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "783acee71179027e0fd5e06ffb06abc2",
+    "content-hash": "85fcbbaca96ba4a9787c63a39287f9aa",
     "packages": [
         {
             "name": "arcanedev/log-viewer",
@@ -4083,6 +4083,53 @@
             "time": "2018-02-07T20:55:14+00:00"
         },
         {
+            "name": "unisharp/laravel-fileapi",
+            "version": "v1.0.2",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/UniSharp/laravel-fileapi.git",
+                "reference": "7f38fb73fe2b7295fb2cf508198f05b3b9dd646b"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/UniSharp/laravel-fileapi/zipball/7f38fb73fe2b7295fb2cf508198f05b3b9dd646b",
+                "reference": "7f38fb73fe2b7295fb2cf508198f05b3b9dd646b",
+                "shasum": ""
+            },
+            "require": {
+                "ext-gd": "*",
+                "illuminate/support": ">=5.0.0",
+                "league/flysystem": ">=1.0",
+                "php": ">=5.5.0",
+                "symfony/http-foundation": ">=2.0"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "Unisharp\\FileApi\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "UniSharp Ltd. (Composer Package Maintainer)",
+                    "homepage": "http://www.unisharp.com"
+                }
+            ],
+            "description": "Laravel File API - Handle Files with Laravel Storage",
+            "keywords": [
+                "api",
+                "file",
+                "fileapi",
+                "laravel",
+                "storage"
+            ],
+            "time": "2017-11-14T02:42:59+00:00"
+        },
+        {
             "name": "unisharp/laravel-filemanager",
             "version": "v1.9.2",
             "source": {
@@ -4798,6 +4845,57 @@
                 "yml"
             ],
             "time": "2018-08-22T14:18:52+00:00"
+        },
+        {
+            "name": "laracasts/generators",
+            "version": "1.1.4",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/laracasts/Laravel-5-Generators-Extended.git",
+                "reference": "bf6aa824698516cb6e22f63f275e8f73bd25f56b"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/laracasts/Laravel-5-Generators-Extended/zipball/bf6aa824698516cb6e22f63f275e8f73bd25f56b",
+                "reference": "bf6aa824698516cb6e22f63f275e8f73bd25f56b",
+                "shasum": ""
+            },
+            "require": {
+                "illuminate/support": "~5.0",
+                "php": ">=5.4.0"
+            },
+            "require-dev": {
+                "phpspec/phpspec": "~2.1"
+            },
+            "type": "library",
+            "extra": {
+                "laravel": {
+                    "providers": [
+                        "Laracasts\\Generators\\GeneratorsServiceProvider"
+                    ]
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Laracasts\\Generators\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Jeffrey Way",
+                    "email": "jeffrey@laracasts.com"
+                }
+            ],
+            "description": "Extend Laravel 5's generators.",
+            "keywords": [
+                "generators",
+                "laravel"
+            ],
+            "time": "2017-11-14T20:43:22+00:00"
         },
         {
             "name": "laravel/browser-kit-testing",

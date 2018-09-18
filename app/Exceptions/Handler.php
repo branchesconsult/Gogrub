@@ -101,12 +101,15 @@ class Handler extends ExceptionHandler
             if ($exception instanceof UnauthorizedHttpException) {
                 switch (get_class($exception->getPrevious())) {
                     case \App\Exceptions\Handler::class:
-                        return $this->setStatusCode($exception->getStatusCode())->respondWithError('Token has not been provided.');
+                        return $this->setStatusCode($exception->getStatusCode())
+                            ->respondWithError('Token has not been provided.');
                     case \Tymon\JWTAuth\Exceptions\TokenExpiredException::class:
-                        return $this->setStatusCode($exception->getStatusCode())->respondWithError('Token has expired.');
+                        return $this->setStatusCode($exception->getStatusCode())
+                            ->respondWithError('Token has expired.');
                     case \Tymon\JWTAuth\Exceptions\TokenInvalidException::class:
                     case \Tymon\JWTAuth\Exceptions\TokenBlacklistedException::class:
-                        return $this->setStatusCode($exception->getStatusCode())->respondWithError('Token is invalid.');
+                        return $this->setStatusCode($exception->getStatusCode())
+                            ->respondWithError('Token is invalid.');
                 }
             }
         }

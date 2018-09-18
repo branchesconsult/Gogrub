@@ -202,6 +202,7 @@ return [
         Tymon\JWTAuth\Providers\LaravelServiceProvider::class,
         Bvipul\Generator\Provider\CrudGeneratorServiceProvider::class,
         Mpociot\ApiDoc\ApiDocGeneratorServiceProvider::class,
+        Unisharp\FileApi\FileApiServiceProvider::class,
     ],
 
     /*
