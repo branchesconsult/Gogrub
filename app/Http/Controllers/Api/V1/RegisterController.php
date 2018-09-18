@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Api\V1;
 
+use App\Http\Requests\Api\Auth\UserRegistrationRequest;
 use App\Models\User\User;
 use App\Repositories\Frontend\Access\User\UserRepository;
 use Config;
@@ -9,6 +10,10 @@ use Illuminate\Http\Request;
 use JWTAuth;
 use Validator;
 
+/**
+ * Auth
+ * @package App\Http\Controllers\Api\V1
+ */
 class RegisterController extends APIController
 {
     protected $repository;
@@ -29,35 +34,34 @@ class RegisterController extends APIController
      * @param Request $request
      *
      * @return \Illuminate\Http\JsonResponse
+     *
+     * @Request
+     * full_name:umair hamid
+     * email:umair_hamid100@yahoo.com
+     * mobile:3334965841
+     * password:123456
+     * password_confirmation:123456
      */
-    public function register(Request $request)
+    public function register(UserRegistrationRequest $request)
     {
-        $validation = Validator::make($request->all(), [
-            'first_name'            => 'required',
-            'last_name'             => 'required',
-            'email'                 => 'required|email|unique:users',
-            'password'              => 'required|min:4',
-            'password_confirmation' => 'required|same:password',
-            'is_term_accept'        => 'required',
-        ]);
-
-        if ($validation->fails()) {
-            return $this->throwValidation($validation->messages()->first());
-        }
 
         $user = $this->repository->create($request->all());
 
         if (!Config::get('api.register.release_token')) {
             return $this->respondCreated([
-                'message'  => trans('api.messages.registeration.success'),
+                'message' => trans('api.messages.registeration.success'),
             ]);
         }
 
         $token = JWTAuth::fromUser($user);
 
         return $this->respondCreated([
-            'message'   => trans('api.messages.registeration.success'),
-            'token'     => $token,
+            'message_title' => "Success",
+            'message' => trans('api.messages.registeration.success'),
+            'token' => $token,
+            'user' => $user,
+            'status_code' => 200,
+            'success' => true,
         ]);
     }
 }

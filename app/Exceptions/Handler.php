@@ -2,6 +2,7 @@
 
 namespace App\Exceptions;
 
+use Dotenv\Validator;
 use Exception;
 use Illuminate\Auth\Access\AuthorizationException;
 use Illuminate\Auth\AuthenticationException;
@@ -47,7 +48,7 @@ class Handler extends ExceptionHandler
      * Render an exception into an HTTP response.
      *
      * @param \Illuminate\Http\Request $request
-     * @param \Exception               $exception
+     * @param \Exception $exception
      *
      * @return \Illuminate\Http\Response
      */
@@ -55,7 +56,7 @@ class Handler extends ExceptionHandler
     {
         //dd($exception);
         if (strpos($request->url(), '/api/') !== false) {
-            \Log::debug('API Request Exception - '.$request->url().' - '.$exception->getMessage().(!empty($request->all()) ? ' - '.json_encode($request->except(['password'])) : ''));
+            \Log::debug('API Request Exception - ' . $request->url() . ' - ' . $exception->getMessage() . (!empty($request->all()) ? ' - ' . json_encode($request->except(['password'])) : ''));
 
             if ($exception instanceof AuthorizationException) {
                 return $this->setStatusCode(403)->respondWithError($exception->getMessage());
@@ -78,9 +79,19 @@ class Handler extends ExceptionHandler
             }
 
             if ($exception instanceof ValidationException) {
-                \Log::debug('API Validation Exception - '.json_encode($exception->validator->messages()));
+                //dd($exception->validator->messages());
+                \Log::debug('API Validation Exception - ' . json_encode($exception->validator->messages()));
 
-                return $this->setStatusCode(422)->respondWithError($exception->validator->messages());
+                //REdefine message of error
+                $messageToReturn = [];
+                $messageArray = json_decode($exception->validator->messages(), true);
+
+                foreach ($messageArray as $key => $val) {
+                    $messageToReturn[$key] = $val[0];
+                }
+                //end REdefine message of error
+
+                return $this->setStatusCode(422)->respondWithError($messageToReturn);
             }
 
             /*
@@ -121,7 +132,7 @@ class Handler extends ExceptionHandler
     /**
      * Convert an authentication exception into an unauthenticated response.
      *
-     * @param \Illuminate\Http\Request                 $request
+     * @param \Illuminate\Http\Request $request
      * @param \Illuminate\Auth\AuthenticationException $exception
      *
      * @return \Illuminate\Http\Response
@@ -169,11 +180,14 @@ class Handler extends ExceptionHandler
     protected function respondWithError($message)
     {
         return $this->respond([
-                'error' => [
-                    'message'     => $message,
-                    'status_code' => $this->getStatusCode(),
-                ],
-            ]);
+//            'error' => [
+//                'message' => $message,
+//                'status_code' => $this->getStatusCode(),
+//            ],
+            'error' => $message,
+            'status_code' => $this->getStatusCode(),
+            'success' => false
+        ]);
     }
 
     /**

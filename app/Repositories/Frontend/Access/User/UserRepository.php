@@ -82,7 +82,7 @@ class UserRepository extends BaseRepository
      * Create User.
      *
      * @param array $data
-     * @param bool  $provider
+     * @param bool $provider
      *
      * @return static
      */
@@ -90,13 +90,14 @@ class UserRepository extends BaseRepository
     {
         $user = self::MODEL;
         $user = new $user();
-        $user->first_name = $data['first_name'];
-        $user->last_name = $data['last_name'];
+        $user->full_name = $data['full_name'];
         $user->email = $data['email'];
-        $user->confirmation_code = md5(uniqid(mt_rand(), true));
+        $user->mobile = $data['mobile'];
+        $user->country_code = 92;
+        $user->confirmation_code = md5(uniqid(mt_rand('1111', '9999'), true)); //Mobile confirmation code
         $user->status = 1;
         $user->password = $provider ? null : bcrypt($data['password']);
-        $user->is_term_accept = $data['is_term_accept'];
+        $user->is_term_accept = 1;//$data['is_term_accept'];
 
         // If users require approval, confirmed is false regardless of account type
         if (config('access.users.requires_approval')) {
@@ -177,7 +178,7 @@ class UserRepository extends BaseRepository
             }
 
             $user = $this->create([
-                'name'  => $data->name,
+                'name' => $data->name,
                 'email' => $user_email,
             ], true);
         }
@@ -186,15 +187,15 @@ class UserRepository extends BaseRepository
         if (!$user->hasProvider($provider)) {
             // Gather the provider data for saving and associate it with the user
             $user->providers()->save(new SocialLogin([
-                'provider'    => $provider,
+                'provider' => $provider,
                 'provider_id' => $data->id,
-                'token'       => $data->token,
-                'avatar'      => $data->avatar,
+                'token' => $data->token,
+                'avatar' => $data->avatar,
             ]));
         } else {
             // Update the users information, token and avatar can be updated.
             $user->providers()->update([
-                'token'  => $data->token,
+                'token' => $data->token,
                 'avatar' => $data->avatar,
             ]);
         }
@@ -268,7 +269,7 @@ class UserRepository extends BaseRepository
                 $user->notify(new UserNeedsConfirmation($user->confirmation_code));
 
                 return [
-                    'success'       => $updated,
+                    'success' => $updated,
                     'email_changed' => true,
                 ];
             }
@@ -295,9 +296,9 @@ class UserRepository extends BaseRepository
                 $input['email'] = $user->email;
                 // Send email to the user
                 $options = [
-                        'data'                => $input,
-                        'email_template_type' => 4,
-                    ];
+                    'data' => $input,
+                    'email_template_type' => 4,
+                ];
                 createNotification('', $user->id, 2, $options);
 
                 return true;

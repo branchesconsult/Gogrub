@@ -1,4 +1,4 @@
-    <?php
+<?php
 
 
 /*
@@ -13,10 +13,9 @@
 */
 
 Route::group(['namespace' => 'Api\V1', 'prefix' => 'v1', 'as' => 'v1.'], function () {
-    Route::group(['prefix' => 'auth'], function () {
-        Route::post('register', 'RegisterController@register');
-        Route::post('login', 'AuthController@login');
-    });
+    //Registration
+    Route::post('register', 'RegisterController@register');
+    Route::post('login', 'AuthController@login');
 
     Route::group(['middleware' => ['jwt.auth']], function () {
         Route::group(['prefix' => 'auth'], function () {
