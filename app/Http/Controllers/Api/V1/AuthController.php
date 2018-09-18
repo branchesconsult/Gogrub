@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Api\V1;
 
 use App\Events\Frontend\Auth\UserLoggedOut;
+use App\Http\Requests\Api\Auth\ResendVerificationCodeRequest;
 use App\Http\Requests\Api\Auth\UpdateNonVerifyMobileRequest;
 use App\Http\Requests\Api\Auth\UserLoginRequest;
 use App\Http\Requests\Api\Auth\UserMobileVerificationRequest;
@@ -104,7 +105,7 @@ class AuthController extends APIController
     public function verifyMobile(UserMobileVerificationRequest $request)
     {
         $dbConfirmationCode = \Auth::user()->confirmation_code;
-        if (\Hash::check($dbConfirmationCode, $request->get('confirmation_code'))) {
+        if (\Hash::check($request->get('confirmation_code'), $dbConfirmationCode)) {
             $user = User::find(\Auth::id());
             $user->confirmed = 1;
             $user->save();
@@ -152,5 +153,24 @@ class AuthController extends APIController
                 'message_title' => 'Error'
             ]
         );
+    }
+
+    /**
+     * Resend verification code
+     * @param ResendVerificationCodeRequest $request
+     * @return \Illuminate\Http\JsonResponse
+     */
+    public function resendVerificationCode(ResendVerificationCodeRequest $request)
+    {
+        $user = User::find(\Auth::id());
+        $user->confirmation_code = bcrypt('1234');
+        $user->save();
+        return $this->respond([
+            'message_title' => "Success",
+            'message' => 'Verification code resend, for now its 1234.',
+            'status_code' => 200,
+            'success' => true,
+            'user' => \Auth::user()
+        ]);
     }
 }
