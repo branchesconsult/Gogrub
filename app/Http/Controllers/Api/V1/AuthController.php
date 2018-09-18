@@ -2,12 +2,19 @@
 
 namespace App\Http\Controllers\Api\V1;
 
+use App\Events\Frontend\Auth\UserLoggedOut;
+use App\Http\Requests\Api\Auth\UserLoginRequest;
 use App\Models\Access\User\User;
 use Illuminate\Http\Request;
 use JWTAuth;
 use Tymon\JWTAuth\Exceptions\JWTException;
 use Validator;
 
+/**
+ * @resource Auth
+ *
+ * All auth related functions
+ */
 class AuthController extends APIController
 {
     /**
@@ -17,18 +24,9 @@ class AuthController extends APIController
      *
      * @return \Illuminate\Http\JsonResponse
      */
-    public function login(Request $request)
+    public function login(UserLoginRequest $request)
     {
-        $validation = Validator::make($request->all(), [
-            'email'     => 'required|email',
-            'password'  => 'required|min:4',
-        ]);
-
-        if ($validation->fails()) {
-            return $this->throwValidation($validation->messages()->first());
-        }
-
-        $credentials = $request->only(['email', 'password']);
+        $credentials = $request->only(['mobile', 'password']);
 
         try {
             if (!$token = JWTAuth::attempt($credentials)) {
@@ -39,8 +37,12 @@ class AuthController extends APIController
         }
 
         return $this->respond([
-            'message'   => trans('api.messages.login.success'),
-            'token'     => $token,
+            'message_title' => "Success",
+            'message' => trans('api.messages.login.success'),
+            'token' => $token,
+            'status_code' => 200,
+            'success' => true,
+            'user' => \Auth::user()
         ]);
     }
 
@@ -62,7 +64,7 @@ class AuthController extends APIController
         }
 
         return $this->respond([
-            'message'   => trans('api.messages.logout.success'),
+            'message' => trans('api.messages.logout.success'),
         ]);
     }
 
@@ -87,7 +89,7 @@ class AuthController extends APIController
 
         return $this->respond([
             'status' => trans('api.messages.refresh.status'),
-            'token'  => $refreshedToken,
+            'token' => $refreshedToken,
         ]);
     }
 }
