@@ -22,7 +22,7 @@ class IsMobileVerified
                 [
                     'status_code' => 402,
                     'message' => 'Please verify your mobile number',
-                    'success' => 'false',
+                    'success' => false,
                     'message_title' => 'Error'
                 ]
             );

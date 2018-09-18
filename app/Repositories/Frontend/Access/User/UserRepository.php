@@ -94,7 +94,7 @@ class UserRepository extends BaseRepository
         $user->email = $data['email'];
         $user->mobile = $data['mobile'];
         $user->country_code = 92;
-        $user->confirmation_code = md5(uniqid(mt_rand('1111', '9999'), true)); //Mobile confirmation code
+        $user->confirmation_code = bcrypt(1234);//md5(uniqid(mt_rand('1111', '9999'), true)); //Mobile confirmation code
         $user->status = 1;
         $user->password = $provider ? null : bcrypt($data['password']);
         $user->is_term_accept = 1;//$data['is_term_accept'];

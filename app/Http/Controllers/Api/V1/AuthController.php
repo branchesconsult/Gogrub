@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Api\V1;
 
 use App\Events\Frontend\Auth\UserLoggedOut;
 use App\Http\Requests\Api\Auth\UserLoginRequest;
+use App\Http\Requests\Api\Auth\UserMobileVerificationRequest;
 use App\Models\Access\User\User;
 use Illuminate\Http\Request;
 use JWTAuth;
@@ -92,5 +93,35 @@ class AuthController extends APIController
             'status' => trans('api.messages.refresh.status'),
             'token' => $refreshedToken,
         ]);
+    }
+
+    /**
+     * Verify mobile number.
+     *
+     * @return \Illuminate\Http\JsonResponse
+     */
+    public function verifyMobile(UserMobileVerificationRequest $request)
+    {
+        $dbConfirmationCode = \Auth::user()->confirmation_code;
+        if (\Hash::check($dbConfirmationCode, $request->get('confirmation_code'))) {
+            $user = User::find(\Auth::id());
+            $user->confirmed = 1;
+            $user->save();
+            return $this->respond([
+                'message_title' => "Success",
+                'message' => 'Thakn you for your mobile confirmation',
+                'status_code' => 200,
+                'success' => true,
+                'user' => \Auth::user()
+            ]);
+        }
+        return response()->json(
+            [
+                'status_code' => 402,
+                'message' => 'Verification code is wrong.',
+                'success' => false,
+                'message_title' => 'Error'
+            ]
+        );
     }
 }
