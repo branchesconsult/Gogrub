@@ -32,7 +32,7 @@ Route::group(['namespace' => 'Api\V1', 'prefix' => 'v1', 'as' => 'v1.'], functio
         //Products
         Route::group(['middleware' => 'mobile.verify'], function () {
             Route::resource('cuisine', 'CuisineController', ['only' => ['index']]);
-            Route::resource('products', 'ProductController', ['only' => ['index']]);
+            Route::resource('products', 'ProductController', ['only' => ['index', 'store']]);
         });
         // Users
         Route::resource('users', 'UsersController', ['except' => ['create', 'edit']]);

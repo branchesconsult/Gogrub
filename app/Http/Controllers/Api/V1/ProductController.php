@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Api\V1;
 
+use App\Http\Requests\Api\Products\AddProductRequest;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 
@@ -33,9 +34,15 @@ class ProductController extends Controller
      * @param  \Illuminate\Http\Request $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(AddProductRequest $request)
     {
-        //
+        return response()->json([
+            'message_title' => "Success",
+            'message' => 'Your product added successfully',
+            'status_code' => 200,
+            'success' => true,
+            'product' => []
+        ]);
     }
 
     /**

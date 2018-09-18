@@ -3,7 +3,7 @@
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CuisineProductPivotTable extends Migration
+class CreateCuisineProductPivotTable extends Migration
 {
     /**
      * Run the migrations.
