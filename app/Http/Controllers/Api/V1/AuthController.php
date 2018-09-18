@@ -19,7 +19,8 @@ class AuthController extends APIController
 {
     /**
      * Log the user in.
-     *
+     * mobile:3234225990
+     * password:1234
      * @param Request $request
      *
      * @return \Illuminate\Http\JsonResponse
