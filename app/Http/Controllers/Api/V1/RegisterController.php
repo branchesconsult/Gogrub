@@ -11,8 +11,9 @@ use JWTAuth;
 use Validator;
 
 /**
- * Auth
- * @package App\Http\Controllers\Api\V1
+ * @resource Auth
+ *
+ * All auth related functions
  */
 class RegisterController extends APIController
 {
