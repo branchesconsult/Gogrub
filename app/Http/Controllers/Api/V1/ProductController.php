@@ -6,6 +6,11 @@ use App\Http\Requests\Api\Products\AddProductRequest;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 
+/**
+ * @resource Products
+ *
+ * All product related functions
+ */
 class ProductController extends Controller
 {
     /**
