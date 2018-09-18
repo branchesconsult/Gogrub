@@ -28,31 +28,31 @@ Route::group(['namespace' => 'Api\V1', 'prefix' => 'v1', 'as' => 'v1.'], functio
         });
         // Users
         Route::resource('users', 'UsersController', ['except' => ['create', 'edit']]);
-        Route::post('users/delete-all', 'UsersController@deleteAll');
+        //Route::post('users/delete-all', 'UsersController@deleteAll');
         //@todo need to change the route name and related changes
-        Route::get('deactivated-users', 'DeactivatedUsersController@index');
-        Route::get('deleted-users', 'DeletedUsersController@index');
+        //Route::get('deactivated-users', 'DeactivatedUsersController@index');
+        //Route::get('deleted-users', 'DeletedUsersController@index');
 
         // Roles
-        Route::resource('roles', 'RolesController', ['except' => ['create', 'edit']]);
-        Route::post('roles/delete-all', 'RolesController@deleteAll');
+        //Route::resource('roles', 'RolesController', ['except' => ['create', 'edit']]);
+        //Route::post('roles/delete-all', 'RolesController@deleteAll');
 
         // Permission
-        Route::resource('permissions', 'PermissionController', ['except' => ['create', 'edit']]);
+        //Route::resource('permissions', 'PermissionController', ['except' => ['create', 'edit']]);
 
         // Page
-        Route::resource('pages', 'PagesController', ['except' => ['create', 'edit']]);
+        //Route::resource('pages', 'PagesController', ['except' => ['create', 'edit']]);
 
         // Faqs
-        Route::resource('faqs', 'FaqsController', ['except' => ['create', 'edit']]);
+        //Route::resource('faqs', 'FaqsController', ['except' => ['create', 'edit']]);
 
         // Blog Categories
-        Route::resource('blog_categories', 'BlogCategoriesController', ['except' => ['create', 'edit']]);
+        //Route::resource('blog_categories', 'BlogCategoriesController', ['except' => ['create', 'edit']]);
 
         // Blog Tags
-        Route::resource('blog_tags', 'BlogTagsController', ['except' => ['create', 'edit']]);
+        //Route::resource('blog_tags', 'BlogTagsController', ['except' => ['create', 'edit']]);
 
         // Blogs
-        Route::resource('blogs', 'BlogsController', ['except' => ['create', 'edit']]);
+        //Route::resource('blogs', 'BlogsController', ['except' => ['create', 'edit']]);
     });
 });
