@@ -39,6 +39,5 @@ class PermissionUserSeeder extends Seeder
             $user->permissions()->sync($permissions);
         }
 
-        $this->enableForeignKeys();
     }
 }

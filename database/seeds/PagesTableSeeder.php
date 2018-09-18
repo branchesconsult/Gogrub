@@ -34,6 +34,5 @@ class PagesTableSeeder extends Seeder
 
         DB::table(config('module.pages.table'))->insert($page);
 
-        $this->enableForeignKeys();
     }
 }

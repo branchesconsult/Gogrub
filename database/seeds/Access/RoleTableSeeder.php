@@ -58,6 +58,5 @@ class RoleTableSeeder extends Seeder
 
         DB::table(config('access.roles_table'))->insert($roles);
 
-        $this->enableForeignKeys();
     }
 }

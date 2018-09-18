@@ -639,6 +639,5 @@ class PermissionTableSeeder extends Seeder
         $viewBackend->deleted_at = null;
         $viewBackend->save();
 
-        $this->enableForeignKeys();
     }
 }

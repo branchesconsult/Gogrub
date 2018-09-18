@@ -39,7 +39,5 @@ class PermissionRoleSeeder extends Seeder
          * Assign view frontend to user role
         */
         Role::find(3)->permissions()->sync([2]);
-
-        $this->enableForeignKeys();
     }
 }

@@ -36,6 +36,5 @@ class UserRoleSeeder extends Seeder
         $user_model = new $user_model();
         $user_model::find(3)->attachRole(3);
 
-        $this->enableForeignKeys();
     }
 }

@@ -77,6 +77,5 @@ class HistoryTypeTableSeeder extends Seeder
 
         DB::table(config('access.history_types_table'))->insert($types);
 
-        $this->enableForeignKeys();
     }
 }
