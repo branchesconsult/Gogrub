@@ -82,7 +82,7 @@
                     {data: 'name', name: '{{config('module.table')}}.name'},
                     {data: 'view_permission_id', name: '{{config('module.table')}}.view_permission_id'},
                     {data: 'url', name: '{{config('module.table')}}.url'},
-                    {data: 'created_by', name: '{{config('access.users_table')}}.first_name'}
+                    {data: 'created_by', name: '{{config('access.users_table')}}.full_name'}
                 ],
                 order: [[0, "asc"]],
                 searchDelay: 500,
