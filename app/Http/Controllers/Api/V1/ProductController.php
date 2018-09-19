@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Api\V1;
 
 use App\Http\Requests\Api\Products\AddProductRequest;
+use App\Http\Requests\Api\Products\GetProductsRequest;
 use App\Models\Image\Image;
 use App\Models\Product\Product;
 use App\Repositories\Backend\Product\ProductRepository;
@@ -38,9 +39,19 @@ class ProductController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(GetProductsRequest $request)
     {
-        //
+        $chefId = ($request->has('chef_id')) ? $request->get('chef_id') : null;
+        $products = Product::with('images')
+            ->where('availability_form', '>=', Carbon::now())
+            ->where('status', '=', 1);
+        if (!empty($chefId)) {
+            $products = $products->where('chef_id', $chefId);
+        }
+        $products = $products->get();
+        return response()->json([
+            'products' => $products
+        ]);
     }
 
     /**
