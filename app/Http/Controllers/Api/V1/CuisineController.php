@@ -6,6 +6,11 @@ use App\Models\Cuisine\Cuisine;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 
+/**
+ * @resource Cuisines
+ *
+ * All Cuisines related functions
+ */
 class CuisineController extends Controller
 {
     /**
