@@ -61,6 +61,10 @@ class Image extends Model
 
     public function getImageUrlAttribute($val)
     {
-        return asset(str_replace('public/', 'storage/', $val));
+        if (strpos($val, 'public/') !== false) {
+            return asset(str_replace('public/', 'storage/', $val));
+        } else {
+            return $val;
+        }
     }
 }
