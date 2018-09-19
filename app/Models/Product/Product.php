@@ -3,6 +3,7 @@
 namespace App\Models\Product;
 
 use App\Models\ModelTrait;
+use Carbon\Carbon;
 use Illuminate\Database\Eloquent\Model;
 use App\Models\Product\Traits\ProductAttribute;
 use App\Models\Product\Traits\ProductRelationship;
@@ -59,5 +60,36 @@ class Product extends Model
     public function __construct(array $attributes = [])
     {
         parent::__construct($attributes);
+    }
+
+
+    public function getGlobalDateTimeFormat($dateTime)
+    {
+        if ($this->skipMutator == true || empty($dateTime)) {
+            return $dateTime;
+        }
+        return Carbon::parse($dateTime)->toDayDateTimeString();
+
+    }
+
+    public function getCreatedAtAttribute($val)
+    {
+        return $this->getGlobalDateTimeFormat($val);
+    }
+
+    public function getUpdatedAtAttribute($val)
+    {
+        return $this->getGlobalDateTimeFormat($val);
+    }
+
+
+    public function getAvailabilityFormAttribute($val)
+    {
+        return $this->getGlobalDateTimeFormat($val);
+    }
+
+    public function getAvailabilityToAttribute($val)
+    {
+        return $this->getGlobalDateTimeFormat($val);
     }
 }
