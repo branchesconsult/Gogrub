@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Api\V1;
 
 use App\Http\Requests\Api\Products\AddProductRequest;
 use App\Http\Requests\Api\Products\GetProductsRequest;
+use App\Http\Requests\Api\Products\UpdateProductRequest;
 use App\Models\Image\Image;
 use App\Models\Product\Product;
 use App\Repositories\Backend\Product\ProductRepository;
@@ -139,11 +140,10 @@ class ProductController extends Controller
      * @param  int $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(UpdateProductRequest $request, $id)
     {
         $input = $request->except(['_token', 'product_images']);
-        $productUpdated = Product::updateOrCreate();
-
+        Product::find($id)->update($input);
         if ($request->hasFile('product_images')) {
             $productImages = $this->uploadProducImages($request->file('product_images'));
             foreach ($productImages as $key => $val) {

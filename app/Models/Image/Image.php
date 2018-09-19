@@ -6,6 +6,7 @@ use App\Models\ModelTrait;
 use Illuminate\Database\Eloquent\Model;
 use App\Models\Image\Traits\ImageAttribute;
 use App\Models\Image\Traits\ImageRelationship;
+use Unisharp\FileApi\FileApi;
 
 class Image extends Model
 {
@@ -26,7 +27,6 @@ class Image extends Model
      */
     protected $table = 'images';
     public $timestamps = false;
-
     /**
      * Default values for model fields
      * @var array
@@ -44,6 +44,10 @@ class Image extends Model
         'updated_at'
     ];
 
+    protected $hidden = [
+        'created_at',
+        'updated_at'
+    ];
     /**
      * Guarded fields of model
      * @var array
@@ -59,12 +63,35 @@ class Image extends Model
         parent::__construct($attributes);
     }
 
-    public function getImageUrlAttribute($val)
+
+    protected $appends = ['small_thumb', 'medium_thumb', 'image_large'];
+
+
+    public function getImageLargeAttribute($val)
     {
-        if (strpos($val, 'public/') !== false) {
-            return asset(str_replace('public/', 'storage/', $val));
-        } else {
-            return $val;
-        }
+        $fa = new FileApi();
+        return $this->attributes['image_original'] = $this->fileApiUrl($fa->get($this->image_url, FileApi::SIZE_LARGE));
     }
+
+    public function getSmallThumbAttribute($value)
+    {
+        $fa = new FileApi();
+        return $this->attributes['small_thumb'] = $this->fileApiUrl($fa->get($this->image_url, FileApi::SIZE_SMALL));
+    }
+
+    public function getMediumThumbAttribute($value)
+    {
+        $fa = new FileApi();
+        return $this->attributes['medium_thumb'] = $this->fileApiUrl($fa->get($this->image_url, FileApi::SIZE_MEDIUM));
+    }
+
+    public function fileApiUrl($fileDbPath)
+    {
+        return str_replace('/public/', '/storage/', asset(trim($fileDbPath, '/')));
+    }
+
+//    public function getImageUrlAttribute($val)
+//    {
+//        //return $this->fileApiUrl($val);
+//    }
 }
