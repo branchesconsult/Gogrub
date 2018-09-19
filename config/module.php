@@ -26,4 +26,7 @@ return [
 	"products" => [
 	"table" => "products",
 	],
+	"images" => [
+	"table" => "images",
+	],
 ];

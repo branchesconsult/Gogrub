@@ -11,9 +11,9 @@ class Product extends Model
 {
     use ModelTrait,
         ProductAttribute,
-    	ProductRelationship {
-            // ProductAttribute::getEditButtonAttribute insteadof ModelTrait;
-        }
+        ProductRelationship {
+        // ProductAttribute::getEditButtonAttribute insteadof ModelTrait;
+    }
 
     /**
      * NOTE : If you want to implement Soft Deletes in this model,
@@ -26,13 +26,6 @@ class Product extends Model
      */
     protected $table = 'products';
 
-    /**
-     * Mass Assignable fields of model
-     * @var array
-     */
-    protected $fillable = [
-
-    ];
 
     /**
      * Default values for model fields
@@ -56,7 +49,7 @@ class Product extends Model
      * @var array
      */
     protected $guarded = [
-        'id'
+
     ];
 
     /**

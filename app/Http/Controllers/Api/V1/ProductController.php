@@ -3,10 +3,13 @@
 namespace App\Http\Controllers\Api\V1;
 
 use App\Http\Requests\Api\Products\AddProductRequest;
+use App\Models\Image\Image;
 use App\Models\Product\Product;
 use App\Repositories\Backend\Product\ProductRepository;
+use Carbon\Carbon;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use Unisharp\FileApi\FileApi;
 
 /**
  * @resource Products
@@ -59,19 +62,37 @@ class ProductController extends Controller
     public function store(AddProductRequest $request)
     {
         //Input received from the request
-        $input = $request->except(['_token']);
+
+        $input = $request->except(['_token', 'product_images']);
         //Create the model using repository create method
         $input['chef_id'] = \Auth::id();
         $product = new Product();
         $insertedProductId = $product->create($input)->id;
+        if ($request->hasFile('product_images')) {
+            $productImages = $this->uploadProducImages($request->file('product_images'));
+            foreach ($productImages as $key => $val) {
+                Product::find($insertedProductId)->images()->save(new Image($val));
+            }
+        }
 
         return response()->json([
             'message_title' => "Success",
             'message' => 'Your product added successfully',
             'status_code' => 200,
             'success' => true,
-            'product' => []
+            'product' => Product::where('id', $insertedProductId)->with('images')->first()
         ]);
+    }
+
+    public function uploadProducImages($imagesInput)
+    {
+        $productsImages = [];
+        $productUploadPath = env('LFM_UPLOADS_PRODUCTS');
+        foreach ($imagesInput as $key => $val) {
+            $fileApi = new FileApi($productUploadPath);
+            $productsImages[$key]['image_url'] = $productUploadPath . $fileApi->save($val);
+        }
+        return $productsImages;
     }
 
     /**

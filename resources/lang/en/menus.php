@@ -121,6 +121,13 @@ return [
 	"management" => "Product Management",
 	"main" => "Products",
 	],
+	"images" => [
+	"all" => "All Images",
+	"create" => "Create Image",
+	"edit" => "Edit Image",
+	"management" => "Image Management",
+	"main" => "Images",
+	],
 	],
 	"language-picker" => [
 	"language" => "Language",

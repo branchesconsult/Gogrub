@@ -68,5 +68,10 @@ return [
 	"deleted" => "The Product was successfully deleted.",
 	"updated" => "The Product was successfully updated.",
 	],
+	"images" => [
+	"created" => "The Image was successfully created.",
+	"deleted" => "The Image was successfully deleted.",
+	"updated" => "The Image was successfully updated.",
+	],
 	],
 ];

@@ -13,7 +13,7 @@ return [
     |
     */
 
-    'path' => ['/lfm/'],
+    'path' => [env('LFM_UPLOADS')],
     //'watermark' => 'public/img/watermark.png',
     'default_thumbs' => ['S' => '96x96', 'M' => '256x256', 'L' => '480x480'],
     'compress_quality' => 90,

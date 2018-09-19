@@ -270,6 +270,16 @@ return [
 	"createdat" => "Created At",
 	],
 	],
+	"images" => [
+	"create" => "Create Image",
+	"edit" => "Edit Image",
+	"management" => "Image Management",
+	"title" => "Images",
+	"table" => [
+	"id" => "Id",
+	"createdat" => "Created At",
+	],
+	],
 	],
 	"frontend" => [
 	"auth" => [

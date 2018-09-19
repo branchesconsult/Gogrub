@@ -20,3 +20,4 @@ require __DIR__.'/LogViewer.php';
 
 require __DIR__.'/Cuisine.php';
 require __DIR__.'/Product.php';
+require __DIR__.'/Image.php';
