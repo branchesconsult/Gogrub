@@ -29,4 +29,7 @@ return [
 	"images" => [
 	"table" => "images",
 	],
+	"locations" => [
+	"table" => "locations",
+	],
 ];

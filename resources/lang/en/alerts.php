@@ -73,5 +73,10 @@ return [
 	"deleted" => "The Image was successfully deleted.",
 	"updated" => "The Image was successfully updated.",
 	],
+	"locations" => [
+	"created" => "The Location was successfully created.",
+	"deleted" => "The Location was successfully deleted.",
+	"updated" => "The Location was successfully updated.",
+	],
 	],
 ];

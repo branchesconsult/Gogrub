@@ -280,6 +280,16 @@ return [
 	"createdat" => "Created At",
 	],
 	],
+	"locations" => [
+	"create" => "Create Location",
+	"edit" => "Edit Location",
+	"management" => "Location Management",
+	"title" => "Locations",
+	"table" => [
+	"id" => "Id",
+	"createdat" => "Created At",
+	],
+	],
 	],
 	"frontend" => [
 	"auth" => [

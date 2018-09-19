@@ -105,7 +105,7 @@ class UserRepository extends BaseRepository
         } elseif (config('access.users.confirm_email')) { // If user must confirm email
             // If user is from social, already confirmed
             if ($provider) {
-                $user->confirmed = 1; // E-mails are validated through the social platform
+                $user->confirmed = 0; // E-mails are validated through the social platform
             } else {
                 // Otherwise needs confirmation
                 $user->confirmed = 0;
@@ -113,7 +113,7 @@ class UserRepository extends BaseRepository
             }
         } else {
             // Otherwise both are off and confirmed is default
-            $user->confirmed = 1;
+            $user->confirmed = 0;
         }
 
         DB::transaction(function () use ($user) {
