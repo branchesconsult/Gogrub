@@ -118,14 +118,7 @@ class AuthController extends APIController
                 'user' => \Auth::user()
             ]);
         }
-        return response()->json(
-            [
-                'status_code' => 402,
-                'message' => 'Verification code is wrong.',
-                'success' => false,
-                'message_title' => 'Error'
-            ]
-        );
+        return apiErrorRes(402, 'Verification code is wrong.');
     }
 
     /**
@@ -146,14 +139,8 @@ class AuthController extends APIController
                 'user' => \Auth::user()
             ]);
         }
-        return response()->json(
-            [
-                'status_code' => 402,
-                'message' => 'Phone already verified.',
-                'success' => false,
-                'message_title' => 'Error'
-            ]
-        );
+
+        return apiErrorRes(402, 'Phone already verified.');
     }
 
     /**
