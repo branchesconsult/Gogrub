@@ -56,7 +56,7 @@ class RegisterController extends APIController
 
         $token = JWTAuth::fromUser($user);
 
-        return $this->respondCreated([
+        return response()->json([
             'message_title' => "Success",
             'message' => trans('api.messages.registeration.success'),
             'token' => $token,

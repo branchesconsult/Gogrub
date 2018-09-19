@@ -104,8 +104,9 @@ class AuthController extends APIController
      */
     public function verifyMobile(UserMobileVerificationRequest $request)
     {
+        dd(\Hash::check($dbConfirmationCode, $request->get('confirmation_code')));
         $dbConfirmationCode = \Auth::user()->confirmation_code;
-        if (\Hash::check($request->get('confirmation_code'), $dbConfirmationCode)) {
+        if (\Hash::check($dbConfirmationCode, $request->get('confirmation_code'))) {
             $user = User::find(\Auth::id());
             $user->confirmed = 1;
             $user->save();
@@ -163,7 +164,7 @@ class AuthController extends APIController
     public function resendVerificationCode(ResendVerificationCodeRequest $request)
     {
         $user = User::find(\Auth::id());
-        $user->confirmation_code = bcrypt('1234');
+        $user->confirmation_code = bcrypt(1234);
         $user->save();
         return $this->respond([
             'message_title' => "Success",

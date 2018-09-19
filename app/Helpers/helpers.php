@@ -96,13 +96,13 @@ if (!function_exists('includeRouteFiles')) {
         $directory_list = [$directory];
 
         while (false !== ($filename = readdir($handle))) {
-            if ($filename != '.' && $filename != '..' && is_dir($directory.$filename)) {
-                array_push($directory_list, $directory.$filename.'/');
+            if ($filename != '.' && $filename != '..' && is_dir($directory . $filename)) {
+                array_push($directory_list, $directory . $filename . '/');
             }
         }
 
         foreach ($directory_list as $directory) {
-            foreach (glob($directory.'*.php') as $filename) {
+            foreach (glob($directory . '*.php') as $filename) {
                 require $filename;
             }
         }
@@ -127,7 +127,7 @@ if (!function_exists('getRtlCss')) {
         array_pop($path);
         $filename = rtrim($filename, '.css');
 
-        return implode('/', $path).'/'.$filename.'.rtl.css';
+        return implode('/', $path) . '/' . $filename . '.rtl.css';
     }
 }
 
@@ -163,9 +163,9 @@ if (!function_exists('createNotification')) {
             $notification = new Notification();
 
             return $notification->insert([
-                'message'    => $message,
-                'user_id'    => $userId,
-                'type'       => $type,
+                'message' => $message,
+                'user_id' => $userId,
+                'type' => $type,
                 'created_at' => Carbon::now(),
             ]);
         }
@@ -288,4 +288,14 @@ if (!function_exists('isActiveMenuItem')) {
 
         return false;
     }
+}
+
+function apiErrorRes($status_code, $message)
+{
+    return response()->json([
+        'status_code' => $status_code,
+        'message' => $message,
+        'success' => false,
+        'message_title' => 'Error'
+    ]);
 }
