@@ -29,9 +29,9 @@ class ProductRepository extends BaseRepository
     {
         return $this->query()
             ->select([
-                config('module.products.table').'.id',
-                config('module.products.table').'.created_at',
-                config('module.products.table').'.updated_at',
+                config('module.products.table') . '.id',
+                config('module.products.table') . '.created_at',
+                config('module.products.table') . '.updated_at',
             ]);
     }
 
@@ -46,7 +46,7 @@ class ProductRepository extends BaseRepository
     {
         $product = self::MODEL;
         $product = new $product();
-        if ($product->save($input)) {
+        if ($product->create($input)) {
             return true;
         }
         throw new GeneralException(trans('exceptions.backend.products.create_error'));
@@ -62,7 +62,7 @@ class ProductRepository extends BaseRepository
      */
     public function update(Product $product, array $input)
     {
-    	if ($product->update($input))
+        if ($product->update($input))
             return true;
 
         throw new GeneralException(trans('exceptions.backend.products.update_error'));

@@ -3,6 +3,8 @@
 namespace App\Http\Controllers\Api\V1;
 
 use App\Http\Requests\Api\Products\AddProductRequest;
+use App\Models\Product\Product;
+use App\Repositories\Backend\Product\ProductRepository;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 
@@ -13,6 +15,21 @@ use App\Http\Controllers\Controller;
  */
 class ProductController extends Controller
 {
+    /**
+     * variable to store the repository object
+     * @var ProductRepository
+     */
+    protected $repository;
+
+    /**
+     * contructor to initialize repository object
+     * @param ProductRepository $repository ;
+     */
+    public function __construct(ProductRepository $repository)
+    {
+        $this->repository = $repository;
+    }
+
     /**
      * Display a listing of the resource.
      *
@@ -41,6 +58,13 @@ class ProductController extends Controller
      */
     public function store(AddProductRequest $request)
     {
+        //Input received from the request
+        $input = $request->except(['_token']);
+        //Create the model using repository create method
+        $input['chef_id'] = \Auth::id();
+        $product = new Product();
+        $insertedProductId = $product->create($input)->id;
+
         return response()->json([
             'message_title' => "Success",
             'message' => 'Your product added successfully',
