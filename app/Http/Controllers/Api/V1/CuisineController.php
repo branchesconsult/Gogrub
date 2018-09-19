@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Api\V1;
 
+use App\Models\Cuisine\Cuisine;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 
@@ -14,8 +15,9 @@ class CuisineController extends Controller
      */
     public function index()
     {
+        $cuisines = Cuisine::orderBy('name')->get();
         return response()->json([
-            'cuisines' => []
+            'cuisines' => $cuisines
         ]);
     }
 
