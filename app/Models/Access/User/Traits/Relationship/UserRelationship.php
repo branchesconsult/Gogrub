@@ -3,6 +3,7 @@
 namespace App\Models\Access\User\Traits\Relationship;
 
 use App\Models\Access\User\SocialLogin;
+use App\Models\Product\Product;
 use App\Models\System\Session;
 
 /**
@@ -45,5 +46,10 @@ trait UserRelationship
     public function sessions()
     {
         return $this->hasMany(Session::class);
+    }
+
+    public function products()
+    {
+        return $this->hasMany(Product::class);
     }
 }

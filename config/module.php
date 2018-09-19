@@ -32,4 +32,7 @@ return [
 	"locations" => [
 	"table" => "locations",
 	],
+	"orders" => [
+	"table" => "orders",
+	],
 ];

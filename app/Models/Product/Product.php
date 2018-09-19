@@ -32,9 +32,7 @@ class Product extends Model
      * Default values for model fields
      * @var array
      */
-    protected $attributes = [
-
-    ];
+    protected $attributes = [];
 
     /**
      * Dates
@@ -49,9 +47,7 @@ class Product extends Model
      * Guarded fields of model
      * @var array
      */
-    protected $guarded = [
-
-    ];
+    protected $guarded = [];
 
     /**
      * Constructor of Model

@@ -42,7 +42,7 @@ class ProductController extends Controller
     public function index(GetProductsRequest $request)
     {
         $chefId = ($request->has('chef_id')) ? $request->get('chef_id') : null;
-        $products = Product::with('images')
+        $products = Product::with(['images', 'chef'])
             ->where('availability_form', '>=', Carbon::now())
             ->where('status', '=', 1);
         if (!empty($chefId)) {
@@ -72,8 +72,6 @@ class ProductController extends Controller
      */
     public function store(AddProductRequest $request)
     {
-        //Input received from the request
-
         $input = $request->except(['_token', 'product_images']);
         //Create the model using repository create method
         $input['chef_id'] = \Auth::id();
@@ -114,7 +112,13 @@ class ProductController extends Controller
      */
     public function show($id)
     {
-        //
+        $product = Product::with(['images', 'chef'])
+            ->where('id', $id)
+            ->where('availability_form', '>=', Carbon::now())
+            ->where('status', '=', 1)->first();
+        return response()->json([
+            'product' => $product
+        ]);
     }
 
     /**
@@ -137,7 +141,22 @@ class ProductController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $input = $request->except(['_token', 'product_images']);
+        $productUpdated = Product::updateOrCreate();
+
+        if ($request->hasFile('product_images')) {
+            $productImages = $this->uploadProducImages($request->file('product_images'));
+            foreach ($productImages as $key => $val) {
+                Product::find($id)->images()->save(new Image($val));
+            }
+        }
+        return response()->json([
+            'message_title' => "Success",
+            'message' => 'Your product added successfully',
+            'status_code' => 200,
+            'success' => true,
+            'product' => Product::where('id', $id)->with('images')->first()
+        ]);
     }
 
     /**

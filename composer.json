@@ -18,6 +18,7 @@
         "davejamesmiller/laravel-breadcrumbs": "^5.0",
         "doctrine/dbal": "^2.6",
         "fideloper/proxy": "~4.0",
+        "gloudemans/shoppingcart": "^2.5",
         "hieu-le/active": "^3.5",
         "laravel/framework": "5.6.*",
         "laravel/socialite": "^3.0",

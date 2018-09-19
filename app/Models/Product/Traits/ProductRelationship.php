@@ -2,6 +2,7 @@
 
 namespace App\Models\Product\Traits;
 
+use App\Models\Access\User\User;
 use App\Models\Image\Image;
 
 /**
@@ -16,5 +17,10 @@ trait ProductRelationship
     public function images()
     {
         return $this->morphMany(Image::class, 'imageable');
+    }
+
+    public function chef()
+    {
+        return $this->belongsTo(User::class, 'chef_id');
     }
 }

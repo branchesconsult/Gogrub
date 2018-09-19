@@ -135,6 +135,13 @@ return [
 	"management" => "Location Management",
 	"main" => "Locations",
 	],
+	"orders" => [
+	"all" => "All Orders",
+	"create" => "Create Order",
+	"edit" => "Edit Order",
+	"management" => "Order Management",
+	"main" => "Orders",
+	],
 	],
 	"language-picker" => [
 	"language" => "Language",
