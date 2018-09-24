@@ -26,21 +26,23 @@ class CreateOrdersTable extends Migration
             $table->string('chef_phone');
             $table->string('chef_email')->nullable()->default(null);
             $table->point('chef_location');
+
             //Customer info
             $table->string('customer_full_name');
             $table->string('customer_phone');
             $table->string('customer_email')->nullable()->default(null);
             $table->string('customer_address');
-            $table->string('customer_city');
+            $table->string('customer_city')->nullable();
+            $table->string('customer_province')->nullable();
             $table->string('customer_country')->default('PK');
             $table->point('customer_location');
-            $table->double('order_price');
+            $table->integer('estimate_delivery_mins');
+
             $table->string('coupon_code')->nullable();
-            $table->double('discount')->default('0');
+            $table->double('discount')->default(0);
             $table->enum('discount_type', ['percentage', 'fixed'])->nullable();
-            $table->double('delivery_charges')->default(0)->comment('Approx. delievery charges');
-            $table->decimal('subtotal');
-            $table->double('total_prcie');
+            $table->double('delivery_charges')->default(0)->comment('Approx. delivery charges');
+            $table->double('subtotal');
             $table->enum('payment_method', ['cod', '2co', 'easypay', 'mobicash']);
             $table->timestamps();
             $table->softDeletes();

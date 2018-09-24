@@ -35,4 +35,7 @@ return [
 	"orders" => [
 	"table" => "orders",
 	],
+	"orderstatuses" => [
+	"table" => "orderstatuses",
+	],
 ];

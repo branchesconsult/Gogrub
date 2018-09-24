@@ -120,6 +120,13 @@ return [
 	"not_found" => "That Order does not exist.",
 	"update_error" => "There was a problem updating this Order. Please try again.",
 	],
+	"orderstatuses" => [
+	"already_exists" => "That Orderstatus already exists. Please choose a different name.",
+	"create_error" => "There was a problem creating this Orderstatus. Please try again.",
+	"delete_error" => "There was a problem deleting this Orderstatus. Please try again.",
+	"not_found" => "That Orderstatus does not exist.",
+	"update_error" => "There was a problem updating this Orderstatus. Please try again.",
+	],
 	],
 	"frontend" => [
 	"auth" => [

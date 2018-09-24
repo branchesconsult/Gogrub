@@ -24,25 +24,33 @@ class MakeOrderRequest extends FormRequest
     public function rules()
     {
         $rules = [
+            //Product
             'products' => 'required|array',
             'products.*.id' => 'required|integer',
             'products.*.qty' => 'required|integer',
             'products.*.special_instructions' => 'sometimes',
+            //Customer
+            'customer_phone' => 'required',
+            'customer_address' => 'required',
+            'customer_province' => 'sometimes',
+            'customer_country' => 'sometimes',
+            'customer_city' => 'sometimes',
+            'customer_lat' => 'required|numeric',
+            'customer_lng' => 'required|numeric',
+            //MISC
             'payment_method' => 'sometimes|in:cod',
             'coupon_code' => 'sometimes',
-            'delivery_time' => 'sometimes|date_format:"Y-m-d H:i:s"',
+            'estimate_delivery_mins' => 'required|integer',
             'user_comments' => 'sometimes',
-            'address' => 'required',
-            'lat' => 'required|numeric',
-            'lng' => 'required|numeric',
+            'payment_method' => 'required|in:cod,mobicash'
         ];
 
 
         if (!$this->request->get('products')) {
-            for ($i = 1; $i < 2; $i++) {
-                $rules['products.' . $i . '.qty'] = 'integer|required';
-                $rules['products.' . $i . '.id'] = 'integer|required';
-                $rules['products.' . $i . '.special_instructions'] = 'required';
+            for ($i = 0; $i < 2; $i++) {
+                $rules['products.' . $i . '.qty'] = 'required|integer';
+                $rules['products.' . $i . '.id'] = 'required|integer';
+                $rules['products.' . $i . '.special_instructions'] = 'sometimes';
             }
         }
         return $rules;

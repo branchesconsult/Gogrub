@@ -34,6 +34,7 @@ Route::group(['namespace' => 'Api\V1', 'prefix' => 'v1', 'as' => 'v1.'], functio
             Route::resource('cuisine', 'CuisineController', ['only' => ['index']]);
             Route::resource('products', 'ProductController', ['only' => ['index', 'store', 'show']]);
             Route::post('products/{id}', 'ProductController@update');
+            Route::resource('order', 'OrderController', ['only' => ['index', 'store', 'show']]);
         });
         // Users
         Route::resource('users', 'UsersController', ['except' => ['create', 'edit']]);

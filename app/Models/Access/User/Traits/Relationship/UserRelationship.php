@@ -5,6 +5,7 @@ namespace App\Models\Access\User\Traits\Relationship;
 use App\Models\Access\User\SocialLogin;
 use App\Models\Access\Usermeta\Usermeta;
 use App\Models\Location\Location;
+use App\Models\Order\Order;
 use App\Models\Product\Product;
 use App\Models\System\Session;
 
@@ -63,6 +64,11 @@ trait UserRelationship
 
     public function locations()
     {
-        return $this->morphMany(Location::class, 'locationable');
+        return $this->morphOne(Location::class, 'locationable');
+    }
+
+    public function orders()
+    {
+        return $this->hasMany(Order::class);
     }
 }

@@ -300,6 +300,16 @@ return [
 	"createdat" => "Created At",
 	],
 	],
+	"orderstatuses" => [
+	"create" => "Create Orderstatus",
+	"edit" => "Edit Orderstatus",
+	"management" => "Orderstatus Management",
+	"title" => "Orderstatuses",
+	"table" => [
+	"id" => "Id",
+	"createdat" => "Created At",
+	],
+	],
 	],
 	"frontend" => [
 	"auth" => [

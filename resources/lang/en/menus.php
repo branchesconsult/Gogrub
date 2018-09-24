@@ -142,6 +142,13 @@ return [
 	"management" => "Order Management",
 	"main" => "Orders",
 	],
+	"orderstatuses" => [
+	"all" => "All Orderstatuses",
+	"create" => "Create Orderstatus",
+	"edit" => "Edit Orderstatus",
+	"management" => "Orderstatus Management",
+	"main" => "Orderstatuses",
+	],
 	],
 	"language-picker" => [
 	"language" => "Language",
