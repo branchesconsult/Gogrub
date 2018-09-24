@@ -27,7 +27,6 @@ trait OrderRelationship
         return $this->hasMany(OrderDetail::class);
     }
 
-
     /**
      * Get the post that owns the comment.
      */
