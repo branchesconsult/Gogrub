@@ -170,7 +170,6 @@ class OrderController extends Controller
         }])
             ->whereIn('id', $productIds)
             ->get();
-        dd($chef->count());
         return ($chef->count() > 1) ? false : $chef[0]->chef;
     }
 
