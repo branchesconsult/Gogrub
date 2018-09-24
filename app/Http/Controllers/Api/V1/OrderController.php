@@ -90,7 +90,7 @@ class OrderController extends Controller
                 'order' => Order::with('detail')->where('id', $insertedOrderId)->first()
             ]);
         }
-        dd('Products are from multiple chefs so can not order.');
+        return apiErrorRes(406, 'Products are from multiple chefs so can not order.');
     }
 
     /**
