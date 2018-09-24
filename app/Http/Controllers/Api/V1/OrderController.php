@@ -167,10 +167,9 @@ class OrderController extends Controller
         $productIds = array_column($products, 'id');
         $chef = Product::with(['chef.locations' => function ($q) {
 
-        }])
-            ->whereIn('id', $productIds)
+        }])->whereIn('id', $productIds)
             ->get();
-        return ($chef->count() > 1) ? false : $chef[0]->chef;
+        return ($chef->count() > 1 || empty($chef[0]->chef->locations)) ? false : $chef[0]->chef;
     }
 
     public function getProductsTotal($products)
