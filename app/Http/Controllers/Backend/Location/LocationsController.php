@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Backend\Location;
 
+use App\Http\Middleware\Localization;
 use App\Models\Location\Location;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
@@ -26,7 +27,7 @@ class LocationsController extends Controller
 
     /**
      * contructor to initialize repository object
-     * @param LocationRepository $repository;
+     * @param LocationRepository $repository ;
      */
     public function __construct(LocationRepository $repository)
     {
@@ -36,27 +37,45 @@ class LocationsController extends Controller
     /**
      * Display a listing of the resource.
      *
-     * @param  App\Http\Requests\Backend\Location\ManageLocationRequest  $request
+     * @param  App\Http\Requests\Backend\Location\ManageLocationRequest $request
      * @return \Illuminate\Http\Response
      */
     public function index(ManageLocationRequest $request)
     {
-        return view('backend.locations.index');
+        $data['locationable_type'] = '';
+        if ($request->has('chef_id')) {
+            $data['locationable_type'] = Location::USER_ROLES['Chef'];
+            $data['locationable_id'] = $request->chef_id;
+        } else {
+            die('Location url is invalid');
+        }
+        return view('backend.locations.index', $data);
     }
+
     /**
      * Show the form for creating a new resource.
      *
-     * @param  CreateLocationRequestNamespace  $request
+     * @param  CreateLocationRequestNamespace $request
      * @return \Illuminate\Http\Response
      */
     public function create(CreateLocationRequest $request)
     {
-        return view('backend.locations.create');
+        $data['locationable_type'] = '';
+        if ($request->has('chef_id')) {
+            $data['locationable_type'] = Location::USER_ROLES['Chef'];
+            $data['locationable_id'] = $request->chef_id;
+        } else {
+            die('Location url is invalid');
+        }
+        $data['user_id'] = $request->chef_id;
+        $data['province'] = Location::PROVINCES;
+        return view('backend.locations.create', $data);
     }
+
     /**
      * Store a newly created resource in storage.
      *
-     * @param  StoreLocationRequestNamespace  $request
+     * @param  StoreLocationRequestNamespace $request
      * @return \Illuminate\Http\Response
      */
     public function store(StoreLocationRequest $request)
@@ -68,22 +87,34 @@ class LocationsController extends Controller
         //return with successfull message
         return redirect()->route('admin.locations.index')->withFlashSuccess(trans('alerts.backend.locations.created'));
     }
+
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  App\Models\Location\Location  $location
-     * @param  EditLocationRequestNamespace  $request
+     * @param  App\Models\Location\Location $location
+     * @param  EditLocationRequestNamespace $request
      * @return \Illuminate\Http\Response
      */
     public function edit(Location $location, EditLocationRequest $request)
     {
-        return view('backend.locations.edit', compact('location'));
+        $data['locationable_type'] = '';
+        if ($request->has('chef_id')) {
+            $data['locationable_type'] = Location::USER_ROLES['Chef'];
+            $data['locationable_id'] = $request->chef_id;
+        } else {
+            die('Location url is invalid');
+        }
+        $data['user_id'] = $request->chef_id;
+        $data['province'] = Location::PROVINCES;
+        $data['location'] = $location;
+        return view('backend.locations.edit', $data);
     }
+
     /**
      * Update the specified resource in storage.
      *
-     * @param  UpdateLocationRequestNamespace  $request
-     * @param  App\Models\Location\Location  $location
+     * @param  UpdateLocationRequestNamespace $request
+     * @param  App\Models\Location\Location $location
      * @return \Illuminate\Http\Response
      */
     public function update(UpdateLocationRequest $request, Location $location)
@@ -91,15 +122,16 @@ class LocationsController extends Controller
         //Input received from the request
         $input = $request->except(['_token']);
         //Update the model using repository update method
-        $this->repository->update( $location, $input );
+        $this->repository->update($location, $input);
         //return with successfull message
         return redirect()->route('admin.locations.index')->withFlashSuccess(trans('alerts.backend.locations.updated'));
     }
+
     /**
      * Remove the specified resource from storage.
      *
-     * @param  DeleteLocationRequestNamespace  $request
-     * @param  App\Models\Location\Location  $location
+     * @param  DeleteLocationRequestNamespace $request
+     * @param  App\Models\Location\Location $location
      * @return \Illuminate\Http\Response
      */
     public function destroy(Location $location, DeleteLocationRequest $request)
@@ -109,5 +141,5 @@ class LocationsController extends Controller
         //returning with successfull message
         return redirect()->route('admin.locations.index')->withFlashSuccess(trans('alerts.backend.locations.deleted'));
     }
-    
+
 }

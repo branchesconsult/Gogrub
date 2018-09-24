@@ -27,10 +27,9 @@ class UpdateUserRequest extends Request
     public function rules()
     {
         return [
-            'email'           => 'required|email',
-            'first_name'      => 'required',
-            'last_name'       => 'required',
-            'permissions'     => 'required',
+            'email' => 'required|email',
+            'full_name' => 'required',
+            'permissions' => 'required',
             'assignees_roles' => 'required',
         ];
     }

@@ -3,6 +3,8 @@
 namespace App\Models\Access\User\Traits\Relationship;
 
 use App\Models\Access\User\SocialLogin;
+use App\Models\Access\Usermeta\Usermeta;
+use App\Models\Location\Location;
 use App\Models\Product\Product;
 use App\Models\System\Session;
 
@@ -51,5 +53,16 @@ trait UserRelationship
     public function products()
     {
         return $this->hasMany(Product::class);
+    }
+
+
+    public function meta()
+    {
+        return $this->hasMany(Usermeta::class);
+    }
+
+    public function locations()
+    {
+        return $this->morphMany(Location::class, 'locationable');
     }
 }

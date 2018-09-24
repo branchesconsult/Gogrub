@@ -3,7 +3,7 @@
 @section ('title', trans('labels.backend.locations.management'))
 
 @section('page-header')
-    <h1>{{ trans('labels.backend.locations.management') }}</h1>
+    <h1>Chef's locations</h1>
 @endsection
 
 @section('content')
@@ -20,18 +20,18 @@
             <div class="table-responsive data-table-wrapper">
                 <table id="locations-table" class="table table-condensed table-hover table-bordered">
                     <thead>
-                        <tr>
-                            <th>{{ trans('labels.backend.locations.table.id') }}</th>
-                            <th>{{ trans('labels.backend.locations.table.createdat') }}</th>
-                            <th>{{ trans('labels.general.actions') }}</th>
-                        </tr>
+                    <tr>
+                        <th>{{ trans('labels.backend.locations.table.id') }}</th>
+                        <th>{{ trans('labels.backend.locations.table.createdat') }}</th>
+                        <th>{{ trans('labels.general.actions') }}</th>
+                    </tr>
                     </thead>
                     <thead class="transparent-bg">
-                        <tr>
-                            <th></th>
-                            <th></th>
-                            <th></th>
-                        </tr>
+                    <tr>
+                        <th></th>
+                        <th></th>
+                        <th></th>
+                    </tr>
                     </thead>
                 </table>
             </div><!--table-responsive-->
@@ -45,7 +45,7 @@
 
     <script>
         //Below written line is short form of writing $(document).ready(function() { })
-        $(function() {
+        $(function () {
             var dataTable = $('#locations-table').dataTable({
                 processing: true,
                 serverSide: true,
@@ -63,11 +63,11 @@
                 dom: 'lBfrtip',
                 buttons: {
                     buttons: [
-                        { extend: 'copy', className: 'copyButton',  exportOptions: {columns: [ 0, 1 ]  }},
-                        { extend: 'csv', className: 'csvButton',  exportOptions: {columns: [ 0, 1 ]  }},
-                        { extend: 'excel', className: 'excelButton',  exportOptions: {columns: [ 0, 1 ]  }},
-                        { extend: 'pdf', className: 'pdfButton',  exportOptions: {columns: [ 0, 1 ]  }},
-                        { extend: 'print', className: 'printButton',  exportOptions: {columns: [ 0, 1 ]  }}
+                        {extend: 'copy', className: 'copyButton', exportOptions: {columns: [0, 1]}},
+                        {extend: 'csv', className: 'csvButton', exportOptions: {columns: [0, 1]}},
+                        {extend: 'excel', className: 'excelButton', exportOptions: {columns: [0, 1]}},
+                        {extend: 'pdf', className: 'pdfButton', exportOptions: {columns: [0, 1]}},
+                        {extend: 'print', className: 'printButton', exportOptions: {columns: [0, 1]}}
                     ]
                 }
             });

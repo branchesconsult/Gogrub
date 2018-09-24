@@ -18,6 +18,14 @@ class CreateLocationsTable extends Migration
             $table->integer('locationable_id');
             $table->string('locationable_type');
             $table->point('location_point');
+            $table->string('building_name')->nullable();
+            $table->string('address_map');
+            $table->string('address');
+            $table->integer('city_id');
+            $table->integer('province_id');
+            $table->integer('country_id')->default(1);
+            $table->string('phone')->nullable();
+            $table->string('user_role')->nullable();
             $table->timestamps();
         });
     }

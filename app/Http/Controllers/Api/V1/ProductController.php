@@ -44,7 +44,7 @@ class ProductController extends Controller
     {
         $chefId = ($request->has('chef_id')) ? $request->get('chef_id') : null;
         $products = Product::with(['images', 'chef'])
-            ->where('availability_form', '>=', Carbon::now())
+            //->where('availability_form', '>=', Carbon::now())
             ->where('status', '=', 1);
         if (!empty($chefId)) {
             $products = $products->where('chef_id', $chefId);
@@ -84,7 +84,6 @@ class ProductController extends Controller
                 Product::find($insertedProductId)->images()->save(new Image($val));
             }
         }
-
         return response()->json([
             'message_title' => "Success",
             'message' => 'Your product added successfully',
@@ -115,7 +114,7 @@ class ProductController extends Controller
     {
         $product = Product::with(['images', 'chef'])
             ->where('id', $id)
-            ->where('availability_form', '>=', Carbon::now())
+            //->where('availability_form', '>=', Carbon::now())
             ->where('status', '=', 1)->first();
         return response()->json([
             'product' => $product

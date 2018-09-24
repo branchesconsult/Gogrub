@@ -27,11 +27,11 @@
             </a>
         </li>
         @permission( 'create-location' )
-            <li>
-                <a href="{{ route( 'admin.locations.create' ) }}">
-                    <i class="fa fa-plus"></i> {{ trans( 'menus.backend.locations.create' ) }}
-                </a>
-            </li>
+        <li>
+            <a href="{{ route( 'admin.locations.create' ) }}?chef_id={!! request()->chef_id !!}">
+                <i class="fa fa-plus"></i> {{ trans( 'menus.backend.locations.create' ) }}
+            </a>
+        </li>
         @endauth
     </ul>
 </div>

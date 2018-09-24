@@ -18,8 +18,8 @@ trait LocationAttribute
     public function getActionButtonsAttribute()
     {
         return '<div class="btn-group action-btn">
-                '.$this->getEditButtonAttribute("edit-location", "admin.locations.edit").'
-                '.$this->getDeleteButtonAttribute("delete-location", "admin.locations.destroy").'
+                ' . $this->getEditButtonAttribute("edit-location", "admin.locations.edit") . '
+                ' . $this->getDeleteButtonAttribute("delete-location", "admin.locations.destroy") . '
                 </div>';
     }
 }

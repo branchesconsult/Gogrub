@@ -2,6 +2,7 @@
 
 namespace App\Repositories\Backend\Location;
 
+use App\Models\Access\User\User;
 use DB;
 use Carbon\Carbon;
 use App\Models\Location\Location;
@@ -28,10 +29,11 @@ class LocationRepository extends BaseRepository
     public function getForDataTable()
     {
         return $this->query()
+            //->where('locationable_id', request()->get('chef_id'))
             ->select([
-                config('module.locations.table').'.id',
-                config('module.locations.table').'.created_at',
-                config('module.locations.table').'.updated_at',
+                config('module.locations.table') . '.id',
+                config('module.locations.table') . '.created_at',
+                config('module.locations.table') . '.updated_at',
             ]);
     }
 
@@ -46,8 +48,11 @@ class LocationRepository extends BaseRepository
     {
         $location = self::MODEL;
         $location = new $location();
-        if ($location->save($input)) {
-            return true;
+        switch ($input['user_role']) {
+            case in_array($input['user_role'], Location::USER_ROLES) == true:
+                User::find($input['locationable_id'])->locations()->save(new Location($input));
+                return true;
+                break;
         }
         throw new GeneralException(trans('exceptions.backend.locations.create_error'));
     }
@@ -62,7 +67,7 @@ class LocationRepository extends BaseRepository
      */
     public function update(Location $location, array $input)
     {
-    	if ($location->update($input))
+        if ($location->update($input))
             return true;
 
         throw new GeneralException(trans('exceptions.backend.locations.update_error'));
