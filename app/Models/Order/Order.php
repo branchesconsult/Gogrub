@@ -67,7 +67,7 @@ class Order extends Model
 
     public function getTotalAttribute()
     {
-        return $this->attributes['total'] = $this->subtotal + $this->delivery_charges;
+        return $this->subtotal + $this->delivery_charges;
     }
 
     public function setCustomerLocationAttribute($val)
