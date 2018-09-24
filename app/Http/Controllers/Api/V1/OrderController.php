@@ -87,7 +87,7 @@ class OrderController extends Controller
                 'message' => 'Order has been placed',
                 'status_code' => 200,
                 'success' => true,
-                'order' => Order::with('detail')->where('id', $insertedOrderId)->first()
+                'order' => Order::with('detail', 'status')->where('id', $insertedOrderId)->first()
             ]);
         }
         return apiErrorRes(406, 'Products are from multiple chefs or chef location not found, so can not order.');
