@@ -14,6 +14,6 @@ class OrderDetail extends BaseModel
 
     public function getTotalPriceAttribute()
     {
-        $this->attribute['total_price'] = 23;
+        return $this->qty * $this->price;
     }
 }
