@@ -87,7 +87,7 @@ class OrderController extends Controller
                 'message' => 'Order has been placed',
                 'status_code' => 200,
                 'success' => true,
-                'order' => Order::find($insertedOrderId)
+                'order' => Order::with('detail')->where('id', $insertedOrderId)->first()
             ]);
         }
         dd('Products are from multiple chefs so can not order.');
