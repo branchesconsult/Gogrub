@@ -25,7 +25,7 @@ phpunit.txt
 
 
 composer.lock
-
+laravel-echo-server.json
 public/access.log
 public/error.log
 public/photos
