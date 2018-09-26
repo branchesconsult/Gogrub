@@ -1,12 +1,12 @@
 <?php
 
-namespace App\Listeners\Backend\Order;
+namespace App\Listeners\Frontend\Order;
 
-use App\Events\Backend\Order\orderCreate;
+use App\Events\Frontend\Order\OrderCreateEvent;
 use Illuminate\Queue\InteractsWithQueue;
 use Illuminate\Contracts\Queue\ShouldQueue;
 
-class orderCreateListener
+class OrderCreateListener
 {
     /**
      * Create the event listener.
@@ -21,11 +21,11 @@ class orderCreateListener
     /**
      * Handle the event.
      *
-     * @param  orderCreate  $event
+     * @param  OrderCreateEvent $event
      * @return void
      */
-    public function handle(orderCreate $event)
+    public function handle(OrderCreateEvent $event)
     {
-        //
+        \Log::debug('i am log', []);
     }
 }

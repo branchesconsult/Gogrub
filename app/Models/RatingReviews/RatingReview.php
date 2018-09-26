@@ -8,4 +8,5 @@ use Illuminate\Database\Eloquent\Model;
 class RatingReview extends BaseModel
 {
     protected $table = 'rating_reviews';
+    protected $guarded = [];
 }

@@ -2,6 +2,8 @@
 
 namespace App\Providers;
 
+use App\Events\Frontend\Order\OrderCreateEvent;
+use App\Listeners\Frontend\Order\OrderCreateListener;
 use Illuminate\Foundation\Support\Providers\EventServiceProvider as ServiceProvider;
 
 /**
@@ -14,7 +16,11 @@ class EventServiceProvider extends ServiceProvider
      *
      * @var array
      */
-    protected $listen = [];
+    protected $listen = [
+        OrderCreateEvent::class => [
+            OrderCreateListener::class
+        ]
+    ];
 
     /**
      * Class event subscribers.

@@ -203,6 +203,7 @@ return [
         Bvipul\Generator\Provider\CrudGeneratorServiceProvider::class,
         Mpociot\ApiDoc\ApiDocGeneratorServiceProvider::class,
         Unisharp\FileApi\FileApiServiceProvider::class,
+        App\Providers\BroadcastServiceProvider::class,
     ],
 
     /*

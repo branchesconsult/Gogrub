@@ -299,3 +299,32 @@ function apiErrorRes($status_code, $message)
         'message_title' => 'Error'
     ]);
 }
+
+function apiSuccessRes($message)
+{
+    return response()->json([
+        'message_title' => "Success",
+        'message' => $message,
+        'status_code' => 200,
+        'success' => true,
+    ]);
+}
+
+function array_find($needle, array $haystack, $column = null)
+{
+    if (is_array($haystack[0]) === true) { // check for multidimentional array
+
+        foreach (array_column($haystack, $column) as $key => $value) {
+            if (strpos(strtolower($value), strtolower($needle)) !== false) {
+                return $key;
+            }
+        }
+    } else {
+        foreach ($haystack as $key => $value) { // for normal array
+            if (strpos(strtolower($value), strtolower($needle)) !== false) {
+                return $key;
+            }
+        }
+    }
+    return false;
+}

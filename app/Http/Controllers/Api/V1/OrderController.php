@@ -2,12 +2,15 @@
 
 namespace App\Http\Controllers\Api\V1;
 
+use App\Events\Frontend\Order\OrderCreateEvent;
 use App\Http\Requests\Api\Orders\MakeOrderRequest;
+use App\Http\Requests\Api\Orders\RateAndReviewOrderRequest;
 use App\Models\Access\User\User;
 use App\Models\Order\Order;
 use App\Models\OrderDetails\OrderDetail;
 use App\Models\Orderstatus\Orderstatus;
 use App\Models\Product\Product;
+use App\Models\RatingReviews\RatingReview;
 use function foo\func;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
@@ -82,12 +85,14 @@ class OrderController extends Controller
             $order['payment_method'] = $paymentMethod;
             $insertedOrderId = Order::create($order)->id;
             $this->insertOrderProducts($insertedOrderId, $products);
+            $orderCreated = Order::with('detail', 'status')->where('id', $insertedOrderId)->first();
+            event(new OrderCreateEvent($orderCreated));
             return response()->json([
                 'message_title' => "Success",
                 'message' => 'Order has been placed',
                 'status_code' => 200,
                 'success' => true,
-                'order' => Order::with('detail', 'status')->where('id', $insertedOrderId)->first()
+                'order' => $orderCreated
             ]);
         }
         return apiErrorRes(406, 'Products are from multiple chefs or chef location not found, so can not order.');
@@ -106,9 +111,9 @@ class OrderController extends Controller
 
         foreach ($productsDetail as $key => $val) {
             $orderDetail['product_id'] = $val->id;
-            $orderDetail['qty'] = $products[$this->array_find($val->id, $products, 'id')]['qty'];
+            $orderDetail['qty'] = $products[array_find($val->id, $products, 'id')]['qty'];
             $orderDetail['price'] = $val->price;
-            $orderDetail['special_instructions'] = $products[$this->array_find($val->id, $products, 'id')]['special_instructions'];
+            $orderDetail['special_instructions'] = $products[array_find($val->id, $products, 'id')]['special_instructions'];
             $orderDetail['added_by'] = \Auth::id();
             $orderDetailModel[] = new OrderDetail($orderDetail);
         }
@@ -172,6 +177,11 @@ class OrderController extends Controller
         return ($chef->count() > 1 || empty($chef[0]->chef->locations)) ? false : $chef[0]->chef;
     }
 
+    /**
+     * Get total of products in array
+     * @param $products
+     * @return mixed
+     */
     public function getProductsTotal($products)
     {
         \Cart::destroy();
@@ -188,27 +198,33 @@ class OrderController extends Controller
         return \Cart::subtotal(0, null, null);
     }
 
+    /**
+     * Calculate delievery charges
+     * @return int
+     */
     public function getDeliveryCharges()
     {
         return 10;
     }
 
-    function array_find($needle, array $haystack, $column = null)
-    {
-        if (is_array($haystack[0]) === true) { // check for multidimentional array
+    /**
+     * Rate order
+     */
 
-            foreach (array_column($haystack, $column) as $key => $value) {
-                if (strpos(strtolower($value), strtolower($needle)) !== false) {
-                    return $key;
-                }
-            }
-        } else {
-            foreach ($haystack as $key => $value) { // for normal array
-                if (strpos(strtolower($value), strtolower($needle)) !== false) {
-                    return $key;
-                }
-            }
+    public function rateOrder(RateAndReviewOrderRequest $request)
+    {
+        $hasRated = (boolean)RatingReview::where('user_id', \Auth::id())
+            ->where('order_id', $request->order_id)
+            ->count();
+        if ($hasRated) {
+            return apiErrorRes(401, 'You ahve already rated to this order');
         }
-        return false;
+        $rating['order_id'] = $request->order_id;
+        $rating['review'] = $request->review;
+        $rating['rating'] = $request->rating;
+        $rating['user_id'] = \Auth::id();
+        $rating['chef_id'] = Order::find($rating['order_id'])->chef_id;
+        RatingReview::create($rating);
+        return apiSuccessRes('Rating successfully');
     }
 }
