@@ -30,22 +30,24 @@ class User extends Authenticatable implements JWTSubject
      * @var string
      */
     protected $table;
+    protected $guarded = [];
+    protected $appends = ['avg_rating'];
 
-    /**
-     * The attributes that are mass assignable.
-     *
-     * @var array
-     */
-    protected $fillable = [
-        'first_name',
-        'last_name',
-        'email',
-        'status',
-        'confirmation_code',
-        'confirmed',
-        'created_by',
-        'updated_by',
-    ];
+//    /**
+//     * The attributes that are mass assignable.
+//     *
+//     * @var array
+//     */
+//    protected $fillable = [
+//        'first_name',
+//        'last_name',
+//        'email',
+//        'status',
+//        'confirmation_code',
+//        'confirmed',
+//        'created_by',
+//        'updated_by',
+//    ];
 
     /**
      * The attributes that should be hidden for arrays.
@@ -95,5 +97,10 @@ class User extends Authenticatable implements JWTSubject
             'registered_at' => $this->created_at->toIso8601String(),
             'last_updated_at' => $this->updated_at->toIso8601String(),
         ];
+    }
+
+    public function getAvgRatingAttribute()
+    {
+        return $this->ratingReviews()->avg('rating');
     }
 }

@@ -7,6 +7,7 @@ use App\Models\Access\Usermeta\Usermeta;
 use App\Models\Location\Location;
 use App\Models\Order\Order;
 use App\Models\Product\Product;
+use App\Models\RatingReviews\RatingReview;
 use App\Models\System\Session;
 
 /**
@@ -70,5 +71,13 @@ trait UserRelationship
     public function orders()
     {
         return $this->hasMany(Order::class);
+    }
+
+    /**
+     * Get the comments for the blog post.
+     */
+    public function ratingReviews()
+    {
+        return $this->hasMany(RatingReview::class, 'chef_id');
     }
 }

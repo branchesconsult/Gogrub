@@ -34,8 +34,9 @@ class OrderCreateEvent implements ShouldBroadcast
      */
     public function broadcastOn()
     {
-        return new PresenceChannel('test-event');
+        return ['test-channel-' . $this->order->customer_id];
     }
+
 
     /**
      * The event's broadcast name.

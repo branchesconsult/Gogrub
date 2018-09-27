@@ -1,7 +1,12 @@
 {
 	"authHost": "http://gogrub.docs",
 	"authEndpoint": "/broadcasting/auth",
-	"clients": [],
+	"clients": [
+		{
+			"appId": "9f8011555df03945",
+			"key": "0e5c0b82f05b94c328b8e46fdf89a683"
+		}
+	],
 	"database": "redis",
 	"databaseConfig": {
 		"redis": {},
@@ -13,8 +18,7 @@
 	"host": null,
 	"port": "6001",
 	"protocol": "http",
-	"socketio": {
-	},
+	"socketio": {},
 	"sslCertPath": "",
 	"sslKeyPath": "",
 	"sslCertChainPath": "",

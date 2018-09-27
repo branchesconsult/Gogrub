@@ -12,5 +12,7 @@
 */
 
 Broadcast::channel('App.User.{id}', function ($user, $id) {
-    return (int) $user->id === (int) $id;
+    return (int)$user->id === (int)$id;
 });
+
+//Broadcast::channel('test-channel', \App\Events\ExampleEvent::class);

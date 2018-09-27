@@ -2,6 +2,7 @@
 
 namespace App\Providers;
 
+use App\Events\ExampleEvent;
 use App\Events\Frontend\Order\OrderCreateEvent;
 use App\Listeners\Frontend\Order\OrderCreateListener;
 use Illuminate\Foundation\Support\Providers\EventServiceProvider as ServiceProvider;
@@ -20,6 +21,7 @@ class EventServiceProvider extends ServiceProvider
         OrderCreateEvent::class => [
             OrderCreateListener::class
         ]
+        //ExampleEvent::class => []
     ];
 
     /**

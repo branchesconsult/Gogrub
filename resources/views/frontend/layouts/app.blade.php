@@ -64,8 +64,9 @@
         $.session.clear();
     }
     $(document).ready(function () {
-        window.Echo.channel('test-event').listen('.server.created', (e) => {
-            console.log(e, 'i am logo');
+        Echo.channel('test-channel-5')
+            .listen('.server.created', (e) => {
+            console.log(e, 'dasjdas');
     });
     });
 </script>

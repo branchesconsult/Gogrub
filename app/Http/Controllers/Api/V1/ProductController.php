@@ -43,7 +43,11 @@ class ProductController extends Controller
     public function index(GetProductsRequest $request)
     {
         $chefId = ($request->has('chef_id')) ? $request->get('chef_id') : null;
-        $products = Product::with(['images', 'chef'])
+        $products = Product::with(['images', 'chef' => function ($q) {
+            $q->with(['ratingReviews' => function ($q1) {
+                $q1->take(1);
+            }]);
+        }])
             //->where('availability_form', '>=', Carbon::now())
             ->where('status', '=', 1);
         if (!empty($chefId)) {

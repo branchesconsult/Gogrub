@@ -191,7 +191,7 @@ class OrderController extends Controller
         foreach ($productsDetail as $key => $val) {
             $orderDetail[$key]['id'] = $val->id;
             $orderDetail[$key]['name'] = $val->name;
-            $orderDetail[$key]['qty'] = $products[$this->array_find($val->id, $products, 'id')]['qty'];
+            $orderDetail[$key]['qty'] = $products[array_find($val->id, $products, 'id')]['qty'];
             $orderDetail[$key]['price'] = $val->price;
         }
         \Cart::add($orderDetail);
