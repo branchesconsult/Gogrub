@@ -116,12 +116,16 @@ class ProductController extends Controller
      */
     public function show($id)
     {
-        $product = Product::with(['images', 'chef'])
-            ->where('id', $id)
+        $products = Product::with(['images', 'chef' => function ($q) {
+            $q->with(['ratingReviews' => function ($q1) {
+                
+            }]);
+        }])
             //->where('availability_form', '>=', Carbon::now())
-            ->where('status', '=', 1)->first();
+            ->where('status', '=', 1)
+            ->where('id', $id)->first();
         return response()->json([
-            'product' => $product
+            'product' => $products
         ]);
     }
 
