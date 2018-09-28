@@ -4,6 +4,7 @@ namespace App\Models\Access\User\Traits\Relationship;
 
 use App\Models\Access\User\SocialLogin;
 use App\Models\Access\Usermeta\Usermeta;
+use App\Models\Device\Device;
 use App\Models\Location\Location;
 use App\Models\Order\Order;
 use App\Models\Product\Product;
@@ -79,5 +80,13 @@ trait UserRelationship
     public function ratingReviews()
     {
         return $this->hasMany(RatingReview::class, 'chef_id');
+    }
+
+    /**
+     * Get all of the devices of a user.
+     */
+    public function devices()
+    {
+        return $this->hasMany(Device::class);
     }
 }

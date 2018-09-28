@@ -16,11 +16,11 @@ class UserLoginRequest extends FormRequest
         return true;
     }
 
- /**
-  * Get the validation rules that apply to the request.
-  *
-  * @return array
- */
+    /**
+     * Get the validation rules that apply to the request.
+     *
+     * @return array
+     */
     public function rules()
     {
         return [
@@ -28,7 +28,8 @@ class UserLoginRequest extends FormRequest
             'password' => 'required',
             'device_id' => 'required',
             'fcm_token' => 'required',
-            'device_type' => 'required'
+            'device_type' => 'required',
+            'agent_info' => 'sometimes'
         ];
     }
 }

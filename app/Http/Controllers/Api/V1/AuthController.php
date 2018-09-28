@@ -40,6 +40,18 @@ class AuthController extends APIController
             return $this->respondInternalError($e->getMessage());
         }
 
+        if (!empty($request->get('fcm_token'))) {
+            $deviceToken = [
+                'fcm_token' => $request->get('fcm_token'),
+            ];
+            $deviceInfo = [
+                'type' => $request->get('device_type'),
+                'agent_info' => $request->get('agent_info'),
+                'device_id' => $request->device_id
+            ];
+            User::find(\Auth::id())->devices()->updateOrCreate($deviceToken, $deviceInfo);
+        }
+
         return $this->respond([
             'message_title' => "Success",
             'message' => trans('api.messages.login.success'),
