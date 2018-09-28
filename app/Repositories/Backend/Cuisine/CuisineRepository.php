@@ -29,9 +29,11 @@ class CuisineRepository extends BaseRepository
     {
         return $this->query()
             ->select([
-                config('module.cuisines.table').'.id',
-                config('module.cuisines.table').'.created_at',
-                config('module.cuisines.table').'.updated_at',
+                config('module.cuisines.table') . '.id',
+                config('module.cuisines.table') . '.name',
+
+                config('module.cuisines.table') . '.created_at',
+                config('module.cuisines.table') . '.updated_at',
             ]);
     }
 
@@ -46,7 +48,7 @@ class CuisineRepository extends BaseRepository
     {
         $cuisine = self::MODEL;
         $cuisine = new $cuisine();
-        if ($cuisine->save($input)) {
+        if ($cuisine->create($input)) {
             return true;
         }
         throw new GeneralException(trans('exceptions.backend.cuisines.create_error'));
@@ -62,7 +64,7 @@ class CuisineRepository extends BaseRepository
      */
     public function update(Cuisine $cuisine, array $input)
     {
-    	if ($cuisine->update($input))
+        if ($cuisine->update($input))
             return true;
 
         throw new GeneralException(trans('exceptions.backend.cuisines.update_error'));

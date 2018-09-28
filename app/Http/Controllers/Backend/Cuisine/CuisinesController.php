@@ -26,7 +26,7 @@ class CuisinesController extends Controller
 
     /**
      * contructor to initialize repository object
-     * @param CuisineRepository $repository;
+     * @param CuisineRepository $repository ;
      */
     public function __construct(CuisineRepository $repository)
     {
@@ -36,27 +36,29 @@ class CuisinesController extends Controller
     /**
      * Display a listing of the resource.
      *
-     * @param  App\Http\Requests\Backend\Cuisine\ManageCuisineRequest  $request
+     * @param  App\Http\Requests\Backend\Cuisine\ManageCuisineRequest $request
      * @return \Illuminate\Http\Response
      */
     public function index(ManageCuisineRequest $request)
     {
         return view('backend.cuisines.index');
     }
+
     /**
      * Show the form for creating a new resource.
      *
-     * @param  CreateCuisineRequestNamespace  $request
+     * @param  CreateCuisineRequestNamespace $request
      * @return \Illuminate\Http\Response
      */
     public function create(CreateCuisineRequest $request)
     {
         return view('backend.cuisines.create');
     }
+
     /**
      * Store a newly created resource in storage.
      *
-     * @param  StoreCuisineRequestNamespace  $request
+     * @param  StoreCuisineRequestNamespace $request
      * @return \Illuminate\Http\Response
      */
     public function store(StoreCuisineRequest $request)
@@ -68,22 +70,24 @@ class CuisinesController extends Controller
         //return with successfull message
         return redirect()->route('admin.cuisines.index')->withFlashSuccess(trans('alerts.backend.cuisines.created'));
     }
+
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  App\Models\Cuisine\Cuisine  $cuisine
-     * @param  EditCuisineRequestNamespace  $request
+     * @param  App\Models\Cuisine\Cuisine $cuisine
+     * @param  EditCuisineRequestNamespace $request
      * @return \Illuminate\Http\Response
      */
     public function edit(Cuisine $cuisine, EditCuisineRequest $request)
     {
         return view('backend.cuisines.edit', compact('cuisine'));
     }
+
     /**
      * Update the specified resource in storage.
      *
-     * @param  UpdateCuisineRequestNamespace  $request
-     * @param  App\Models\Cuisine\Cuisine  $cuisine
+     * @param  UpdateCuisineRequestNamespace $request
+     * @param  App\Models\Cuisine\Cuisine $cuisine
      * @return \Illuminate\Http\Response
      */
     public function update(UpdateCuisineRequest $request, Cuisine $cuisine)
@@ -91,15 +95,16 @@ class CuisinesController extends Controller
         //Input received from the request
         $input = $request->except(['_token']);
         //Update the model using repository update method
-        $this->repository->update( $cuisine, $input );
+        $this->repository->update($cuisine, $input);
         //return with successfull message
         return redirect()->route('admin.cuisines.index')->withFlashSuccess(trans('alerts.backend.cuisines.updated'));
     }
+
     /**
      * Remove the specified resource from storage.
      *
-     * @param  DeleteCuisineRequestNamespace  $request
-     * @param  App\Models\Cuisine\Cuisine  $cuisine
+     * @param  DeleteCuisineRequestNamespace $request
+     * @param  App\Models\Cuisine\Cuisine $cuisine
      * @return \Illuminate\Http\Response
      */
     public function destroy(Cuisine $cuisine, DeleteCuisineRequest $request)
@@ -109,5 +114,5 @@ class CuisinesController extends Controller
         //returning with successfull message
         return redirect()->route('admin.cuisines.index')->withFlashSuccess(trans('alerts.backend.cuisines.deleted'));
     }
-    
+
 }
