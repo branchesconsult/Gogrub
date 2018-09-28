@@ -2,12 +2,19 @@
 
 namespace App\Http\Controllers\Api\V1;
 
+use App\Http\Requests\Api\User\UpdateProfile;
 use App\Http\Resources\UserResource;
 use App\Models\Access\User\User;
 use App\Repositories\Backend\Access\User\UserRepository;
 use Illuminate\Http\Request;
+use Unisharp\FileApi\FileApi;
 use Validator;
 
+/**
+ * @resource User
+ *
+ * All auth related functions
+ */
 class UsersController extends APIController
 {
     protected $repository;
@@ -80,19 +87,22 @@ class UsersController extends APIController
      *
      * @return Validator object
      */
-    public function update(Request $request, User $user)
+    public function update(UpdateProfile $request, User $user)
     {
-        $validation = $this->validateUser($request, 'edit', $user->id);
-
-        if ($validation->fails()) {
-            return $this->throwValidation($validation->messages()->first());
+        $data = $request->all();
+        $user = User::find(\Auth::id());
+        $user->full_name = $data['full_name'];
+        $user->email = $data['email'];
+        if (!empty($data['password'])) {
+            $user->password = bcrypt($data['password']);
         }
-
-        $this->repository->update($user, $request);
-
-        $user = User::findOrfail($user->id);
-
-        return new UserResource($user);
+        if ($request->hasFile('avatar')) {
+            $avatarUploadPath = env('LFM_UPLOADS_AVATAR');
+            $fileApi = new FileApi($avatarUploadPath);
+            $user->avatar = $avatarUploadPath . $fileApi->save($request->file('avatar'));
+        }
+        $user->save();
+        return apiSuccessRes('User updated successfully');
     }
 
     /**

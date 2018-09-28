@@ -13,8 +13,11 @@ use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Str;
 
+
 /**
- * Class UserRepository.
+ * @resource User
+ *
+ * All auth related functions
  */
 class UserRepository extends BaseRepository
 {
