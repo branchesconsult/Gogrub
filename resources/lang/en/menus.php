@@ -149,6 +149,13 @@ return [
 	"management" => "Orderstatus Management",
 	"main" => "Orderstatuses",
 	],
+	"devices" => [
+	"all" => "All Devices",
+	"create" => "Create Device",
+	"edit" => "Edit Device",
+	"management" => "Device Management",
+	"main" => "Devices",
+	],
 	],
 	"language-picker" => [
 	"language" => "Language",

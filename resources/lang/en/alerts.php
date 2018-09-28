@@ -88,5 +88,10 @@ return [
 	"deleted" => "The Orderstatus was successfully deleted.",
 	"updated" => "The Orderstatus was successfully updated.",
 	],
+	"devices" => [
+	"created" => "The Device was successfully created.",
+	"deleted" => "The Device was successfully deleted.",
+	"updated" => "The Device was successfully updated.",
+	],
 	],
 ];

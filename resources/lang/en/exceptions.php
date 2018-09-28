@@ -127,6 +127,13 @@ return [
 	"not_found" => "That Orderstatus does not exist.",
 	"update_error" => "There was a problem updating this Orderstatus. Please try again.",
 	],
+	"devices" => [
+	"already_exists" => "That Device already exists. Please choose a different name.",
+	"create_error" => "There was a problem creating this Device. Please try again.",
+	"delete_error" => "There was a problem deleting this Device. Please try again.",
+	"not_found" => "That Device does not exist.",
+	"update_error" => "There was a problem updating this Device. Please try again.",
+	],
 	],
 	"frontend" => [
 	"auth" => [

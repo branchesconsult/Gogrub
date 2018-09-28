@@ -38,4 +38,7 @@ return [
 	"orderstatuses" => [
 	"table" => "orderstatuses",
 	],
+	"devices" => [
+	"table" => "devices",
+	],
 ];

@@ -24,3 +24,4 @@ require __DIR__.'/Image.php';
 require __DIR__.'/Location.php';
 require __DIR__.'/Order.php';
 require __DIR__.'/Orderstatus.php';
+require __DIR__.'/Device.php';

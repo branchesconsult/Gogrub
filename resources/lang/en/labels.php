@@ -310,6 +310,16 @@ return [
 	"createdat" => "Created At",
 	],
 	],
+	"devices" => [
+	"create" => "Create Device",
+	"edit" => "Edit Device",
+	"management" => "Device Management",
+	"title" => "Devices",
+	"table" => [
+	"id" => "Id",
+	"createdat" => "Created At",
+	],
+	],
 	],
 	"frontend" => [
 	"auth" => [
