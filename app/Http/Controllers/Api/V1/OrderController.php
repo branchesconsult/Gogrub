@@ -29,7 +29,12 @@ class OrderController extends Controller
      */
     public function index()
     {
-        //
+        $clientOrders = Order::where('customer_id', \Auth::id())
+            ->with(['detail', 'status', 'chef'])
+            ->get();
+        return response()->json([
+            'orders' => $clientOrders
+        ]);
     }
 
     /**
