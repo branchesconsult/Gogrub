@@ -13,6 +13,11 @@
 */
 
 Route::group(['namespace' => 'Api\V1', 'prefix' => 'v1', 'as' => 'v1.'], function () {
+    // Page
+    Route::group(['prefix' => 'pages'], function () {
+        Route::get('{page_slufg}', 'PagesController@show');
+    });
+    //Route::resource('pages', 'PagesController', ['only' => ['show']]);
     //Registration
     Route::post('register', 'RegisterController@register');
     Route::post('login', 'AuthController@login');
@@ -51,9 +56,6 @@ Route::group(['namespace' => 'Api\V1', 'prefix' => 'v1', 'as' => 'v1.'], functio
 
         // Permission
         //Route::resource('permissions', 'PermissionController', ['except' => ['create', 'edit']]);
-
-        // Page
-        //Route::resource('pages', 'PagesController', ['except' => ['create', 'edit']]);
 
         // Faqs
         //Route::resource('faqs', 'FaqsController', ['except' => ['create', 'edit']]);

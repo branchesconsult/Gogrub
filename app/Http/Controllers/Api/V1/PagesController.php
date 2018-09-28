@@ -8,6 +8,11 @@ use App\Repositories\Backend\Pages\PagesRepository;
 use Illuminate\Http\Request;
 use Validator;
 
+/**
+ * @resource Pages
+ *
+ * All product related functions
+ */
 class PagesController extends APIController
 {
     protected $repository;
@@ -39,15 +44,21 @@ class PagesController extends APIController
     }
 
     /**
-     * Return the specified resource.
+     * Return the specified resource based on slug.
      *
      * @param Pages $page
      *
      * @return \Illuminate\Http\JsonResponse
      */
-    public function show(Page $page)
+    public function show($page_slug)
     {
-        return new PagesResource($page);
+        $page = Page::where('page_slug', $page_slug)
+            ->withOut('owner')
+            ->select('title', 'description')
+            ->first();
+        return response()->json([
+            'page' => $page
+        ]);
     }
 
     /**
@@ -72,7 +83,7 @@ class PagesController extends APIController
     /**
      *  Update Page.
      *
-     * @param Page    $page
+     * @param Page $page
      * @param Request $request
      *
      * @return \Illuminate\Http\JsonResponse
@@ -95,7 +106,7 @@ class PagesController extends APIController
     /**
      *  Delete Page.
      *
-     * @param Page              $page
+     * @param Page $page
      * @param DeletePageRequest $request
      *
      * @return \Illuminate\Http\JsonResponse
@@ -113,14 +124,14 @@ class PagesController extends APIController
      * validateUser Pages Requests.
      *
      * @param Request $request
-     * @param int     $id
+     * @param int $id
      *
      * @return \Illuminate\Http\JsonResponse
      */
     public function validatePages(Request $request, $id = 0)
     {
         $validation = Validator::make($request->all(), [
-            'title'       => 'required|max:191|unique:pages,title,'.$id,
+            'title' => 'required|max:191|unique:pages,title,' . $id,
             'description' => 'required',
         ]);
 
