@@ -15,7 +15,7 @@
 Route::group(['namespace' => 'Api\V1', 'prefix' => 'v1', 'as' => 'v1.'], function () {
     // Page
     Route::group(['prefix' => 'pages'], function () {
-        Route::get('{page_slufg}', 'PagesController@show');
+        Route::get('{page_slug}', 'PagesController@show');
     });
     //Route::resource('pages', 'PagesController', ['only' => ['show']]);
     //Registration
