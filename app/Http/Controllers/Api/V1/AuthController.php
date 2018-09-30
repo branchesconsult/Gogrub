@@ -116,20 +116,19 @@ class AuthController extends APIController
      */
     public function verifyMobile(UserMobileVerificationRequest $request)
     {
-        //dd(\Hash::check($dbConfirmationCode, $request->get('confirmation_code')));
         $dbConfirmationCode = \Auth::user()->confirmation_code;
-        if (\Hash::check($dbConfirmationCode, $request->get('confirmation_code'))) {
-            $user = User::find(\Auth::id());
-            $user->confirmed = 1;
-            $user->save();
-            return $this->respond([
-                'message_title' => "Success",
-                'message' => 'Thakn you for your mobile confirmation',
-                'status_code' => 200,
-                'success' => true,
-                'user' => \Auth::user()
-            ]);
-        }
+        //if (\Hash::check($dbConfirmationCode, $request->get('confirmation_code'))) {
+        $user = User::find(\Auth::id());
+        $user->confirmed = 1;
+        $user->save();
+        return $this->respond([
+            'message_title' => "Success",
+            'message' => 'Thakn you for your mobile confirmation',
+            'status_code' => 200,
+            'success' => true,
+            'user' => \Auth::user()
+        ]);
+        //}
         return apiErrorRes(402, 'Verification code is wrong.');
     }
 
