@@ -157,14 +157,15 @@ if (!function_exists('createNotification')) {
      *
      * @return object
      */
-    function createNotification($message, $userId, $type = 1, $options = [])
+    function createNotification($message, $receiverId, $type = 1, $options = [])
     {
         if ($type == 1 || $type == 3) {
             $notification = new Notification();
 
             return $notification->insert([
                 'message' => $message,
-                'user_id' => $userId,
+                'receiver_id' => $receiverId,
+                'sender_id' => \Auth::id(),
                 'type' => $type,
                 'created_at' => Carbon::now(),
             ]);
@@ -327,4 +328,9 @@ function array_find($needle, array $haystack, $column = null)
         }
     }
     return false;
+}
+
+function numToDecimal($number, $getOriginal = false)
+{
+    return bcadd($number, 0, 2);
 }

@@ -35,7 +35,7 @@ class NotificationRepository extends BaseRepository
     public function create($message, $userId, $type = 'success', $createdBy = null)
     {
         $this->model->message = $message;
-        $this->model->user_id = $userId;
+        $this->model->receiver_id = $userId;
         $this->model->type = $type;
         if ($createdBy) {
             $this->model->created_by = $createdBy;
@@ -109,7 +109,7 @@ class NotificationRepository extends BaseRepository
         if ($limit) {
             $query = $query->take($limit);
         }
-        $query = $query->where('user_id', auth()->user()->id);
+        $query = $query->where('receiver_id', auth()->user()->id);
 //        $query = $query->orderBy('is_read', 'desc');
         $query = $query->orderBy('created_at', 'desc');
         $count = $query->$type();
@@ -134,7 +134,7 @@ class NotificationRepository extends BaseRepository
             $query = $query->limit($limit);
         }
 
-        $query->where('user_id', auth()->user()->id)->orderBy('created_at', 'desc');
+        $query->where('receiver_id', auth()->user()->id)->orderBy('created_at', 'desc');
 
         if ($query->update(['is_read' => 1])) {
             return true;

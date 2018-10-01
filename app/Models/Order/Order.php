@@ -30,6 +30,10 @@ class Order extends Model
     protected $table = 'orders';
 
 
+    protected $casts = [
+        'float' => 'subtotal'
+    ];
+
     /**
      * Default values for model fields
      * @var array
@@ -67,7 +71,7 @@ class Order extends Model
 
     public function getTotalAttribute()
     {
-        return $this->subtotal + $this->delivery_charges;
+        return numToDecimal($this->subtotal + $this->delivery_charges);
     }
 
     public function setCustomerLocationAttribute($val)
@@ -87,5 +91,10 @@ class Order extends Model
     {
         $val = (empty($val)) ? 1 : ++$val;
         $this->attributes['invoice_num'] = $val;
+    }
+
+    public function getSubtotalAttribute($val)
+    {
+        return numToDecimal($val);
     }
 }

@@ -15,7 +15,6 @@ class IsMobileVerified
      */
     public function handle($request, Closure $next)
     {
-        return $next($request);
         if (\Auth::check() && \Auth::user()->confirmed == 1) {
             return $next($request);
         } else {

@@ -33,7 +33,7 @@ class NotificationController extends Controller
         /*
          * where conditions to get count
          */
-        $where = ['user_id' => $userId, 'is_read' => 0];
+        $where = ['receiver_id' => $userId, 'is_read' => 0];
         /*
          * get unread count
          */
@@ -41,7 +41,7 @@ class NotificationController extends Controller
         /*
          * where condition to list top notifications
          */
-        $listWhere = ['user_id' => $userId, 'is_read' => 0];
+        $listWhere = ['receiver_id' => $userId, 'is_read' => 0];
         /*
          * get top 5 notifications
          */
@@ -76,7 +76,7 @@ class NotificationController extends Controller
      */
     public function index(Request $request)
     {
-        $notifications = Notification::where('user_id', access()->user()->id)->get();
+        $notifications = Notification::where('receiver_id', access()->user()->id)->get();
 
         return view('backend.notification.index', compact('notifications'));
     }

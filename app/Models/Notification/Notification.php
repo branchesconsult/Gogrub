@@ -13,6 +13,8 @@ class Notification extends BaseModel
      */
     protected $table;
 
+    const ORDER_CREATE = 'order_create';
+
     public function __construct()
     {
         $this->table = config('access.notifications_table');

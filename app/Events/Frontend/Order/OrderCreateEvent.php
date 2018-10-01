@@ -34,7 +34,7 @@ class OrderCreateEvent implements ShouldBroadcast
      */
     public function broadcastOn()
     {
-        return ['test-channel-' . $this->order->customer_id];
+        return ['order-channel'];
     }
 
 
@@ -45,7 +45,7 @@ class OrderCreateEvent implements ShouldBroadcast
      */
     public function broadcastAs()
     {
-        return 'server.created';
+        return 'order.created';
     }
 
     /**
@@ -55,6 +55,6 @@ class OrderCreateEvent implements ShouldBroadcast
      */
     public function broadcastWith()
     {
-        return ['id' => 'test-ididi'];
+        return ['order' => $this->order];
     }
 }
