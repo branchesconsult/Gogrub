@@ -24,7 +24,7 @@ class CreateProductsTable extends Migration
             $table->longText('description')->nullable()->default(null);
             $table->double('price')->comment('original price of product');
             $table->double('discounted_price')->default('0')->comment('Will show this price if it is not 0');
-            $table->dateTime('availability_form');
+            $table->dateTime('availability_from');
             $table->dateTime('availability_to')->nullable()->default(null);
             $table->boolean('status')->default(1);
             $table->timestamps();
