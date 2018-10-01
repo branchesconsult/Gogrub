@@ -28,11 +28,15 @@ class OrderCreateListener
      */
     public function handle(OrderCreateEvent $event)
     {
-        \Log::debug('i am log', []);
+        $this->createNotification($event);
     }
 
-    public function createNotification(OrderCreateEvent $event)
+    public function createNotification($event)
     {
-        createNotification('Order has been created', Notification::ORDER_CREATE);
+        createNotification(
+            'Order has been created',
+            $event->order->chef_id,
+            Notification::ORDER_CREATE,
+            $event->order->id);
     }
 }

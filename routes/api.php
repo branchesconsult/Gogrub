@@ -37,10 +37,13 @@ Route::group(['namespace' => 'Api\V1', 'prefix' => 'v1', 'as' => 'v1.'], functio
         //Products
         Route::group(['middleware' => 'mobile.verify'], function () {
             Route::resource('cuisine', 'CuisineController', ['only' => ['index']]);
+            //Products
             Route::resource('products', 'ProductController', ['only' => ['index', 'store', 'show']]);
             Route::post('products/{id}', 'ProductController@update');
+            //Orders
             Route::resource('order', 'OrderController', ['only' => ['index', 'store', 'show', 'rateOrder']]);
             Route::post('order/rate', 'OrderController@rateOrder');
+            Route::resource('notifications', 'NotificationController', ['only' => ['index']]);
         });
         // Users
         //Route::resource('users', 'UsersController', ['except' => ['create', 'edit']]);

@@ -157,19 +157,17 @@ if (!function_exists('createNotification')) {
      *
      * @return object
      */
-    function createNotification($message, $receiverId, $type = 1, $options = [])
+    function createNotification($message, $receiverId, $type = 1, $object_id = 0, $options = [])
     {
-        if ($type == 1 || $type == 3) {
-            $notification = new Notification();
-
-            return $notification->insert([
-                'message' => $message,
-                'receiver_id' => $receiverId,
-                'sender_id' => \Auth::id(),
-                'type' => $type,
-                'created_at' => Carbon::now(),
-            ]);
-        }
+        $notification = new Notification();
+        return $notification->insert([
+            'message' => $message,
+            'receiver_id' => $receiverId,
+            'sender_id' => \Auth::id(),
+            'type' => $type,
+            'object_id' => $object_id,
+            'created_at' => Carbon::now(),
+        ]);
         if ($type == 2 || $type == 3) {
             if (!empty($options['data']) && !empty($options['email_template_type'])) {
                 $mail = new SendEmail();
