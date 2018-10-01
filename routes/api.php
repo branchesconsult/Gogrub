@@ -13,6 +13,8 @@
 */
 
 Route::group(['namespace' => 'Api\V1', 'prefix' => 'v1', 'as' => 'v1.'], function () {
+    //Cousine
+    Route::resource('cuisine', 'CuisineController', ['only' => ['index']]);
     // Page
     Route::group(['prefix' => 'pages'], function () {
         Route::get('{page_slug}', 'PagesController@show');
@@ -36,7 +38,6 @@ Route::group(['namespace' => 'Api\V1', 'prefix' => 'v1', 'as' => 'v1.'], functio
         });
         //Products
         Route::group(['middleware' => 'mobile.verify'], function () {
-            Route::resource('cuisine', 'CuisineController', ['only' => ['index']]);
             //Products
             Route::resource('products', 'ProductController', ['only' => ['index', 'store', 'show']]);
             Route::post('products/{id}', 'ProductController@update');
