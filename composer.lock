@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "18c353d11f828975049603f652dd7975",
+    "content-hash": "a5ab954714e386a280bc90b030334b28",
     "packages": [
         {
             "name": "arcanedev/log-viewer",
@@ -2590,6 +2590,63 @@
             "time": "2016-06-20T20:53:12+00:00"
         },
         {
+            "name": "musonza/chat",
+            "version": "v3.0.3",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/musonza/chat.git",
+                "reference": "77bdf9aea7b7d78680b5412c84cf8591be83de62"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/musonza/chat/zipball/77bdf9aea7b7d78680b5412c84cf8591be83de62",
+                "reference": "77bdf9aea7b7d78680b5412c84cf8591be83de62",
+                "shasum": ""
+            },
+            "require": {
+                "laravel/framework": "~5.4.0|~5.5.0|~5.6.0|~5.7.0",
+                "php": ">=7.0"
+            },
+            "require-dev": {
+                "mockery/mockery": "^1.0.0",
+                "orchestra/database": "~3.3.0|~3.4.2|^3.5.0|~3.7.0",
+                "orchestra/testbench": "~3.3.0|~3.4.2|^3.5.0|~3.7.0",
+                "phpunit/phpunit": "^5.7|6.2|^7.0"
+            },
+            "type": "library",
+            "extra": {
+                "laravel": {
+                    "providers": [
+                        "Musonza\\Chat\\ChatServiceProvider"
+                    ]
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Musonza\\Chat\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Tinashe Musonza",
+                    "email": "tashtin263@gmail.com",
+                    "role": "Developer"
+                }
+            ],
+            "description": "Chat Package for Laravel 5.4 and up",
+            "keywords": [
+                "chat",
+                "conversation",
+                "laravel",
+                "messaging"
+            ],
+            "time": "2018-09-11T17:17:36+00:00"
+        },
+        {
             "name": "namshi/jose",
             "version": "7.2.3",
             "source": {
@@ -4200,16 +4257,16 @@
         },
         {
             "name": "symfony/translation",
-            "version": "v4.1.4",
+            "version": "v4.1.5",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/translation.git",
-                "reference": "fa2182669f7983b7aa5f1a770d053f79f0ef144f"
+                "reference": "6e49130ddf150b7bfe9e34edb2f3f698aa1aa43b"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/translation/zipball/fa2182669f7983b7aa5f1a770d053f79f0ef144f",
-                "reference": "fa2182669f7983b7aa5f1a770d053f79f0ef144f",
+                "url": "https://api.github.com/repos/symfony/translation/zipball/6e49130ddf150b7bfe9e34edb2f3f698aa1aa43b",
+                "reference": "6e49130ddf150b7bfe9e34edb2f3f698aa1aa43b",
                 "shasum": ""
             },
             "require": {
@@ -4265,7 +4322,7 @@
             ],
             "description": "Symfony Translation Component",
             "homepage": "https://symfony.com",
-            "time": "2018-08-07T12:45:11+00:00"
+            "time": "2018-09-21T12:49:42+00:00"
         },
         {
             "name": "symfony/var-dumper",
