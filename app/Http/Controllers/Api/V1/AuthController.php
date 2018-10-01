@@ -6,8 +6,10 @@ use App\Events\Frontend\Auth\UserLoggedOut;
 use App\Http\Requests\Api\Auth\ResendVerificationCodeRequest;
 use App\Http\Requests\Api\Auth\UpdateNonVerifyMobileRequest;
 use App\Http\Requests\Api\Auth\UserLoginRequest;
+use App\Http\Requests\Api\Auth\UserLogoutRequest;
 use App\Http\Requests\Api\Auth\UserMobileVerificationRequest;
 use App\Models\Access\User\User;
+use App\Models\Device\Device;
 use Illuminate\Http\Request;
 use JWTAuth;
 use Tymon\JWTAuth\Exceptions\JWTException;
@@ -67,7 +69,7 @@ class AuthController extends APIController
      *
      * @return \Illuminate\Http\JsonResponse
      */
-    public function logout()
+    public function logout(UserLogoutRequest $request)
     {
         try {
             $token = JWTAuth::getToken();
@@ -78,7 +80,7 @@ class AuthController extends APIController
         } catch (JWTException $e) {
             return $this->respondInternalError($e->getMessage());
         }
-
+        Device::where('device_id', $request->device_id)->delete();
         return $this->respond([
             'message' => trans('api.messages.logout.success'),
         ]);

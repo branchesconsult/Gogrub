@@ -204,6 +204,7 @@ return [
         Mpociot\ApiDoc\ApiDocGeneratorServiceProvider::class,
         Unisharp\FileApi\FileApiServiceProvider::class,
         App\Providers\BroadcastServiceProvider::class,
+        Musonza\Chat\ChatServiceProvider::class,
     ],
 
     /*
@@ -265,7 +266,7 @@ return [
         'Socialite' => Laravel\Socialite\Facades\Socialite::class,
         'JWTAuth' => Tymon\JWTAuth\Facades\JWTAuth::class,
         //'Datatables' => Yajra\DataTables\Facades\DataTables::class
-
+        'Chat' => Musonza\Chat\Facades\ChatFacade::class,
     ],
 
 ];
