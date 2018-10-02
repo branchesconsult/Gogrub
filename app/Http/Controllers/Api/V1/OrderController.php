@@ -55,7 +55,7 @@ class OrderController extends Controller
      */
     public function store(MakeOrderRequest $request)
     {
-        dd($request->json()->all(), $request->all());
+        dd($request->json()->all(), $request->all(), $request->products);
         $products = $request->products;
         $customerPhone = $request->customer_phone;
         $customerAddress = $request->customer_address;
