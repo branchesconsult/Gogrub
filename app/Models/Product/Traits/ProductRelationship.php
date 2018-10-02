@@ -30,4 +30,12 @@ trait ProductRelationship
     {
         return $this->belongsTo(Cuisine::class);
     }
+
+    /**
+     * Get the comments for the blog post.
+     */
+    public function orderDetail()
+    {
+        return $this->hasMany(OrderDetail::class);
+    }
 }
