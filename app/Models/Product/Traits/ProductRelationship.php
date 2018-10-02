@@ -30,9 +30,4 @@ trait ProductRelationship
     {
         return $this->belongsTo(Cuisine::class);
     }
-
-    public function orderDetail()
-    {
-        return $this->hasMany(OrderDetail::class);
-    }
 }
