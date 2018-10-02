@@ -27,12 +27,7 @@ class ProductRepository extends BaseRepository
      */
     public function getForDataTable()
     {
-        return $this->query()
-            ->select([
-                config('module.products.table') . '.id',
-                config('module.products.table') . '.created_at',
-                config('module.products.table') . '.updated_at',
-            ]);
+        return Product::with('chef', 'cuisine')->orderBy('id', 'DESC')->get();
     }
 
     /**
