@@ -182,7 +182,7 @@ class OrderController extends Controller
 
         }])->whereIn('id', $productIds)
             ->get();
-        return $chef;
+        return $chef->toArray();
         return ($chef->count() > 1 || empty($chef[0]->chef->locations)) ? false : $chef[0]->chef;
     }
 
