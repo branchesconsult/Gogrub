@@ -94,6 +94,6 @@ class Product extends Model
     public function getRemainingServingsAttribute()
     {
         $totalSold = OrderDetail::where('product_id', $this->id)->get()->count();
-        return $totalSold - $this->total_servings;
+        return max($totalSold - $this->total_servings, 0);
     }
 }
