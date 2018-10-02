@@ -178,11 +178,11 @@ class OrderController extends Controller
     {
 
         $productIds = array_column($products, 'id');
-        return $productIds;
         $chef = Product::with(['chef.locations' => function ($q) {
 
         }])->whereIn('id', $productIds)
             ->get();
+        return $chef;
         return ($chef->count() > 1 || empty($chef[0]->chef->locations)) ? false : $chef[0]->chef;
     }
 
