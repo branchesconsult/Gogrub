@@ -55,6 +55,7 @@ class OrderController extends Controller
      */
     public function store(MakeOrderRequest $request)
     {
+        \Log::debug(print_r($request->all()));
         $products = $request->products;
         $customerPhone = $request->customer_phone;
         $customerAddress = $request->customer_address;
