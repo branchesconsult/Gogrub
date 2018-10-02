@@ -3,6 +3,7 @@
 namespace App\Models\OrderDetails;
 
 use App\Models\BaseModel;
+use App\Models\Product\Product;
 use Illuminate\Database\Eloquent\Model;
 
 class OrderDetail extends BaseModel
@@ -15,5 +16,10 @@ class OrderDetail extends BaseModel
     public function getTotalPriceAttribute()
     {
         return $this->qty * $this->price;
+    }
+
+    public function products()
+    {
+        return $this->hasMany(Product::class);
     }
 }
