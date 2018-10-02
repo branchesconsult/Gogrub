@@ -184,7 +184,6 @@ class OrderController extends Controller
             ->has('chef.locations')
             ->groupBy('chef_id')
             ->get();
-        dd($chef->count(), $chef->toArray());
         return ($chef->count() > 1 || empty($chef[0]->chef->locations)) ? false : $chef[0]->chef;
     }
 
