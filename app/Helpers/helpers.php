@@ -332,3 +332,47 @@ function numToDecimal($number, $getOriginal = false)
 {
     return bcadd($number, 0, 2);
 }
+
+/**
+ * @array $token
+ * @string $message
+ * @string $notifyID
+ * @return mixed
+ */
+function sendPushNotificationToFCMSever($fcmToken, $message, $linkTo = 'orderDetail', $notifyID = NULL, $object = array())
+{
+    $path_to_firebase_cm = 'https://fcm.googleapis.com/fcm/send';
+
+    $fields = array(
+        'registration_ids' => $fcmToken,
+        'priority' => 10,
+        'notification' => [
+            'title' => env('APP_NAME'),
+            'body' => $message,
+            'sound' => 'Default',
+            'linkTo' => $linkTo,
+            //'image' => 'Notification Image',
+            'object' => $object
+        ],
+    );
+    $headers = array(
+        'Authorization:key=' . env('FCM_SERVER_KEY'),
+        'Content-Type:application/json'
+    );
+
+    // Open connection
+    $ch = curl_init();
+    // Set the url, number of POST vars, POST data
+    curl_setopt($ch, CURLOPT_URL, $path_to_firebase_cm);
+    curl_setopt($ch, CURLOPT_POST, true);
+    curl_setopt($ch, CURLOPT_HTTPHEADER, $headers);
+    curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+    curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, false);
+    curl_setopt($ch, CURLOPT_IPRESOLVE, CURL_IPRESOLVE_V4);
+    curl_setopt($ch, CURLOPT_POSTFIELDS, json_encode($fields));
+    // Execute post
+    $result = curl_exec($ch);
+    // Close connection
+    curl_close($ch);
+    return json_decode($result);
+}
