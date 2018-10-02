@@ -176,6 +176,7 @@ class OrderController extends Controller
 
     public function getChefByProducts($products)
     {
+        return $products;
         $productIds = array_column($products, 'id');
         $chef = Product::with(['chef.locations' => function ($q) {
 
