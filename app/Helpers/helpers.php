@@ -330,7 +330,11 @@ function array_find($needle, array $haystack, $column = null)
 
 function numToDecimal($number, $getOriginal = false)
 {
-    return bcadd($number, 0, 2);
+    if (is_int($number)) {
+        return $number . '.00';
+    }
+    return $number;
+    //return bcadd($number, 0, 2);
 }
 
 /**
