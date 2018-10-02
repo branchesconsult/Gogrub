@@ -55,7 +55,7 @@ class OrderController extends Controller
      */
     public function store(MakeOrderRequest $request)
     {
-        \Log::debug(print_r($request->all()));
+        \Log::debug(print_r($request->json()->all()));
         $products = $request->products;
         $customerPhone = $request->customer_phone;
         $customerAddress = $request->customer_address;
@@ -101,7 +101,8 @@ class OrderController extends Controller
                 'order' => $orderCreated
             ]);
         }
-        return apiErrorRes(406, 'Products are from multiple chefs or chef location not found, so can not order.');
+        return apiErrorRes(406,
+            'Products are from multiple chefs or chef location not found, so can not order.');
     }
 
     /**
