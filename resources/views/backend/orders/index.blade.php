@@ -20,18 +20,20 @@
             <div class="table-responsive data-table-wrapper">
                 <table id="orders-table" class="table table-condensed table-hover table-bordered">
                     <thead>
-                        <tr>
-                            <th>{{ trans('labels.backend.orders.table.id') }}</th>
-                            <th>{{ trans('labels.backend.orders.table.createdat') }}</th>
-                            <th>{{ trans('labels.general.actions') }}</th>
-                        </tr>
+                    <tr>
+                        <th>{{ trans('labels.backend.orders.table.id') }}</th>
+                        <th>Invoice number</th>
+                        <th>{{ trans('labels.backend.orders.table.createdat') }}</th>
+                        <th>{{ trans('labels.general.actions') }}</th>
+                    </tr>
                     </thead>
                     <thead class="transparent-bg">
-                        <tr>
-                            <th></th>
-                            <th></th>
-                            <th></th>
-                        </tr>
+                    <tr>
+                        <th></th>
+                        <th></th>
+                        <th></th>
+                        <th></th>
+                    </tr>
                     </thead>
                 </table>
             </div><!--table-responsive-->
@@ -45,7 +47,7 @@
 
     <script>
         //Below written line is short form of writing $(document).ready(function() { })
-        $(function() {
+        $(function () {
             var dataTable = $('#orders-table').dataTable({
                 processing: true,
                 serverSide: true,
@@ -54,20 +56,21 @@
                     type: 'post'
                 },
                 columns: [
-                    {data: 'id', name: '{{config('module.orders.table')}}.id'},
-                    {data: 'created_at', name: '{{config('module.orders.table')}}.created_at'},
+                    {data: 'id', name: 'id'},
+                    {data: 'invoice_num', name: 'invoice_num'},
+                    {data: 'created_at', name: 'created_at'},
                     {data: 'actions', name: 'actions', searchable: false, sortable: false}
                 ],
-                order: [[0, "asc"]],
+                order: [[0, "desc"]],
                 searchDelay: 500,
                 dom: 'lBfrtip',
                 buttons: {
                     buttons: [
-                        { extend: 'copy', className: 'copyButton',  exportOptions: {columns: [ 0, 1 ]  }},
-                        { extend: 'csv', className: 'csvButton',  exportOptions: {columns: [ 0, 1 ]  }},
-                        { extend: 'excel', className: 'excelButton',  exportOptions: {columns: [ 0, 1 ]  }},
-                        { extend: 'pdf', className: 'pdfButton',  exportOptions: {columns: [ 0, 1 ]  }},
-                        { extend: 'print', className: 'printButton',  exportOptions: {columns: [ 0, 1 ]  }}
+                        {extend: 'copy', className: 'copyButton', exportOptions: {columns: [0, 1]}},
+                        {extend: 'csv', className: 'csvButton', exportOptions: {columns: [0, 1]}},
+                        {extend: 'excel', className: 'excelButton', exportOptions: {columns: [0, 1]}},
+                        {extend: 'pdf', className: 'pdfButton', exportOptions: {columns: [0, 1]}},
+                        {extend: 'print', className: 'printButton', exportOptions: {columns: [0, 1]}}
                     ]
                 }
             });
