@@ -181,8 +181,9 @@ class OrderController extends Controller
         $chef = Product::with(['chef.locations' => function ($q) {
 
         }])->whereIn('id', $productIds)
-            ->get();
-        dd($chef->count(), $chef[0]->chef->locations);
+            has('chef.locations')
+                ->get();
+        dd($chef->count(), $chef->toArray());
         return ($chef->count() > 1 || empty($chef[0]->chef->locations)) ? false : $chef[0]->chef;
     }
 
