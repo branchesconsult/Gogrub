@@ -5,6 +5,7 @@ namespace App\Models\Product\Traits;
 use App\Models\Access\User\User;
 use App\Models\Cuisine\Cuisine;
 use App\Models\Image\Image;
+use App\Models\OrderDetails\OrderDetail;
 
 /**
  * Class ProductRelationship
@@ -28,5 +29,10 @@ trait ProductRelationship
     public function cuisine()
     {
         return $this->belongsTo(Cuisine::class);
+    }
+
+    public function orderDetail()
+    {
+        return $this->hasMany(OrderDetail::class);
     }
 }
