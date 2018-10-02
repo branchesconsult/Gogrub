@@ -3,6 +3,7 @@
 namespace App\Models\Product;
 
 use App\Models\ModelTrait;
+use App\Models\OrderDetails\OrderDetail;
 use Carbon\Carbon;
 use Illuminate\Database\Eloquent\Model;
 use App\Models\Product\Traits\ProductAttribute;
@@ -27,6 +28,7 @@ class Product extends Model
      */
     protected $table = 'products';
 
+    protected $appends = ['remaining_servings'];
 
     /**
      * Default values for model fields
@@ -87,5 +89,11 @@ class Product extends Model
     public function getAvailabilityToAttribute($val)
     {
         return $this->getGlobalDateTimeFormat($val);
+    }
+
+    public function getRemainingServingsAttribute()
+    {
+        $totalSold = OrderDetail::where('product_id', $this->id)->get()->count();
+        return $totalSold - $this->total_servings;
     }
 }
