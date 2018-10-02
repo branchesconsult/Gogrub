@@ -55,7 +55,7 @@ class OrderController extends Controller
      */
     public function store(MakeOrderRequest $request)
     {
-        dd($request->json()->all(), $request->all(), $request->products, $this->getChefByProducts($request->products));
+        //dd($request->json()->all(), $request->all(), $request->products, $this->getChefByProducts($request->products));
         $products = $request->products;
         $customerPhone = $request->customer_phone;
         $customerAddress = $request->customer_address;
@@ -182,7 +182,7 @@ class OrderController extends Controller
 
         }])->whereIn('id', $productIds)
             ->get();
-        return $chef->toArray();
+        return $chef[0]->chef;
         return ($chef->count() > 1 || empty($chef[0]->chef->locations)) ? false : $chef[0]->chef;
     }
 
