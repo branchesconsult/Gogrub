@@ -35,4 +35,9 @@ trait OrderRelationship
     {
         return $this->belongsTo(Orderstatus::class, 'orderstatus_id');
     }
+
+    public function products()
+    {
+        return $this->belongsTo(Product::class);
+    }
 }

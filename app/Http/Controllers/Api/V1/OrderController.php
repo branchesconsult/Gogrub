@@ -91,7 +91,7 @@ class OrderController extends Controller
             $order['payment_method'] = $paymentMethod;
             $insertedOrderId = Order::create($order)->id;
             $this->insertOrderProducts($insertedOrderId, $products);
-            $orderCreated = Order::with('detail', 'status')->where('id', $insertedOrderId)->first();
+            $orderCreated = Order::with('detail.products', 'status')->where('id', $insertedOrderId)->first();
             event(new OrderCreateEvent($orderCreated));
             return response()->json([
                 'message_title' => "Success",
