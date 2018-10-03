@@ -63,12 +63,6 @@
     if ("{{Route::currentRouteName()}}" !== "frontend.user.account") {
         $.session.clear();
     }
-    $(document).ready(function () {
-        Echo.channel('test-channel-5')
-            .listen('.server.created', (e) => {
-            console.log(e, 'dasjdas');
-    });
-    });
 </script>
 @include('includes.partials.ga')
 </body>
