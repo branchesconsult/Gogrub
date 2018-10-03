@@ -343,7 +343,10 @@ function numToDecimal($number, $getOriginal = false)
  * @string $notifyID
  * @return mixed
  */
-function sendPushNotificationToFCMSever($fcmToken, $message, $linkTo = 'orderDetail', $notifyID = NULL, $object = array())
+function sendPushNotificationToFCMSever($fcmToken, $message,
+                                        $linkTo = 'orderDetail',
+                                        $notifyID = NULL,
+                                        $object = array())
 {
     $path_to_firebase_cm = 'https://fcm.googleapis.com/fcm/send';
 
