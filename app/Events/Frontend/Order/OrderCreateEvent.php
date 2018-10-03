@@ -35,7 +35,10 @@ class OrderCreateEvent implements ShouldBroadcast
      */
     public function broadcastOn()
     {
-        return ['order-channel'];
+        return [
+            'order-channel-' . $this->order->chef_id,
+            'order-channel-1' //order notification to admin
+        ];
     }
 
 
@@ -56,6 +59,10 @@ class OrderCreateEvent implements ShouldBroadcast
      */
     public function broadcastWith()
     {
-        return ['order' => $this->order];
+        return [
+            'order' => $this->order,
+            'message' => 'A new order has been created',
+            'message_type' => 'Information'
+        ];
     }
 }

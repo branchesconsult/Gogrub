@@ -17,10 +17,13 @@ trait OrderRelationship
         return $this->belongsTo(User::class, 'chef_id');
     }
 
-
+    /**
+     * This is order's customer
+     * @return mixed
+     */
     public function user()
     {
-        return $this->belongsTo(User::class, 'user_id');
+        return $this->belongsTo(User::class, 'customer_id');
     }
 
     public function detail()

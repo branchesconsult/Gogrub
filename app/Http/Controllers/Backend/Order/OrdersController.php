@@ -26,7 +26,7 @@ class OrdersController extends Controller
 
     /**
      * contructor to initialize repository object
-     * @param OrderRepository $repository;
+     * @param OrderRepository $repository ;
      */
     public function __construct(OrderRepository $repository)
     {
@@ -36,27 +36,29 @@ class OrdersController extends Controller
     /**
      * Display a listing of the resource.
      *
-     * @param  App\Http\Requests\Backend\Order\ManageOrderRequest  $request
+     * @param  App\Http\Requests\Backend\Order\ManageOrderRequest $request
      * @return \Illuminate\Http\Response
      */
     public function index(ManageOrderRequest $request)
     {
         return view('backend.orders.index');
     }
+
     /**
      * Show the form for creating a new resource.
      *
-     * @param  CreateOrderRequestNamespace  $request
+     * @param  CreateOrderRequestNamespace $request
      * @return \Illuminate\Http\Response
      */
     public function create(CreateOrderRequest $request)
     {
         return view('backend.orders.create');
     }
+
     /**
      * Store a newly created resource in storage.
      *
-     * @param  StoreOrderRequestNamespace  $request
+     * @param  StoreOrderRequestNamespace $request
      * @return \Illuminate\Http\Response
      */
     public function store(StoreOrderRequest $request)
@@ -68,22 +70,24 @@ class OrdersController extends Controller
         //return with successfull message
         return redirect()->route('admin.orders.index')->withFlashSuccess(trans('alerts.backend.orders.created'));
     }
+
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  App\Models\Order\Order  $order
-     * @param  EditOrderRequestNamespace  $request
+     * @param  App\Models\Order\Order $order
+     * @param  EditOrderRequestNamespace $request
      * @return \Illuminate\Http\Response
      */
     public function edit(Order $order, EditOrderRequest $request)
     {
         return view('backend.orders.edit', compact('order'));
     }
+
     /**
      * Update the specified resource in storage.
      *
-     * @param  UpdateOrderRequestNamespace  $request
-     * @param  App\Models\Order\Order  $order
+     * @param  UpdateOrderRequestNamespace $request
+     * @param  App\Models\Order\Order $order
      * @return \Illuminate\Http\Response
      */
     public function update(UpdateOrderRequest $request, Order $order)
@@ -91,15 +95,16 @@ class OrdersController extends Controller
         //Input received from the request
         $input = $request->except(['_token']);
         //Update the model using repository update method
-        $this->repository->update( $order, $input );
+        $this->repository->update($order, $input);
         //return with successfull message
         return redirect()->route('admin.orders.index')->withFlashSuccess(trans('alerts.backend.orders.updated'));
     }
+
     /**
      * Remove the specified resource from storage.
      *
-     * @param  DeleteOrderRequestNamespace  $request
-     * @param  App\Models\Order\Order  $order
+     * @param  DeleteOrderRequestNamespace $request
+     * @param  App\Models\Order\Order $order
      * @return \Illuminate\Http\Response
      */
     public function destroy(Order $order, DeleteOrderRequest $request)
@@ -109,5 +114,5 @@ class OrdersController extends Controller
         //returning with successfull message
         return redirect()->route('admin.orders.index')->withFlashSuccess(trans('alerts.backend.orders.deleted'));
     }
-    
+
 }

@@ -27,12 +27,7 @@ class OrderRepository extends BaseRepository
      */
     public function getForDataTable()
     {
-        return $this->query()
-            ->select([
-                config('module.orders.table').'.id',
-                config('module.orders.table').'.created_at',
-                config('module.orders.table').'.updated_at',
-            ]);
+        return Order::with('chef', 'user', 'status')->get();
     }
 
     /**
@@ -62,7 +57,7 @@ class OrderRepository extends BaseRepository
      */
     public function update(Order $order, array $input)
     {
-    	if ($order->update($input))
+        if ($order->update($input))
             return true;
 
         throw new GeneralException(trans('exceptions.backend.orders.update_error'));

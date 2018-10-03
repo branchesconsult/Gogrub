@@ -23,12 +23,18 @@
                     <tr>
                         <th>{{ trans('labels.backend.orders.table.id') }}</th>
                         <th>Invoice number</th>
+                        <th>Chef</th>
+                        <th>Customer</th>
+                        <th>Status</th>
                         <th>{{ trans('labels.backend.orders.table.createdat') }}</th>
                         <th>{{ trans('labels.general.actions') }}</th>
                     </tr>
                     </thead>
                     <thead class="transparent-bg">
                     <tr>
+                        <th></th>
+                        <th></th>
+                        <th></th>
                         <th></th>
                         <th></th>
                         <th></th>
@@ -58,6 +64,9 @@
                 columns: [
                     {data: 'id', name: 'id'},
                     {data: 'invoice_num', name: 'invoice_num'},
+                    {data: 'chef', name: 'chef'},
+                    {data: 'customer', name: 'customer'},
+                    {data: 'status.status', name: 'status.status'},
                     {data: 'created_at', name: 'created_at'},
                     {data: 'actions', name: 'actions', searchable: false, sortable: false}
                 ],
@@ -75,7 +84,7 @@
                 }
             });
 
-            FinBuilders.DataTableSearch.init(dataTable);
+            //FinBuilders.DataTableSearch.init(dataTable);
         });
     </script>
 @endsection

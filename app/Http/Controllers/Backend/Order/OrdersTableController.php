@@ -21,7 +21,7 @@ class OrdersTableController extends Controller
 
     /**
      * contructor to initialize repository object
-     * @param OrderRepository $order;
+     * @param OrderRepository $order ;
      */
     public function __construct(OrderRepository $order)
     {
@@ -43,6 +43,12 @@ class OrdersTableController extends Controller
             })
             ->addColumn('actions', function ($order) {
                 return $order->action_buttons;
+            })
+            ->addColumn('chef', function ($order) {
+                return $order->chef->full_name . ' - ' . $order->chef->mobile;
+            })
+            ->addColumn('customer', function ($order) {
+                return $order->customerf_full_name . ' - ' . $order->customer_phone;
             })
             ->make(true);
     }

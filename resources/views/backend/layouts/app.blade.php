@@ -15,6 +15,7 @@
 @yield('meta')
 
 <!-- Styles -->
+{!! Html::style(asset('js/plugins/toastr/jquery.toast.min.css')) !!}
 @yield('before-styles')
 
 <!-- Check if the language is set to RTL, so apply the RTL layouts -->
@@ -67,10 +68,11 @@
     @include('backend.includes.footer')
 </div><!-- ./wrapper -->
 <!-- JavaScripts -->
-<input type="text" id="current-user-id" value="{!! \Auth::id() !!}"/>
+<input type="hidden" id="current-user-id" value="{!! \Auth::id() !!}"/>
 @yield('before-scripts')
 {{ Html::script(mix('js/backend.js')) }}
 {{ Html::script(mix('js/backend-custom.js')) }}
+{!! Html::script(asset('js/plugins/toastr/jquery.toast.min.js')) !!}
 {{ Html::script(asset('js/backend-socket-client.js')) }}
 @yield('after-scripts')
 </body>
