@@ -12,10 +12,15 @@
     <meta name="description" content="@yield('meta_description', 'Default Description')">
     <meta name="author" content="@yield('meta_author', 'Viral Solani')">
     <link href="https://fonts.googleapis.com/css?family=Fira+Sans" rel="stylesheet">
-@yield('meta')
+    @yield('meta')
 
 <!-- Styles -->
-{!! Html::style(asset('js/plugins/toastr/jquery.toast.min.css')) !!}
+    {!! Html::style(asset('js/plugins/toastr/jquery.toast.min.css')) !!}
+    <style>
+        select.form-control {
+            width: 200px;
+        }
+    </style>
 @yield('before-styles')
 
 <!-- Check if the language is set to RTL, so apply the RTL layouts -->

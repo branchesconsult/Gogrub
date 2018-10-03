@@ -22,4 +22,9 @@ class OrderDetail extends BaseModel
     {
         return $this->belongsTo(Product::class, 'product_id');
     }
+
+    public function getSpecialInstructionsAttribute($val)
+    {
+        return (empty($val)) ? 'N/A' : $val;
+    }
 }

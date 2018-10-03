@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Backend\Order;
 
 use App\Models\Order\Order;
+use App\Models\Orderstatus\Orderstatus;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Repositories\Backend\Order\OrderRepository;
@@ -80,7 +81,11 @@ class OrdersController extends Controller
      */
     public function edit(Order $order, EditOrderRequest $request)
     {
-        return view('backend.orders.edit', compact('order'));
+
+        $data['order_statuses'] = Orderstatus::all();
+        $data['order'] = $order;
+        $data['order_detail'] = Order::find($order->id)->with('status', 'detail.product');
+        return view('backend.orders.edit', $data);
     }
 
     /**
