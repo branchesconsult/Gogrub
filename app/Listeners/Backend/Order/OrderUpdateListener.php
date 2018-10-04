@@ -33,7 +33,7 @@ class OrderUpdateListener implements ShouldQueue
             $event->order->chef_id,
             Notification::ORDER_CREATE,
             $event->order->id);
-        $chefDeviceToken = Device::where('user_id', $event->order->customer_id)->get()->fcm_token;
+        $chefDeviceToken = Device::where('user_id', $event->order->customer_id)->get(['fcm_token']);
         sendPushNotificationToFCMSever($chefDeviceToken, 'Your order status has changed.');
     }
 }
