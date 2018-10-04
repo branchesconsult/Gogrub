@@ -92,9 +92,7 @@ class EnsureQueueListenerIsRunning extends Command
     {
         //$command = 'php-cli ' . base_path() . '/artisan queue:listen --timeout=60 --sleep=5 --tries=3 > /dev/null & echo $!'; // 5.1
         $command = 'php ' . base_path() . '/artisan queue:listen --timeout=60 --sleep=5 --tries=3 > /dev/null & echo $!'; // 5.6 - see comments
-        $command2 = 'laravel-echo-server start';
         $pid = exec($command);
-        exec($command2);
         return $pid;
     }
 }
