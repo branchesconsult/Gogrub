@@ -27,6 +27,7 @@ class Kernel extends ConsoleKernel
     protected function schedule(Schedule $schedule)
     {
         $schedule->command('queue:checkup')->everyMinute();
+        $schedule->command('laravel-echo-server:checkup')->everyMinute();
     }
 
     /**
