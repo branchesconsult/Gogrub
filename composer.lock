@@ -4,8 +4,66 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "a5ab954714e386a280bc90b030334b28",
+    "content-hash": "781f9223ea99822d3995c0bc88f032c9",
     "packages": [
+        {
+            "name": "abrigham/laravel-email-exceptions",
+            "version": "1.2.1",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/abrigham1/laravel-email-exceptions.git",
+                "reference": "1ab7feacb860435a7da8501acb41d9587e405678"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/abrigham1/laravel-email-exceptions/zipball/1ab7feacb860435a7da8501acb41d9587e405678",
+                "reference": "1ab7feacb860435a7da8501acb41d9587e405678",
+                "shasum": ""
+            },
+            "require": {
+                "illuminate/support": "~5.0",
+                "php": ">=5.4.0"
+            },
+            "require-dev": {
+                "mockery/mockery": "^0.9.7",
+                "orchestra/testbench": "~3.0",
+                "phpunit/phpunit": "5.*",
+                "squizlabs/php_codesniffer": "2.*"
+            },
+            "type": "library",
+            "extra": {
+                "laravel": {
+                    "providers": [
+                        "Abrigham\\LaravelEmailExceptions\\EmailExceptionsServiceProvider"
+                    ]
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Abrigham\\LaravelEmailExceptions\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Aaron Brigham",
+                    "email": "abrigham1@gmail.com"
+                }
+            ],
+            "description": "Email Exceptions from your laravel application",
+            "keywords": [
+                "debugging",
+                "email",
+                "exception",
+                "exception-handling",
+                "laravel",
+                "laravel-5-package"
+            ],
+            "time": "2017-11-25T15:43:22+00:00"
+        },
         {
             "name": "arcanedev/log-viewer",
             "version": "4.5.2",

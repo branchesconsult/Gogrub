@@ -2,6 +2,7 @@
 
 namespace App\Repositories\Backend\Order;
 
+use App\Events\Backend\Order\OrderUpdateEvent;
 use DB;
 use Carbon\Carbon;
 use App\Models\Order\Order;
@@ -57,9 +58,10 @@ class OrderRepository extends BaseRepository
      */
     public function update(Order $order, array $input)
     {
-        if ($order->update($input))
+        if ($order->update($input)) {
+            event(new OrderUpdateEvent($order));
             return true;
-
+        }
         throw new GeneralException(trans('exceptions.backend.orders.update_error'));
     }
 

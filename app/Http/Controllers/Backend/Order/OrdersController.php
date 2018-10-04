@@ -102,7 +102,8 @@ class OrdersController extends Controller
         //Update the model using repository update method
         $this->repository->update($order, $input);
         //return with successfull message
-        return redirect()->route('admin.orders.index')->withFlashSuccess(trans('alerts.backend.orders.updated'));
+        //return redirect()->route('admin.orders.index')->withFlashSuccess(trans('alerts.backend.orders.updated'));
+        return redirect()->back()->withFlashSuccess(trans('alerts.backend.orders.updated'));
     }
 
     /**

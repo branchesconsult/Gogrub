@@ -3,7 +3,9 @@ $(document).ready(function () {
     Echo.channel('order-channel-' + currentUserId)
         .listen('.order.created', (e) => {
             makeToast(e.message_type, e.message);
-            console.log(e, 'dasjdas');
+        })
+        .listen('.order.updated', (e) => {
+            makeToast(e.message_type, e.message);
         });
 });
 
