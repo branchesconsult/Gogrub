@@ -4,6 +4,7 @@ namespace App\Listeners\Backend\Order;
 
 use App\Events\Backend\Order\OrderUpdateEvent;
 use App\Models\Device\Device;
+use App\Models\Notification\Notification;
 use Illuminate\Queue\InteractsWithQueue;
 use Illuminate\Contracts\Queue\ShouldQueue;
 
