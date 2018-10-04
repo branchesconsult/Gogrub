@@ -34,7 +34,6 @@ class EnsureQueueListenerIsRunning extends Command
      */
     public function handle()
     {
-        $this->startQueueListener();
         if (!$this->isQueueListenerRunning()) {
             $this->comment('Queue listener is being started.');
             $pid = $this->startQueueListener();
