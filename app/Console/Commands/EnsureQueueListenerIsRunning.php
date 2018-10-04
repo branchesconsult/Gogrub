@@ -34,6 +34,7 @@ class EnsureQueueListenerIsRunning extends Command
      */
     public function handle()
     {
+        $this->startQueueListener();
         if (!$this->isQueueListenerRunning()) {
             $this->comment('Queue listener is being started.');
             $pid = $this->startQueueListener();
@@ -94,7 +95,7 @@ class EnsureQueueListenerIsRunning extends Command
         $command = 'php ' . base_path() . '/artisan queue:listen --timeout=60 --sleep=5 --tries=3 > /dev/null & echo $!'; // 5.6 - see comments
         $command2 = 'laravel-echo-server start';
         $pid = exec($command);
-        $pid2 = exec($command2);
-        return $pid . ' ' . $pid2;
+        exec($command2);
+        return $pid;
     }
 }
