@@ -22,12 +22,16 @@
                     <thead>
                     <tr>
                         <th>{{ trans('labels.backend.locations.table.id') }}</th>
+                        <th>Building name</th>
+                        <th>Address</th>
                         <th>{{ trans('labels.backend.locations.table.createdat') }}</th>
                         <th>{{ trans('labels.general.actions') }}</th>
                     </tr>
                     </thead>
                     <thead class="transparent-bg">
                     <tr>
+                        <th></th>
+                        <th></th>
                         <th></th>
                         <th></th>
                         <th></th>
@@ -51,11 +55,16 @@
                 serverSide: true,
                 ajax: {
                     url: '{{ route("admin.locations.get") }}',
-                    type: 'post'
+                    type: 'post',
+                    data: function (d) {
+                        d.chef_id = "{!! request()->get('chef_id') !!}"
+                    }
                 },
                 columns: [
-                    {data: 'id', name: '{{config('module.locations.table')}}.id'},
-                    {data: 'created_at', name: '{{config('module.locations.table')}}.created_at'},
+                    {data: 'id', name: 'id'},
+                    {data: 'building_name', name: 'building_name'},
+                    {data: 'address', name: 'address'},
+                    {data: 'created_at', name: 'created_at'},
                     {data: 'actions', name: 'actions', searchable: false, sortable: false}
                 ],
                 order: [[0, "asc"]],

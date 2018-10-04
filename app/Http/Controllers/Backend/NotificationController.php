@@ -50,9 +50,9 @@ class NotificationController extends Controller
          * preparing pass array which contain view and count both
          */
         $passArray['view'] = view('backend.includes.notification')
-                ->with('notifications', $getNotifications)
-                ->with('unreadNotificationCount', $getUnreadNotificationCount)
-                ->render();
+            ->with('notifications', $getNotifications)
+            ->with('unreadNotificationCount', $getUnreadNotificationCount)
+            ->render();
         $passArray['count'] = $getUnreadNotificationCount;
         /*
          * pass jsonencode array
@@ -77,13 +77,12 @@ class NotificationController extends Controller
     public function index(Request $request)
     {
         $notifications = Notification::where('receiver_id', access()->user()->id)->get();
-
         return view('backend.notification.index', compact('notifications'));
     }
 
     /**
-     * @param type                    $id
-     * @param type                    $status
+     * @param type $id
+     * @param type $status
      * @param MarkNotificationRequest $request
      *
      * @return type

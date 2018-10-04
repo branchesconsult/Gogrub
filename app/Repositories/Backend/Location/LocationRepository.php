@@ -29,11 +29,13 @@ class LocationRepository extends BaseRepository
     public function getForDataTable()
     {
         return $this->query()
-            //->where('locationable_id', request()->get('chef_id'))
+            ->where('locationable_id', request()->get('chef_id'))
             ->select([
-                config('module.locations.table') . '.id',
-                config('module.locations.table') . '.created_at',
-                config('module.locations.table') . '.updated_at',
+                'id',
+                'building_name',
+                'address',
+                'created_at',
+                'updated_at',
             ]);
     }
 

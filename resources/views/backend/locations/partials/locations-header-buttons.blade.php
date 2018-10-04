@@ -26,13 +26,15 @@
                 <i class="fa fa-list-ul"></i> {{ trans( 'menus.backend.locations.all' ) }}
             </a>
         </li>
-        @permission( 'create-location' )
-        <li>
-            <a href="{{ route( 'admin.locations.create' ) }}?chef_id={!! request()->chef_id !!}">
-                <i class="fa fa-plus"></i> {{ trans( 'menus.backend.locations.create' ) }}
-            </a>
-        </li>
-        @endauth
+        @if(!$hasLocation)
+            @permission( 'create-location' )
+            <li>
+                <a href="{{ route( 'admin.locations.create' ) }}?chef_id={!! request()->chef_id !!}">
+                    <i class="fa fa-plus"></i> {{ trans( 'menus.backend.locations.create' ) }}
+                </a>
+            </li>
+            @endauth
+        @endif
     </ul>
 </div>
 <div class="clearfix"></div>

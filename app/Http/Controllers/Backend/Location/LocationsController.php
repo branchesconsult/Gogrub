@@ -46,6 +46,7 @@ class LocationsController extends Controller
         if ($request->has('chef_id')) {
             $data['locationable_type'] = Location::USER_ROLES['Chef'];
             $data['locationable_id'] = $request->chef_id;
+            $data['hasLocation'] = (boolean)Location::where('locationable_id', $request->chef_id)->get()->count();
         } else {
             die('Location url is invalid');
         }

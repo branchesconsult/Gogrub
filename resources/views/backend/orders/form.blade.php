@@ -7,7 +7,9 @@
             <select name="orderstatus_id" id="orderstatus_id" class="form-control">
                 <option value="">--Select</option>
                 @foreach($order_statuses as $key => $val)
-                    <option value="{!! $val->id !!}">{!! $val->status !!}</option>
+                    <option {!! ($val->id == $order->orderstatus_id) ? 'selected':'' !!} value="{!! $val->id !!}">
+                        {!! $val->status !!}
+                    </option>
                 @endforeach
             </select>
         </div><!--col-lg-10-->
@@ -16,11 +18,8 @@
 
 @section("after-scripts")
     <script type="text/javascript">
-        //Put your javascript needs in here.
-        //Don't forget to put `@`parent exactly after `@`section("after-scripts"),
-        //if your create or edit blade contains javascript of its own
         $(document).ready(function () {
-            //Everything in here would execute after the DOM is ready to manipulated.
+
         });
     </script>
 @endsection

@@ -48,7 +48,7 @@ class OrdersTableController extends Controller
                 return $order->chef->full_name . ' - ' . $order->chef->mobile;
             })
             ->addColumn('customer', function ($order) {
-                return $order->customerf_full_name . ' - ' . $order->customer_phone;
+                return $order->customer_full_name . ' - ' . $order->customer_phone;
             })
             ->make(true);
     }
