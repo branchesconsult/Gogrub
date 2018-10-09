@@ -99,6 +99,10 @@ class Handler extends ExceptionHandler
             * Usually because user stayed on the same screen too long and their session expired
             */
             if ($exception instanceof UnauthorizedHttpException) {
+                if ($exception->getStatusCode() == 401) {
+                    return $this->setStatusCode($exception->getStatusCode())
+                        ->respondWithError('Token is invalid.');
+                }
                 switch (get_class($exception->getPrevious())) {
                     case \App\Exceptions\Handler::class:
                         return $this->setStatusCode($exception->getStatusCode())

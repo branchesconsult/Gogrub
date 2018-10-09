@@ -349,7 +349,9 @@ function sendPushNotificationToFCMSever($fcmToken, $message,
                                         $object = array())
 {
     if (!empty($fcmToken)) {
-        $fcmToken = array_column($fcmToken->toArray(), 'fcm_token');
+        if (is_multi_array($fcmToken)) {
+            $fcmToken = array_column($fcmToken->toArray(), 'fcm_token');
+        }
     }
     $path_to_firebase_cm = 'https://fcm.googleapis.com/fcm/send';
     $fields = array(
@@ -384,4 +386,11 @@ function sendPushNotificationToFCMSever($fcmToken, $message,
     // Close connection
     curl_close($ch);
     return ['result' => $result, 'fcm_token' => $fcmToken];
+}
+
+
+function is_multi_array($arr)
+{
+    rsort($arr);
+    return isset($arr[0]) && is_array($arr[0]);
 }
