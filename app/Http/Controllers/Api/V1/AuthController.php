@@ -45,6 +45,7 @@ class AuthController extends APIController
         if (!empty($request->get('fcm_token'))) {
             $deviceToken = [
                 'fcm_token' => $request->get('fcm_token'),
+                'device_id' => $request->device_id
             ];
             $deviceInfo = [
                 'type' => $request->get('device_type'),

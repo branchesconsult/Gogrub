@@ -31,7 +31,9 @@ class OrderCreateListener implements ShouldQueue
     {
         $this->createNotification($event);
         $chefDeviceToken = Device::where('user_id', $event->order->chef_id)->get(['fcm_token']);
+        $customerDeviceToken = Device::where('user_id', $event->order->customer_id)->get(['fcm_token']);
         sendPushNotificationToFCMSever($chefDeviceToken, 'You have a new order');
+        sendPushNotificationToFCMSever($customerDeviceToken, 'Your order have been placed sexfully');
     }
 
     public function createNotification($event)
