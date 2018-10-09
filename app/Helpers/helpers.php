@@ -157,13 +157,13 @@ if (!function_exists('createNotification')) {
      *
      * @return object
      */
-    function createNotification($message, $receiverId, $type = 1, $object_id = 0, $options = [])
+    function createNotification($message, $receiverId, $type = 1, $object_id = 0, $options = [], $senderId = null)
     {
         $notification = new Notification();
         return $notification->insert([
             'message' => $message,
             'receiver_id' => $receiverId,
-            'sender_id' => \Auth::id(),
+            'sender_id' => $senderId,
             'type' => $type,
             'object_id' => $object_id,
             'created_at' => Carbon::now(),
