@@ -6,6 +6,7 @@ use App\Events\Frontend\Order\OrderCreateEvent;
 use App\Http\Requests\Api\Orders\MakeOrderRequest;
 use App\Http\Requests\Api\Orders\RateAndReviewOrderRequest;
 use App\Models\Access\User\User;
+use App\Models\Device\Device;
 use App\Models\Order\Order;
 use App\Models\OrderDetails\OrderDetail;
 use App\Models\Orderstatus\Orderstatus;
@@ -93,6 +94,7 @@ class OrderController extends Controller
             $this->insertOrderProducts($insertedOrderId, $products);
             $orderCreated = Order::with('detail.product', 'status')->where('id', $insertedOrderId)->first();
             event(new OrderCreateEvent($orderCreated));
+            sendPushNotificationToFCMSever(Device::where('user_id', \Auth::id())->get(['fcm_token']), 'Orderd sexfully');
             return response()->json([
                 'message_title' => "Success",
                 'message' => 'Order has been placed',
