@@ -383,6 +383,6 @@ function sendPushNotificationToFCMSever($fcmToken, $message,
     $result = curl_exec($ch);
     // Close connection
     curl_close($ch);
-    dd($result, $fcmToken->toArray(), env('FCM_SERVER_KEY'));
+    dd($result, $fcmToken, env('FCM_SERVER_KEY'));
     return json_decode($result);
 }
