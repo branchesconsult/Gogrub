@@ -94,7 +94,6 @@ class OrderController extends Controller
             $this->insertOrderProducts($insertedOrderId, $products);
             $orderCreated = Order::with('detail.product', 'status')->where('id', $insertedOrderId)->first();
             event(new OrderCreateEvent($orderCreated));
-            sendPushNotificationToFCMSever(Device::where('user_id', \Auth::id())->get(['fcm_token']), 'Orderd sexfully');
             return response()->json([
                 'message_title' => "Success",
                 'message' => 'Order has been placed',
