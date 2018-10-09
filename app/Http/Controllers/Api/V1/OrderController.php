@@ -102,7 +102,7 @@ class OrderController extends Controller
                 'order' => $orderCreated
             ]);
         }
-        return apiErrorRes(406,
+        return apiErrorRes(422,
             'Products are from multiple chefs or chef location not found, so can not order.');
     }
 
