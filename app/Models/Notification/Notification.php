@@ -11,12 +11,15 @@ class Notification extends BaseModel
      *
      * @var string
      */
-    protected $table;
+    protected $table = 'notifications';
 
     const ORDER_CREATE = 'order_create';
+    const ORDER_UPDATE = 'order_update';
+
+    protected $guarded = [];
 
     public function __construct()
     {
-        $this->table = config('access.notifications_table');
+        //$this->table = config('access.notifications_table');
     }
 }
