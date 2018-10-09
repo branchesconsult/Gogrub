@@ -201,7 +201,7 @@ return [
         App\Providers\RouteServiceProvider::class,
         Tymon\JWTAuth\Providers\LaravelServiceProvider::class,
         Bvipul\Generator\Provider\CrudGeneratorServiceProvider::class,
-        //Mpociot\ApiDoc\ApiDocGeneratorServiceProvider::class,
+        Mpociot\ApiDoc\ApiDocGeneratorServiceProvider::class,
         Unisharp\FileApi\FileApiServiceProvider::class,
         App\Providers\BroadcastServiceProvider::class,
     ],

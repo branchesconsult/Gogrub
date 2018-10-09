@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Api\V1\Chef;
 
+use App\Events\Frontend\Order\OrderUpdateEvent;
 use App\Http\Requests\Api\Chef\ChefOrderUpdateRequest;
 use App\Http\Requests\Api\Chef\GetOrdersRequest;
 use App\Models\Order\Order;
@@ -53,8 +54,12 @@ class ChefOrderController extends Controller
      * Update specific order
      * @param ChefOrderUpdateRequest $request
      */
-    public function update(ChefOrderUpdateRequest $request)
+    public function update(ChefOrderUpdateRequest $request, $id)
     {
-
+        $order = Order::find($id);
+        $order->orderstatus_id = $request->orderstatus_id;
+        $order->save();
+        event(new OrderUpdateEvent($order));
+        return apiSuccessRes('Order updated successfully.');
     }
 }

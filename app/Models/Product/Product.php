@@ -28,7 +28,7 @@ class Product extends Model
      */
     protected $table = 'products';
 
-    protected $appends = ['remaining_servings'];
+    protected $appends = ['remaining_servings', 'posted_at'];
 
     /**
      * Default values for model fields
@@ -96,5 +96,11 @@ class Product extends Model
         $totalSold = OrderDetail::where('product_id', $this->id)->get()->count();
         $remainingServings = max($totalSold - $this->total_servings, 0);
         return $remainingServings;
+    }
+
+
+    public function getPostedAtAttribute()
+    {
+        return Carbon::createFromTimeStamp(strtotime($this->created_at))->diffForHumans();
     }
 }

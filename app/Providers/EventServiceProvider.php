@@ -2,10 +2,9 @@
 
 namespace App\Providers;
 
-use App\Events\Backend\Order\OrderUpdateEvent;
 use App\Events\ExampleEvent;
 use App\Events\Frontend\Order\OrderCreateEvent;
-use App\Listeners\Backend\Order\OrderUpdateListener;
+use App\Events\Frontend\Order\OrderUpdateEvent;
 use App\Listeners\Frontend\Order\OrderCreateListener;
 use Illuminate\Foundation\Support\Providers\EventServiceProvider as ServiceProvider;
 
@@ -24,7 +23,7 @@ class EventServiceProvider extends ServiceProvider
             OrderCreateListener::class
         ],
         OrderUpdateEvent::class => [
-            OrderUpdateListener::class
+
         ]
         //ExampleEvent::class => []
     ];
