@@ -2,6 +2,7 @@
 
 namespace App\Http;
 
+use App\Http\Middleware\IsChef;
 use App\Http\Middleware\IsMobileVerified;
 use Illuminate\Foundation\Http\Kernel as HttpKernel;
 use Tymon\JWTAuth\Middleware\GetUserFromToken;
@@ -79,6 +80,7 @@ class Kernel extends HttpKernel
         'access.routeNeedsPermission' => \App\Http\Middleware\RouteNeedsPermission::class,
         'jwt.auth' => GetUserFromToken::class,
         'jwt.refresh' => RefreshToken::class,
-        'mobile.verify' => IsMobileVerified::class
+        'mobile.verify' => IsMobileVerified::class,
+        'chef' => IsChef::class
     ];
 }

@@ -6,6 +6,7 @@ use App\Models\Access\User\User;
 use App\Models\OrderDetails\OrderDetail;
 use App\Models\Orderstatus\Orderstatus;
 use App\Models\Product\Product;
+use App\Models\RatingReviews\RatingReview;
 
 /**
  * Class OrderRelationship
@@ -37,5 +38,10 @@ trait OrderRelationship
     public function status()
     {
         return $this->belongsTo(Orderstatus::class, 'orderstatus_id');
+    }
+
+    public function ratingReview()
+    {
+        return $this->hasMany(RatingReview::class, 'order_id');
     }
 }

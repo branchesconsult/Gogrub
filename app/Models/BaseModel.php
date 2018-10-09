@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use Carbon\Carbon;
 use Illuminate\Database\Eloquent\Model;
 
 class BaseModel extends Model
@@ -34,8 +35,8 @@ class BaseModel extends Model
 
         foreach ($collection as $model) {
             $items[$model->id] = [
-                'id'    => $model->id,
-                'name'  => $model->$field_name,
+                'id' => $model->id,
+                'name' => $model->$field_name,
                 'model' => $model,
             ];
         }
@@ -45,5 +46,15 @@ class BaseModel extends Model
         }
 
         return $items;
+    }
+
+    /**
+     * date time format changef
+     * @param $attr
+     * @return mixed
+     */
+    public function getGlobalDateTimeFormat($dateTime)
+    {
+        return Carbon::parse($dateTime)->toDayDateTimeString();
     }
 }

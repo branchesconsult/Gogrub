@@ -46,6 +46,10 @@ Route::group(['namespace' => 'Api\V1', 'prefix' => 'v1', 'as' => 'v1.'], functio
             Route::post('order/rate', 'OrderController@rateOrder');
             Route::resource('notifications', 'NotificationController', ['only' => ['index']]);
         });
+
+        Route::group(['middleware' => ['chef'], 'prefix' => 'chef', 'namespace' => 'Chef'], function () {
+            Route::resource('orders', 'ChefOrderController');
+        });
         // Users
         //Route::resource('users', 'UsersController', ['except' => ['create', 'edit']]);
         Route::post('user/update', 'UsersController@update');

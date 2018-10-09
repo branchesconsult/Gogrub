@@ -2,14 +2,16 @@
 
 namespace App\Models\Order;
 
+use App\Models\BaseModel;
 use App\Models\ModelTrait;
+use Carbon\Carbon;
 use Grimzy\LaravelMysqlSpatial\Eloquent\SpatialTrait;
 use Grimzy\LaravelMysqlSpatial\Types\Point;
 use Illuminate\Database\Eloquent\Model;
 use App\Models\Order\Traits\OrderAttribute;
 use App\Models\Order\Traits\OrderRelationship;
 
-class Order extends Model
+class Order extends BaseModel
 {
     use ModelTrait,
         OrderAttribute,
@@ -17,6 +19,11 @@ class Order extends Model
         OrderRelationship {
         // OrderAttribute::getEditButtonAttribute insteadof ModelTrait;
     }
+
+    const ORDER_ACTIVE = 2;
+    const ORDER_PENDING = 1;
+    const ORDER_CANCELLED = 4;
+    const ORDER_DELIEVRED = 3;
 
     /**
      * NOTE : If you want to implement Soft Deletes in this model,
@@ -28,7 +35,6 @@ class Order extends Model
      * @var string
      */
     protected $table = 'orders';
-
 
     protected $casts = [
         'float' => 'subtotal'
@@ -67,7 +73,7 @@ class Order extends Model
         parent::__construct($attributes);
     }
 
-    protected $appends = ['total'];
+    protected $appends = ['total', 'posted_at'];
 
     public function getTotalAttribute()
     {
@@ -96,5 +102,16 @@ class Order extends Model
     public function getSubtotalAttribute($val)
     {
         return numToDecimal($val);
+    }
+
+
+    public function getCreatedAtAttribute($val)
+    {
+        return $this->getGlobalDateTimeFormat($val);
+    }
+
+    public function getPostedAtAttribute()
+    {
+        return Carbon::createFromTimeStamp(strtotime($this->created_at))->diffForHumans();
     }
 }

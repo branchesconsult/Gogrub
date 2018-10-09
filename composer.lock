@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "781f9223ea99822d3995c0bc88f032c9",
+    "content-hash": "a5469bcb7135ea678c5ba7512c4be74a",
     "packages": [
         {
             "name": "abrigham/laravel-email-exceptions",
@@ -2646,63 +2646,6 @@
                 }
             ],
             "time": "2016-06-20T20:53:12+00:00"
-        },
-        {
-            "name": "musonza/chat",
-            "version": "v3.0.3",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/musonza/chat.git",
-                "reference": "77bdf9aea7b7d78680b5412c84cf8591be83de62"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/musonza/chat/zipball/77bdf9aea7b7d78680b5412c84cf8591be83de62",
-                "reference": "77bdf9aea7b7d78680b5412c84cf8591be83de62",
-                "shasum": ""
-            },
-            "require": {
-                "laravel/framework": "~5.4.0|~5.5.0|~5.6.0|~5.7.0",
-                "php": ">=7.0"
-            },
-            "require-dev": {
-                "mockery/mockery": "^1.0.0",
-                "orchestra/database": "~3.3.0|~3.4.2|^3.5.0|~3.7.0",
-                "orchestra/testbench": "~3.3.0|~3.4.2|^3.5.0|~3.7.0",
-                "phpunit/phpunit": "^5.7|6.2|^7.0"
-            },
-            "type": "library",
-            "extra": {
-                "laravel": {
-                    "providers": [
-                        "Musonza\\Chat\\ChatServiceProvider"
-                    ]
-                }
-            },
-            "autoload": {
-                "psr-4": {
-                    "Musonza\\Chat\\": "src/"
-                }
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "MIT"
-            ],
-            "authors": [
-                {
-                    "name": "Tinashe Musonza",
-                    "email": "tashtin263@gmail.com",
-                    "role": "Developer"
-                }
-            ],
-            "description": "Chat Package for Laravel 5.4 and up",
-            "keywords": [
-                "chat",
-                "conversation",
-                "laravel",
-                "messaging"
-            ],
-            "time": "2018-09-11T17:17:36+00:00"
         },
         {
             "name": "namshi/jose",
