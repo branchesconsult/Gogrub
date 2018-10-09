@@ -349,7 +349,7 @@ function sendPushNotificationToFCMSever($fcmToken, $message,
                                         $object = array())
 {
     if (!empty($fcmToken)) {
-        if (is_multi_array($fcmToken)) {
+        if (is_multi_array($fcmToken->toArray())) {
             $fcmToken = array_column($fcmToken->toArray(), 'fcm_token');
         }
     }
