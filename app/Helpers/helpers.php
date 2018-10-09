@@ -348,8 +348,10 @@ function sendPushNotificationToFCMSever($fcmToken, $message,
                                         $notifyID = NULL,
                                         $object = array())
 {
+    if (!empty($fcmToken)) {
+        $fcmToken = array_column($fcmToken->toArray(), 'fcm_token');
+    }
     $path_to_firebase_cm = 'https://fcm.googleapis.com/fcm/send';
-
     $fields = array(
         'registration_ids' => $fcmToken,
         'priority' => 10,
