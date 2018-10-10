@@ -34,6 +34,7 @@ class AddProductRequest extends FormRequest
             'serving_size' => 'required|integer',
             'total_servings' => 'required|integer',
             'description' => 'required',
+            'preparation_time' => 'required'
         ];
         return $rules;
     }
