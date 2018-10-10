@@ -31,7 +31,7 @@ class User extends Authenticatable implements JWTSubject
      */
     protected $table;
     protected $guarded = [];
-    protected $appends = ['avg_rating'];
+    protected $appends = ['avg_rating', 'applied_as_chef'];
 
 //    /**
 //     * The attributes that are mass assignable.
@@ -102,5 +102,12 @@ class User extends Authenticatable implements JWTSubject
     public function getAvgRatingAttribute()
     {
         return $this->ratingReviews()->avg('rating') ?? 0;
+    }
+
+    public function getAppliedAsChefAttribute()
+    {
+        return (boolean)$this->meta()->where('meta_key', 'cnic_image_0')
+            ->where('user_id', $this->id)
+            ->count();
     }
 }
