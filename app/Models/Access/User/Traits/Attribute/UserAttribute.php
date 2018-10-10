@@ -260,9 +260,16 @@ trait UserAttribute
 
     public function getLocationsButtonAttribute()
     {
-        //if ($this->hasRole('Chef')) {
+        //if (access()->hasRole('Chef')) {
         return '<a href="' . route('admin.locations.index') . '?chef_id=' . $this->id . '"><i class="fa fa-location-arrow"></i> Location</a>';
         //}
+    }
+
+    public function getChefVerificationButtonAttribute()
+    {
+        return '<a href="' . route('admin.access.user.meta', ['id' => $this->id]) . '">
+                <i class="fa fa-check"></i> Verification docs
+                </a>';
     }
 
     public function checkAdmin()
@@ -278,6 +285,7 @@ trait UserAttribute
                         <li>' . $this->getDeleteButtonAttribute('') . '</li>
                         <li>' . $this->getLoginAsButtonAttribute('') . '</li>
                         <li>' . $this->getLocationsButtonAttribute() . '</li>
+                        <li>' . $this->getChefVerificationButtonAttribute() . '</li>
                         </ul>
                     </div>';
         }

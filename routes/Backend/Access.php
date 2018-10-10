@@ -4,8 +4,8 @@
  * All route names are prefixed with 'admin.access'.
  */
 Route::group([
-    'prefix'    => 'access',
-    'as'        => 'access.',
+    'prefix' => 'access',
+    'as' => 'access.',
     'namespace' => 'Access',
 ], function () {
 
@@ -26,12 +26,11 @@ Route::group([
              */
             Route::get('user/deactivated', 'UserStatusController@getDeactivated')->name('user.deactivated');
             Route::get('user/deleted', 'UserStatusController@getDeleted')->name('user.deleted');
-
             /*
              * User CRUD
              */
             Route::resource('user', 'UserController');
-
+            Route::get('user/meta/{id}', 'UserController@userMetaView')->name('user.meta');
             /*
              * Specific User
              */

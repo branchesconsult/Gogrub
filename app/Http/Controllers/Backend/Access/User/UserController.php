@@ -17,6 +17,7 @@ use App\Http\Responses\RedirectResponse;
 use App\Http\Responses\ViewResponse;
 use App\Models\Access\Permission\Permission;
 use App\Models\Access\User\User;
+use App\Models\Access\Usermeta\Usermeta;
 use App\Repositories\Backend\Access\Role\RoleRepository;
 use App\Repositories\Backend\Access\User\UserRepository;
 
@@ -80,7 +81,7 @@ class UserController extends Controller
     }
 
     /**
-     * @param \App\Models\Access\User\User                           $user
+     * @param \App\Models\Access\User\User $user
      * @param \App\Http\Requests\Backend\Access\User\ShowUserRequest $request
      *
      * @return \App\Http\Responses\Backend\Access\User\ShowResponse
@@ -91,7 +92,7 @@ class UserController extends Controller
     }
 
     /**
-     * @param \App\Models\Access\User\User                           $user
+     * @param \App\Models\Access\User\User $user
      * @param \App\Http\Requests\Backend\Access\User\EditUserRequest $request
      *
      * @return \App\Http\Responses\Backend\Access\User\EditResponse
@@ -105,7 +106,7 @@ class UserController extends Controller
     }
 
     /**
-     * @param \App\Models\Access\User\User                             $user
+     * @param \App\Models\Access\User\User $user
      * @param \App\Http\Requests\Backend\Access\User\UpdateUserRequest $request
      *
      * @return \App\Http\Responses\RedirectResponse
@@ -118,7 +119,7 @@ class UserController extends Controller
     }
 
     /**
-     * @param \App\Models\Access\User\User                             $user
+     * @param \App\Models\Access\User\User $user
      * @param \App\Http\Requests\Backend\Access\User\DeleteUserRequest $request
      *
      * @return \App\Http\Responses\RedirectResponse
@@ -128,5 +129,21 @@ class UserController extends Controller
         $this->users->delete($user);
 
         return new RedirectResponse(route('admin.access.user.index'), ['flash_success' => trans('alerts.backend.users.deleted')]);
+    }
+
+    public function userMetaView($userId)
+    {
+        $data['user'] = User::with(['meta'])->where('id', $userId)->first();
+        $data['meta_array'] = [];
+        foreach ($data['user']['meta'] as $key => $val) {
+            if (strpos($val['meta_key'], 'cnic_image') !== false) {
+                $data['meta_array']['cnic_image'][] = $val['meta_value'];
+            }
+            if (strpos($val['meta_key'], 'kitchen_image') !== false) {
+                $data['meta_array']['kitchen_image'][] = $val['meta_value'];
+            }
+        }
+        //dd($data['meta_array'], $data['user']->toArray());
+        return view('backend.access.users.usermeta-view', $data);
     }
 }
