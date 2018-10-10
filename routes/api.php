@@ -49,6 +49,7 @@ Route::group(['namespace' => 'Api\V1', 'prefix' => 'v1', 'as' => 'v1.'], functio
 
         Route::group(['middleware' => ['chef'], 'prefix' => 'chef', 'namespace' => 'Chef'], function () {
             Route::resource('orders', 'ChefOrderController', ['only' => 'index', 'show', 'update']);
+            Route::post('apply', 'ChefAuthController@storeRegistraton');
         });
         // Users
         //Route::resource('users', 'UsersController', ['except' => ['create', 'edit']]);
