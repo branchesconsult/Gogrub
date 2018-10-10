@@ -24,6 +24,12 @@ Route::group(['namespace' => 'Api\V1', 'prefix' => 'v1', 'as' => 'v1.'], functio
     Route::post('register', 'RegisterController@register');
     Route::post('login', 'AuthController@login');
     Route::group(['middleware' => ['jwt.auth']], function () {
+        Route::get('refresh-user', function () {
+            $user = \App\Models\Access\User\User::where('id', \Auth::id())->first();
+            return response()->json([
+                'user' => $user
+            ]);
+        });
         //Verify mobile number
         Route::post('phone-verify', 'AuthController@verifyMobile');
         Route::post('resend-verification-code', 'AuthController@resendVerificationCode');

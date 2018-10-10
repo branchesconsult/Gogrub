@@ -11,17 +11,19 @@ class Setting extends BaseModel
      *
      * @var string
      */
-    protected $table;
+    protected $table = 'settings';
 
+    const SITE_LOGO = 'seo_site_logo';
+    const SITE_FAVICON = 'seo_site_favicon';
+    const SITE_TITLE = 'seo_site_title';
+    const PRODUCT_SEARCH_AREA = 'product_search_area';
+    const DEFAULT_GOGRUB_COMMISSION = 'default_gogrub_commission';
+    const COMPANY_ADDRESS = 'company_address';
+    const COMPANY_PHONE = 'company_phone';
     /**
      * The attributes that are mass assignable.
      *
      * @var array
      */
-    protected $fillable = ['logo', 'favicon', 'seo_title', 'seo_keyword', 'seo_description', 'company_contact', 'company_address', 'from_name', 'from_email', 'footer_text', 'copyright_text', 'terms', 'disclaimer', 'google_analytics'];
-
-    public function __construct()
-    {
-        $this->table = config('access.settings_table');
-    }
+    protected $guarded = [];
 }

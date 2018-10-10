@@ -43,6 +43,7 @@ class CreateOrdersTable extends Migration
             $table->enum('discount_type', ['percentage', 'fixed'])->nullable();
             $table->double('delivery_charges')->default(0)->comment('Approx. delivery charges');
             $table->double('subtotal');
+            $table->double('gogrub_commission')->default(5)->comment('in percentage');
             $table->enum('payment_method', ['cod', '2co', 'easypay', 'mobicash']);
             $table->timestamps();
             $table->softDeletes();

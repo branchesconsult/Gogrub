@@ -106,8 +106,17 @@ class User extends Authenticatable implements JWTSubject
 
     public function getAppliedAsChefAttribute()
     {
-        return (boolean)$this->meta()->where('meta_key', 'cnic_image_0')
+        return access()->hasRole('Chef') ? true : (boolean)$this->meta()->where('meta_key', 'cnic_image_0')
             ->where('user_id', $this->id)
             ->count();
+    }
+
+    /**
+     * Ignore is_chef in database, I was stupid in this metter
+     * @return bool
+     */
+    public function getIsChefAttribute()
+    {
+        return access()->hasRole('Chef') ? true : false;
     }
 }
