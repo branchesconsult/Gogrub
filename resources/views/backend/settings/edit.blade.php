@@ -10,7 +10,7 @@
 @endsection
 
 @section('content')
-    {{ Form::open(['route' => ['admin.settings.update', $setting], 'class' => 'form-horizontal',
+    {{ Form::open(['route' => ['admin.settings.create'], 'class' => 'form-horizontal',
     'role' => 'form', 'method' => 'PATCH','files' => true, 'id' => 'edit-settings']) }}
 
     <div class="box box-info">
@@ -34,16 +34,12 @@
                        data-toggle="tab">{{ trans('labels.backend.settings.mail') }}</a>
                 </li>
                 <li role="presentation">
-                    <a href="#tab4" aria-controls="3" role="tab"
-                       data-toggle="tab">{{ trans('labels.backend.settings.footer') }}</a>
-                </li>
-                <li role="presentation">
                     <a href="#tab5" aria-controls="4" role="tab"
-                       data-toggle="tab">{{ trans('labels.backend.settings.terms') }}</a>
+                       data-toggle="tab">Chef settings</a>
                 </li>
                 <li role="presentation">
                     <a href="#tab6" aria-controls="5" role="tab"
-                       data-toggle="tab">{{ trans('labels.backend.settings.google') }}</a>
+                       data-toggle="tab">Search settings</a>
                 </li>
             </ul>
 
@@ -179,34 +175,14 @@
                     </div>
                     <!--form control-->
                 </div>
-                <div role="tabpanel" class="tab-pane" id="tab4">
-                    <div class="form-group">
-                        {{ Form::label('footer_text', trans('validation.attributes.backend.settings.footer.text'), ['class' => 'col-lg-2 control-label'])
-                        }}
-
-                        <div class="col-lg-10">
-                            {{ Form::text('footer_text', null,['class' => 'form-control', 'placeholder' => trans('validation.attributes.backend.settings.footer.text'),
-                            'rows' => 2]) }}
-                        </div>
-                    </div>
-                    <div class="form-group">
-                        {{ Form::label('copyright_text', trans('validation.attributes.backend.settings.footer.copyright'), ['class' => 'col-lg-2
-                        control-label']) }}
-
-                        <div class="col-lg-10">
-                            {{ Form::text('copyright_text', null,['class' => 'form-control', 'placeholder' => trans('validation.attributes.backend.settings.footer.copyright'),
-                            'rows' => 2]) }}
-                        </div>
-                    </div>
-                    <!--form control-->
-                </div>
                 <div role="tabpanel" class="tab-pane" id="tab5">
                     <div class="form-group">
-                        {{ Form::label('terms', trans('validation.attributes.backend.settings.termscondition.terms'), ['class' => 'col-lg-2 control-label'])
+                        {{ Form::label('gogrub_default_commission',
+                        'Default gogrub commission',
+                        ['class' => 'col-lg-2 control-label'])
                         }}
-
                         <div class="col-lg-10">
-                            {{ Form::textarea('terms', null,['class' => 'form-control', 'placeholder' => trans('validation.attributes.backend.settings.termscondition.terms')])
+                            {{ Form::text('gogrub_default_commission', null,['class' => 'form-control', 'placeholder' => trans('validation.attributes.backend.settings.termscondition.terms')])
                             }}
                         </div>
                     </div>
@@ -224,11 +200,12 @@
                 </div>
                 <div role="tabpanel" class="tab-pane" id="tab6">
                     <div class="form-group">
-                        {{ Form::label('google_analytics', trans('validation.attributes.backend.settings.google.analytic'), ['class' => 'col-lg-2
+                        {{ Form::label('default_search_distance',
+                        'Default Search distance (Km)', ['class' => 'col-lg-2
                         control-label']) }}
 
                         <div class="col-lg-10">
-                            {{ Form::textarea('google_analytics', null,['class' => 'form-control', 'placeholder' => trans('validation.attributes.backend.settings.google.analytic')])
+                            {{ Form::text('default_search_distance', null,['class' => 'form-control', 'placeholder' => trans('validation.attributes.backend.settings.google.analytic')])
                             }}
                         </div>
                     </div>
