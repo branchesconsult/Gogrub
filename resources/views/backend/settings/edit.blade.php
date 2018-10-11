@@ -52,18 +52,31 @@
                         <div class="col-lg-10">
 
                             <div class="custom-file-input">
-                                {!! Form::file(\App\Models\Settings\Setting::SITE_LOGO,
-                                array('class'=>'form-control inputfile inputfile-1' ))
+                                <div class="input-group">
+                                       <span class="input-group-btn">
+                                         <a data-input="{!! \App\Models\Settings\Setting::SITE_LOGO !!}"
+                                            data-preview="holder-{!! \App\Models\Settings\Setting::SITE_LOGO !!}"
+                                            class="btn btn-primary lfm">
+                                           <i class="fa fa-picture-o"></i> Choose
+                                         </a>
+                                       </span>
+                                    {!! Form::text(\App\Models\Settings\Setting::SITE_LOGO, null,
+                                    ['class'=>'form-control inputfile inputfile-1', 'id' => \App\Models\Settings\Setting::SITE_LOGO])
                                  !!}
-                                <label for="{!! \App\Models\Settings\Setting::SITE_LOGO !!}">
-                                    <i class="fa fa-upload"></i>
-                                    <span>Choose a file</span>
-                                </label>
+                                </div>
+                                <img id="holder-{!! \App\Models\Settings\Setting::SITE_LOGO !!}"
+                                     style="margin-top:15px;max-height:100px;">
+
+                                {{----}}
+                                {{--<label for="{!! \App\Models\Settings\Setting::SITE_LOGO !!}">--}}
+                                {{--<i class="fa fa-upload"></i>--}}
+                                {{--<span>Choose a file</span>--}}
+                                {{--</label>--}}
                             </div>
                             <div class="img-remove-logo">
-                                @if($setting['settings'])
+                                @if($settings[\App\Models\Settings\Setting::SITE_LOGO])
                                     <img height="50" width="50"
-                                         src="{{ Storage::disk('public')->url('img/logo/' . $setting->logo) }}">
+                                         src="{!! $settings[\App\Models\Settings\Setting::SITE_LOGO] !!}">
                                     <i id="remove-logo-img" class="fa fa-times remove-logo" data-id="logo"
                                        aria-hidden="true"></i>
                                 @endif
@@ -74,24 +87,25 @@
                     <!--form control-->
 
                     <div class="form-group">
-                        {{ Form::label('favicon', trans('validation.attributes.backend.settings.favicon'), ['class' => 'col-lg-2 control-label'])
+                        {{ Form::label(\App\Models\Settings\Setting::SITE_FAVICON, trans('validation.attributes.backend.settings.favicon'), ['class' => 'col-lg-2 control-label'])
                         }}
 
                         <div class="col-lg-10">
                             <div class="custom-file-input">
-                                {!! Form::file('favicon', array('class'=>'form-control inputfile inputfile-1' )) !!}
+                                {!! Form::file(\App\Models\Settings\Setting::SITE_FAVICON,
+                                 array('class'=>'form-control inputfile inputfile-1' )) !!}
                                 <label for="favicon">
                                     <i class="fa fa-upload"></i>
                                     <span>Choose a file</span>
                                 </label>
                             </div>
                             <div class="img-remove-favicon">
-                                {{--@if($setting->favicon)--}}
-                                {{--<img height="50" width="50"--}}
-                                {{--src="{{ Storage::disk('public')->url('img/favicon/' . $setting->favicon) }}">--}}
-                                {{--<i id="remove-favicon-img" class="fa fa-times remove-logo" data-id="favicon"--}}
-                                {{--aria-hidden="true"></i>--}}
-                                {{--@endif--}}
+                                @if($settings[\App\Models\Settings\Setting::SITE_LOGO])
+                                    <img height="50" width="50"
+                                         src="{!! $settings[\App\Models\Settings\Setting::SITE_LOGO] !!}">
+                                    <i id="remove-favicon-img" class="fa fa-times remove-logo" data-id="favicon"
+                                       aria-hidden="true"></i>
+                                @endif
                             </div>
                         </div>
                         <!--col-lg-10-->
@@ -182,7 +196,8 @@
                         ['class' => 'col-lg-2 control-label'])
                         }}
                         <div class="col-lg-10">
-                            {{ Form::text('gogrub_default_commission', null,['class' => 'form-control', 'placeholder' => trans('validation.attributes.backend.settings.termscondition.terms')])
+                            {{ Form::text('gogrub_default_commission',
+                            $settings['gogrub_default_commission'],['class' => 'form-control', 'placeholder' => trans('validation.attributes.backend.settings.termscondition.terms')])
                             }}
                         </div>
                     </div>
@@ -230,62 +245,24 @@
 
 @section('after-scripts')
     <script src='/js/backend/bootstrap-tabcollapse.js'></script>
+    <script src="/vendor/laravel-filemanager/js/lfm.js"></script>
     <script>
         (function () {
-            Backend.Utils.csrf = document.querySelector('meta[name="csrf-token"]').getAttribute('content');
-            Backend.Settings.selectors.RouteURL = "{{ route('admin.removeIcon', -1) }}";
-            Backend.Settings.init();
+            {{--Backend.Utils.csrf = document.querySelector('meta[name="csrf-token"]').getAttribute('content');--}}
+            {{--Backend.Settings.selectors.RouteURL = "{{ route('admin.removeIcon', -1) }}";--}}
+            {{--Backend.Settings.init();--}}
 
         })();
 
         window.load = function () {
 
         }
-        /*
-         var route = "{{ route('admin.removeIcon', -1) }}";
-         var data_id = $('#setting').data('id');
-
-         route = route.replace('-1', data_id);
-
-         $('.remove-logo').click(function() {
-         var data = $(this).data('id');
-
-         swal({
-         title: "Warning",
-         text: "Are you sure you want to remove?",
-         type: "warning",
-         showCancelButton: true,
-         confirmButtonColor: "#DD6B55",
-         confirmButtonText: "Yes",
-         closeOnConfirm: true
-         }, function (confirmed) {
-         if (confirmed)
-         {
-         console.log(data);
-         if(data=='logo')
-         {
-         value= 'logo';
-         $('.img-remove-logo').addClass('hidden');
-         }
-         else
-         {
-         value= 'favicon';
-         $('.img-remove-favicon').addClass('hidden');
-         }
-         $.ajax({
-         url: route,
-         type: "POST",
-         data: {data: value},
-         });
-         }
-         });
-         });
-
-         */
         $('#myTab').tabCollapse({
             tabsClass: 'hidden-sm hidden-xs',
             accordionClass: 'visible-sm visible-xs'
         });
-
+        $(document).ready(function () {
+            $('.lfm').filemanager('image');
+        });
     </script>
 @endsection
