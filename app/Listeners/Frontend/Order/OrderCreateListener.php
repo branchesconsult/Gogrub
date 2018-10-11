@@ -10,7 +10,7 @@ use App\Models\Settings\Setting;
 use Illuminate\Queue\InteractsWithQueue;
 use Illuminate\Contracts\Queue\ShouldQueue;
 
-class OrderCreateListener
+class OrderCreateListener implements ShouldQueue
 {
 
     /**
