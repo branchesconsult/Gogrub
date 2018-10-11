@@ -296,7 +296,7 @@ function apiErrorRes($status_code, $message)
         'message' => $message,
         'success' => false,
         'message_title' => 'Error'
-    ], $status_code);
+    ], 403);
 }
 
 function apiSuccessRes($message)
