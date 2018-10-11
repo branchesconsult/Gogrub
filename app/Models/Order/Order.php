@@ -73,7 +73,7 @@ class Order extends BaseModel
         parent::__construct($attributes);
     }
 
-    protected $appends = ['total', 'posted_at'];
+    protected $appends = ['total', 'posted_at', 'avg_rating'];
 
     public function getTotalAttribute()
     {
@@ -113,5 +113,10 @@ class Order extends BaseModel
     public function getPostedAtAttribute()
     {
         return Carbon::createFromTimeStamp(strtotime($this->created_at))->diffForHumans();
+    }
+
+    public function getAvgRatingAttribute()
+    {
+        return 3;
     }
 }
