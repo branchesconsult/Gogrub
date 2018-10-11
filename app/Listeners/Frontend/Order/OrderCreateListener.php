@@ -32,7 +32,7 @@ class OrderCreateListener
     public function handle(OrderCreateEvent $event)
     {
         $this->createNotification($event);
-        Order::find($event->order->id)->gogrub_commission = Setting::where('setting_meta', Setting::DEFAULT_GOGRUB_COMMISSION)
+        Order::find($event->order->id)->gogrub_commission = Setting::where('setting_key', Setting::DEFAULT_GOGRUB_COMMISSION)
             ->first()
             ->setting_value;
         $chefDeviceToken = Device::where('user_id', $event->order->chef_id)->get(['fcm_token']);
