@@ -31,7 +31,7 @@ class OrderCreateListener
      */
     public function handle(OrderCreateEvent $event)
     {
-        $this->createNotification($event);
+        //$this->createNotification($event);
         Order::find($event->order->id)->gogrub_commission = Setting::where('setting_meta', Setting::DEFAULT_GOGRUB_COMMISSION)
             ->first()
             ->setting_value;
