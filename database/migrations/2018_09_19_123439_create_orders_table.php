@@ -21,6 +21,7 @@ class CreateOrdersTable extends Migration
             $table->string('invoice_num');
             $table->longText('special_instructions')->nullable()->default(null);
             $table->integer('orderstatus_id')->unsigned();
+            $table->double('gogrub_commission')->default(0);
             //Chef info
             $table->string('chef_full_name');
             $table->string('chef_phone');
