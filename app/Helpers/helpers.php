@@ -167,6 +167,7 @@ if (!function_exists('createNotification')) {
             'type' => $type,
             'object_id' => $object_id,
             'created_at' => Carbon::now(),
+            'updated_at' => Carbon::now(),
         ]);
         if ($type == 2 || $type == 3) {
             if (!empty($options['data']) && !empty($options['email_template_type'])) {

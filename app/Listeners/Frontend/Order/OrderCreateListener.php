@@ -32,9 +32,6 @@ class OrderCreateListener implements ShouldQueue
     public function handle(OrderCreateEvent $event)
     {
         $this->createNotification($event);
-        Order::find($event->order->id)->gogrub_commission = Setting::where('setting_key', Setting::DEFAULT_GOGRUB_COMMISSION)
-            ->first()
-            ->setting_value;
         $chefDeviceToken = Device::where('user_id', $event->order->chef_id)->get(['fcm_token']);
         $customerDeviceToken = Device::where('user_id', $event->order->customer_id)->get(['fcm_token']);
         sendPushNotificationToFCMSever($chefDeviceToken, 'You have a new order');

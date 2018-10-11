@@ -12,6 +12,7 @@ use App\Models\OrderDetails\OrderDetail;
 use App\Models\Orderstatus\Orderstatus;
 use App\Models\Product\Product;
 use App\Models\RatingReviews\RatingReview;
+use App\Models\Settings\Setting;
 use function foo\func;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
@@ -57,6 +58,9 @@ class OrderController extends Controller
     public function store(MakeOrderRequest $request)
     {
         //dd($request->json()->all(), $request->all(), $request->products, $this->getChefByProducts($request->products));
+        $gogrubCommission = Setting::where('setting_key', Setting::DEFAULT_GOGRUB_COMMISSION)
+            ->first()
+            ->setting_value;
         $products = $request->products;
         $customerPhone = $request->customer_phone;
         $customerAddress = $request->customer_address;
@@ -90,6 +94,7 @@ class OrderController extends Controller
             $order['chef_id'] = $chef->id;
             $order['subtotal'] = $this->getProductsTotal($products);
             $order['payment_method'] = $paymentMethod;
+            $order['gogrub_commission'] = $gogrubCommission;
             $insertedOrderId = Order::create($order)->id;
             $this->insertOrderProducts($insertedOrderId, $products);
             $orderCreated = Order::with('detail.product', 'status')->where('id', $insertedOrderId)->first();
