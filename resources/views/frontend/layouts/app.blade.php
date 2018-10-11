@@ -244,12 +244,12 @@
 <script>
     $(document).ready(function () {
         $("#address-autocomplete").geocomplete();
-    });
-    jQuery(".triggerbtn").click(function () {
-        jQuery(this).closest('div').find('#files').click();
-    });
-    jQuery('#step-1').click(function () {
-        jQuery(this).parent().parent().parent().hide().next().show();//hide parent and show next
+        jQuery(".triggerbtn").click(function () {
+            jQuery(this).closest('div').find('#files').click();
+        });
+        jQuery('#step-1').click(function () {
+            jQuery(this).parent().parent().parent().hide().next().show();//hide parent and show next
+        });
     });
     function editName(number) {
         document.getElementById('name' + number).readOnly = false;

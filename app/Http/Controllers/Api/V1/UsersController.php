@@ -94,6 +94,7 @@ class UsersController extends APIController
         $user->full_name = $data['full_name'];
         $user->email = $data['email'];
         if (!empty($data['password'])) {
+            //validate old password
             $user->password = bcrypt($data['password']);
         }
         if ($request->hasFile('avatar')) {
@@ -113,15 +114,15 @@ class UsersController extends APIController
      *
      * @return mixed
      */
-    public function destroy(User $user, Request $request)
-    {
-        $this->repository->delete($user);
-
-        return $this->respond([
-            'data' => $user->id,
-            'message' => trans('alerts.backend.users.deleted'),
-        ]);
-    }
+//    public function destroy(User $user, Request $request)
+//    {
+//        $this->repository->delete($user);
+//
+//        return $this->respond([
+//            'data' => $user->id,
+//            'message' => trans('alerts.backend.users.deleted'),
+//        ]);
+//    }
 
     /**
      * Delete All User.
@@ -130,24 +131,24 @@ class UsersController extends APIController
      *
      * @return mixed
      */
-    public function deleteAll(Request $request)
-    {
-        $ids = $request->get('ids');
-
-        if (isset($ids) && !empty($ids)) {
-            $result = $this->repository->deleteAll($ids);
-        }
-
-        if ($result) {
-            return $this->respond([
-                'message' => trans('alerts.backend.users.deleted'),
-            ]);
-        }
-
-        return $this->respond([
-            'message' => trans('exceptions.backend.access.users.not_found'),
-        ]);
-    }
+//    public function deleteAll(Request $request)
+//    {
+//        $ids = $request->get('ids');
+//
+//        if (isset($ids) && !empty($ids)) {
+//            $result = $this->repository->deleteAll($ids);
+//        }
+//
+//        if ($result) {
+//            return $this->respond([
+//                'message' => trans('alerts.backend.users.deleted'),
+//            ]);
+//        }
+//
+//        return $this->respond([
+//            'message' => trans('exceptions.backend.access.users.not_found'),
+//        ]);
+//    }
 
     /**
      * validateUser User.

@@ -26,8 +26,11 @@ class UpdateProfile extends FormRequest
         return [
             'full_name' => 'required|max:255',
             'email' => 'required|max:255|email|unique:users,email,' . \Auth::id(),
-            'password' => 'sometimes|min:6',
-            'dob' => 'sometimes'
+            'password' => 'sometimes|confirmed|min:6',
+            'password_confirmation' => 'sometimes',
+            'old_password' => 'sometimes',
+            'dob' => 'sometimes',
+            'avatar' => 'sometimes'
         ];
     }
 }
