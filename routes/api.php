@@ -31,7 +31,7 @@ Route::group(['namespace' => 'Api\V1', 'prefix' => 'v1', 'as' => 'v1.'], functio
             ]);
         });
         //Verify mobile number
-        Route::post('phone-verify', 'AuthController@verifyMobile');
+        Route::any('phone-verify', 'AuthController@verifyMobile');
         Route::post('resend-verification-code', 'AuthController@resendVerificationCode');
         //Update phone request
         Route::post('phone-update', 'AuthController@updateNonVerifiedNum');
