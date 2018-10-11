@@ -10,8 +10,8 @@
 @endsection
 
 @section('content')
-    {{ Form::open(['route' => ['admin.settings.create'], 'class' => 'form-horizontal',
-    'role' => 'form', 'method' => 'PATCH','files' => true, 'id' => 'edit-settings']) }}
+    {{ Form::open(['route' => ['admin.settings.form.update'], 'class' => 'form-horizontal',
+    'role' => 'form', 'method' => 'POST','files' => true, 'id' => 'edit-settings']) }}
 
     <div class="box box-info">
         <div class="box-header">
@@ -61,12 +61,12 @@
                                 </label>
                             </div>
                             <div class="img-remove-logo">
-                                {{--@if($setting->logo)--}}
-                                {{--<img height="50" width="50"--}}
-                                {{--src="{{ Storage::disk('public')->url('img/logo/' . $setting->logo) }}">--}}
-                                {{--<i id="remove-logo-img" class="fa fa-times remove-logo" data-id="logo"--}}
-                                {{--aria-hidden="true"></i>--}}
-                                {{--@endif--}}
+                                @if($setting['settings'])
+                                    <img height="50" width="50"
+                                         src="{{ Storage::disk('public')->url('img/logo/' . $setting->logo) }}">
+                                    <i id="remove-logo-img" class="fa fa-times remove-logo" data-id="logo"
+                                       aria-hidden="true"></i>
+                                @endif
                             </div>
                         </div>
                         <!--col-lg-10-->

@@ -27,8 +27,7 @@ class UpdateSettingsRequest extends Request
     public function rules()
     {
         return [
-            'logo'       => 'image|dimensions:min_width=226,min_height=48',
-            'favicon'    => 'mimes:jpg,jpeg,png,ico|dimensions:width=16,height=16',
+
         ];
     }
 
@@ -40,8 +39,8 @@ class UpdateSettingsRequest extends Request
     public function messages()
     {
         return [
-            'logo.dimensions'     => 'Invalid logo - should be minimum 226*48',
-            'favicon.dimensions'  => 'Invalid favicon - should be 16*16',
+            'logo.dimensions' => 'Invalid logo - should be minimum 226*48',
+            'favicon.dimensions' => 'Invalid favicon - should be 16*16',
         ];
     }
 }

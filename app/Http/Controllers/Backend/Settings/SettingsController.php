@@ -19,7 +19,12 @@ class SettingsController extends Controller
 
     public function index()
     {
-        $data['setting'] = Setting::all();
+        $settings = Setting::all();
+        $reformationSettingsArr = [];
+        foreach ($settings as $key => $val) {
+            $reformationSettingsArr[$val['setting_key']] = $val['setting_value'];
+        }
+        $data['settings'] = $reformationSettingsArr;
         return view('backend.settings.edit', $data);
     }
 
@@ -50,8 +55,17 @@ class SettingsController extends Controller
      */
     public function update(Setting $setting, UpdateSettingsRequest $request)
     {
-        $this->settings->update($setting, $request->except(['_token', '_method']));
-
-        return new RedirectResponse(route('admin.settings.edit', $setting->id), ['flash_success' => trans('alerts.backend.settings.updated')]);
+        Setting::truncate();
+        $settings = $request->except(['_token', '_method']);
+        $insertRecord = [];
+        $counter = 0;
+        foreach ($settings as $key => $val) {
+            $insertRecord[$counter]['setting_key'] = $key;
+            $insertRecord[$counter]['setting_value'] = $val;
+            $counter++;
+        }
+        Setting::insert($insertRecord);
+        return new RedirectResponse(route('admin.settings.form'),
+            ['flash_success' => trans('alerts.backend.settings.updated')]);
     }
 }
