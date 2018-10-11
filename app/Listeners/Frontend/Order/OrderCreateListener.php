@@ -31,7 +31,7 @@ class OrderCreateListener
      */
     public function handle(OrderCreateEvent $event)
     {
-        //$this->createNotification($event);
+        $this->createNotification($event);
         Order::find($event->order->id)->gogrub_commission = Setting::where('setting_meta', Setting::DEFAULT_GOGRUB_COMMISSION)
             ->first()
             ->setting_value;
@@ -39,6 +39,7 @@ class OrderCreateListener
         $customerDeviceToken = Device::where('user_id', $event->order->customer_id)->get(['fcm_token']);
         sendPushNotificationToFCMSever($chefDeviceToken, 'You have a new order');
         sendPushNotificationToFCMSever($customerDeviceToken, 'Your order has been placed sexfully');
+        return false;
     }
 
     public function createNotification($event)
