@@ -1,63 +1,43 @@
-<nav class="navbar navbar-default">
-    <div class="container">
-        <div class="navbar-header">
-            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#frontend-navbar-collapse">
-                <span class="sr-only">{{ trans('labels.general.toggle_navigation') }}</span>
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
+<header>
+    <nav class="navbar navbar-expand-lg navbar-light">
+        <a class="navbar-brand" href="#">
+            <img src="{!! asset('frontend/images/Symbol-1-2@2x.png') !!}" width="148" height="48"/></a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse"
+                data-target="#navbarSupportedContent"
+                aria-controls="navbarSupportedContent"
+                aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse justify-content-end" id="navbarSupportedContent">
+            <ul class="navbar-nav">
+                <li class="nav-item active">
+                    <a class="nav-link" href="#">Home</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#">About Us</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#">Terms and Condition</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#">Privacy</a>
+                </li>
+            </ul>
+            <button class="btn btn-outline-success my-2 my-sm-0" data-toggle="modal" data-target="#login" type="submit">
+                Login
+            </button>
+            <!-- Modal -->
+
+            <button class="btn btn-outline-success my-2 my-sm-0 active" data-toggle="modal" data-target="#signup"
+                    type="submit">Signup
+            </button>
+            <!-- Modal -->
+            <button class="btn btn-outline-success my-2 my-sm-0 active" data-toggle="modal" data-target="#varify"
+                    type="submit">Varify
             </button>
 
-           {{--   @if(settings()->logo)
-            <a href="{{ route('frontend.index') }}" class="logo"><img height="48" width="226" class="navbar-brand" src="{{route('frontend.index')}}/img/site_logo/{{settings()->logo}}"></a>
-            @else --}}
-             {{ link_to_route('frontend.index',app_name(), [], ['class' => 'navbar-brand']) }}
-           {{--  @endif --}}
-        </div><!--navbar-header-->
-
-        <div class="collapse navbar-collapse" id="frontend-navbar-collapse">
-            {{-- <ul class="nav navbar-nav">
-                <li></li>
-            </ul> --}}
-            <ul class="nav navbar-nav navbar-right">
-                @if (config('locale.status') && count(config('locale.languages')) > 1)
-                    <li class="dropdown">
-                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
-                            {{ trans('menus.language-picker.language') }}
-                            <span class="caret"></span>
-                        </a>
-
-                        @include('includes.partials.lang')
-                    </li>
-                @endif
-
-                @if ($logged_in_user)
-                    <li>{{ link_to_route('frontend.user.dashboard', trans('navs.frontend.dashboard')) }}</li>
-                @endif
-
-                @if (! $logged_in_user)
-                    <li>{{ link_to_route('frontend.auth.login', trans('navs.frontend.login')) }}</li>
-
-                    @if (config('access.users.registration'))
-                        <li>{{ link_to_route('frontend.auth.register', trans('navs.frontend.register')) }}</li>
-                    @endif
-                @else
-                    <li class="dropdown">
-                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
-                            {{ $logged_in_user->name }} <span class="caret"></span>
-                        </a>
-
-                        <ul class="dropdown-menu" role="menu">
-                            @permission('view-backend')
-                                <li>{{ link_to_route('admin.dashboard', trans('navs.frontend.user.administration')) }}</li>
-                            @endauth
-
-                            <li>{{ link_to_route('frontend.user.account', trans('navs.frontend.user.account')) }}</li>
-                            <li>{{ link_to_route('frontend.auth.logout', trans('navs.general.logout')) }}</li>
-                        </ul>
-                    </li>
-                @endif
-            </ul>
-        </div><!--navbar-collapse-->
-    </div><!--container-->
-</nav>
+        </div>
+    </nav>
+</header>
+<section id=""><!--Section Id Start-->
