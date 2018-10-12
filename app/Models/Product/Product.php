@@ -111,6 +111,6 @@ class Product extends Model
 
     public function getAvailabilityTimeAttribute()
     {
-        return Carbon::parse($this->availability_from)->format('G:i') . ' - ' . Carbon::parse($this->availability_to)->format('G:i');
+        return Carbon::parse($this->availability_from)->format('H:ia') . ' - ' . Carbon::parse($this->availability_to)->format('H:ia');
     }
 }
