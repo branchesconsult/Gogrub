@@ -30,7 +30,7 @@ class AddProductRequest extends FormRequest
             'price' => 'required|numeric',
             'discounted_price' => 'sometimes|numeric',
             'availability_from' => 'required|date_format:"Y-m-d H:i:s"',
-            'availability_to' => 'sometimes|date_format:"Y-m-d H:i:s"',
+            'availability_to' => 'required|date_format:"Y-m-d H:i:s"',
             'serving_size' => 'required|integer',
             'total_servings' => 'required|integer',
             'description' => 'required',
