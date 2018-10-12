@@ -53,7 +53,7 @@ class ProductController extends Controller
         if (!empty($chefId)) {
             $products = $products->where('chef_id', $chefId);
         }
-        $products = $products->get();
+        $products = $products->orderByDesc('id')->get();
         return response()->json([
             'products' => $products
         ]);
