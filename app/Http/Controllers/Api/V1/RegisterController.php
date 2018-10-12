@@ -60,7 +60,7 @@ class RegisterController extends APIController
             'message_title' => "Success",
             'message' => trans('api.messages.registeration.success'),
             'token' => $token,
-            'user' => $user,
+            'user' => \App\Models\Access\User\User::where('id', $user->id)->first(),
             'status_code' => 200,
             'success' => true,
         ]);
