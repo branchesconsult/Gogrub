@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Api\V1;
 
 use App\Events\Frontend\Order\OrderCreateEvent;
+use App\Http\Requests\Api\Orders\GetOrderProcessRequest;
 use App\Http\Requests\Api\Orders\MakeOrderRequest;
 use App\Http\Requests\Api\Orders\RateAndReviewOrderRequest;
 use App\Models\Access\User\User;
@@ -247,5 +248,23 @@ class OrderController extends Controller
         $rating['chef_id'] = Order::find($rating['order_id'])->chef_id;
         RatingReview::create($rating);
         return apiSuccessRes('Rating successfully');
+    }
+
+    /**
+     * Order process time
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function getOrderProcessTime(GetOrderProcessRequest $request)
+    {
+        $timeSlots = [
+            'prepration_time' => 23,
+            'delivery_slots' => [
+                45, 100, 120
+            ]
+        ];
+        return response()->json([
+            'time_slots' => $timeSlots
+        ]);
     }
 }

@@ -41,7 +41,6 @@ Route::group(['namespace' => 'Api\V1', 'prefix' => 'v1', 'as' => 'v1.'], functio
         // Password Reset Routes
         Route::post('password/email', 'ForgotPasswordController@sendResetLinkEmail');
         // Route::post('password/reset', 'ResetPasswordController@reset')->name('password.reset');
-
         //Products
         Route::group(['middleware' => 'mobile.verify'], function () {
             //Products
@@ -50,6 +49,7 @@ Route::group(['namespace' => 'Api\V1', 'prefix' => 'v1', 'as' => 'v1.'], functio
             //Orders
             Route::resource('order', 'OrderController', ['only' => ['index', 'store', 'show', 'rateOrder']]);
             Route::post('order/rate', 'OrderController@rateOrder');
+            Route::post('order/process-time', 'OrderController@getOrderProcessTime');
             //Notification
             Route::resource('notifications', 'NotificationController', ['only' => ['index']]);
             //Chats

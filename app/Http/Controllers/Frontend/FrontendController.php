@@ -42,7 +42,6 @@ class FrontendController extends Controller
     public function showPage($slug, PagesRepository $pages)
     {
         $result = $pages->findBySlug($slug);
-
         return view('frontend.pages.index')
             ->withpage($result);
     }
