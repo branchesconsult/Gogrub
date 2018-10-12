@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Frontend;
 
 use App\Http\Controllers\Controller;
+use App\Models\Access\User\User;
 use App\Models\Product\Product;
 use App\Models\Settings\Setting;
 use App\Repositories\Frontend\Pages\PagesRepository;
@@ -18,14 +19,20 @@ class FrontendController extends Controller
      */
     public function index()
     {
-        $data['settingData'] = Setting::all();
-        $products = Product::with(['images' => function ($q) {
-            $q->take(1);
-        }])->get()
+        $data['products'] = Product::with(['images' => function ($q) {
+            $q->first();
+        }, 'cuisine', 'chef'])
             ->where('availability_from', '<=', Carbon::now())
-            ->take(16)
+            //->orderBy('id', 'DESC')
+            ->limit(16)
+            ->get()
             ->toArray();
-        //dd($products);
+        $data['chefs'] = User::whereHas('roles', function ($q) {
+            $q->where('name', 'Chef');
+        })
+            ->withCount('ratingReviews')
+            ->get()->toArray();
+        //dd($data['chefs']);
         return view('frontend.index', $data);
     }
 

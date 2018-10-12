@@ -395,3 +395,20 @@ function is_multi_array($arr)
     rsort($arr);
     return isset($arr[0]) && is_array($arr[0]);
 }
+
+function printRatingStars($ratedStar)
+{
+    $totalStars = 5;
+    $starHtml = '';
+    for ($i = 1;
+         $i <= $ratedStar;
+         $i++) {
+        $starHtml .= '<i class="fa fa-star active"></i>';
+    }
+    for ($i = 1;
+         $i <= $totalStars - $ratedStar;
+         $i++) {
+        $starHtml .= '<i class="fa fa-star"></i>';
+    }
+    return $starHtml;
+}

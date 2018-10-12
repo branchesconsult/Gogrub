@@ -24,19 +24,21 @@
                     <a class="nav-link" href="#">Privacy</a>
                 </li>
             </ul>
-            <button class="btn btn-outline-success my-2 my-sm-0" data-toggle="modal" data-target="#login" type="submit">
-                Login
-            </button>
-            <!-- Modal -->
-
-            <button class="btn btn-outline-success my-2 my-sm-0 active" data-toggle="modal" data-target="#signup"
-                    type="submit">Signup
-            </button>
-            <!-- Modal -->
-            <button class="btn btn-outline-success my-2 my-sm-0 active" data-toggle="modal" data-target="#varify"
-                    type="submit">Varify
-            </button>
-
+            @if(!\Auth::check())
+                <button class="btn btn-outline-success my-2 my-sm-0" data-toggle="modal" data-target="#login"
+                        type="submit">
+                    Login
+                </button>
+                <button class="btn btn-outline-success my-2 my-sm-0 active" data-toggle="modal" data-target="#signup"
+                        type="submit">Signup
+                </button>
+                @if(\Auth::user()->confirmed == 1)
+                    <button class="btn btn-outline-success my-2 my-sm-0 active" data-toggle="modal"
+                            data-target="#varify"
+                            type="submit">Varify
+                    </button>
+                @endif
+            @endif
         </div>
     </nav>
 </header>

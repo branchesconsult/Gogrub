@@ -122,13 +122,13 @@ class User extends Authenticatable implements JWTSubject
 
     public function getAvatarAttribute($val)
     {
-        if (empty($val)) {
+        if (empty($val) || !\File::exists(public_path($val))) {
             return asset('img/default_chef.jpg');
         }
         if (filter_var($val, FILTER_VALIDATE_URL)) {
             return $val;
         } else {
-            return asset($val);
+            return str_replace(['public'], '', asset($val));
         }
     }
 }

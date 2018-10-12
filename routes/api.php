@@ -35,13 +35,13 @@ Route::group(['namespace' => 'Api\V1', 'prefix' => 'v1', 'as' => 'v1.'], functio
         Route::post('resend-verification-code', 'AuthController@resendVerificationCode');
         //Update phone request
         Route::post('phone-update', 'AuthController@updateNonVerifiedNum');
-        Route::group(['prefix' => 'auth'], function () {
-            Route::post('logout', 'AuthController@logout');
-            Route::post('refresh', 'AuthController@refresh');
-            // Password Reset Routes
-            Route::post('password/email', 'ForgotPasswordController@sendResetLinkEmail');
-            // Route::post('password/reset', 'ResetPasswordController@reset')->name('password.reset');
-        });
+        //Routes for auths
+        Route::post('logout', 'AuthController@logout');
+        Route::post('refresh', 'AuthController@refresh');
+        // Password Reset Routes
+        Route::post('password/email', 'ForgotPasswordController@sendResetLinkEmail');
+        // Route::post('password/reset', 'ResetPasswordController@reset')->name('password.reset');
+
         //Products
         Route::group(['middleware' => 'mobile.verify'], function () {
             //Products

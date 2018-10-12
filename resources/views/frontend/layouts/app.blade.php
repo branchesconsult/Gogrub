@@ -253,7 +253,6 @@
     function editName(number) {
         document.getElementById('name' + number).readOnly = false;
     };
-
     // locate you.
     function initMap() {
 

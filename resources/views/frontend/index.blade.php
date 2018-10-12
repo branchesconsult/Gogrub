@@ -65,61 +65,13 @@
             <div class="tab-content" id="myTabContent">
                 <div class="tab-pane fade show active" id="food" role="tabpanel" aria-labelledby="food-tab">
                     <div class="row">
-                        @for($i = 0; $i <= 7; $i++)
-                            <div class="col-3">
-                                <div class="food-block">
-                                    <div class="food-image">
-                                        <img src="{!! asset('frontend/images/images@2x.png') !!}" class="img-fluid"/>
-                                        <div class="food-meal-left">
-                                            <a href="#"><strong>20</strong> Left</a>
-                                        </div>
-                                        <div class="food-meal-btn red">
-                                            <a href="#">Sold Out <strong>$9</strong></a>
-                                        </div>
-                                    </div>
-                                    <div class="food-list-details">
-                                        <div class="row">
-                                            <div class="col-6">
-                                                <div class="food-name">Mince Biryani</div>
-                                                <div class="food-chef-name"><strong>Chef:</strong> William Smith</div>
-                                                <div class="food-cuisine"><strong>Cuisine:</strong> Desi</div>
-                                            </div>
-                                            <div class="col-6">
-                                                <div class="food-serving"><strong>Serving Size:</strong>
-                                                    <i class="fa fa-user"></i> <i class="fa fa-user"></i> <i
-                                                            class="fa fa-user"></i> <i class="fa fa-user"></i> <i
-                                                            class="fa fa-user"></i></div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        @endfor
+                        @include('frontend.partials.product-grid')
                     </div>
                 </div>
 
                 <div class="tab-pane fade" id="chefs" role="tabpanel" aria-labelledby="chefs-tab">
                     <div class="row">
-                        @for($i=1;$i<=8;$i++)
-                            <div class="col-3">
-                                <div class="chef-block">
-                                    <div class="chef-image">
-                                        <img src="{!! asset('frontend/images/alleanza_albania_-1@2x.png') !!}"
-                                             class="img-fluid"/>
-                                        <div class="chef-comment-btn">
-                                            <a href=""><i class="fa fa-comment"></i></a>
-                                        </div>
-                                    </div>
-                                    <div class="chef-list-details">
-                                        <div class="chef-name">William Smith</div>
-                                        <div class="star-rating">
-                                            <input class="rating-input" type="text" title=""/>
-                                        </div>
-                                        <div class="chef-review">(15) Reviews</div>
-                                    </div>
-                                </div>
-                            </div>
-                        @endfor
+                        @include('frontend.partials.chef-grid')
                     </div>
                 </div>
             </div>
