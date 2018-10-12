@@ -109,7 +109,9 @@ class UsersController extends APIController
             $user->avatar = $avatarUploadPath . $fileApi->save($request->file('avatar'));
         }
         $user->save();
-        return apiSuccessRes($resMessage);
+        return response()->json([
+            'user' => User::where('id', \Auth::id())->first()
+        ]);
     }
 
     /**

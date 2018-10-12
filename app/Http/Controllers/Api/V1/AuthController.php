@@ -154,9 +154,7 @@ class AuthController extends APIController
             ]);
         }
 
-        return response()->json([
-            'user' => User::where('id', \Auth::id())->first()
-        ]);
+        return apiErrorRes(402, 'Phone already verified.');
     }
 
     /**
