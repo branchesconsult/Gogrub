@@ -50,7 +50,10 @@ Route::group(['namespace' => 'Api\V1', 'prefix' => 'v1', 'as' => 'v1.'], functio
             //Orders
             Route::resource('order', 'OrderController', ['only' => ['index', 'store', 'show', 'rateOrder']]);
             Route::post('order/rate', 'OrderController@rateOrder');
+            //Notification
             Route::resource('notifications', 'NotificationController', ['only' => ['index']]);
+            //Chats
+            Route::resource('chat', 'ChatController', ['only' => ['index', 'store']]);
         });
 
 

@@ -30,9 +30,7 @@
         ]); ?>
     </script>
     <?php
-    if (!empty($google_analytics)) {
-        echo $google_analytics;
-    }
+    echo $google_analytics ?? null;
     ?>
 </head>
 <body id="app-layout">
@@ -243,6 +241,7 @@
 {!! Html::script(asset('/js/jquery.geocomplete.min.js')) !!}
 <script>
     $(document).ready(function () {
+        initMap();
         $("#address-autocomplete").geocomplete();
         jQuery(".triggerbtn").click(function () {
             jQuery(this).closest('div').find('#files').click();
@@ -254,6 +253,11 @@
     function editName(number) {
         document.getElementById('name' + number).readOnly = false;
     };
+
+    // locate you.
+    function initMap() {
+
+    }
 </script>
 </body>
 </html>

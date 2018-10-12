@@ -2,6 +2,9 @@
 
 namespace App\Http\Controllers\Api\V1;
 
+use App\Events\Frontend\Chat\SendChatEvent;
+use App\Http\Requests\Api\Chat\SendMessageRequest;
+use App\Models\Chat\Chat;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 
@@ -30,18 +33,26 @@ class ChatController extends Controller
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
+     * @param  \Illuminate\Http\Request $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(SendMessageRequest $request)
     {
-        //
+        $chat = new Chat();
+        $chat->order_id = $request->order_id;
+        $chat->sender_id = $request->sender_id;
+        $chat->receiver_id = $request->receiver_id;
+        $chat->save();
+        //event(new SendChatEvent($chat));
+        return response()->json([
+            'chat' => $chat
+        ]);
     }
 
     /**
      * Display the specified resource.
      *
-     * @param  int  $id
+     * @param  int $id
      * @return \Illuminate\Http\Response
      */
     public function show($id)
@@ -52,7 +63,7 @@ class ChatController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  int  $id
+     * @param  int $id
      * @return \Illuminate\Http\Response
      */
     public function edit($id)
@@ -63,8 +74,8 @@ class ChatController extends Controller
     /**
      * Update the specified resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
+     * @param  \Illuminate\Http\Request $request
+     * @param  int $id
      * @return \Illuminate\Http\Response
      */
     public function update(Request $request, $id)
@@ -75,7 +86,7 @@ class ChatController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  int  $id
+     * @param  int $id
      * @return \Illuminate\Http\Response
      */
     public function destroy($id)
