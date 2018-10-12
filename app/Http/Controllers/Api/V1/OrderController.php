@@ -143,7 +143,7 @@ class OrderController extends Controller
      */
     public function show($id)
     {
-        $order = Order::with(['detail', 'chef', 'ratingReview', 'status'])
+        $order = Order::with(['detail.product', 'chef', 'ratingReview', 'status'])
             ->where('id', $id)
             ->first();
         return response()->json([
