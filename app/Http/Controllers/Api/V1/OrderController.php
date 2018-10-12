@@ -257,14 +257,13 @@ class OrderController extends Controller
      */
     public function getOrderProcessTime(GetOrderProcessRequest $request)
     {
-        $timeSlots = [
+        return response()->json([
             'prepration_time' => 23,
             'delivery_slots' => [
-                45, 100, 120
+                45,
+                60,
+                120
             ]
-        ];
-        return response()->json([
-            'time_slots' => $timeSlots
         ]);
     }
 }
