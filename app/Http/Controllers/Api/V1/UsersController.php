@@ -94,6 +94,7 @@ class UsersController extends APIController
         $user = User::find(\Auth::id());
         $user->full_name = $data['full_name'];
         $user->email = $data['email'];
+        //Update password
         if (!empty($data['password'])) {
             if (\Hash::check($request->old_password, $user->password)) {
                 $user->password = bcrypt($data['password']);
@@ -101,6 +102,7 @@ class UsersController extends APIController
                 $resMessage = 'Password update failed, because old password is wrong.';
             }
         }
+        //Upoad avatar
         if ($request->hasFile('avatar')) {
             $avatarUploadPath = env('LFM_UPLOADS_AVATAR');
             $fileApi = new FileApi($avatarUploadPath);
