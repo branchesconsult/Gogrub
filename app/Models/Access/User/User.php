@@ -128,7 +128,7 @@ class User extends Authenticatable implements JWTSubject
         if (filter_var($val, FILTER_VALIDATE_URL)) {
             return $val;
         } else {
-            return str_replace(['public'], '', asset($val));
+            return str_replace(['public'], '', asset('storage/' . $val));
         }
     }
 }
