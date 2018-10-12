@@ -119,4 +119,16 @@ class User extends Authenticatable implements JWTSubject
     {
         return access()->hasRole('Chef') ? true : false;
     }
+
+    public function getAvatarAttribute($val)
+    {
+        if (empty($val)) {
+            return asset('img/default_chef.jpg');
+        }
+        if (filter_var($val, FILTER_VALIDATE_URL)) {
+            return $val;
+        } else {
+            return asset($val);
+        }
+    }
 }
