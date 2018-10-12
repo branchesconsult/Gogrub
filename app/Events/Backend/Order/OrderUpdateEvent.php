@@ -14,7 +14,6 @@ use Illuminate\Contracts\Broadcasting\ShouldBroadcast;
 class OrderUpdateEvent implements ShouldBroadcast
 {
     use Dispatchable, InteractsWithSockets, SerializesModels;
-
     public $order;
 
     /**
@@ -59,7 +58,7 @@ class OrderUpdateEvent implements ShouldBroadcast
     {
         return [
             'order' => $this->order,
-            'message' => 'A new order has been updated',
+            'message' => 'Your order has been updated',
             'message_type' => 'Information'
         ];
     }
