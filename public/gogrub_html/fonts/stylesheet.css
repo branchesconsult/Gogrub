@@ -1,0 +1,11 @@
+@font-face {
+    font-family: 'Abril Fatface';
+    src: url('AbrilFatface-Regular.eot');
+    src: url('AbrilFatface-Regular.eot?#iefix') format('embedded-opentype'),
+        url('AbrilFatface-Regular.woff2') format('woff2'),
+        url('AbrilFatface-Regular.woff') format('woff'),
+        url('AbrilFatface-Regular.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+}
+

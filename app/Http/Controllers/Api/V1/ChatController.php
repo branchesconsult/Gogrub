@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Api\V1;
 
 use App\Events\Frontend\Chat\SendChatEvent;
+use App\Http\Requests\Api\Chat\GetMessagesRequest;
 use App\Http\Requests\Api\Chat\SendMessageRequest;
 use App\Models\Chat\Chat;
 use Illuminate\Http\Request;
@@ -15,9 +16,15 @@ class ChatController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(GetMessagesRequest $request)
     {
-        //
+        $messagesList = Chat::where('order_id', $request->order_id)
+            ->with('sender', 'receiver')
+            ->orderBy('id', 'DESC')
+            ->get();
+        return response()->json([
+            'chats' => $messagesList
+        ]);
     }
 
     /**
@@ -43,7 +50,7 @@ class ChatController extends Controller
         $chat->sender_id = \Auth::id();
         $chat->receiver_id = $request->receiver_id;
         $chat->save();
-        //event(new SendChatEvent($chat));
+        event(new SendChatEvent($chat));
         return response()->json([
             'chat' => $chat->where('id', $chat->id)->with('sender', 'receiver')->first()
         ]);
