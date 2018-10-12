@@ -34,6 +34,7 @@ class OrderController extends Controller
     {
         $clientOrders = Order::where('customer_id', \Auth::id())
             ->with(['detail.product', 'status', 'chef'])
+            ->orderByDesc('id')
             ->get();
         return response()->json([
             'orders' => $clientOrders
