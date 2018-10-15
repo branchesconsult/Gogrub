@@ -4,7 +4,9 @@ namespace App\Http\Controllers\Frontend\Auth;
 
 use App\Events\Frontend\Auth\UserRegistered;
 use App\Http\Controllers\Controller;
+use App\Http\Requests\Api\Auth\UserRegistrationRequest;
 use App\Http\Requests\Frontend\Auth\RegisterRequest;
+use App\Repositories\Backend\Access\Role\RoleRepository;
 use App\Repositories\Frontend\Access\User\UserRepository;
 use Illuminate\Foundation\Auth\RegistersUsers;
 
@@ -77,5 +79,12 @@ class RegisterController extends Controller
 
             return redirect($this->redirectPath());
         }
+    }
+
+
+    public function registerFromWeb(UserRegistrationRequest $request)
+    {
+        $apiUserReg = new \App\Http\Controllers\Api\V1\RegisterController(new UserRepository(new RoleRepository()));
+        return $apiUserReg->register($request);
     }
 }

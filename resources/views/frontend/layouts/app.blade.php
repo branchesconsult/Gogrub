@@ -122,6 +122,7 @@
 @yield('after-scripts')
 @yield('login-model-scripts')
 @yield('verify-model-scripts')
+@yield('signup-modal-scripts')
 <script>
     $(document).ready(function () {
         initMap();
@@ -155,6 +156,7 @@
 
     }
     function openBsModal(modelId) {
+        $("#server-ajax-messages div").hide();
         $(".modal").modal('hide');
         setTimeout(function () {
             $("#" + modelId).modal('show');

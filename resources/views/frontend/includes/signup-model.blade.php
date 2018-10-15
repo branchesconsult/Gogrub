@@ -12,33 +12,47 @@
             </div>
             <div class="arrow-down"><img src="{!! asset('frontend/images/Path828@2x.png') !!}"/></div>
             <div class="modal-body">
-                <form>
-                    <div class="form-group">
-                        <label for="FormInputGroupMobile">Mobile Number</label>
-                        <div class="input-group">
-                            <div class="input-group-prepend">
-                                <div class="input-group-text">+92</div>
-                            </div>
-                            <input type="text" class="form-control" id="FormInputGroupMobile">
+                {!! Form::open(['route' => 'frontend.auth.user.fromweb.register', 'id'=>'frm-signup']) !!}
+                <div class="form-group">
+                    <label for="FormInputGroupMobile">Mobile Number</label>
+                    <div class="input-group">
+                        <div class="input-group-prepend">
+                            <div class="input-group-text">+92</div>
                         </div>
+                        {!! Form::text('mobile', null, ['class' => 'form-control', 'required'=>true,
+                       'id'=>'mobile-reg']) !!}
                     </div>
-                    <div class="form-group">
-                        <label for="exampleInputEmail1">Email</label>
-                        <input type="email" class="form-control" id="exampleInputEmail1"
-                               aria-describedby="emailHelp">
-                    </div>
-                    <div class="form-group">
-                        <label for="exampleInputPassword1">Password</label>
-                        <input type="password" class="form-control" id="exampleInputPassword1">
-                    </div>
-                    <div class="form-group">
-                        <label for="exampleInputPassword2">Re enter password</label>
-                        <input type="password" class="form-control" id="exampleInputPassword2">
-                    </div>
-                    <div class="btn-sign">
-                        <button type="submit" class="btn btn-primary">Sign up</button>
-                    </div>
-                </form>
+                </div>
+                <div class="form-group">
+                    <label for="exampleInputEmail1">Full name</label>
+                    {!! Form::text('full_name', null, ['class' => 'form-control', 'required'=>true,
+                       'id'=>'full_name-reg']) !!}
+                </div>
+                <div class="form-group">
+                    <label for="exampleInputEmail1">Email</label>
+                    {!! Form::text('email', null, ['class' => 'form-control', 'required'=>true,
+                       'id'=>'email-reg']) !!}
+                </div>
+                <div class="form-group">
+                    <label for="exampleInputPassword1">Password</label>
+                    {!! Form::password('password', ['class' => 'form-control', 'required'=>true,
+                       'id'=>'password-reg']) !!}
+                </div>
+                <div class="form-group">
+                    <label for="exampleInputPassword2">Re enter password</label>
+                    {!! Form::password('password_confirmation', ['class' => 'form-control', 'required'=>true,
+                        'id'=>'password_confirmation-reg']) !!}
+                </div>
+
+                @include('frontend.includes.server-messages')
+
+                <div class="btn-sign">
+                    <button type="submit"
+                            onclick="doSignup()"
+                            class="btn btn-primary">Sign up
+                    </button>
+                </div>
+                {!! Form::close() !!}
                 <div class="text-sign">
                     Do you have a account? <a href="">Sign In</a>
                 </div>
@@ -49,3 +63,43 @@
         </div>
     </div>
 </div>
+@section('signup-modal-scripts')
+    <script>
+        function doSignup() {
+            $("#frm-signup").validate({
+                submitHandler: function (form) {
+                    $.ajax({
+                        url: $("#frm-signup").attr('action'),
+                        type: 'POST',
+                        dataType: 'json',
+                        data: {
+                            full_name: $("#full_name-reg").val(),
+                            email: $("#email-reg").val(),
+                            mobile: $('#mobile-reg').val(),
+                            password: $("#password-reg").val(),
+                            password_confirmation: $("#password_confirmation-reg").val()
+                        },
+                        beforeSend: function () {
+
+                        },
+                        success: function (data) {
+                            openBsModal('login');
+                        },
+                        error: function (data) {
+                            $("#server-ajax-messages div").hide();
+                            var divToShow = $("#server-ajax-messages .error");
+
+                            var errHtml = '<ul>';
+                            $.each(data.responseJSON.errors, function (k, v) {
+                                errHtml += '<li>' + v + '</li>';
+                            });
+                            errHtml += '</ul>';
+                            divToShow.html(errHtml);
+                            divToShow.show();
+                        }
+                    });
+                }
+            });
+        }
+    </script>
+@stop

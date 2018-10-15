@@ -42,11 +42,16 @@ Route::group(['namespace' => 'Auth', 'as' => 'auth.'], function () {
         if (config('access.users.registration')) {
             Route::get('register', 'RegisterController@showRegistrationForm')->name('register');
             Route::post('register', 'RegisterController@register')->name('register');
+            Route::post('web-register', 'RegisterController@registerFromWeb')
+                ->name('user.fromweb.register');
         }
+
 
         // Confirm Account Routes
         Route::get('account/confirm/{token}', 'ConfirmAccountController@confirm')->name('account.confirm');
         Route::get('account/confirm/resend/{user}', 'ConfirmAccountController@sendConfirmationEmail')->name('account.confirm.resend');
+
+
         // Password Reset Routes
         Route::get('password/reset', 'ForgotPasswordController@showLinkRequestForm')->name('password.email');
         Route::post('password/email', 'ForgotPasswordController@sendResetLinkEmail')->name('password.email');
