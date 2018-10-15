@@ -23,6 +23,8 @@
 {!! Html::style(asset('frontend/css/style.css')) !!}
 @yield('before-styles')
 @yield('after-styles')
+{!! Html::style(asset('frontend/pincode-input/bootstrap-pincode-input.css')) !!}
+{!! Html::style('//cdnjs.cloudflare.com/ajax/libs/x-editable/1.5.0/bootstrap3-editable/css/bootstrap-editable.css') !!}
 <!-- Scripts -->
     <script>
         window.Laravel = <?php echo json_encode([
@@ -32,18 +34,34 @@
     <?php
     echo $google_analytics ?? null;
     ?>
+    <style>
+        #wait-overley {
+            position: fixed;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.7);
+            z-index: 9999999;
+            display: none;
+        }
+
+        .hide {
+            display: none;
+        }
+
+        .gopop#varify .var-num .code input {
+            padding: 0;
+        }
+    </style>
 </head>
 <body id="app-layout">
-<div id="app">
-    @include('frontend.includes.nav')
+<div id="wait-overley"></div>
+<section id="pg-area-to-change"><!--Section Id Start-->
+    <div id="app">
+        @include('frontend.includes.nav')
 
-    @include('includes.partials.messages')
-    @yield('content')
-</div><!--#app-->
-
-<!-- Scripts -->
-@yield('before-scripts')
-@yield('after-scripts')
+        @include('includes.partials.messages')
+        @yield('content')
+    </div><!--#app-->
 </section><!----------- Section Id Closed -------------->
 <footer>
     <div class="container">
@@ -85,164 +103,43 @@
         </div>
     </div>
 </footer>
-
 <div id="all-models">
-    <!--Signup-->
-    <div class="modal fade gopop" id="signup" tabindex="-1" role="dialog" aria-labelledby="signupTitle"
-         aria-hidden="true">
-        <div class="modal-dialog modal-dialog-centered" role="document">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <img src="{!! asset('frontend/images/Group489@2x.png') !!}"/>
-                    <h5 class="modal-title" id="signupTitle">Sign up</h5>
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                        <span aria-hidden="true">&times;</span>
-                    </button>
-                </div>
-                <div class="arrow-down"><img src="{!! asset('frontend/images/Path828@2x.png') !!}"/></div>
-                <div class="modal-body">
-                    <form>
-                        <div class="form-group">
-                            <label for="FormInputGroupMobile">Mobile Number</label>
-                            <div class="input-group">
-                                <div class="input-group-prepend">
-                                    <div class="input-group-text">+92</div>
-                                </div>
-                                <input type="text" class="form-control" id="FormInputGroupMobile">
-                            </div>
-                        </div>
-                        <div class="form-group">
-                            <label for="exampleInputEmail1">Email</label>
-                            <input type="email" class="form-control" id="exampleInputEmail1"
-                                   aria-describedby="emailHelp">
-                        </div>
-                        <div class="form-group">
-                            <label for="exampleInputPassword1">Password</label>
-                            <input type="password" class="form-control" id="exampleInputPassword1">
-                        </div>
-                        <div class="form-group">
-                            <label for="exampleInputPassword2">Re enter password</label>
-                            <input type="password" class="form-control" id="exampleInputPassword2">
-                        </div>
-                        <div class="btn-sign">
-                            <button type="submit" class="btn btn-primary">Sign up</button>
-                        </div>
-                    </form>
-                    <div class="text-sign">
-                        Do you have a account? <a href="">Sign In</a>
-                    </div>
-                </div>
-                <div class="modal-footer">
-                    Connect using Social Media Accounts
-                </div>
-            </div>
-        </div>
-    </div>
-    <!--Login-->
-    <div class="modal fade gopop" id="login" tabindex="-1" role="dialog" aria-labelledby="loginTitle"
-         aria-hidden="true">
-        <div class="modal-dialog modal-dialog-centered" role="document">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <img src="{!! asset('frontend/images/Group489@2x.png') !!}"/>
-                    <h5 class="modal-title" id="loginTitle">Sign In</h5>
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                        <span aria-hidden="true">&times;</span>
-                    </button>
-                </div>
-                <div class="arrow-down"><img src="{!! asset('frontend/images/Path828@2x.png') !!}"/></div>
-                <div class="modal-body">
-                    <form>
-                        <div class="form-group">
-                            <label for="inlineFormInputMobile">Mobile Number</label>
-                            <div class="input-group">
-                                <div class="input-group-prepend">
-                                    <div class="input-group-text">+92</div>
-                                </div>
-                                <input type="text" class="form-control" id="inlineFormInputMobile">
-                            </div>
-                        </div>
-                        <div class="form-group">
-                            <label for="InputPassword1">Password</label>
-                            <input type="password" class="form-control" id="InputPassword1">
-                        </div>
-                        <div class="btn-sign">
-                            <button type="submit" class="btn btn-primary">Sign In</button>
-                        </div>
-                    </form>
-                    <div class="text-sign">
-                        Donesn't have an account? <a href="">Sign Up</a>
-                    </div>
-                </div>
-                <div class="modal-footer">
-                    Connect using Social Media Accounts
-                </div>
-            </div>
-        </div>
-    </div>
-    <!-- Varification -->
-    <div class="modal fade gopop" id="varify" tabindex="-1" role="dialog" aria-labelledby="varifyTitle"
-         aria-hidden="true">
-        <div class="modal-dialog modal-dialog-centered" role="document">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <img src="{!! asset('frontend/images/Group489@2x.png') !!}"/>
-                    <h5 class="modal-title" id="loginTitle">Verification</h5>
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                        <span aria-hidden="true">&times;</span>
-                    </button>
-                </div>
-                <div class="arrow-down"><img src="{!! asset('frontend/images/Path828@2x.png') !!}"/></div>
-                <div class="modal-body var-num">
-                    <form>
-                        <p>Check your phone did you receive the code?</p>
-                        <p>Is that your number?</p>
-                        <div class="input-control mb-3">
-                            <input type="text" class="form-control" id="name1" value="+92000000000" readonly>
-                            <div class="input-group-addon">
-                                <span class="fa fa-pencil" onclick=editName('1')></span>
-                            </div>
-                        </div>
-                        <div class="row code">
-                            <div class="col-3">
-                                <input type="text" name="code1" placeholder="0"/>
-                            </div>
-                            <div class="col-3">
-                                <input type="text" name="code2" placeholder="0"/>
-                            </div>
-                            <div class="col-3">
-                                <input type="text" name="code3" placeholder="0"/>
-                            </div>
-                            <div class="col-3">
-                                <input type="text" name="code4" placeholder="0"/>
-                            </div>
-                        </div>
-                        <div class="btn-sign">
-                            <button type="submit" id="step-3" class="btn btn-primary">Next</button>
-                        </div>
-                    </form>
-                    <div class="text-sign">
-                        Do you have a account? <a href="">Sign Up</a>
-                    </div>
-                </div>
-                <div class="modal-footer">
-                    Connect using Social Media account
-                </div>
-            </div>
-        </div>
-    </div>
-
+    @include('frontend.includes.login-model')
+    @include('frontend.includes.signup-model')
+    @include('frontend.includes.verification-model')
 </div>
 <!-- jQuery first, then Popper.js, then Bootstrap JS -->
-{!! Html::script(asset('http://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js')) !!}
+{!! Html::script(asset('frontend/js/jquery.min.js')) !!}
+{!! Html::script(asset('frontend/popperjs/popper.min.js')) !!}
 {!! Html::script(asset('frontend/js/bootstrap.min.js')) !!}
+{!! Html::script(asset('frontend/validation/jquery.validate.js')) !!}
+{!! Html::script(asset('frontend/validation/additional-methods.js')) !!}
 {!! Html::script('https://maps.googleapis.com/maps/api/js?key=AIzaSyC263na3AWmXdy9htO50E9kiq2-cgbBsMo&libraries=places,geometry,drawing,v=3.exp') !!}
 {!! Html::script(asset('/js/gmaps.js')) !!}
 {!! Html::script(asset('/js/jquery.geocomplete.min.js')) !!}
+<!-- Scripts -->
+@yield('before-scripts')
+@yield('after-scripts')
+@yield('login-model-scripts')
+@yield('verify-model-scripts')
 <script>
     $(document).ready(function () {
         initMap();
         $("#address-autocomplete").geocomplete();
+        //Global ajax spinner
+        $(document)
+            .ajaxStart(function () {
+                $("#wait-overley").show();
+            })
+            .ajaxStop(function () {
+                $("#wait-overley").hide();
+            });
+        $.ajaxSetup({
+            headers: {
+                'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content'),
+                'Device-Type': 'browser'
+            }
+        });
         jQuery(".triggerbtn").click(function () {
             jQuery(this).closest('div').find('#files').click();
         });
@@ -256,6 +153,13 @@
     // locate you.
     function initMap() {
 
+    }
+    function openBsModal(modelId) {
+        $(".modal").modal('hide');
+        setTimeout(function () {
+            $("#" + modelId).modal('show');
+        }, 500);
+        return false;
     }
 </script>
 </body>

@@ -49,11 +49,15 @@ class AuthController extends APIController
             ];
             $deviceInfo = [
                 'type' => $request->get('device_type'),
-                'agent_info' => $request->get('agent_info'),
+                'agent_info' => $request->header('User-Agent'),
                 'device_id' => $request->device_id
             ];
             User::find(\Auth::id())->devices()->updateOrCreate($deviceToken, $deviceInfo);
         }
+
+//        if ($request->headers->has('Device-Type') && $request->header('Device-Type') == 'browser') {
+//            dd(\Auth::attempt($request->only('mobile', 'password')));
+//        }
 
         return $this->respond([
             'message_title' => "Success",

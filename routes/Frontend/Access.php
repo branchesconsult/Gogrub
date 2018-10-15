@@ -17,6 +17,14 @@ Route::group(['namespace' => 'Auth', 'as' => 'auth.'], function () {
 
         // Change Password Routes
         Route::patch('password/change', 'ChangePasswordController@changePassword')->name('password.change');
+        /**
+         * Update non verfied number
+         */
+        Route::post('account/confirm/update-mobile', 'ConfirmAccountController@updateNonVerifiedNumber')
+            ->name('mobile.update');
+        Route::post('verify-mobile', 'ConfirmAccountController@verifyMobile')
+            ->name('mobile.verify');
+
     });
 
     /*
@@ -39,12 +47,13 @@ Route::group(['namespace' => 'Auth', 'as' => 'auth.'], function () {
         // Confirm Account Routes
         Route::get('account/confirm/{token}', 'ConfirmAccountController@confirm')->name('account.confirm');
         Route::get('account/confirm/resend/{user}', 'ConfirmAccountController@sendConfirmationEmail')->name('account.confirm.resend');
-
         // Password Reset Routes
         Route::get('password/reset', 'ForgotPasswordController@showLinkRequestForm')->name('password.email');
         Route::post('password/email', 'ForgotPasswordController@sendResetLinkEmail')->name('password.email');
 
         Route::get('password/reset/{token}', 'ResetPasswordController@showResetForm')->name('password.reset.form');
         Route::post('password/reset', 'ResetPasswordController@reset')->name('password.reset');
+
+
     });
 });

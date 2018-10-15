@@ -12,7 +12,9 @@
 |
 */
 
-Route::group(['namespace' => 'Api\V1', 'prefix' => 'v1', 'as' => 'v1.'], function () {
+Route::group(['namespace' => 'Api\V1',
+    'prefix' => 'v1', 'as' => 'v1.',
+    'middleware' => ['sessions']], function () {
     //Cousine
     Route::resource('cuisine', 'CuisineController', ['only' => ['index']]);
     // Page
@@ -22,7 +24,7 @@ Route::group(['namespace' => 'Api\V1', 'prefix' => 'v1', 'as' => 'v1.'], functio
     //Route::resource('pages', 'PagesController', ['only' => ['show']]);
     //Registration
     Route::post('register', 'RegisterController@register');
-    Route::post('login', 'AuthController@login');
+    Route::post('login', 'AuthController@login')->name('api.user.login');
     Route::group(['middleware' => ['jwt.auth']], function () {
         Route::get('refresh-user', function () {
             $user = \App\Models\Access\User\User::where('id', \Auth::id())->first();
