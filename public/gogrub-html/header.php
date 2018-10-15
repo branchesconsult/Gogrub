@@ -39,8 +39,7 @@
             
             <div class="dropdown">
               <a class="prof-pic dropdown-toggle" href="#" role="button" id="prof-pic" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                <img src="images/alleanza_albania_-8@2x.png" />
-                  <span></span>
+                <img src="images/alleanza_albania_-8@2x.png" /><span></span>
               </a>
             
               <div class="dropdown-menu" aria-labelledby="prof-pic">

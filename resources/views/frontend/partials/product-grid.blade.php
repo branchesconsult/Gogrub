@@ -2,27 +2,29 @@
 @foreach($products as $key => $val)
     <div class="col-3">
         <div class="food-block">
-            <div class="food-image">
-                <img src="{!! asset('frontend/images/images@2x.png') !!}" class="img-fluid"/>
-                <div class="food-meal-left">
-                    <a href="#"><strong>{!! $val['remaining_servings'] !!}</strong> Left</a>
-                </div>
-                @if($val['remaining_servings'] <= 0)
-                    <div class="food-meal-btn red">
-                        <a href="#">
+            <a href="{!! route('frontend.product.detail', ['slug' => $val['slug']]) !!}">
+                <div class="food-image">
+                    @if(empty($val['images']))
+                        <img src="{!! asset('frontend/images/images@2x.png') !!}" class="img-fluid"/>
+                    @else
+                        <img src="z{!! $val['images'][0]['image_url'] !!}" class="img-fluid"/>
+                    @endif
+                    <div class="food-meal-left">
+                        <strong>{!! $val['remaining_servings'] !!}</strong> Left
+                    </div>
+                    @if($val['remaining_servings'] <= 0)
+                        <div class="food-meal-btn red">
                             Sold out
                             <strong>{!! $val['price_view'] !!}</strong>
-                        </a>
-                    </div>
-                @else
-                    <div class="food-meal-btn green">
-                        <a href="#">
+                        </div>
+                    @else
+                        <div class="food-meal-btn green">
                             Add to meal
                             <strong>{!! $val['price_view'] !!}</strong>
-                        </a>
-                    </div>
-                @endif
-            </div>
+                        </div>
+                    @endif
+                </div>
+            </a>
             <div class="food-list-details">
                 <div class="row">
                     <div class="col-7">
@@ -30,7 +32,8 @@
                             {!! $val['name'] !!}
                         </div>
                         <div class="food-chef-name">
-                            <strong>Chef:</strong> {!! $val['chef']['full_name'] !!}
+                            <strong>
+                                Chef:</strong> {!! $val['chef']['full_name'] !!}
                         </div>
                         <div class="food-cuisine">
                             <strong>Cuisine:</strong> {!! $val['cuisine']['name'] !!}

@@ -1,0 +1,817 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="css/bootstrap.min.css" crossorigin="anonymous">
+    <link rel="stylesheet" href="css/font-awesome.min.css">
+    <link href="css/star-rating.css" media="all" rel="stylesheet" type="text/css"/>
+    <link rel="stylesheet" type="text/css" href="css/style.css"/>
+
+    <title>GoGrub</title>
+  </head>
+  <body>
+    <header>
+        <nav class="navbar navbar-expand-lg navbar-light">
+          <a class="navbar-brand" href="#"><img src="images/Symbol-1-2@2x.png" width="148" height="48" /></a>
+          <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+        
+          <div class="collapse navbar-collapse justify-content-end" id="navbarSupportedContent">
+            <ul class="navbar-nav">
+              <li class="nav-item active">
+                <a class="nav-link" href="#">Home</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="#">About Us</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="#">Terms and Condition</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="#">Privacy</a>
+              </li>
+            </ul>
+            <button class="btn btn-outline-success my-2 my-sm-0" data-toggle="modal" data-target="#login" type="submit">Login</button> 
+            <!-- Modal -->
+            <div class="modal fade gopop" id="login" tabindex="-1" role="dialog" aria-labelledby="loginTitle" aria-hidden="true">
+              <div class="modal-dialog modal-dialog-centered" role="document">
+                <div class="modal-content">
+                  <div class="modal-header">
+                  	<img src="images/Group489@2x.png" />
+                    <h5 class="modal-title" id="loginTitle">Sign In</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                      <span aria-hidden="true">&times;</span>
+                    </button>
+                  </div>
+                    <div class="arrow-down"><img src="images/Path828@2x.png" /></div>
+                  <div class="modal-body">
+                    <form>
+                      <div class="form-group">
+                          <label for="inlineFormInputMobile">Mobile Number</label>
+                          <div class="input-group">
+                            <div class="input-group-prepend">
+                              <div class="input-group-text">+92</div>
+                            </div>
+                            <input type="text" class="form-control" id="inlineFormInputMobile">
+                          </div>
+                      </div>
+                      <div class="form-group">
+                        <label for="InputPassword1">Password</label>
+                        <input type="password" class="form-control" id="InputPassword1">
+                      </div>
+                      <div class="btn-sign">	
+                        <button type="submit" class="btn btn-primary">Sign In</button>
+                      </div>
+                    </form>
+                    <div class="text-sign">
+                    	Donesn't have an account? <a href="">Sign Up</a>
+                  	</div>
+                  </div>
+                  <div class="modal-footer">
+                    Connect using Social Media Accounts
+                  </div>
+                </div>
+              </div>
+            </div>
+            
+            <button class="btn btn-outline-success my-2 my-sm-0 active" data-toggle="modal" data-target="#signup" type="submit">Signup</button>
+            <!-- Modal -->
+            <div class="modal fade gopop" id="signup" tabindex="-1" role="dialog" aria-labelledby="signupTitle" aria-hidden="true">
+              <div class="modal-dialog modal-dialog-centered" role="document">
+                <div class="modal-content">
+                  <div class="modal-header">
+                    <img src="images/Group489@2x.png" />
+                    <h5 class="modal-title" id="signupTitle">Sign up</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                      <span aria-hidden="true">&times;</span>
+                    </button>
+                  </div>
+                    <div class="arrow-down"><img src="images/Path828@2x.png" /></div>
+                  <div class="modal-body">
+                    <form>
+                      <div class="form-group">
+                          <label for="FormInputGroupMobile">Mobile Number</label>
+                          <div class="input-group">
+                            <div class="input-group-prepend">
+                              <div class="input-group-text">+92</div>
+                            </div>
+                            <input type="text" class="form-control" id="FormInputGroupMobile">
+                          </div>
+                      </div>
+                      <div class="form-group">
+                        <label for="exampleInputEmail1">Email</label>
+                        <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
+                      </div>
+                      <div class="form-group">
+                        <label for="exampleInputPassword1">Password</label>
+                        <input type="password" class="form-control" id="exampleInputPassword1">
+                      </div>
+                      <div class="form-group">
+                        <label for="exampleInputPassword2">Re enter password</label>
+                        <input type="password" class="form-control" id="exampleInputPassword2">
+                      </div>
+                      <div class="btn-sign">	
+                        <button type="submit" class="btn btn-primary">Sign up</button>
+                      </div>
+                    </form>
+                    <div class="text-sign">
+                    	Do you have a account? <a href="">Sign In</a>
+                  	</div>
+                  </div>
+                  <div class="modal-footer">
+                    Connect using Social Media Accounts
+                  </div>
+                </div>
+              </div>
+            </div>
+            <button class="btn btn-outline-success my-2 my-sm-0 active" data-toggle="modal" data-target="#varify" type="submit">Varify</button>
+            <!-- Varification -->
+            <div class="modal fade gopop" id="varify" tabindex="-1" role="dialog" aria-labelledby="varifyTitle" aria-hidden="true">
+              <div class="modal-dialog modal-dialog-centered" role="document">
+                <div class="modal-content">
+                  <div class="modal-header">
+                    <img src="images/Group489@2x.png" />
+                    <h5 class="modal-title" id="loginTitle">Verification</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                      <span aria-hidden="true">&times;</span>
+                    </button>
+                  </div>
+                  <div class="arrow-down"><img src="images/Path828@2x.png" /></div>
+                  <div class="modal-body var-num">
+                    <form>
+                      <p>Check your phone did you receive the code?</p>
+                      <p>Is that your number?</p>
+                      <div class="input-control mb-3">
+						<input type="text" class="form-control" id="name1" value="+92000000000" readonly>
+                        <div class="input-group-addon">
+                          <span class="fa fa-pencil" onclick=editName('1')></span>
+                        </div>
+                      </div>
+                      <div class="row code">
+                      	<div class="col-3">
+                        	<input type="text" name="code1" placeholder="0" />
+                        </div>
+                      	<div class="col-3">
+                        	<input type="text" name="code2" placeholder="0" />
+                        </div>
+                      	<div class="col-3">
+                        	<input type="text" name="code3" placeholder="0" />
+                        </div>
+                      	<div class="col-3">
+                        	<input type="text" name="code4" placeholder="0" />
+                        </div>
+                      </div>
+                      <div class="btn-sign">	
+                        <button type="submit" id="step-3" class="btn btn-primary">Next</button>
+                      </div>
+                    </form>
+                    <div class="text-sign">
+                    	Do you have a account? <a href="">Sign Up</a>
+                  	</div>
+                  </div>
+                  <div class="modal-footer">
+                    Connect using Social Media account
+                  </div>
+                </div>
+              </div>
+            </div>
+            
+          </div>
+        </nav>
+    </header>
+    <section id=""><!----------- Section Id Start -------------->
+    
+    	<section class="banner">
+        	<div class="container">
+                <div class="row">
+                    <div class="col-12">
+                        <h3>are you</h3> 
+                        <h1>Hungry?</h1>
+                        <form class="form-inline banner-form">
+                            <input class="form-control mr-sm-2" type="search" placeholder="Find yourself on map" />
+                            <a href="#"></a>
+                            <button class="btn btn-outline-success my-2 my-sm-0 active" type="submit">Find Food Around Me</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <section class="chef-list">
+        	<div class="container">
+                <ul class="nav nav-tabs" id="myTab" role="tablist">
+                  <li class="nav-item">
+                    <a class="nav-link active" id="home-tab" data-toggle="tab" href="#food" role="tab" aria-controls="food" aria-selected="true">Food</a>
+                  </li>
+                  <li class="nav-item">
+                    <a class="nav-link" id="chefs-tab" data-toggle="tab" href="#chefs" role="tab" aria-controls="chefs" aria-selected="false">Chefs</a>
+                  </li>
+                  <li class="nav-item filters pull-right">
+                  	<button type="button" data-toggle="modal" data-target="#filteroverlay">Filter Search <span></span></button>
+                  </li>
+                </ul>
+                <!-- Button trigger modal -->
+
+                <!-- Modal -->
+                <div class="modal fade" id="filteroverlay" tabindex="-1" role="dialog" aria-labelledby="filteroverlayTitle" aria-hidden="true">
+                  <div class="modal-dialog modal-dialog-centered" role="document">
+                    <div class="modal-content">
+                      <div class="modal-header">
+                        <h5 class="modal-title" id="filteroverlayTitle">Modal title</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                          <span aria-hidden="true">&times;</span>
+                        </button>
+                      </div>
+                      <div class="modal-body">
+                        ...
+                      </div>
+                      <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                        <button type="button" class="btn btn-primary">Save changes</button>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                
+                <div class="tab-content" id="myTabContent">
+                  <div class="tab-pane fade show active" id="food" role="tabpanel" aria-labelledby="food-tab">
+                  <div class="row">
+                  	<div class="col-3">
+                        <div class="food-block">
+                            <div class="food-image">
+                                <img src="images/images@2x.png" class="img-fluid" />
+                                <div class="food-meal-left">
+                                    <a href="#"><strong>20</strong> Left</a>
+                                </div>
+                                <div class="food-meal-btn red">
+                                    <a href="#">Sold Out <strong>$9</strong></a>
+                                </div>
+                            </div>
+                            <div class="food-list-details">
+                            	<div class="row">
+                                    <div class="col-6">
+                                        <div class="food-name">Mince Biryani</div>
+                                        <div class="food-chef-name"><strong>Chef:</strong> William Smith</div>
+                                        <div class="food-cuisine"><strong>Cuisine:</strong> Desi</div>
+                                    </div>
+                                    <div class="col-6">
+                                        <div class="food-serving"><strong>Serving Size:</strong> 
+                                        <i class="fa fa-user"></i> <i class="fa fa-user"></i> <i class="fa fa-user"></i> <i class="fa fa-user"></i> <i class="fa fa-user"></i></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="col-3">
+                        <div class="food-block">
+                            <div class="food-image">
+                                <img src="images/images@2x.png" class="img-fluid" />
+                                <div class="food-meal-left">
+                                    <a href="#"><strong>20</strong> Left</a>
+                                </div>
+                                <div class="food-meal-btn">
+                                    <a href="#">Add to meal <strong>$9</strong></a>
+                                </div>
+                            </div>
+                            <div class="food-list-details">
+                            	<div class="row">
+                                    <div class="col-6">
+                                        <div class="food-name">Mince Biryani</div>
+                                        <div class="food-chef-name"><strong>Chef:</strong> William Smith</div>
+                                        <div class="food-cuisine"><strong>Cuisine:</strong> Desi</div>
+                                    </div>
+                                    <div class="col-6">
+                                        <div class="food-serving"><strong>Serving Size:</strong> 
+                                        <i class="fa fa-user"></i> <i class="fa fa-user"></i> <i class="fa fa-user"></i> <i class="fa fa-user"></i> <i class="fa fa-user"></i></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="col-3">
+                        <div class="food-block">
+                            <div class="food-image">
+                                <img src="images/images@2x.png" class="img-fluid" />
+                                <div class="food-meal-left">
+                                    <a href="#"><strong>20</strong> Left</a>
+                                </div>
+                                <div class="food-meal-btn">
+                                    <a href="#">Add to meal <strong>$9</strong></a>
+                                </div>
+                            </div>
+                            <div class="food-list-details">
+                            	<div class="row">
+                                    <div class="col-6">
+                                        <div class="food-name">Mince Biryani</div>
+                                        <div class="food-chef-name"><strong>Chef:</strong> William Smith</div>
+                                        <div class="food-cuisine"><strong>Cuisine:</strong> Desi</div>
+                                    </div>
+                                    <div class="col-6">
+                                        <div class="food-serving"><strong>Serving Size:</strong> 
+                                        <i class="fa fa-user"></i> <i class="fa fa-user"></i> <i class="fa fa-user"></i> <i class="fa fa-user"></i> <i class="fa fa-user"></i></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="col-3">
+                        <div class="food-block">
+                            <div class="food-image">
+                                <img src="images/images@2x.png" class="img-fluid" />
+                                <div class="food-meal-btn">
+                                    <a href="#">Add to meal <strong>$9</strong></a>
+                                </div>
+                            </div>
+                            <div class="food-list-details">
+                            	<div class="row">
+                                    <div class="col-6">
+                                        <div class="food-name">Mince Biryani</div>
+                                        <div class="food-chef-name"><strong>Chef:</strong> William Smith</div>
+                                        <div class="food-cuisine"><strong>Cuisine:</strong> Desi</div>
+                                    </div>
+                                    <div class="col-6">
+                                        <div class="food-serving"><strong>Serving Size:</strong> 
+                                        <i class="fa fa-user"></i> <i class="fa fa-user"></i> <i class="fa fa-user"></i> <i class="fa fa-user"></i> <i class="fa fa-user"></i></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="col-3">
+                        <div class="food-block">
+                            <div class="food-image">
+                                <img src="images/images@2x.png" class="img-fluid" />
+                                <div class="food-meal-left">
+                                    <a href="#"><strong>20</strong> Left</a>
+                                </div>
+                                <div class="food-meal-btn">
+                                    <a href="#">Add to meal <strong>$9</strong></a>
+                                </div>
+                            </div>
+                            <div class="food-list-details">
+                            	<div class="row">
+                                    <div class="col-6">
+                                        <div class="food-name">Mince Biryani</div>
+                                        <div class="food-chef-name"><strong>Chef:</strong> William Smith</div>
+                                        <div class="food-cuisine"><strong>Cuisine:</strong> Desi</div>
+                                    </div>
+                                    <div class="col-6">
+                                        <div class="food-serving"><strong>Serving Size:</strong> 
+                                        <i class="fa fa-user"></i> <i class="fa fa-user"></i> <i class="fa fa-user"></i> <i class="fa fa-user"></i> <i class="fa fa-user"></i></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="col-3">
+                        <div class="food-block">
+                            <div class="food-image">
+                                <img src="images/images@2x.png" class="img-fluid" />
+                                <div class="food-meal-left">
+                                    <a href="#"><strong>20</strong> Left</a>
+                                </div>
+                                <div class="food-meal-btn">
+                                    <a href="#">Add to meal <strong>$9</strong></a>
+                                </div>
+                            </div>
+                            <div class="food-list-details">
+                            	<div class="row">
+                                    <div class="col-6">
+                                        <div class="food-name">Mince Biryani</div>
+                                        <div class="food-chef-name"><strong>Chef:</strong> William Smith</div>
+                                        <div class="food-cuisine"><strong>Cuisine:</strong> Desi</div>
+                                    </div>
+                                    <div class="col-6">
+                                        <div class="food-serving"><strong>Serving Size:</strong> 
+                                        <i class="fa fa-user"></i> <i class="fa fa-user"></i> <i class="fa fa-user"></i> <i class="fa fa-user"></i> <i class="fa fa-user"></i></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="col-3">
+                        <div class="food-block">
+                            <div class="food-image">
+                                <img src="images/images@2x.png" class="img-fluid" />
+                                <div class="food-meal-left">
+                                    <a href="#"><strong>20</strong> Left</a>
+                                </div>
+                                <div class="food-meal-btn">
+                                    <a href="#">Add to meal <strong>$9</strong></a>
+                                </div>
+                            </div>
+                            <div class="food-list-details">
+                            	<div class="row">
+                                    <div class="col-6">
+                                        <div class="food-name">Mince Biryani</div>
+                                        <div class="food-chef-name"><strong>Chef:</strong> William Smith</div>
+                                        <div class="food-cuisine"><strong>Cuisine:</strong> Desi</div>
+                                    </div>
+                                    <div class="col-6">
+                                        <div class="food-serving"><strong>Serving Size:</strong> 
+                                        <i class="fa fa-user"></i> <i class="fa fa-user"></i> <i class="fa fa-user"></i> <i class="fa fa-user"></i> <i class="fa fa-user"></i></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="col-3">
+                        <div class="food-block">
+                            <div class="food-image">
+                                <img src="images/images@2x.png" class="img-fluid" />
+                                <div class="food-meal-left">
+                                    <a href="#"><strong>20</strong> Left</a>
+                                </div>
+                                <div class="food-meal-btn">
+                                    <a href="#">Add to meal <strong>$9</strong></a>
+                                </div>
+                            </div>
+                            <div class="food-list-details">
+                            	<div class="row">
+                                    <div class="col-6">
+                                        <div class="food-name">Mince Biryani</div>
+                                        <div class="food-chef-name"><strong>Chef:</strong> William Smith</div>
+                                        <div class="food-cuisine"><strong>Cuisine:</strong> Desi</div>
+                                    </div>
+                                    <div class="col-6">
+                                        <div class="food-serving"><strong>Serving Size:</strong> 
+                                        <i class="fa fa-user"></i> <i class="fa fa-user"></i> <i class="fa fa-user"></i> <i class="fa fa-user"></i> <i class="fa fa-user"></i></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                  </div>
+                  </div>
+                  
+                  <div class="tab-pane fade" id="chefs" role="tabpanel" aria-labelledby="chefs-tab">
+                  <div class="row">
+                  
+                  	<div class="col-3">
+                        <div class="chef-block">
+                            <div class="chef-image">
+                                <img src="images/alleanza_albania_-1@2x.png" class="img-fluid" />
+                                <div class="chef-comment-btn">
+                                    <a href=""><i class="fa fa-comment"></i></a>
+                                </div>
+                            </div>
+                            <div class="chef-list-details">
+                                <div class="chef-name">William Smith</div>
+                                <div class="star-rating">
+                                    <input class="rating-input" type="text" title=""/>
+                                </div>
+                                <div class="chef-review">(15) Reviews</div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="col-3">
+                        <div class="chef-block">
+                            <div class="chef-image">
+                                <img src="images/alleanza_albania_-2@2x.png" class="img-fluid" />
+                                <div class="chef-comment-btn">
+                                    <a href=""><i class="fa fa-comment"></i></a>
+                                </div>
+                            </div>
+                            <div class="chef-list-details">
+                                <div class="chef-name">William Smith</div>
+                                <div class="star-rating">
+                                    <input class="rating-input" type="text" title=""/>
+                                </div>
+                                <div class="chef-review">(15) Reviews</div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-3">
+                        <div class="chef-block">
+                            <div class="chef-image">
+                                <img src="images/alleanza_albania_-3@2x.png" class="img-fluid" />
+                                <div class="chef-comment-btn">
+                                    <a href=""><i class="fa fa-comment"></i></a>
+                                </div>
+                            </div>
+                            <div class="chef-list-details">
+                                <div class="chef-name">William Smith</div>
+                                <div class="star-rating">
+                                    <input class="rating-input" type="text" title=""/>
+                                </div>
+                                <div class="chef-review">(15) Reviews</div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="col-3">
+                        <div class="chef-block">
+                            <div class="chef-image">
+                                <img src="images/alleanza_albania_-4@2x.png" class="img-fluid" />
+                                <div class="chef-comment-btn">
+                                    <a href=""><i class="fa fa-comment"></i></a>
+                                </div>
+                            </div>
+                            <div class="chef-list-details">
+                                <div class="chef-name">William Smith</div>
+                                <div class="star-rating">
+                                    <input class="rating-input" type="text" title=""/>
+                                </div>
+                                <div class="chef-review">(15) Reviews</div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-3">
+                        <div class="chef-block">
+                            <div class="chef-image">
+                                <img src="images/alleanza_albania_-5@2x.png" class="img-fluid" />
+                                <div class="chef-comment-btn">
+                                    <a href=""><i class="fa fa-comment"></i></a>
+                                </div>
+                            </div>
+                            <div class="chef-list-details">
+                                <div class="chef-name">William Smith</div>
+                                <div class="star-rating">
+                                    <input class="rating-input" type="text" title=""/>
+                                </div>
+                                <div class="chef-review">(15) Reviews</div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="col-3">
+                        <div class="chef-block">
+                            <div class="chef-image">
+                                <img src="images/alleanza_albania_-6@2x.png" class="img-fluid" />
+                                <div class="chef-comment-btn">
+                                    <a href=""><i class="fa fa-comment"></i></a>
+                                </div>
+                            </div>
+                            <div class="chef-list-details">
+                                <div class="chef-name">William Smith</div>
+                                <div class="star-rating">
+                                    <input class="rating-input" type="text" title=""/>
+                                </div>
+                                <div class="chef-review">(15) Reviews</div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="col-3">
+                        <div class="chef-block">
+                            <div class="chef-image">
+                                <img src="images/alleanza_albania_-7@2x.png" class="img-fluid" />
+                                <div class="chef-comment-btn">
+                                    <a href=""><i class="fa fa-comment"></i></a>
+                                </div>
+                            </div>
+                            <div class="chef-list-details">
+                                <div class="chef-name">William Smith</div>
+                                <div class="star-rating">
+                                    <input class="rating-input" type="text" title=""/>
+                                </div>
+                                <div class="chef-review">(15) Reviews</div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="col-3">
+                        <div class="chef-block">
+                            <div class="chef-image">
+                                <img src="images/alleanza_albania_-8@2x.png" class="img-fluid" />
+                                <div class="chef-comment-btn">
+                                    <a href=""><i class="fa fa-comment"></i></a>
+                                </div>
+                            </div>
+                            <div class="chef-list-details">
+                                <div class="chef-name">William Smith</div>
+                                <div class="star-rating">
+                                    <input class="rating-input" type="text" title=""/>
+                                </div>
+                                <div class="chef-review">(15) Reviews</div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                  </div>
+                  </div>
+                </div>
+            </div>
+        </section>
+        
+        <section class="become-chef-block">
+            <div class="container">
+            	<div class="row">
+                    <div class="col-6">
+                        <h2>Be a Chef in 3 easy steps</h2>
+                        <ul>
+                            <li>1- Sign up</li>
+                            <li>2- Complete your profile</li>
+                            <li>3- get yourself approved by admin</li>
+                        </ul>
+                        <button class="btn btn-outline-success my-2 my-sm-0" data-toggle="modal" data-target="#becomechef" type="submit">Become a Chef</button> 
+                    </div>
+                    <div class="become-chef-banner">
+                        <img src="images/chef_PNG140@2x.png" />
+                    </div>
+                </div>
+            </div>
+        </section>    
+        
+        <section class="chef-reg-step">
+      
+            <div class="modal fade gopop" id="becomechef" tabindex="-1" role="dialog" aria-labelledby="becomechefTitle" aria-hidden="true">
+              <div class="modal-dialog modal-dialog-centered" role="document">
+            	
+                <!-- Step 1 -->
+                <div class="modal-content">
+                  <div class="modal-header">
+                    <img src="images/Group489@2x.png" />
+                    <h5 class="modal-title" id="loginTitle">Welcome <span>Step 1 of 2</span></h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                      <span aria-hidden="true">&times;</span>
+                    </button>
+                  </div>
+                    <div class="arrow-down"><img src="images/Path828@2x.png" /></div>
+                  <div class="modal-body">
+                    <form>
+                      <p>Please verify yourself</p>
+                      <div class="input-group mb-3">
+						<img id="triggerimg" src="images/Group781@2x.png" alt="your image" />
+                      </div>
+                      <div class="input-group mb-3 gallery-block">
+                        <div class="field">
+                          <p>Take a clean snap of your ID Card both front and back</p>
+                          <input type="file" id="files" name="files[]" multiple />
+                          <button type="button" class="triggerbtn">Upload</button>
+                        </div>
+                      </div>
+                    </form>
+                      <div class="btn-sign">	
+                        <button type="submit" id="step-1" class="btn btn-primary">Next</button>
+                      </div>
+                  </div>
+                  <div class="modal-footer">
+                    why I have to upload images of my kitchen?
+                  </div>
+                </div>
+                
+                <!-- Step 2 -->
+                <div class="modal-content" style="display:none;">
+                  <div class="modal-header">
+                    <img src="images/Group489@2x.png" />
+                    <h5 class="modal-title" id="loginTitle">Hello Chef Ali  <span>Step 2 of 2</span></h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                      <span aria-hidden="true">&times;</span>
+                    </button>
+                  </div>
+                    <div class="arrow-down"><img src="images/Path828@2x.png" /></div>
+                  <div class="modal-body">
+                    <form>
+                      <p>We would love to see your kitchen</p>
+                      <div class="input-group mb-3">
+						<img id="triggerimg" src="images/Group777@2x.png" alt="your image" />
+                      </div>
+                      <div class="input-group mb-3 gallery-block">
+                        <div class="field">
+                          <p>Upload up to 6 images of your kitchen</p>
+  
+                          <div class="fallback" id="demo-upload">
+                            <input name="file" type="file" multiple />
+                          </div><script src="js/dropzone.js"></script>
+                          <script>//var myDropzone = new Dropzone("div#myId", { url: "/file/post"});</script>
+  
+                          <button type="button" class="triggerbtn2">Upload</button>
+                        </div>
+                      </div>
+                    </form>
+                      <div class="btn-sign">	
+                        <button type="submit" id="step-2" class="btn btn-primary">Next</button>
+                      </div>
+                  </div>
+                  <div class="modal-footer">
+                    why I have to upload images of my kitchen?
+                  </div>
+                </div>
+              
+                
+              
+              
+              </div>
+            </div>
+            
+            
+            
+        </section>
+        
+        <section class="steps-block">
+            <div class="container">
+            	<div class="row">
+                	<div class="col-4">
+                    	<h3>SignUp</h3>
+                        <p>Fill in the form with <br />your phone and email</p>
+                  </div>
+                	<div class="col-4">
+                    	<h3>Set up your kitchen</h3>
+                        <p>Provide us with some cool pictures or your kitchen and necessary information that we will ask you</p>
+                    </div>
+                	<div class="col-4">
+                    	<h3>Admin Approval</h3>
+                        <p>Provide us clear image of your CNIC and get yourself approved and your are ready to go</p>
+                    </div>
+                </div>
+            </div>
+        </section>        
+        
+        <section class="apps-block">
+            <div class="container">
+            	<div class="row">
+                    <div class="col-6">
+                        <h2>Take us<br />
+                            with You<br />
+                            wherever you go</h2>
+                        <a href="#"><img src="images/Group785@2x.png" /></a>
+                        <a href="#"><img src="images/Group786@2x.png" /></a>
+                    </div>
+                    <div class="apps-banner">
+                        <img src="images/white-mockup@2x.png" />
+                    </div>
+                </div>
+            </div>
+        </section>        
+        
+    </section><!----------- Section Id Closed -------------->
+    <footer>
+    	<div class="container">
+        	<div class="row">
+                <div class="footer-logo">
+                    <div class="logo-footer"><img src="images/Group489@2x.png" /></div>
+                    <div class="copyright">@ 2018 <strong>Go Grub</strong></div>
+                </div>
+            </div>
+            <div class="row">
+            	<div class="col-2">
+                	<ul class="footer-nav">
+                    	<li><a href="">About Us</a></li>
+                    	<li><a href="">Contact</a></li>
+                    	<li><a href="">Terms and Condition</a></li>
+                    </ul>
+                </div>
+            	<div class="col-2">
+                	<ul class="footer-nav">
+                    	<li><a href="">Facebook</a></li>
+                    	<li><a href="">Twitter</a></li>
+                    	<li><a href="">Instagram</a></li>
+                    </ul>
+                </div>
+            	<div class="col-4">
+                	<p>Send Us Your Feedback</p>
+                    <form class="form-inline">
+                        <input class="form-control mr-sm-2" type="email" placeholder="Email Address" aria-label="Search">
+                        <button class="btn btn-outline-success my-2 my-sm-0" type="submit">OK</button>
+                    </form>
+                </div>
+            	<div class="col-4">
+                	<div class="footer-info">
+                    	497 Evergreen Rd. Roseville, CA 95673<br />
+                        +44 345 678 903<br />
+                        adobexd@mail.com
+                    </div>
+                </div>
+            </div>
+        </div>	
+    </footer>
+    
+
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="js/jquery-3.3.1.slim.min.js" crossorigin="anonymous"></script>
+    <script src="js/popper.min.js" crossorigin="anonymous"></script>
+    <script src="js/bootstrap.min.js" crossorigin="anonymous"></script>
+    <script src="js/jquery.min.js"></script>
+
+	<script>
+		jQuery(".triggerbtn").click(function () {
+			jQuery(this).closest('div').find('#files').click();
+		});
+		jQuery('#step-1').click(function(){
+		   jQuery(this).parent().parent().parent().hide().next().show();//hide parent and show next
+		});
+		function editName(number) {
+			document.getElementById('name' + number).readOnly=false;
+		};
+
+    </script>
+  </body>
+</html>
+
+

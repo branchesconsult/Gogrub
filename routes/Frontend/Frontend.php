@@ -40,3 +40,7 @@ Route::group(['middleware' => 'auth'], function () {
 * Show pages
 */
 Route::get('pages/{slug}', 'FrontendController@showPage')->name('pages.show');
+
+Route::group(['prefix' => 'products', 'middleware' => ['web'], 'namespace' => 'Product'], function () {
+    Route::get('{slug}', 'ProductController@show')->name('product.detail');
+});

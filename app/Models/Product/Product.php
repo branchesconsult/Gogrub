@@ -8,11 +8,14 @@ use Carbon\Carbon;
 use Illuminate\Database\Eloquent\Model;
 use App\Models\Product\Traits\ProductAttribute;
 use App\Models\Product\Traits\ProductRelationship;
+use Spatie\Sluggable\HasSlug;
+use Spatie\Sluggable\SlugOptions;
 
 class Product extends Model
 {
     use ModelTrait,
         ProductAttribute,
+        HasSlug,
         ProductRelationship {
         // ProductAttribute::getEditButtonAttribute insteadof ModelTrait;
     }
@@ -112,5 +115,15 @@ class Product extends Model
     public function getAvailabilityTimeAttribute()
     {
         return Carbon::parse($this->availability_from)->toDayDateTimeString() . ' - ' . Carbon::parse($this->availability_to)->toDayDateTimeString();
+    }
+
+    /**
+     * Get the options for generating the slug.
+     */
+    public function getSlugOptions()
+    {
+        return SlugOptions::create()
+            ->generateSlugsFrom('name')
+            ->saveSlugsTo('slug');
     }
 }

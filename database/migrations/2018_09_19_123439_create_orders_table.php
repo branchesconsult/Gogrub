@@ -38,6 +38,7 @@ class CreateOrdersTable extends Migration
             $table->string('customer_country')->default('PK');
             $table->point('customer_location');
             $table->integer('estimate_delivery_mins');
+            $table->string('slug')->nullable();
 
             $table->string('coupon_code')->nullable();
             $table->double('discount')->default(0);

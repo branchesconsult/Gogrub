@@ -517,7 +517,8 @@ section.banner{
 	padding:150px 0;
 	margin-top:-60px;
 	margin-bottom:70px;
-	background:url('../images/Group783@2x.png') no-repeat top center;}
+	background:url('../images/Group783@2x.png') no-repeat top center;
+	background-size: cover;}
 
 section.banner h3{
 	font-size:56px;
@@ -746,6 +747,107 @@ h5.food-head{
 .chef-block .chef-review{
 	font-size:14px;
 	color:#C4C4C4;}
+
+/* Food Detail */
+
+.food-main{
+	margin-bottom:50px;}
+
+.food-thumb img{
+	margin-bottom:15px;}
+
+.food-thumb{
+	max-height: 457px;
+    overflow-y: scroll;}
+
+.food-boxes{
+	margin:20px 0;
+	border:1px solid #707070;
+	padding:10px 0;
+	color:#707070;}
+
+.food-box:last-child{
+	border:none;}
+
+.food-box{
+	text-align:center;
+	font-size: 15px;
+    padding: 0px 30px;
+    border-right: 1px solid #707070;}
+
+.food-box strong{
+	padding-bottom: 10px;
+	display:block;}
+
+.food-box span{
+	display:block;}
+
+.food-title h2{
+	font-size:30px;}
+
+.food-title p{
+	padding: 0;
+    margin-bottom: 10px;}
+
+.food-chef img{
+	width:65px;
+	float:left;}
+
+.food-chef h5{
+	font-size:18px;
+	color:#A5A5A5;
+	float:left;
+	padding: 18px 10px;}
+
+.food-chef span{
+	font-size:11px;
+	color:#6B6B6B;
+	float:right;
+	padding: 25px 10px;}
+
+.food-chef i{
+	background:#FDC200;
+	color:#fff;
+	padding:10px;
+	border-radius:25px;
+	float:right;
+	font-size: 22px;
+    margin-top: 10px;}
+
+.food-quan{}
+
+.food-quan strong{
+	font-size: 16px;
+    padding: 12px 0;}
+
+.food-quan .input-group{
+	padding:0 30px;}
+
+.food-quan .input-group-btn button{
+	background:#000;
+	color:#fff;
+	border-radius:25px;
+	padding: 5px 6px;
+	font-size: 12px;
+    margin-top: 15px;}
+
+.food-quan input.input-number{
+    border: none;
+    font-size: 30px;
+    color: #000;
+    text-align: center;
+    width: 60px;
+    display: inline-block;}
+
+.food-quan button.btn-success{
+	float:right;}
+
+.food-textarea{
+	width:100%;
+	height:100px;
+	padding:10px;
+	font-size:16px;
+	margin-top:30px;}
 
 /* Become a chef Block */
 

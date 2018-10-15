@@ -23,7 +23,9 @@ class FrontendController extends Controller
             $q->first();
         }, 'cuisine', 'chef'])
             ->where('availability_from', '<=', Carbon::now())
-            //->orderBy('id', 'DESC')
+            ->where('availability_to', '>=', Carbon::now())
+            ->where('status', 1)
+            ->orderBy('id', 'DESC')
             ->limit(16)
             ->get()
             ->toArray();
@@ -32,7 +34,7 @@ class FrontendController extends Controller
         })
             ->withCount('ratingReviews')
             ->get()->toArray();
-        //dd($data['chefs']);
+        //dd($data['products']);
         return view('frontend.index', $data);
     }
 
