@@ -73,32 +73,10 @@
                             <h5><strong>{!! $product['chef']['full_name'] !!}</strong>
                             </h5>
                             {{--<i class="fa fa-comment"></i> <span>text chef for any query</span>--}}
+                            <button onclick="openBsModal('addToCartModel')" class="btn btn-success">
+                                Add to meal
+                            </button>
                         </div>
-
-                        <div class="col-12 food-quan d-inline-flex">
-                            <strong>Quantity</strong>
-                            <div class="input-group">
-                                <span class="input-group-btn">
-                              <button type="button" class="btn btn-default btn-number" data-type="minus"
-                                      data-field="quant[1]">
-                                  <span class="fa fa-minus"></span>
-                                </button>
-                                </span>
-                                <input type="text" name="quant[1]" class="input-number" value="1" min="1" max="10">
-                                <span class="input-group-btn">
-                              <button type="button" class="btn btn-default btn-number" data-type="plus"
-                                      data-field="quant[1]">
-                                  <span class="fa fa-plus"></span>
-                                </button>
-                                </span>
-                            </div>
-                            <button class="btn btn-success">Add to meal</button>
-                        </div>
-
-                        <div class="col-12">
-                            <textarea class="food-textarea" placeholder="Special Instructions"></textarea>
-                        </div>
-
                     </div>
                 </div>
             </div>
@@ -140,6 +118,7 @@
             </div>
         </div>
     </section>
+    @include('frontend.includes.add-to-card-model', ['product_id' => $product['id']])
 @stop
 @section('before-scripts')
     {!! Html::script(asset('frontend/lightslider/js/lightslider.min.js')) !!}
