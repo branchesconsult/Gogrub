@@ -104,24 +104,26 @@
             </div>
 
             <div class="row">
-                <div class="col-7">
-                    <div class="order-comments">
-                        <h2>Reviews ({!! count($product['chef']['rating_reviews']) !!})</h2>
-                        <div class="order-scroll">
-                            @foreach($product['chef']['rating_reviews'] as $key => $val)
-                                <div class="cmnt-box">
-                                    <img src="{!! $val['user']['avatar'] !!}"/>
-                                    <h5>{!! $val['user']['full_name'] !!}</h5>
-                                    <p>“{!! $val['review'] !!}”</p>
-                                    <span>
+                @if(count($product['chef']['rating_reviews']) > 0)
+                    <div class="col-7">
+                        <div class="order-comments">
+                            <h2>Reviews ({!! count($product['chef']['rating_reviews']) !!})</h2>
+                            <div class="order-scroll">
+                                @foreach($product['chef']['rating_reviews'] as $key => $val)
+                                    <div class="cmnt-box">
+                                        <img src="{!! $val['user']['avatar'] !!}"/>
+                                        <h5>{!! $val['user']['full_name'] !!}</h5>
+                                        <p>“{!! $val['review'] !!}”</p>
+                                        <span>
                                         {!! $val['posted_at'] !!}
-                                        <br/>{!! printRatingStars($val['rating']) !!}
+                                            <br/>{!! printRatingStars($val['rating']) !!}
                                     </span>
-                                </div>
-                            @endforeach
+                                    </div>
+                                @endforeach
+                            </div>
                         </div>
                     </div>
-                </div>
+                @endif
                 @if(!empty($product['chef']['products']))
                     <div class="col-5">
                         <p class="text-center">Other Meals by <strong>Michael</strong></p>
