@@ -34,11 +34,12 @@
                     <textarea class="food-textarea" placeholder="Special Instructions"></textarea>
                 </div>
             </div>
+            <div class="modal-footer">
+                <button class="btn-success btn">
+                    Add to cart
+                </button>
+            </div>
         </div>
-        <div class="modal-footer">
-            <button class="btn-success btn">
-                Add to cart
-            </button>
-        </div>
+
     </div>
 </div>
