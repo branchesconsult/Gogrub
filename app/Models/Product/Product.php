@@ -31,7 +31,10 @@ class Product extends Model
      */
     protected $table = 'products';
 
-    protected $appends = ['remaining_servings', 'posted_at', 'price_view', 'availability_time'];
+    protected $appends = ['remaining_servings',
+        'posted_at', 'price_view',
+        'availability_time',
+        'servings_left'];
 
     /**
      * Default values for model fields
@@ -109,12 +112,20 @@ class Product extends Model
 
     public function getPriceViewAttribute()
     {
-        return 'PKR ' . number_format($this->price);
+        return 'Rs ' . number_format($this->price);
     }
 
     public function getAvailabilityTimeAttribute()
     {
         return Carbon::parse($this->availability_from)->toDayDateTimeString() . ' - ' . Carbon::parse($this->availability_to)->toDayDateTimeString();
+    }
+
+    /**
+     * Servings left
+     */
+    public function getServingsLeftAttribute()
+    {
+        return $this->id - 1;
     }
 
     /**

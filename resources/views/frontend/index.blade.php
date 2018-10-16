@@ -21,7 +21,8 @@
             <!-- Button trigger modal -->
 
             <!-- Modal -->
-            <div class="modal fade" id="filteroverlay" tabindex="-1" role="dialog" aria-labelledby="filteroverlayTitle"
+            <div class="modal fade"
+                 id="filteroverlay" tabindex="-1" role="dialog" aria-labelledby="filteroverlayTitle"
                  aria-hidden="true">
                 <div class="modal-dialog modal-dialog-centered" role="document">
                     <div class="modal-content">

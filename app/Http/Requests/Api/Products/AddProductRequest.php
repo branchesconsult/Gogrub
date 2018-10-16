@@ -25,7 +25,7 @@ class AddProductRequest extends FormRequest
     {
         $rules = [
             'name' => 'required',
-            'product_images' => 'sometimes|array',
+            'product_images' => 'required|array',
             'cuisine_id' => 'required|numeric',
             'price' => 'required|numeric',
             'discounted_price' => 'sometimes|numeric',

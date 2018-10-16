@@ -51,6 +51,10 @@
         .gopop#varify .var-num .code input {
             padding: 0;
         }
+
+        .fa.fa-star.active {
+            color: #23d25b !important;
+        }
     </style>
 </head>
 <body id="app-layout">
@@ -147,6 +151,11 @@
         jQuery('#step-1').click(function () {
             jQuery(this).parent().parent().parent().hide().next().show();//hide parent and show next
         });
+
+        //Replace all broken images
+        {{--$("img").each(function () {--}}
+        {{--$(this).attr("onerror", "this.src='http://gogrub.docs/frontend/images/images@2x.png'");--}}
+        {{--});--}}
     });
     function editName(number) {
         document.getElementById('name' + number).readOnly = false;
