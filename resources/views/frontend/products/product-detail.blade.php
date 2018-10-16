@@ -104,8 +104,8 @@
             </div>
 
             <div class="row">
-                @if(count($product['chef']['rating_reviews']) > 0)
-                    <div class="col-7">
+                <div class="col-7">
+                    @if(count($product['chef']['rating_reviews']) > 0)
                         <div class="order-comments">
                             <h2>Reviews ({!! count($product['chef']['rating_reviews']) !!})</h2>
                             <div class="order-scroll">
@@ -122,10 +122,11 @@
                                 @endforeach
                             </div>
                         </div>
-                    </div>
-                @endif
-                @if(!empty($product['chef']['products']))
-                    <div class="col-5">
+                    @endif
+                </div>
+
+                <div class="col-5">
+                    @if(!empty($product['chef']['products']))
                         <p class="text-center">Other Meals by <strong>Michael</strong></p>
                         <div class="row">
                             @include('frontend.partials.product-grid', [
@@ -133,8 +134,9 @@
                             'colSize' => 6
                             ])
                         </div>
-                    </div>
-                @endif
+                    @endif
+                </div>
+
             </div>
         </div>
     </section>
