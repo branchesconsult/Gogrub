@@ -127,7 +127,7 @@
 
                 <div class="col-5">
                     @if(!empty($product['chef']['products']))
-                        <p class="text-center">Other Meals by <strong>Michael</strong></p>
+                        <p class="text-center">Other Meals by <strong>{!! $product['chef']['full_name'] !!}</strong></p>
                         <div class="row">
                             @include('frontend.partials.product-grid', [
                             'products' => $product['chef']['products'],
