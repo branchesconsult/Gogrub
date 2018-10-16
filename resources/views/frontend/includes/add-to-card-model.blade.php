@@ -65,6 +65,7 @@
                     beforeSend: function () {
                     },
                     success: function (data) {
+                        window.location = '{!! route('frontend.checkout.page') !!}';
                         $("#addToCartModel").modal('hide');
                         $("#head-cart-count").html(data.cart_count);
                     },

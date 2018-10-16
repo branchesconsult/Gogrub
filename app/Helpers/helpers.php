@@ -412,3 +412,8 @@ function printRatingStars($ratedStar)
     }
     return $starHtml;
 }
+
+function formatPrice($price)
+{
+    return 'Rs ' . $price;
+}

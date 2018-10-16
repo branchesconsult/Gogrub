@@ -2,6 +2,7 @@
 
 namespace App\Http;
 
+use App\Http\Middleware\CartCountMiddleware;
 use App\Http\Middleware\IsChef;
 use App\Http\Middleware\IsMobileVerified;
 use Illuminate\Foundation\Http\Kernel as HttpKernel;
@@ -86,5 +87,6 @@ class Kernel extends HttpKernel
         'mobile.verify' => IsMobileVerified::class,
         'chef' => IsChef::class,
         'bindings' => \Illuminate\Routing\Middleware\SubstituteBindings::class,
+        'cart.haveItems' => CartCountMiddleware::class,
     ];
 }

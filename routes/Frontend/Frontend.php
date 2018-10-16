@@ -47,4 +47,6 @@ Route::group(['prefix' => 'products', 'middleware' => ['web'], 'namespace' => 'P
 
 Route::group(['prefix' => 'cart', 'middleware' => ['web'], 'namespace' => 'Order'], function () {
     Route::post('add-product', 'CartController@addProductToCart')->name('card.add');
+    Route::get('checkout', 'CartController@checkOutPage')->name('checkout.page');
+    Route::post('remove-item', 'CartController@removeItem')->name('cart.remove.item');
 });

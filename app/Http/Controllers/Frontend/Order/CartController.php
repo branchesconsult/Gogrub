@@ -9,6 +9,11 @@ use App\Http\Controllers\Controller;
 
 class CartController extends Controller
 {
+    function __construct()
+    {
+        $this->middleware('cart.haveItems', ['only' => ['checkOutPage']]);
+    }
+
     public function addProductToCart(Request $request)
     {
         $productId = $request->product_id;
@@ -22,6 +27,30 @@ class CartController extends Controller
         Cart::add($productId, $productName, $qty, $productPrice, [
             'special_instructions' => $specialInstructions
         ]);
+
+        return response()->json([
+            'success' => true,
+            'cart_count' => Cart::count()
+        ]);
+    }
+
+    /**
+     *
+     */
+    public function checkOutPage()
+    {
+
+        $data['cart_contents'] = Cart::content()->toArray();
+        $data['subtotal'] = Cart::subtotal();
+        $data['delivery_charges'] = 10;
+        $data['total'] = Cart::total() + $data['delivery_charges'];
+        //dd($data);
+        return view('frontend.cart.checkout', $data);
+    }
+
+    public function removeItem(Request $request)
+    {
+        Cart::remove($request->cartItemId);
         return response()->json([
             'success' => true,
             'cart_count' => Cart::count()
