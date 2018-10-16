@@ -53,9 +53,13 @@ trait UserRelationship
         return $this->hasMany(Session::class);
     }
 
+    /**
+     * Only chef own products
+     * @return mixed
+     */
     public function products()
     {
-        return $this->hasMany(Product::class);
+        return $this->hasMany(Product::class, 'chef_id');
     }
 
 

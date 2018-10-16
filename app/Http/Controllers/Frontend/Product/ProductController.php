@@ -16,7 +16,9 @@ class ProductController extends Controller
     public function show($productSlug)
     {
         $data['product'] = Product::with(['chef' => function ($q) {
-            $q->with('ratingReviews.user');
+            $q->with(['ratingReviews.user', 'products' => function ($q1) {
+                $q1->with(['chef', 'cuisine'])->take(6);
+            }]);
         }, 'images'])
             ->where('slug', $productSlug)
             ->firstOrFail()->toArray();

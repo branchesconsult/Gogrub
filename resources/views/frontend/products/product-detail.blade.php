@@ -122,128 +122,17 @@
                         </div>
                     </div>
                 </div>
-                <div class="col-5">
-                    <p class="text-center">Other Meals by <strong>Michael</strong></p>
-                    <div class="row">
-
-                        <div class="col-6">
-                            <div class="food-block">
-                                <div class="food-image">
-                                    <img src="images/images@2x.png" class="img-fluid"/>
-                                    <div class="food-meal-left">
-                                        <a href="#"><strong>20</strong> Left</a>
-                                    </div>
-                                    <div class="food-meal-btn">
-                                        <a href="#">Add to meal <strong>$9</strong></a>
-                                    </div>
-                                </div>
-                                <div class="food-list-details">
-                                    <div class="row">
-                                        <div class="col-7">
-                                            <div class="food-name">Mince Biryani</div>
-                                            <div class="food-chef-name"><strong>Chef:</strong> William Smith</div>
-                                            <div class="food-cuisine"><strong>Cuisine:</strong> Desi</div>
-                                        </div>
-                                        <div class="col-5">
-                                            <div class="food-serving"><strong>Serving Size:</strong>
-                                                <i class="fa fa-user"></i> <i class="fa fa-user"></i> <i
-                                                        class="fa fa-user"></i> <i class="fa fa-user"></i> <i
-                                                        class="fa fa-user"></i></div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
+                @if(!empty($product['chef']['products']))
+                    <div class="col-5">
+                        <p class="text-center">Other Meals by <strong>Michael</strong></p>
+                        <div class="row">
+                            @include('frontend.partials.product-grid', [
+                            'products' => $product['chef']['products'],
+                            'colSize' => 6
+                            ])
                         </div>
-
-                        <div class="col-6">
-                            <div class="food-block">
-                                <div class="food-image">
-                                    <img src="images/images@2x.png" class="img-fluid"/>
-                                    <div class="food-meal-left">
-                                        <a href="#"><strong>20</strong> Left</a>
-                                    </div>
-                                    <div class="food-meal-btn">
-                                        <a href="#">Add to meal <strong>$9</strong></a>
-                                    </div>
-                                </div>
-                                <div class="food-list-details">
-                                    <div class="row">
-                                        <div class="col-7">
-                                            <div class="food-name">Mince Biryani</div>
-                                            <div class="food-chef-name"><strong>Chef:</strong> William Smith</div>
-                                            <div class="food-cuisine"><strong>Cuisine:</strong> Desi</div>
-                                        </div>
-                                        <div class="col-5">
-                                            <div class="food-serving"><strong>Serving Size:</strong>
-                                                <i class="fa fa-user"></i> <i class="fa fa-user"></i> <i
-                                                        class="fa fa-user"></i> <i class="fa fa-user"></i> <i
-                                                        class="fa fa-user"></i></div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="col-6">
-                            <div class="food-block">
-                                <div class="food-image">
-                                    <img src="images/images@2x.png" class="img-fluid"/>
-                                    <div class="food-meal-left">
-                                        <a href="#"><strong>20</strong> Left</a>
-                                    </div>
-                                    <div class="food-meal-btn">
-                                        <a href="#">Add to meal <strong>$9</strong></a>
-                                    </div>
-                                </div>
-                                <div class="food-list-details">
-                                    <div class="row">
-                                        <div class="col-7">
-                                            <div class="food-name">Mince Biryani</div>
-                                            <div class="food-chef-name"><strong>Chef:</strong> William Smith</div>
-                                            <div class="food-cuisine"><strong>Cuisine:</strong> Desi</div>
-                                        </div>
-                                        <div class="col-5">
-                                            <div class="food-serving"><strong>Serving Size:</strong>
-                                                <i class="fa fa-user"></i> <i class="fa fa-user"></i> <i
-                                                        class="fa fa-user"></i> <i class="fa fa-user"></i> <i
-                                                        class="fa fa-user"></i></div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="col-6">
-                            <div class="food-block">
-                                <div class="food-image">
-                                    <img src="images/images@2x.png" class="img-fluid"/>
-                                    <div class="food-meal-left">
-                                        <a href="#"><strong>20</strong> Left</a>
-                                    </div>
-                                    <div class="food-meal-btn">
-                                        <a href="#">Add to meal <strong>$9</strong></a>
-                                    </div>
-                                </div>
-                                <div class="food-list-details">
-                                    <div class="row">
-                                        <div class="col-7">
-                                            <div class="food-name">Mince Biryani</div>
-                                            <div class="food-chef-name"><strong>Chef:</strong> William Smith</div>
-                                            <div class="food-cuisine"><strong>Cuisine:</strong> Desi</div>
-                                        </div>
-                                        <div class="col-5">
-                                            <div class="food-serving"><strong>Serving Size:</strong>
-                                                <i class="fa fa-user"></i> <i class="fa fa-user"></i> <i
-                                                        class="fa fa-user"></i> <i class="fa fa-user"></i> <i
-                                                        class="fa fa-user"></i></div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-
                     </div>
-                </div>
+                @endif
             </div>
         </div>
     </section>
