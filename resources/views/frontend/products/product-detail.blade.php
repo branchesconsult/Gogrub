@@ -4,7 +4,7 @@
     {!! Html::style(asset('frontend/lightslider/css/lightslider.css')) !!}
 @stop
 @section('content')
-    @include('frontend.includes.search-fullwidth-banner')
+    {{--@include('frontend.includes.search-fullwidth-banner')--}}
     <section class="food-detail">
         <div class="container">
             <div class="row">
