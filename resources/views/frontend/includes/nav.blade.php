@@ -116,16 +116,15 @@
         @endif
         <!--Cart-->
             <div class="dropdown">
-                <a class="top-cart dropdown-toggle" href="#" role="button" id="cart-dd" data-toggle="dropdown"
+                <a class="top-cart dropdown-toggle"
+                   href="#"
+                   role="button"
+                   id="cart-dd"
+                   data-toggle="dropdown"
                    aria-haspopup="true" aria-expanded="false">
                     <i class="fa fa-shopping-cart"></i>
-                    <span>2</span>
+                    <span>{!! Cart::count() !!}</span>
                 </a>
-                <div class="dropdown-menu" aria-labelledby="cart-dd">
-                    <a class="dropdown-item" href="#">Action</a>
-                    <a class="dropdown-item" href="#">Another action</a>
-                    <a class="dropdown-item" href="#">Something else here</a>
-                </div>
             </div>
         </div>
     </nav>

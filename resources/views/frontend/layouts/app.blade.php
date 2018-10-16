@@ -127,6 +127,7 @@
 @yield('login-model-scripts')
 @yield('verify-model-scripts')
 @yield('signup-modal-scripts')
+@yield('add-to-card-modal-scripts')
 <script>
     $(document).ready(function () {
         initMap();

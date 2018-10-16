@@ -44,3 +44,7 @@ Route::get('pages/{slug}', 'FrontendController@showPage')->name('pages.show');
 Route::group(['prefix' => 'products', 'middleware' => ['web'], 'namespace' => 'Product'], function () {
     Route::get('{slug}', 'ProductController@show')->name('product.detail');
 });
+
+Route::group(['prefix' => 'cart', 'middleware' => ['web'], 'namespace' => 'Order'], function () {
+    Route::post('add-product', 'CartController@addProductToCart')->name('card.add');
+});
