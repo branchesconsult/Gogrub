@@ -35,5 +35,10 @@
                 </div>
             </div>
         </div>
+        <div class="modal-footer">
+            <button class="btn-success btn">
+                Add to cart
+            </button>
+        </div>
     </div>
 </div>
