@@ -15,9 +15,11 @@ class ProductController extends Controller
 
     public function show($productSlug)
     {
-        $data['product'] = Product::with(['chef' => function ($q) {
-            $q->with(['ratingReviews.user', 'products' => function ($q1) {
-                $q1->with(['chef', 'cuisine'])->take(6);
+        $data['product'] = Product::with(['chef' => function ($q) use ($productSlug) {
+            $q->with(['ratingReviews.user', 'products' => function ($q1) use ($productSlug) {
+                $q1->with(['chef', 'cuisine', 'images'])
+                    where('slug', '<>', $productSlug)
+                        ->take(6);
             }]);
         }, 'images'])
             ->where('slug', $productSlug)
