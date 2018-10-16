@@ -24,8 +24,7 @@ class CartController extends Controller
         ]);
         return response()->json([
             'success' => true,
-            'cart' => Cart::content(),
-            'total' => Cart::total()
+            'cart_count' => Cart::count()
         ]);
     }
 }

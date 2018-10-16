@@ -123,7 +123,7 @@
                    data-toggle="dropdown"
                    aria-haspopup="true" aria-expanded="false">
                     <i class="fa fa-shopping-cart"></i>
-                    <span>{!! Cart::count() !!}</span>
+                    <span id="head-cart-count">{!! Cart::count() !!}</span>
                 </a>
             </div>
         </div>

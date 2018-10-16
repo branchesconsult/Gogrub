@@ -63,10 +63,10 @@
                         special_instructions: $("#special_instructions").val()
                     },
                     beforeSend: function () {
-
                     },
                     success: function (data) {
-
+                        $("#addToCartModel").modal('hide');
+                        $("#head-cart-count").html(data.cart_count);
                     },
                     error: function (data) {
                         $("#server-ajax-messages div").hide();
