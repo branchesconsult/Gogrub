@@ -10,7 +10,7 @@
                     @if(empty($val['images']))
                         <img src="{!! asset('frontend/images/images@2x.png') !!}" class="img-fluid"/>
                     @else
-                        <img src="{!! $val['images'][0]['image_url'] !!}" class="img-fluid"/>
+                        <img src="{!! $val['images'][0]['medium_thumb'] !!}" class="img-fluid"/>
                     @endif
                     <div class="food-meal-left">
                         <strong>{!! $val['remaining_servings'] !!}</strong> Left
