@@ -14,7 +14,7 @@
                             <ul id="product-detail-banner">
                                 @foreach($product['images'] as $key => $val)
                                     <li data-src="{!! $val['image_large'] !!}" data-thumb="{!! $val['small_thumb'] !!}">
-                                        <img src="{!! $val['image_large'] !!}"/>
+                                        <img src="{!! $val['medium_thumb'] !!}"/>
                                     </li>
                                 @endforeach
                             </ul>
