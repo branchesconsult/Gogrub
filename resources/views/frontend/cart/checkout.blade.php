@@ -16,44 +16,59 @@
                                     <i onclick="removeItemFromCart('{!! $key !!}')" class="fa fa-close"></i>
                                 </div>
                             @endforeach
-                            <div class="receipt-form">
-                                <h2>Delivery Address</h2>
-                                <form>
-                                    <div class="form-row">
-                                        <div class="form-group col-md-6">
-                                            <label for="inputBuilding">Building</label>
-                                            <input type="text" class="form-control" id="inputBuilding"
-                                                   placeholder="Apartment, studio, or floor">
-                                        </div>
-                                        <div class="form-group col-md-6">
-                                            <label for="inputStreet">Street</label>
-                                            <input type="text" class="form-control" id="inputStreet"
-                                                   placeholder="1234 Main St">
-                                        </div>
-                                    </div>
-                                    <div class="form-row">
-                                        <div class="form-group col-md-6">
-                                            <label for="inputArea">Area</label>
-                                            <input type="text" class="form-control" id="inputArea">
-                                        </div>
-                                        <div class="form-group col-md-6">
-                                            <label for="inputFloor">Floor/unit(optional)</label>
-                                            <input type="text" class="form-control" id="inputFloor">
-                                        </div>
-                                    </div>
-                                    <div class="form-row">
-                                        <div class="form-group col-md-12">
-                                            <label for="inputInformation">Additional Delivery Information</label>
-                                            <textarea class="form-control" id="inputInformation"></textarea>
-                                        </div>
-                                    </div>
-                                    <div class="clearfix">
-                                        <button type="submit" class="btn btn-primary">Save</button>
-                                    </div>
-                                </form>
-                            </div>
-                        </div>
 
+                            {!! Form::open([]) !!}
+                            <div class="receipt-form">
+                                <h2>Delivery time</h2>
+                                <div class="form-row">
+                                    <div class="form-group col-md-12">
+                                        <select class="form-control">
+                                            @foreach($delivery_slots as $key => $val)
+                                                <option value="{!! $val !!}">
+                                                    {!! $val !!}
+                                                </option>
+                                            @endforeach
+                                        </select>
+                                    </div>
+                                </div>
+                                <h2>Delivery Address</h2>
+                                <div class="form-row">
+                                    <div class="form-group col-md-6">
+                                        <label for="inputBuilding">Building</label>
+                                        <input type="text" class="form-control" id="inputBuilding"
+                                               placeholder="Apartment, studio, or floor">
+                                    </div>
+                                    <div class="form-group col-md-6">
+                                        <label for="inputStreet">Street</label>
+                                        <input type="text" class="form-control" id="inputStreet"
+                                               placeholder="1234 Main St">
+                                    </div>
+                                </div>
+                                <div class="form-row">
+                                    <div class="form-group col-md-6">
+                                        <label for="inputArea">Area</label>
+                                        <input type="text" class="form-control" id="inputArea">
+                                    </div>
+                                    <div class="form-group col-md-6">
+                                        <label for="inputFloor">Floor/unit(optional)</label>
+                                        <input type="text" class="form-control" id="inputFloor">
+                                    </div>
+                                </div>
+                                <div class="form-row">
+                                    <div class="form-group col-md-12">
+                                        <label for="inputInformation">Additional Delivery Information</label>
+                                        <textarea class="form-control" id="inputInformation"></textarea>
+                                    </div>
+                                </div>
+                                <div class="clearfix">
+                                    <button type="submit" class="btn btn-primary">Save</button>
+                                </div>
+                            </div>
+                            <div class="receipt-form">
+                                <h2>Personal details</h2>
+                            </div>
+                            {!! Form::close() !!}
+                        </div>
                         <div class="col-4">
                             <div class="cart-detail">
                                 @foreach($cart_contents as $key => $val)

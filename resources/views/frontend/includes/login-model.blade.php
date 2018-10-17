@@ -40,7 +40,7 @@
                 </div>
                 {!! Form::close() !!}
                 <div class="text-sign">
-                    Donesn't have an account? <a href="">Sign Up</a>
+                    Donesn't have an account? <a href="#" onclick="openBsModal('signup')">Sign Up</a>
                 </div>
             </div>
             <div class="modal-footer">

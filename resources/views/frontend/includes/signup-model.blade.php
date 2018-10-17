@@ -54,7 +54,7 @@
                 </div>
                 {!! Form::close() !!}
                 <div class="text-sign">
-                    Do you have a account? <a href="">Sign In</a>
+                    Do you have a account? <a href="#" onclick="openBsModal('login')">Sign In</a>
                 </div>
             </div>
             <div class="modal-footer">

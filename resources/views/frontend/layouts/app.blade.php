@@ -171,7 +171,7 @@
         $(".modal").modal('hide');
         setTimeout(function () {
             $("#" + modelId).modal('show');
-        }, 500);
+        }, 700);
         return false;
     }
 </script>

@@ -10,7 +10,7 @@
                 <div class="panel-heading">{{ trans('labels.frontend.auth.login_box_title') }}</div>
 
                 <div class="panel-body">
-
+                    ADd facebook login
                     {{ Form::open(['route' => 'frontend.auth.login', 'class' => 'form-horizontal']) }}
 
                     <div class="form-group">
@@ -48,7 +48,7 @@
                     {{ Form::close() }}
 
                     <div class="row text-center">
-
+                        REgister link
                     </div>
                 </div><!-- panel body -->
 

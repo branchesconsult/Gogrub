@@ -13,7 +13,8 @@
                         <div class="col-12 food-main">
                             <ul id="product-detail-banner">
                                 @foreach($product['images'] as $key => $val)
-                                    <li data-src="{!! $val['image_large'] !!}" data-thumb="{!! $val['small_thumb'] !!}">
+                                    <li data-src="{!! $val['image_large'] !!}"
+                                        data-thumb="{!! $val['small_thumb'] !!}">
                                         <img src="{!! $val['medium_thumb'] !!}"/>
                                     </li>
                                 @endforeach
@@ -69,7 +70,7 @@
                         </div>
 
                         <div class="col-12 food-chef">
-                            <img src="{!! $product['chef']['avatar'] !!}"/>
+                            <img src="{!! getImgSrc($product['chef']['avatar'], 70, 70) !!}"/>
                             <h5><strong>{!! $product['chef']['full_name'] !!}</strong>
                             </h5>
                             {{--<i class="fa fa-comment"></i> <span>text chef for any query</span>--}}

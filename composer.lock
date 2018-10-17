@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "c727a3a171bc944c49732c7c1f41d375",
+    "content-hash": "849ae8b93e5d8c06fd5f873f87600e9c",
     "packages": [
         {
             "name": "abrigham/laravel-email-exceptions",
@@ -250,6 +250,65 @@
                 "support"
             ],
             "time": "2018-02-08T00:42:15+00:00"
+        },
+        {
+            "name": "bkwld/croppa",
+            "version": "4.7.1",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/BKWLD/croppa.git",
+                "reference": "2ca553795085f21b77829053a9da0d1221d6cd77"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/BKWLD/croppa/zipball/2ca553795085f21b77829053a9da0d1221d6cd77",
+                "reference": "2ca553795085f21b77829053a9da0d1221d6cd77",
+                "shasum": ""
+            },
+            "require": {
+                "illuminate/console": "4 - 5",
+                "illuminate/routing": "4 - 5",
+                "illuminate/support": "4 - 5",
+                "league/flysystem": "~1.0",
+                "php": ">=5.5.0",
+                "symfony/http-foundation": "2 - 4",
+                "symfony/http-kernel": "2 - 4",
+                "weotch/phpthumb": "^1.0.5"
+            },
+            "conflict": {
+                "league/flysystem-cached-adapter": "<1.0.2"
+            },
+            "require-dev": {
+                "mockery/mockery": "~0.9",
+                "phpunit/phpunit": "4 - 5"
+            },
+            "type": "library",
+            "extra": {
+                "laravel": {
+                    "providers": [
+                        "Bkwld\\Croppa\\ServiceProvider"
+                    ],
+                    "aliases": {
+                        "Croppa": "Bkwld\\Croppa\\Facade"
+                    }
+                }
+            },
+            "autoload": {
+                "psr-0": {
+                    "Bkwld\\Croppa": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Robert Reinhard"
+                }
+            ],
+            "description": "Image thumbnail creation through specially formatted URLs for Laravel",
+            "time": "2018-02-23T00:34:50+00:00"
         },
         {
             "name": "cocur/slugify",
@@ -2187,16 +2246,16 @@
         },
         {
             "name": "league/flysystem",
-            "version": "1.0.47",
+            "version": "1.0.48",
             "source": {
                 "type": "git",
                 "url": "https://github.com/thephpleague/flysystem.git",
-                "reference": "a11e4a75f256bdacf99d20780ce42d3b8272975c"
+                "reference": "a6ded5b2f6055e2db97b4b859fdfca2b952b78aa"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/thephpleague/flysystem/zipball/a11e4a75f256bdacf99d20780ce42d3b8272975c",
-                "reference": "a11e4a75f256bdacf99d20780ce42d3b8272975c",
+                "url": "https://api.github.com/repos/thephpleague/flysystem/zipball/a6ded5b2f6055e2db97b4b859fdfca2b952b78aa",
+                "reference": "a6ded5b2f6055e2db97b4b859fdfca2b952b78aa",
                 "shasum": ""
             },
             "require": {
@@ -2267,7 +2326,7 @@
                 "sftp",
                 "storage"
             ],
-            "time": "2018-09-14T15:30:29+00:00"
+            "time": "2018-10-15T13:53:10+00:00"
         },
         {
             "name": "league/oauth1-client",
@@ -3760,16 +3819,16 @@
         },
         {
             "name": "symfony/http-foundation",
-            "version": "v4.1.4",
+            "version": "v4.1.6",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/http-foundation.git",
-                "reference": "3a5c91e133b220bb882b3cd773ba91bf39989345"
+                "reference": "d528136617ff24f530e70df9605acc1b788b08d4"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/http-foundation/zipball/3a5c91e133b220bb882b3cd773ba91bf39989345",
-                "reference": "3a5c91e133b220bb882b3cd773ba91bf39989345",
+                "url": "https://api.github.com/repos/symfony/http-foundation/zipball/d528136617ff24f530e70df9605acc1b788b08d4",
+                "reference": "d528136617ff24f530e70df9605acc1b788b08d4",
                 "shasum": ""
             },
             "require": {
@@ -3810,7 +3869,7 @@
             ],
             "description": "Symfony HttpFoundation Component",
             "homepage": "https://symfony.com",
-            "time": "2018-08-27T17:47:02+00:00"
+            "time": "2018-10-03T08:48:45+00:00"
         },
         {
             "name": "symfony/http-kernel",
@@ -4800,6 +4859,41 @@
                 "environment"
             ],
             "time": "2018-07-29T20:33:41+00:00"
+        },
+        {
+            "name": "weotch/phpthumb",
+            "version": "1.0.5",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/weotch/PHPThumb.git",
+                "reference": "f5c1d2ef2e9de3bded7483778618bf8cac2511c3"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/weotch/PHPThumb/zipball/f5c1d2ef2e9de3bded7483778618bf8cac2511c3",
+                "reference": "f5c1d2ef2e9de3bded7483778618bf8cac2511c3",
+                "shasum": ""
+            },
+            "replace": {
+                "dannytrue/phpthumb": "dev-master#2d8898f62e75a743e248dd5906a038d574e0dfe0"
+            },
+            "type": "library",
+            "autoload": {
+                "classmap": [
+                    "src/"
+                ]
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Robert Reinhard"
+                }
+            ],
+            "description": "Fork of PHPThumb that adds auto-image rotation based on EXIF data and composer support",
+            "time": "2015-05-12T22:56:19+00:00"
         },
         {
             "name": "windwalker/renderer",

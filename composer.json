@@ -15,6 +15,7 @@
         "abrigham/laravel-email-exceptions": "^1.2",
         "arcanedev/log-viewer": "^4.5",
         "arcanedev/no-captcha": "^5.0",
+        "bkwld/croppa": "^4.7",
         "creativeorange/gravatar": "~1.0",
         "cviebrock/eloquent-sluggable": "4.5",
         "davejamesmiller/laravel-breadcrumbs": "^5.0",
