@@ -29,7 +29,7 @@
                                 <h3 class="fs-subtitle">
                                     Please upload your NIC's front and back side
                                 </h3>
-                                <div class="input-group mb-3">
+                                <div class="input-group mb-3 text-center">
                                     <img id="triggerimg"
                                          src="{!! asset('frontend/images/Group781@2x.png') !!}"
                                          alt="your image"/>
@@ -37,8 +37,9 @@
                                 <div id="get-nics-uploads-gallery-block" class="input-group mb-3 gallery-block">
                                     <div class="field">
                                         <p>Take a clean snap of your ID Card both front and back</p>
-                                        <input type="file" id="files" name="files[]" multiple/>
-                                        <button type="button" class="triggerbtn">Upload</button>
+										<div id="image_preview"></div>
+                                        <input type="file" id="files" name="upload_file[]" onchange="preview_image();" multiple/>
+                                        <button type="button" class="triggerbtn" onclick="preview_image()">Upload</button>
                                     </div>
                                 </div>
                                 <input type="button"
@@ -49,7 +50,7 @@
                                 <h2 class="fs-title">Kitchen pics</h2>
                                 <h3 class="fs-subtitle">Please upload your kitchen pics</h3>
 
-                                <div class="input-group mb-3">
+                                <div class="input-group mb-3 text-center">
                                     <img
                                             src="{!! asset('frontend/images/Group781@2x.png') !!}"
                                             alt="your image"/>
@@ -57,8 +58,9 @@
                                 <div class="input-group mb-3 gallery-block">
                                     <div class="field">
                                         <p>Take a clean snap of your ID Card both front and back</p>
-                                        <input type="file" id="files" name="files[]" multiple/>
-                                        <button type="button" class="triggerbtn">Upload</button>
+										<div id="image_preview2"></div>
+                                        <input type="file" id="files2" name="upload_file[]" onchange="preview_image2();" multiple/>
+                                        <button type="button" class="triggerbtn" onclick="preview_image2()">Upload</button>
                                     </div>
                                 </div>
 
@@ -160,5 +162,30 @@
                 return false;
             });
         });
-    </script>
+			$(document).ready(function() 
+			{ 
+			 $('form').ajaxForm(function() 
+			 {
+			  alert("Uploaded SuccessFully");
+			 }); 
+			});
+			
+			function preview_image() 
+			{
+				 var total_file=document.getElementById("files").files.length;
+				 for(var i=0;i<total_file;i++)
+				 {
+				  $('#image_preview').append("<img src='"+URL.createObjectURL(event.target.files[i])+"'>");
+				 }
+			}
+			
+			function preview_image2() 
+			{
+				 var total_file2=document.getElementById("files2").files.length;
+				 for(var i=0;i<total_file2;i++)
+				 {
+				  $('#image_preview2').append("<img src='"+URL.createObjectURL(event.target.files[i])+"'>");
+				 }
+			}
+	</script>
 @stop

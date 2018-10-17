@@ -1,29 +1,30 @@
 @extends('frontend.layouts.app')
 
 @section('content')
+    <div class="container">
     <div class="row">
 
-        <div class="col-xs-12">
+        <div class="col-12">
 
             <div class="panel panel-default">
-                <div class="panel-heading">{{ trans('navs.frontend.user.account') }}</div>
+                <div class="panel-heading"><h2>{{ trans('navs.frontend.user.account') }}</h2></div>
 
                 <div class="panel-body">
 
-                    <div role="tabpanel">
+                    <nav role="tabpanel">
 
                         <!-- Nav tabs -->
-                        <ul class="nav nav-tabs" role="tablist">
-                            <li role="presentation" class="active" id="li-profile">
+                        <ul class="nav nav-tabs my-account" role="tablist">
+                            <li role="tab" class="nav-item nav-link active" data-toggle="tab" id="li-profile">
                                 <a href="#profile" aria-controls="profile" role="tab" data-toggle="tab" class="tabs">{{ trans('navs.frontend.user.profile') }}</a>
                             </li>
 
-                            <li role="presentation" id="li-edit">
+                            <li role="tab" class="nav-item nav-link" data-toggle="tab" id="li-edit">
                                 <a href="#edit" aria-controls="edit" role="tab" data-toggle="tab" class="tabs">{{ trans('labels.frontend.user.profile.update_information') }}</a>
                             </li>
 
                             @if ($logged_in_user->canChangePassword())
-                                <li role="presentation" id="li-password">
+                                <li role="tab" class="nav-item nav-link" data-toggle="tab" id="li-password">
                                     <a href="#password" aria-controls="password" role="tab" data-toggle="tab" class="tabs">{{ trans('navs.frontend.user.change_password') }}</a>
                                 </li>
                             @endif
@@ -49,7 +50,7 @@
 
                         </div><!--tab content-->
 
-                    </div><!--tab panel-->
+                    </nav><!--tab panel-->
 
                 </div><!--panel body-->
 
@@ -57,6 +58,7 @@
 
         </div><!-- col-xs-12 -->
 
+    </div><!-- row -->
     </div><!-- row -->
 @endsection
 
