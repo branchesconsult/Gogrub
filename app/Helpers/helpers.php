@@ -420,7 +420,7 @@ function formatPrice($price)
 
 function getImgSrc($src, $width = null, $height = null, $options = [])
 {
-    //return $src;
+    return $src;
     return asset(\Croppa::url($src, $width, $height));//\Croppa::render(());
     //return str_replace(["imgfly/images", "http://gogrub.docs//"], null, Imgfly::imgPreset($src, $size));
 }
