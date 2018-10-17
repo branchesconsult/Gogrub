@@ -124,7 +124,7 @@ class User extends Authenticatable implements JWTSubject
     {
         //|| !\File::exists(public_path($val))
         if (empty($val)) {
-            return asset('img/default_chef.jpg');
+            return asset('img/no_img.png');
         }
         if (filter_var($val, FILTER_VALIDATE_URL)) {
             return $val;

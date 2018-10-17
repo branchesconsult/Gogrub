@@ -418,22 +418,12 @@ function formatPrice($price)
     return 'Rs ' . $price;
 }
 
-function getImgSrc($src = null, $width = null, $height = null, $options = [])
+function getImgSrc($src, $width = null, $height = null, $options = [])
 {
-    //If this is a url
-    if ((filter_var($src, FILTER_VALIDATE_URL))) {
-        $client = new \GuzzleHttp\Client();
-        $request = $client->head($src);
-        if ($request->getStatusCode() == 200) {
-            return asset(\Croppa::url($src, $width, $height));//\Croppa::render(());
-        } else {
-            return asset('img/no_img.png');
-        }
-    }
-    //Working good
-
-    if (\File::exists($src) && !empty($src)) {
-        return asset(\Croppa::url($src, $width, $height));//\Croppa::render(());
+    $filePhyPath = str_replace(asset('/'), '', $src);
+    if (\File::exists($filePhyPath) && !empty($src)) {
+        return $src;
+        return asset(\Croppa::url($src, $width, $height));
     } else {
         return asset('img/no_img.png');
     }

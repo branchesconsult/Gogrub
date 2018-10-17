@@ -7,7 +7,7 @@
             <div class="row">
                 <div class="col-4 text-center">
                     <div class="chef-detail">
-                        <img src="{!! getImgSrc($chef['avatar']) !!}"/>
+                        <img src="{!! getImgSrc($chef['avatar'], 300, 300) !!}"/>
                         <h2>Hi! i am {!! $chef['full_name'] !!}</h2>
                         <div class="star-rating">
                             {!! printRatingStars($chef['avg_rating']) !!}

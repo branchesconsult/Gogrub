@@ -36,7 +36,7 @@
      *
      * @var integer | boolean
      */
-    'max_crops' => false,
+    'max_crops' => 3,
 
 
     /*
@@ -110,7 +110,7 @@
      *
      * @var integer
      */
-    'jpeg_quality' => 95,
+    'jpeg_quality' => 90,
 
     /**
      * Turn on interlacing to make progessive jpegs.

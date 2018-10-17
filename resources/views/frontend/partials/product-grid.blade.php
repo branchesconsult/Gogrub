@@ -8,7 +8,7 @@
             <a href="{!! route('frontend.product.detail', ['slug' => $val['slug']]) !!}">
                 <div class="food-image">
 
-                    <img src="{!! (!empty($val['images'])) ? getImgSrc($val['images'][0]['medium_thumb'], 290,290) : getImgSrc(null, 290,290) !!}"
+                    <img src="{!! (!empty($val['images'])) ? getImgSrc($val['images'][0]['medium_thumb'], 290,291) : getImgSrc(null, 290,290) !!}"
                          class="img-fluid"/>
                     <div class="food-meal-left">
                         <strong>{!! $val['remaining_servings'] !!}</strong> Left
