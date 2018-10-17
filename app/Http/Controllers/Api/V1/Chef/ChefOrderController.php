@@ -34,6 +34,11 @@ class ChefOrderController extends Controller
         ]);
     }
 
+    public function create()
+    {
+        
+    }
+
     /**
      * Get order by id
      * @param $id
@@ -41,7 +46,6 @@ class ChefOrderController extends Controller
      */
     public function show($id)
     {
-        //dd($id);
         $order = Order::with(['detail', 'user', 'ratingReview'])
             ->where('id', $id)
             ->first();
