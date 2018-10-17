@@ -83,7 +83,7 @@
 }
 body{
 	font-size:14px;
-	zoom: 0.8;}
+	/*zoom: 0.8;*/}
 
 body,h1,h2,h3,h4,h5,h6,a,button,span{
 	font-family: 'Segoe UI';
@@ -1563,16 +1563,24 @@ footer li{
 
 
 @media (min-width: 1300px){
+	.container {
+		max-width: 1300px;
+	}
+}
+
+@media (max-width: 768px){
+	section.banner .container{
+		max-width:90%;}
+}
+/*
+@media (min-width: 992px){
 .container {
-    max-width: 1300px;
-}
-}
+    max-width: 980px;
+}}
 
-
-
-
-
-
-
+@media (min-width: 768px){
+.container {
+    max-width: 750px;
+}}*/
 
 
