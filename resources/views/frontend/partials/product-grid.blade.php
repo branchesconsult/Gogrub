@@ -3,7 +3,7 @@
     $colSize = $colSize ?? 3;
 @endphp
 @foreach($products as $key => $val)
-    <div class="col-{!! $colSize !!}">
+    <div class="col-12 col-sm-6 col-md-4 col-lg-{!! $colSize !!} col-xl-{!! $colSize !!}">
         <div class="food-block">
             <a href="{!! route('frontend.product.detail', ['slug' => $val['slug']]) !!}">
                 <div class="food-image">
