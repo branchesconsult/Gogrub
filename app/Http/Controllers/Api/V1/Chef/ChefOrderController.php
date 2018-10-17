@@ -41,7 +41,7 @@ class ChefOrderController extends Controller
      */
     public function show($id)
     {
-        dd($id);
+        //dd($id);
         $order = Order::with(['detail', 'user', 'ratingReview'])
             ->where('id', $id)
             ->first();
