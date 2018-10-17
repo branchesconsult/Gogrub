@@ -420,7 +420,9 @@ function formatPrice($price)
 
 function getImgSrc($src, $width = null, $height = null, $options = [])
 {
-    return $src;
+    $ignoreFiles = ['img/default_chef.jpg'];
+    if (in_array($src, $ignoreFiles)) {
+        return $ignoreFiles;
+    }
     return asset(\Croppa::url($src, $width, $height));//\Croppa::render(());
-    //return str_replace(["imgfly/images", "http://gogrub.docs//"], null, Imgfly::imgPreset($src, $size));
 }
