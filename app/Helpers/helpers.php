@@ -427,6 +427,6 @@ function getImgSrc($src = null, $width = null, $height = null, $options = [])
         }
         return asset(\Croppa::url($src, $width, $height));//\Croppa::render(());
     } else {
-        return asset('img/default_chef.png');
+        return asset('img/no_img.png');
     }
 }
