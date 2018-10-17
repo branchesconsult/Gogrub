@@ -38,12 +38,10 @@
                                 <div id="get-nics-uploads-gallery-block" class="input-group mb-3 gallery-block">
                                     <div class="field">
                                         <p>Take a clean snap of your ID Card both front and back</p>
-                                        <div id="image_preview"></div>
-                                        <input type="file" id="files"
-                                               name="upload_file[]" onchange="readURL(this);"
-                                               multiple/>
-                                        <button type="button" class="triggerbtn">Upload
-                                        </button>
+                                        <input type="file"
+                                               name="nic[]"
+                                               accept="image/*"
+                                               multiple>
                                     </div>
                                 </div>
                                 <input type="button"
@@ -64,10 +62,11 @@
                                     <div class="field">
                                         <p>Take a clean snap of your ID Card both front and back</p>
                                         <div id="image_preview2"></div>
-                                        <input type="file" id="files2" name="upload_file[]"
-                                               multiple/>
-                                        <button type="button" class="triggerbtn">Upload
-                                        </button>
+                                        <input type="file"
+                                               class="ddUpload"
+                                               name="kitchen[]"
+                                               accept="image/*"
+                                               multiple>
                                     </div>
                                 </div>
 
@@ -91,8 +90,10 @@
 </div>
 
 @section('chef-verification-uploads-scripts')
+    {!! Html::script(asset('frontend/imageuploadify/imageuploadify.min.js')) !!}
     <script>
         $(document).ready(function () {
+            $('input[type="file"]').imageuploadify();
             //jQuery time
             var current_fs, next_fs, previous_fs; //fieldsets
             var left, opacity, scale; //fieldset properties which we will animate
@@ -169,6 +170,5 @@
                 return false;
             });
         });
-
     </script>
 @stop
