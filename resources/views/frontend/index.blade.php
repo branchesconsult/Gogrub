@@ -68,8 +68,10 @@
                         <li>2- Complete your profile</li>
                         <li>3- get yourself approved by admin</li>
                     </ul>
-                    <button class="btn btn-outline-success my-2 my-sm-0" data-toggle="modal" data-target="#becomechef"
-                            type="submit">Become a Chef
+                    <button class="btn btn-outline-success my-2 my-sm-0"
+                            onclick="openBsModal('{!! (\Auth::check()) ? 'becomechef' : 'login' !!}')"
+                            type="submit">
+                        Become a Chef
                     </button>
                 </div>
                 <div class="become-chef-banner">
@@ -77,87 +79,6 @@
                 </div>
             </div>
         </div>
-    </section>
-
-    <section class="chef-reg-step">
-
-        <div class="modal fade gopop" id="becomechef" tabindex="-1" role="dialog" aria-labelledby="becomechefTitle"
-             aria-hidden="true">
-            <div class="modal-dialog modal-dialog-centered" role="document">
-
-                <!-- Step 1 -->
-                <div class="modal-content">
-                    <div class="modal-header">
-                        <img src="{!! asset('frontend/images/Group489@2x.png') !!}"/>
-                        <h5 class="modal-title" id="loginTitle">Welcome <span>Step 1 of 2</span></h5>
-                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                            <span aria-hidden="true">&times;</span>
-                        </button>
-                    </div>
-                    <div class="arrow-down"><img src="{!! asset('frontend/images/Path828@2x.png') !!}"/></div>
-                    <div class="modal-body">
-                        <form>
-                            <p>Please verify yourself</p>
-                            <div class="input-group mb-3">
-                                <img id="triggerimg" src="{!! asset('frontend/images/Group781@2x.png') !!}"
-                                     alt="your image"/>
-                            </div>
-                            <div class="input-group mb-3 gallery-block">
-                                <div class="field">
-                                    <p>Take a clean snap of your ID Card both front and back</p>
-                                    <input type="file" id="files" name="files[]" multiple/>
-                                    <button type="button" class="triggerbtn">Upload</button>
-                                </div>
-                            </div>
-                        </form>
-                        <div class="btn-sign">
-                            <button type="submit" id="step-1" class="btn btn-primary">Next</button>
-                        </div>
-                    </div>
-                    <div class="modal-footer">
-                        why I have to upload images of my kitchen?
-                    </div>
-                </div>
-
-                <!-- Step 2 -->
-                <div class="modal-content" style="display:none;">
-                    <div class="modal-header">
-                        <img src="{!! asset('frontend/images/Group489@2x.png') !!}"/>
-                        <h5 class="modal-title" id="loginTitle">Hello Chef Ali <span>Step 2 of 2</span></h5>
-                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                            <span aria-hidden="true">&times;</span>
-                        </button>
-                    </div>
-                    <div class="arrow-down"><img src="{!! asset('frontend/images/Path828@2x.png') !!}"/></div>
-                    <div class="modal-body">
-                        <form>
-                            <p>We would love to see your kitchen</p>
-                            <div class="input-group mb-3">
-                                <img id="triggerimg" src="{!! asset('frontend/images/Group777@2x.png') !!}"
-                                     alt="your image"/>
-                            </div>
-                            <div class="input-group mb-3 gallery-block">
-                                <div class="field">
-                                    <p>Upload up to 6 images of your kitchen</p>
-                                    <input type="file" id="files2" name="files[]" multiple/>
-                                    <button type="button" class="triggerbtn2">Upload</button>
-                                </div>
-                            </div>
-                        </form>
-                        <div class="btn-sign">
-                            <button type="submit" id="step-2" class="btn btn-primary">Next</button>
-                        </div>
-                    </div>
-                    <div class="modal-footer">
-                        why I have to upload images of my kitchen?
-                    </div>
-                </div>
-
-
-            </div>
-        </div>
-
-
     </section>
 
     <section class="steps-block">
