@@ -166,8 +166,8 @@
 					var input = $('<input>').attr({
 						'type': 'text',
 						'maxlength': "1",
-						'autocomplete': 'off',
-						'placeholder': (placeholders[i] ? placeholders[i] : undefined)
+						'autocomplete': 'off','placeholder': '0',
+						//'placeholder': (placeholders[i] ? placeholders[i] : undefined)
 					}).addClass('form-control pincode-input-text').appendTo(this._container);
 					if (this.settings.hidedigits) {
 						// hide digits

@@ -103,8 +103,8 @@ header{
 /* Header Nav */
 
 nav.navbar {
-    padding-top: 25px;
-	padding-bottom: 30px;
+    padding-top: 20px;
+	padding-bottom: 25px;
 }
 
 nav.navbar button{
@@ -126,7 +126,7 @@ a.prof-pic{
 	display: block;}
 
 a.prof-pic img{
-	width:80px;}
+	width:70px;}
 
 a.prof-pic span{
 	display: block;
@@ -172,7 +172,7 @@ a.prof-pic span{
 	margin: 0 15px;}
 
 .top-massage i{
-	font-size:40px;
+	font-size:34px;
 	color:#000000;}
 
 .top-massage span{
@@ -225,6 +225,21 @@ a.prof-pic span{
 .top-massage.dropdown-toggle::after{
 	display:none;}
 
+.dropdown-item:hover,
+.dropdown-item.active, .dropdown-item:active{
+	background-color: #23d25b;}
+
+.dropdown-item:hover h4,
+.dropdown-item:hover p,
+a.dropdown-item:hover,
+.dropdown-item:hover span,
+.dropdown-item.active h4, 
+.dropdown-item:active h4,
+.dropdown-item.active p, 
+.dropdown-item:active p,
+.dropdown-item.active span, 
+.dropdown-item:active span{
+	color:#fff !important;}
 
 /* Top Notify */
 
@@ -233,7 +248,7 @@ a.prof-pic span{
 	margin: 0 15px;}
 
 .top-notify i{
-	font-size:40px;
+	font-size:30px;
 	color:#000000;}
 
 .top-notify span{
@@ -373,7 +388,8 @@ a.prof-pic span{
     font-weight: normal;
     position: absolute;
     right: 20px;
-    bottom: 10px;}
+    bottom: 10px;
+	display:none;}
 
 .gopop#becomechef .triggerinput{
 	display:none;}
@@ -456,9 +472,10 @@ a.prof-pic span{
 
 .gopop#varify .var-num .input-control{
 	position:relative;
-	margin-top:20px;}
+	margin-top:20px;
+    text-align: center;}
 
-.gopop#varify .var-num input.form-control{
+.gopop#varify .var-num #verify-mobile{
 	font-size:19px;
 	color:#878787;
 	font-weight:bold;
@@ -467,6 +484,14 @@ a.prof-pic span{
     background: #fff;
 	width: 250px;
     margin: 0 auto;}
+
+.gopop#varify button.btn.btn-primary.btn-sm.editable-submit{
+	padding: 2px 5px;}
+
+.gopop#varify .editable-error-block{
+	color: red;
+    padding: 0 15px;
+    margin: 0;}
 
 .gopop#varify .var-num .input-group-addon{
 	font-size: 19px;
@@ -1528,6 +1553,254 @@ h5.food-head{
 #carousel-custom .carousel-indicators li:hover img {
     opacity: 0.75;
 }
+
+/* 3 Steps New */
+
+#wait-overley {
+	position: fixed;
+	width: 100%;
+	height: 100%;
+	background-color: rgba(0, 0, 0, 0.7);
+	z-index: 9999999;
+	display: none;
+}
+
+.hide {
+	display: none;
+}
+
+.gopop#varify .var-num .code input{
+	padding: 0;
+	width: 30px;
+    margin: 0 5px;
+}
+
+.fa.fa-star.active {
+	color: #23d25b !important;
+}
+
+/**Step form**/
+/*form styles*/
+#msform {
+	text-align: center;
+	position: relative;
+	margin-top: 30px;
+}
+
+#msform fieldset {
+	background: white;
+	border: 0 none;
+	border-radius: 0px;
+	padding: 20px 30px;
+	box-sizing: border-box;
+	width: 80%;
+	margin: 0 10%;
+
+	/*stacking fieldsets above each other*/
+	position: relative;
+}
+
+/*Hide all except first fieldset*/
+#msform fieldset:not(:first-of-type) {
+	display: none;
+}
+
+/*inputs*/
+#msform input, #msform textarea {
+	padding: 15px;
+	border: 1px solid #ccc;
+	border-radius: 0px;
+	margin-bottom: 10px;
+	width: 100%;
+	box-sizing: border-box;
+	font-family: montserrat;
+	color: #2C3E50;
+	font-size: 13px;
+}
+
+#msform input:focus, #msform textarea:focus {
+	-moz-box-shadow: none !important;
+	-webkit-box-shadow: none !important;
+	box-shadow: none !important;
+	border: 1px solid #23d25b;
+	outline-width: 0;
+	transition: All 0.5s ease-in;
+	-webkit-transition: All 0.5s ease-in;
+	-moz-transition: All 0.5s ease-in;
+	-o-transition: All 0.5s ease-in;
+}
+
+/*buttons*/
+#msform .action-button {
+	width: 100px;
+	background: #23d25b;
+	font-weight: bold;
+	color: white;
+	border: 0 none;
+	border-radius: 25px;
+	cursor: pointer;
+	padding: 10px 5px;
+	margin: 10px 5px;
+}
+
+#msform .action-button:hover, #msform .action-button:focus {
+	box-shadow: 0 0 0 2px white, 0 0 0 3px #23d25b;
+}
+
+#msform .action-button-previous {
+	width: 100px;
+	background: #C5C5F1;
+	font-weight: bold;
+	color: white;
+	border: 0 none;
+	border-radius: 25px;
+	cursor: pointer;
+	padding: 10px 5px;
+	margin: 10px 5px;
+}
+
+#msform .action-button-previous:hover, #msform .action-button-previous:focus {
+	box-shadow: 0 0 0 2px white, 0 0 0 3px #C5C5F1;
+}
+
+/*headings*/
+.fs-title {
+	font-size: 18px;
+	text-transform: uppercase;
+	color: #2C3E50;
+	margin-bottom: 10px;
+	letter-spacing: 2px;
+	font-weight: bold;
+}
+
+.fs-subtitle {
+	font-weight: normal;
+	font-size: 13px;
+	color: #666;
+	margin-bottom: 20px;
+}
+
+/*progressbar*/
+#progressbar {
+	margin-bottom: 0px;
+	overflow: hidden;
+	/*CSS counters to number the steps*/
+	counter-reset: step;
+	padding:0;
+}
+
+#progressbar li {
+	list-style-type: none;
+	color: white;
+	text-transform: uppercase;
+	font-size: 9px;
+	width: 33.33%;
+	float: left;
+	position: relative;
+	letter-spacing: 1px;
+}
+
+#progressbar li:before {
+	content: counter(step);
+	counter-increment: step;
+	width: 26px;
+	height: 26px;
+	line-height: 26px;
+	display: block;
+	font-size: 14px;
+	color: #333;
+	background: white;
+	border-radius: 25px;
+	margin: 0 auto 10px auto;
+}
+
+/*progressbar connectors*/
+#progressbar li:after {
+	content: '';
+	width: 100%;
+	height: 2px;
+	background: white;
+	position: absolute;
+	left: -50%;
+	top: 9px;
+	z-index: -1; /*put it behind the numbers*/
+}
+
+#progressbar li:first-child:after {
+	/*connector not needed before the first step*/
+	content: none;
+}
+
+/*marking active/completed steps green*/
+/*The number of the step and the connector before it = green*/
+#progressbar li.active:before, #progressbar li.active:after {
+	background: #23d25b;
+	color: white;
+}
+#image_preview{
+	display:inline-block;}
+
+#image_preview img{
+	width:100px;}	
+#msform .input-group.mb-3.text-center img {
+    margin: 0 auto;
+}
+/* Not relevant to this form */
+.dme_link {
+	margin-top: 30px;
+	text-align: center;
+}
+
+.dme_link a {
+	background: #FFF;
+	font-weight: bold;
+	color: #23d25b;
+	border: 0 none;
+	border-radius: 25px;
+	cursor: pointer;
+	padding: 5px 25px;
+	font-size: 12px;
+}
+
+.dme_link a:hover, .dme_link a:focus {
+	background: #23d25b;
+	text-decoration: none;
+}
+
+#becomechef.gopop .modal-body {
+    padding: 0px 25px 20px;
+}
+
+/* My account */
+
+.btn-primary,.btn-primary:hover,
+.btn-primary:not(:disabled):not(.disabled).active, .btn-primary:not(:disabled):not(.disabled):active, .show>.btn-primary.dropdown-toggle{
+	background:#23d25b;
+	border-color:#23d25b;}
+
+.btn-primary.focus, .btn-primary:focus,
+.btn-primary:not(:disabled):not(.disabled).active:focus, .btn-primary:not(:disabled):not(.disabled):active:focus, .show>.btn-primary.dropdown-toggle:focus{
+	box-shadow:0 0 0 0.2rem rgba(33, 213, 103, 0.42);}
+
+.my-account{
+	margin-top: 30px;
+	margin-bottom:30px;
+	border-bottom:NONE;}
+
+.my-account li{
+	background:#23d25b;
+	border: none;
+	margin-right:10px;}
+
+.my-account a{
+	color:#fff;}
+
+.my-account.nav-tabs .nav-item.show .nav-link, 
+.my-account.nav-tabs .nav-link.active{
+	background:#23d25b;
+	border:none;}
+
+.my-account{}
 
 /* Footer Section */
 
