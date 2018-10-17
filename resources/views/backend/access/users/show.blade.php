@@ -5,7 +5,7 @@
 @section('page-header')
     <h1>
         {{ trans('labels.backend.access.users.management') }}
-        <small>{{ trans('labels.backend.access.users.view') }}</small>
+        <small> {!! $user->full_name !!}</small>
     </h1>
 @endsection
 
@@ -13,7 +13,6 @@
     <div class="box box-info">
         <div class="box-header with-border">
             <h3 class="box-title">{{ trans('labels.backend.access.users.view') }}</h3>
-
             <div class="box-tools pull-right">
                 @include('backend.access.includes.partials.user-header-buttons')
             </div><!--box-tools pull-right-->
@@ -43,6 +42,12 @@
                             Orders as customer
                         </a>
                     </li>
+                    <li role="presentation">
+                        <a href="#earnings-tbl" aria-controls="earnings-tbl"
+                           role="tab" data-toggle="tab">
+                            Earnings
+                        </a>
+                    </li>
                 </ul>
 
                 <div class="tab-content">
@@ -52,61 +57,16 @@
                     </div><!--tab overview profile-->
 
                     <div role="tabpanel" class="tab-pane mt-30" id="history">
-                        <div class="table-responsive data-table-wrapper">
-                            <table id="orders-table" class="table table-condensed table-hover table-bordered">
-                                <thead>
-                                <tr>
-                                    <th>{{ trans('labels.backend.orders.table.id') }}</th>
-                                    <th>Invoice number</th>
-                                    <th>Chef</th>
-                                    <th>Customer</th>
-                                    <th>Status</th>
-                                    <th>{{ trans('labels.backend.orders.table.createdat') }}</th>
-                                    <th>{{ trans('labels.general.actions') }}</th>
-                                </tr>
-                                </thead>
-                                <thead class="transparent-bg">
-                                <tr>
-                                    <th></th>
-                                    <th></th>
-                                    <th></th>
-                                    <th></th>
-                                    <th></th>
-                                    <th></th>
-                                    <th></th>
-                                </tr>
-                                </thead>
-                            </table>
-                        </div><!--table-responsive-->
+                        @include('backend.access.users.includes.user-order-tables', ['tblId' => 'orders-table'])
                     </div><!--tab panel history-->
                     <div role="tabpanel" class="tab-pane mt-30" id="order-as-customer">
-                        <div class="table-responsive data-table-wrapper">
-                            <table id="orders-table-customer" class="table table-condensed table-hover table-bordered">
-                                <thead>
-                                <tr>
-                                    <th>{{ trans('labels.backend.orders.table.id') }}</th>
-                                    <th>Invoice number</th>
-                                    <th>Chef</th>
-                                    <th>Customer</th>
-                                    <th>Status</th>
-                                    <th>{{ trans('labels.backend.orders.table.createdat') }}</th>
-                                    <th>{{ trans('labels.general.actions') }}</th>
-                                </tr>
-                                </thead>
-                                <thead class="transparent-bg">
-                                <tr>
-                                    <th></th>
-                                    <th></th>
-                                    <th></th>
-                                    <th></th>
-                                    <th></th>
-                                    <th></th>
-                                    <th></th>
-                                </tr>
-                                </thead>
-                            </table>
-                        </div><!--table-responsive-->
+                        @include('backend.access.users.includes.user-order-tables', [
+                        'tblId' => 'orders-table-customer'
+                        ])
                     </div><!--tab panel history-->
+                    <div role="tabpanel" class="tab-pane mt-30" id="earnings-tbl">
+                        @include('backend.access.users.includes.user-earnings')
+                    </div>
                 </div><!--tab content-->
 
             </div><!--tab panel-->

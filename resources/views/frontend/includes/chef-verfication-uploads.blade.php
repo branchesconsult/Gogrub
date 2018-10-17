@@ -24,6 +24,7 @@
                                 <li>Account Setup</li>
                             </ul>
                             <!-- fieldsets -->
+                            <!--NIC-->
                             <fieldset>
                                 <h2 class="fs-title">Personal Details</h2>
                                 <h3 class="fs-subtitle">
@@ -37,15 +38,17 @@
                                 <div id="get-nics-uploads-gallery-block" class="input-group mb-3 gallery-block">
                                     <div class="field">
                                         <p>Take a clean snap of your ID Card both front and back</p>
-										<div id="image_preview"></div>
-                                        <input type="file" id="files" name="upload_file[]" onchange="preview_image();" multiple/>
-                                        <button type="button" class="triggerbtn" onclick="preview_image()">Upload</button>
+                                        <input type="file"
+                                               name="nic[]"
+                                               accept="image/*"
+                                               multiple>
                                     </div>
                                 </div>
                                 <input type="button"
                                        name="next"
                                        class="next action-button" value="Next"/>
                             </fieldset>
+                            <!--Kitchen-->
                             <fieldset>
                                 <h2 class="fs-title">Kitchen pics</h2>
                                 <h3 class="fs-subtitle">Please upload your kitchen pics</h3>
@@ -58,9 +61,12 @@
                                 <div class="input-group mb-3 gallery-block">
                                     <div class="field">
                                         <p>Take a clean snap of your ID Card both front and back</p>
-										<div id="image_preview2"></div>
-                                        <input type="file" id="files2" name="upload_file[]" onchange="preview_image2();" multiple/>
-                                        <button type="button" class="triggerbtn" onclick="preview_image2()">Upload</button>
+                                        <div id="image_preview2"></div>
+                                        <input type="file"
+                                               class="ddUpload"
+                                               name="kitchen[]"
+                                               accept="image/*"
+                                               multiple>
                                     </div>
                                 </div>
 
@@ -85,8 +91,10 @@
 </div>
 
 @section('chef-verification-uploads-scripts')
+    {!! Html::script(asset('frontend/imageuploadify/imageuploadify.min.js')) !!}
     <script>
         $(document).ready(function () {
+            $('input[type="file"]').imageuploadify();
             //jQuery time
             var current_fs, next_fs, previous_fs; //fieldsets
             var left, opacity, scale; //fieldset properties which we will animate
@@ -163,30 +171,5 @@
                 return false;
             });
         });
-			$(document).ready(function() 
-			{ 
-			 $('form').ajaxForm(function() 
-			 {
-			  alert("Uploaded SuccessFully");
-			 }); 
-			});
-			
-			function preview_image() 
-			{
-				 var total_file=document.getElementById("files").files.length;
-				 for(var i=0;i<total_file;i++)
-				 {
-				  $('#image_preview').append("<img src='"+URL.createObjectURL(event.target.files[i])+"'>");
-				 }
-			}
-			
-			function preview_image2() 
-			{
-				 var total_file2=document.getElementById("files2").files.length;
-				 for(var i=0;i<total_file2;i++)
-				 {
-				  $('#image_preview2').append("<img src='"+URL.createObjectURL(event.target.files[i])+"'>");
-				 }
-			}
-	</script>
+    </script>
 @stop

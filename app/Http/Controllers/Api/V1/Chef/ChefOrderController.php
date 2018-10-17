@@ -24,7 +24,9 @@ class ChefOrderController extends Controller
     public function index(GetOrdersRequest $request)
     {
         $orderStatusId = $request->orderstatus_id;
-        $chefOrders = Order::with(['detail', 'user', 'ratingReview'])
+        $chefOrders = Order::with(['detail' => function ($q) {
+            $q->with('product');
+        }, 'user', 'ratingReview'])
             ->where('orderstatus_id', $orderStatusId)
             ->where('chef_id', \Auth::id())
             ->orderByDesc('id')
@@ -71,7 +73,9 @@ class ChefOrderController extends Controller
      */
     public function show($id)
     {
-        $order = Order::with(['detail', 'user', 'ratingReview'])
+        $order = Order::with(['detail' => function ($q) {
+            $q->with('product');
+        }, 'user', 'ratingReview'])
             ->where('id', $id)
             ->first();
         return response()->json([
