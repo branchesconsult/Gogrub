@@ -56,6 +56,15 @@ class ChefOrderController extends Controller
     }
 
     /**
+     * Edit
+     * @param $id
+     */
+    public function edit($id)
+    {
+        //
+    }
+
+    /**
      * Get order by id
      * @param $id
      * @return \Illuminate\Http\JsonResponse
