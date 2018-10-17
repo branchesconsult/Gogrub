@@ -71,6 +71,7 @@
                             <fieldset>
                                 <h3>We will review and send you confirmation in 48 hours.</h3>
                             </fieldset>
+                            <div class="clearfix"></div>
                         </form>
                     </div>
                 </div>
@@ -113,7 +114,7 @@
                         current_fs.css({
                             'transform': 'scale(' + scale + ')'
                         });
-                        next_fs.css({'left': left, 'opacity': opacity});
+                        next_fs.css({'left': left, 'opacity': opacity, 'top': 0});
                     },
                     duration: 800,
                     complete: function () {
@@ -147,7 +148,7 @@
                         //3. increase opacity of previous_fs to 1 as it moves in
                         opacity = 1 - now;
                         current_fs.css({'left': left});
-                        previous_fs.css({'transform': 'scale(' + scale + ')', 'opacity': opacity});
+                        previous_fs.css({'transform': 'scale(' + scale + ')', 'opacity': opacity, 'top': 0});
                     },
                     duration: 800,
                     complete: function () {
