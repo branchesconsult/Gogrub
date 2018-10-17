@@ -30,7 +30,7 @@
                 <div class="dropdown">
                     <a class="prof-pic dropdown-toggle" href="#" role="button" id="prof-pic" data-toggle="dropdown"
                        aria-haspopup="true" aria-expanded="false">
-                        <img src="{!! getImgSrc(\Auth::user()->avatar, 70, 70) !!}"/>
+                        <img src="{!! getImgSrc(\Auth::user()->avatar, 60, 60) !!}"/>
                         <span></span>
                     </a>
                     <div class="dropdown-menu" aria-labelledby="prof-pic">
