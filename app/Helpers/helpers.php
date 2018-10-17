@@ -420,11 +420,19 @@ function formatPrice($price)
 
 function getImgSrc($src = null, $width = null, $height = null, $options = [])
 {
-    if (\File::exists($src) && !empty($src)) {
-        $ignoreFiles = [asset('img/default_chef.jpg')];
-        if (in_array($src, $ignoreFiles)) {
-            return $src;
+    //If this is a url
+    if ((filter_var($src, FILTER_VALIDATE_URL))) {
+        $client = new \GuzzleHttp\Client();
+        $request = $client->head($src);
+        if ($request->getStatusCode() == 200) {
+            return asset(\Croppa::url($src, $width, $height));//\Croppa::render(());
+        } else {
+            return asset('img/no_img.png');
         }
+    }
+    //Working good
+
+    if (\File::exists($src) && !empty($src)) {
         return asset(\Croppa::url($src, $width, $height));//\Croppa::render(());
     } else {
         return asset('img/no_img.png');

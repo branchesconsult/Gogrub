@@ -31,7 +31,7 @@ class User extends Authenticatable implements JWTSubject
      */
     protected $table;
     protected $guarded = [];
-    protected $appends = ['avg_rating', 'applied_as_chef'];
+    protected $appends = ['avg_rating', 'applied_as_chef', 'avg_reply_time', 'success_percentage'];
 
 //    /**
 //     * The attributes that are mass assignable.
@@ -131,5 +131,20 @@ class User extends Authenticatable implements JWTSubject
         } else {
             return str_replace(['public/'], '', asset('storage' . $val));
         }
+    }
+
+    public function getAvgReplyTimeAttribute()
+    {
+        return round($this->products()->avg('preparation_time'), 0) ?? 0;
+    }
+
+    public function getSuccessPercentageAttribute()
+    {
+        return '20%';
+    }
+
+    public function getDescriptionAttribute($val)
+    {
+        return (empty($val)) ? 'This person not intereseted to share his information with us.' : $val;
     }
 }

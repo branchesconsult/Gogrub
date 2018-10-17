@@ -32,10 +32,12 @@
                         <div class="food-name">
                             {!! $val['name'] !!}
                         </div>
-                        <div class="food-chef-name">
-                            <strong>
-                                Chef:</strong> {!! $val['chef']['full_name'] !!}
-                        </div>
+                        @if(!empty($val['chef']))
+                            <div class="food-chef-name">
+                                <strong>Chef:</strong>
+                                {!! $val['chef']['full_name'] !!}
+                            </div>
+                        @endif
                         <div class="food-cuisine">
                             <strong>Cuisine:</strong> {!! $val['cuisine']['name'] !!}
                         </div>

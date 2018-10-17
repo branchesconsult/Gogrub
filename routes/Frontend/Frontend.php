@@ -50,3 +50,7 @@ Route::group(['prefix' => 'cart', 'middleware' => ['web'], 'namespace' => 'Order
     Route::get('checkout', 'CartController@checkOutPage')->name('checkout.page');
     Route::post('remove-item', 'CartController@removeItem')->name('cart.remove.item');
 });
+
+Route::group(['prefix' => 'chef', 'middleware' => ['web'], 'namespace' => 'Chef'], function () {
+    Route::get('detail/{chefId}', 'ChefController@detail')->name('chef.detail');
+});

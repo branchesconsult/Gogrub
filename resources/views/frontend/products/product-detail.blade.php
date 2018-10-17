@@ -83,27 +83,10 @@
             </div>
 
             <div class="row">
-                <div class="col-7">
-                    @if(count($product['chef']['rating_reviews']) > 0)
-                        <div class="order-comments">
-                            <h2>Reviews ({!! count($product['chef']['rating_reviews']) !!})</h2>
-                            <div class="order-scroll">
-                                @foreach($product['chef']['rating_reviews'] as $key => $val)
-                                    <div class="cmnt-box">
-                                        <img src="{!! $val['user']['avatar'] !!}"/>
-                                        <h5>{!! $val['user']['full_name'] !!}</h5>
-                                        <p>“{!! $val['review'] !!}”</p>
-                                        <span>
-                                        {!! $val['posted_at'] !!}
-                                            <br/>{!! printRatingStars($val['rating']) !!}
-                                    </span>
-                                    </div>
-                                @endforeach
-                            </div>
-                        </div>
-                    @endif
-                </div>
-
+                @include('frontend.partials.rating-reviews',[
+                'rating_reviews' => $product['chef']['rating_reviews'],
+                'colSize' => 7
+                ])
                 <div class="col-5">
                     @if(!empty($product['chef']['products']))
                         <p class="text-center">Other Meals by <strong>{!! $product['chef']['full_name'] !!}</strong></p>
