@@ -3,7 +3,7 @@
     <div class="col-3">
         <div class="chef-block">
             <div class="chef-image">
-                <img src="{!! $val['avatar']!!}"
+                <img src="{!! getImgSrc($val['avatar'], 290, 290) !!}"
                      class="img-fluid"/>
                 {{--<div class="chef-comment-btn">--}}
                 {{--<a href=""><i class="fa fa-comment"></i></a>--}}
