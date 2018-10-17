@@ -349,7 +349,7 @@ function sendPushNotificationToFCMSever($fcmToken, $message,
                                         $notifyID = NULL,
                                         $object = array())
 {
-    \Log::info(print_r($fcmToken));
+    \Log::info(print_r($fcmToken, true));
 
 
     if (!empty($fcmToken)) {
