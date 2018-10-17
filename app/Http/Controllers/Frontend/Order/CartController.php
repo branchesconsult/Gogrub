@@ -41,7 +41,7 @@ class CartController extends Controller
     public function checkOutPage()
     {
         if (!\Auth::check()) {
-            return redirect()->to(route('auth.login'));
+            return redirect()->to(route('frontend.auth.login'));
         }
         $data['cart_contents'] = Cart::content()->toArray();
         $data['subtotal'] = Cart::subtotal();

@@ -418,11 +418,15 @@ function formatPrice($price)
     return 'Rs ' . $price;
 }
 
-function getImgSrc($src, $width = null, $height = null, $options = [])
+function getImgSrc($src = null, $width = null, $height = null, $options = [])
 {
-    $ignoreFiles = [asset('img/default_chef.jpg')];
-    if (in_array($src, $ignoreFiles)) {
-        return $src;
+    if (\File::exists($src) && !empty($src)) {
+        $ignoreFiles = [asset('img/default_chef.jpg')];
+        if (in_array($src, $ignoreFiles)) {
+            return $src;
+        }
+        return asset(\Croppa::url($src, $width, $height));//\Croppa::render(());
+    } else {
+        return asset('img/default_chef.png');
     }
-    return asset(\Croppa::url($src, $width, $height));//\Croppa::render(());
 }
