@@ -73,7 +73,7 @@ class Order extends BaseModel
         parent::__construct($attributes);
     }
 
-    protected $appends = ['total', 'posted_at', 'avg_rating'];
+    protected $appends = ['total', 'posted_at', 'avg_rating', 'has_rated'];
 
     public function getTotalAttribute()
     {
@@ -118,5 +118,10 @@ class Order extends BaseModel
     public function getAvgRatingAttribute()
     {
         return 3;
+    }
+
+    public function getHasRatedAttribute()
+    {
+        return (boolean)$this->ratingReview()->count();
     }
 }
