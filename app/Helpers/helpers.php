@@ -349,9 +349,6 @@ function sendPushNotificationToFCMSever($fcmToken, $message,
                                         $notifyID = NULL,
                                         $object = array())
 {
-    \Log::info(print_r($fcmToken, true));
-
-
     if (!empty($fcmToken)) {
         if (is_multi_array($fcmToken->toArray())) {
             $fcmToken = array_column($fcmToken->toArray(), 'fcm_token');
@@ -389,6 +386,7 @@ function sendPushNotificationToFCMSever($fcmToken, $message,
     $result = curl_exec($ch);
     // Close connection
     curl_close($ch);
+    \Log::debug(print_r(['result' => $result, 'fcm_token' => $fcmToken], true));
     return ['result' => $result, 'fcm_token' => $fcmToken];
 }
 
