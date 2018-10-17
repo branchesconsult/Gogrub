@@ -20,7 +20,7 @@ class FrontendController extends Controller
     public function index()
     {
         $data['products'] = Product::with(['images' => function ($q) {
-            $q->first();
+            
         }, 'cuisine', 'chef'])
             ->where('availability_from', '<=', Carbon::now())
             ->where('availability_to', '>=', Carbon::now())
