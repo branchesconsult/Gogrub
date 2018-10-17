@@ -20,7 +20,7 @@ class FrontendController extends Controller
     public function index()
     {
         $data['products'] = Product::with(['images' => function ($q) {
-            
+
         }, 'cuisine', 'chef'])
             ->where('availability_from', '<=', Carbon::now())
             ->where('availability_to', '>=', Carbon::now())
@@ -34,7 +34,7 @@ class FrontendController extends Controller
         })
             ->withCount('ratingReviews')
             ->get()->toArray();
-        dd($data['products']);
+        //dd($data['products']);
         return view('frontend.index', $data);
     }
 
