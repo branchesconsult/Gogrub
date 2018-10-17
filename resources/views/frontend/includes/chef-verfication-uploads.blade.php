@@ -26,20 +26,42 @@
                             <!-- fieldsets -->
                             <fieldset>
                                 <h2 class="fs-title">Personal Details</h2>
-                                <h3 class="fs-subtitle">Tell us something more about you</h3>
+                                <h3 class="fs-subtitle">
+                                    Please upload your NIC's front and back side
+                                </h3>
                                 <div class="input-group mb-3">
                                     <img id="triggerimg"
                                          src="{!! asset('frontend/images/Group781@2x.png') !!}"
                                          alt="your image"/>
                                 </div>
-                                <input type="button" name="next" class="next action-button" value="Next"/>
+                                <div id="get-nics-uploads-gallery-block" class="input-group mb-3 gallery-block">
+                                    <div class="field">
+                                        <p>Take a clean snap of your ID Card both front and back</p>
+                                        <input type="file" id="files" name="files[]" multiple/>
+                                        <button type="button" class="triggerbtn">Upload</button>
+                                    </div>
+                                </div>
+                                <input type="button"
+                                       name="next"
+                                       class="next action-button" value="Next"/>
                             </fieldset>
                             <fieldset>
-                                <h2 class="fs-title">Social Profiles</h2>
-                                <h3 class="fs-subtitle">Your presence on the social network</h3>
-                                <input type="text" name="twitter" placeholder="Twitter"/>
-                                <input type="text" name="facebook" placeholder="Facebook"/>
-                                <input type="text" name="gplus" placeholder="Google Plus"/>
+                                <h2 class="fs-title">Kitchen pics</h2>
+                                <h3 class="fs-subtitle">Please upload your kitchen pics</h3>
+
+                                <div class="input-group mb-3">
+                                    <img
+                                            src="{!! asset('frontend/images/Group781@2x.png') !!}"
+                                            alt="your image"/>
+                                </div>
+                                <div class="input-group mb-3 gallery-block">
+                                    <div class="field">
+                                        <p>Take a clean snap of your ID Card both front and back</p>
+                                        <input type="file" id="files" name="files[]" multiple/>
+                                        <button type="button" class="triggerbtn">Upload</button>
+                                    </div>
+                                </div>
+
                                 <input type="button" name="previous" class="previous action-button-previous"
                                        value="Previous"/>
                                 <input type="button" name="next" class="next action-button" value="Next"/>
@@ -48,12 +70,6 @@
                                 <h3>We will review and send you confirmation in 48 hours.</h3>
                             </fieldset>
                         </form>
-                        <!-- link to designify.me code snippets -->
-                        <div class="dme_link">
-                            <p><a href="http://designify.me/code-snippets-js/" target="_blank">More Code Snippets</a>
-                            </p>
-                        </div>
-                        <!-- /.link to designify.me code snippets -->
                     </div>
                 </div>
                 <!-- /.MultiStep Form -->
