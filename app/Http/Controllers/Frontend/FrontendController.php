@@ -34,7 +34,7 @@ class FrontendController extends Controller
         })
             ->withCount('ratingReviews')
             ->get()->toArray();
-        //dd($data['products']);
+        dd($data['products']);
         return view('frontend.index', $data);
     }
 
