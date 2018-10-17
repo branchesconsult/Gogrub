@@ -420,7 +420,7 @@ function formatPrice($price)
 
 function getImgSrc($src, $width = null, $height = null, $options = [])
 {
-    $ignoreFiles = ['img/default_chef.jpg'];
+    $ignoreFiles = [asset('img/default_chef.jpg')];
     if (in_array($src, $ignoreFiles)) {
         return $ignoreFiles;
     }
