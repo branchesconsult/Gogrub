@@ -81,7 +81,7 @@
 ::-webkit-scrollbar-thumb:hover {
     background: #CBCBCB; 
 }
-body{
+body,.btn{
 	font-size:14px;
 	/*zoom: 0.8;*/}
 
@@ -112,7 +112,7 @@ nav.navbar button{
 }
 .navbar-light .navbar-nav .nav-link,
 nav.navbar li a {
-    font-size: 16px;
+    font-size: 14px;
     font-weight: bold;
     color: #000;
 	padding:0 15px;
@@ -148,15 +148,14 @@ a.prof-pic span{
 	margin: 0 15px;}
 
 .top-cart i{
-	font-size:40px;
+	font-size:30px;
 	color:#000000;}
 
 .top-cart span{
 	display: block;
-    width: 23px;
-    height: 23px;
+    padding: 0px 6px;
     text-align: center;
-    font-size: 13px;
+    font-size: 11px;
     line-height: 18px;
     border-radius: 100px;
     background: #23D25B;
@@ -301,13 +300,13 @@ a.prof-pic span{
 	position:relative;
 	border-radius: 5px 5px 10px 10px;
 	border-bottom: 0;
-	padding: 25px 40px;}
+	padding: 20px 40px;}
 
 .gopop .modal-header img{
-	width:55px;}
+	width:45px;}
 
 .gopop .modal-header .modal-title{
-	font-size:32px;
+	font-size:26px;
 	font-weight:bold;
 	text-align:center;
 	color:#fff;}
@@ -325,7 +324,8 @@ a.prof-pic span{
 	text-align:center;}
 
 .gopop .arrow-down img{
-	width:35px;}
+	width:35px;
+	vertical-align:top;}
 
 .gopop .modal-body{
 	padding: 55px 125px 20px;}
@@ -569,7 +569,7 @@ section.banner .banner-form button{
 
 .chef-list .nav-tabs .nav-item .nav-link{
 	color: #717171;
-    font-size: 20px;
+    font-size: 18px;
     font-weight: bold;
     border: none;
     border-bottom: 5px solid #fff;}
@@ -586,18 +586,18 @@ section.banner .banner-form button{
 
 .chef-list .filters button{
 	color: #717171;
-    font-size: 20px;
+    font-size: 18px;
     font-weight: bold;
-	padding: .5rem 1rem;
 	background:none;
 	border:none;}
 
 .chef-list .filters button span{
 	background:url(../images/Menu.png) no-repeat;
+	background-size:cover;
 	display: inline-block;
 	vertical-align: text-bottom;
-	height:23px;
-	width:23px;
+	height:20px;
+	width:20px;
 	margin-left:10px;}
 
 /* Food Tab */
@@ -636,10 +636,10 @@ section.banner .banner-form button{
 .food-block .food-meal-btn.red{
 	background:#FF0000;}
 
-.food-block .food-meal-btn a{
+.food-block .food-meal-btn{
 	color:#fff;
-	font-size:16px;
-	padding: 7px 18px;
+	font-size:14px;
+	padding: 5px 12px;
     display: block;}
 
 .food-block .food-list-details{
@@ -647,7 +647,7 @@ section.banner .banner-form button{
 	padding-bottom:20px;}
 
 .food-block .food-name{
-	font-size:18px;
+	font-size:16px;
 	font-weight:bold;}
 
 .food-block .star-rating{
@@ -669,13 +669,13 @@ section.banner .banner-form button{
     font-size: 12px;}
 
 .food-block .food-chef-name{
-	font-size:14px;}
+	font-size:12px;}
 
 .food-block .food-cuisine{
-	font-size:14px;}
+	font-size:12px;}
 
 .food-block .food-serving{
-	font-size:14px;
+	font-size:12px;
 	text-align: right;}
 
 .food-block .food-serving strong{
@@ -696,6 +696,9 @@ h5.food-head{
 
 .chef-block .chef-image{
 	position:relative;}
+
+.chef-block .chef-image img{
+	border-radius:100%;}
 
 .chef-block .chef-comment-btn{
     background: #FDC200;
@@ -728,11 +731,11 @@ h5.food-head{
 	color: #23D25B;}
 
 .food-detail .star-rating .fa-star{
-  	line-height:24px;
-  	font-size:24px;}
+  	line-height:20px;
+  	font-size:20px;}
 
 .food-detail p{
-  	font-size:20px;
+  	font-size:14px;
 	padding:20px 0;}
 
 .food-detail h2{
@@ -771,8 +774,8 @@ h5.food-head{
 
 .food-box{
 	text-align:center;
-	font-size: 15px;
-    padding: 0px 30px;
+	font-size: 14px;
+    padding: 0px 20px;
     border-right: 1px solid #707070;}
 
 .food-box strong{
@@ -783,13 +786,14 @@ h5.food-head{
 	display:block;}
 
 .food-title h2{
-	font-size:30px;}
+	font-size:26px;}
 
 .food-title p{
 	padding: 0;
     margin-bottom: 10px;}
 
 .food-chef img{
+	border-radius: 100%;
 	width:65px;
 	float:left;}
 
@@ -814,7 +818,9 @@ h5.food-head{
 	font-size: 22px;
     margin-top: 10px;}
 
-.food-quan{}
+.food-chef button.btn{
+	margin-top: 10px;
+    margin-left: 20px;}
 
 .food-quan strong{
 	font-size: 16px;
@@ -826,10 +832,10 @@ h5.food-head{
 .food-quan .input-group-btn button{
 	background:#000;
 	color:#fff;
-	border-radius:25px;
-	padding: 5px 6px;
+	border-radius:100%;
+	padding: 3px 6px;
 	font-size: 12px;
-    margin-top: 15px;}
+    margin-top: 12px;}
 
 .food-quan input.input-number{
     border: none;
@@ -883,7 +889,7 @@ h5.food-head{
 	border-radius:10px;
 	font-size:31px;
 	color:#fff;
-	box-shadow:10px 14px 30px #00000075;}
+	box-shadow:10px 14px 30px #00000040;}
 
 .become-chef-banner{
 	position:absolute;
@@ -909,7 +915,7 @@ h5.food-head{
 	background:#F1C204;
 	color:#fff;
 	position:relative;
-	margin:240px 0 200px;}
+	margin:240px 0 0px;}
 
 .apps-block .col-6{
 	padding:100px 0;}
@@ -1399,23 +1405,27 @@ h5.food-head{
 
 .order-comments .cmnt-box{
 	position:relative;
-	margin-bottom:50px;}
+	margin-bottom:30px;}
 
 .order-comments .cmnt-box img{
 	height:70px;
 	width:70px;
+	border-radius:100%;
 	float:left;
 	margin-right: 25px;}
 
 .order-comments .cmnt-box h5{
 	color:#707070;
 	font-size:18px;
-	font-weight:bold;}
+	font-weight:bold;
+	margin-bottom:2px;}
 
 .order-comments .cmnt-box p{
 	color:#707070;
 	display:block;
-	font-size:18px;}
+	font-size:14px;
+	margin-bottom: 0;
+	padding:0}
 
 .order-comments .cmnt-box span{
 	color:#707070;
@@ -1566,6 +1576,42 @@ footer li{
 	.container {
 		max-width: 1300px;
 	}
+}
+
+@media (max-width: 1200px){
+	.container {
+		max-width: 1100px;}
+	section.banner{
+		margin-bottom:0;}
+	.steps-block h3{
+		font-size:22px;}
+	.steps-block p{
+		font-size:14px;}
+	.apps-block h2{
+		font-size:45px;}
+	.apps-banner img{
+		width:280px;}
+	.apps-block{
+		margin:180px 0 0;}
+	.apps-block a{
+		margin:0;}
+	.apps-block a img{
+		width:180px;}
+	.apps-block .col-6{
+		padding:50px 0;}
+	.become-chef-banner img{
+		width:330px;}
+	.become-chef-block{
+		margin:180px 0 70px;}
+	.become-chef-block h2{
+		font-size:26px;}
+	.become-chef-block li{
+		padding-bottom:0;
+		font-size:16px;}
+	.become-chef-block button{
+		font-size:26px;}
+	.become-chef-block .col-6 {
+    	padding: 70px 0;}
 }
 
 @media (max-width: 768px){

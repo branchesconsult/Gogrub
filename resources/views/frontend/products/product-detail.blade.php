@@ -25,14 +25,14 @@
                 <div class="col-6">
                     <div class="row">
 
-                        <div class="col-10 food-title">
+                        <div class="col-9 food-title">
                             <h2>{!! $product['name'] !!}</h2>
                             <p>{!! $product['description'] !!}
                             </p>
                         </div>
 
-                        <div class="col-2">
-                            <h1><strong>{!! $product['price_view'] !!}</strong></h1>
+                        <div class="col-3">
+                            <h3 class="text-right"><strong>{!! $product['price_view'] !!}</strong></h3>
                         </div>
 
                         <div class="col-12">
@@ -113,10 +113,10 @@
                 gallery: true,
                 item: 1,
                 vertical: true,
-                verticalHeight: 295,
-                vThumbWidth: 50,
+                verticalHeight: 400,
+                vThumbWidth: 120,
                 thumbItem: 8,
-                thumbMargin: 4,
+                thumbMargin: 10,
                 slideMargin: 0,
                 onSliderLoad: function (el) {
                     el.lightGallery({
