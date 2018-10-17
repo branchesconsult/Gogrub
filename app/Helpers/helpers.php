@@ -422,7 +422,7 @@ function getImgSrc($src, $width = null, $height = null, $options = [])
 {
     $ignoreFiles = [asset('img/default_chef.jpg')];
     if (in_array($src, $ignoreFiles)) {
-        return $ignoreFiles;
+        return $src;
     }
     return asset(\Croppa::url($src, $width, $height));//\Croppa::render(());
 }
