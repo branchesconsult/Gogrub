@@ -5,7 +5,7 @@
 @section('page-header')
     <h1>
         {{ trans('labels.backend.access.users.management') }}
-        <small>{{ trans('labels.backend.access.users.view') }} - {!! $user->full_name !!}</small>
+        <small> {!! $user->full_name !!}</small>
     </h1>
 @endsection
 
