@@ -62,7 +62,8 @@ Route::group(['namespace' => 'Api\V1',
         Route::group(['prefix' => 'chef', 'namespace' => 'Chef'], function () {
             Route::post('apply', 'ChefAuthController@storeRegistraton');
             Route::group(['middleware' => ['chef']], function () {
-                Route::resource('orders', 'ChefOrderController');
+                Route::resource('orders', 'ChefOrderController', ['except' => ['update']]);
+                Route::post('orders/{id}', 'ChefOrderController@update');
                 Route::get('earnings', 'ChefReportingController@getEarnings');
             });
         });
