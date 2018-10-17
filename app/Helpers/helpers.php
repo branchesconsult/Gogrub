@@ -386,7 +386,7 @@ function sendPushNotificationToFCMSever($fcmToken, $message,
     $result = curl_exec($ch);
     // Close connection
     curl_close($ch);
-    \Log::debug(print_r(['result' => $result, 'fcm_token' => $fcmToken], true));
+    \Log::debug(print_r(['result' => $result, 'fcm_token' => $fcmToken->toArray()], true));
     return ['result' => $result, 'fcm_token' => $fcmToken];
 }
 
