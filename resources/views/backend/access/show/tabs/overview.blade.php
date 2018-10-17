@@ -1,9 +1,12 @@
 <table class="table table-striped table-hover">
     <tr>
         <th>{{ trans('labels.backend.access.users.tabs.content.overview.name') }}</th>
-        <td>{{ $user->first_name .' '. $user->last_name }}</td>
+        <td>{{ $user->full_name }}</td>
     </tr>
-
+    <tr>
+        <th>Mobile</th>
+        <td>{!! $user->mobile !!}</td>
+    </tr>
     <tr>
         <th>{{ trans('labels.backend.access.users.tabs.content.overview.email') }}</th>
         <td>{{ $user->email }}</td>

@@ -26,9 +26,20 @@ class OrderRepository extends BaseRepository
      * the grid
      * @return mixed
      */
-    public function getForDataTable()
+    public function getForDataTable($userId = null, $forUserType = null)
     {
-        return Order::with('chef', 'user', 'status')->get();
+        $orders = Order::with('chef', 'user', 'status');
+        if (!empty($userId)) {
+            if (!empty($forUserType)) {
+                if ($forUserType == 'chef') {
+                    $orders->where('chef_id', $userId);
+                } else {
+                    $orders->where('customer_id', $userId);
+                }
+            }
+        }
+        $orders = $orders->get();
+        return $orders;
     }
 
     /**

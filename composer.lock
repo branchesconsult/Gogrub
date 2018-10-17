@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "666cb232d7b0479e1e42142e1affbc8c",
+    "content-hash": "78f85ee303cbfb440c12e688fe2d271b",
     "packages": [
         {
             "name": "abrigham/laravel-email-exceptions",
@@ -2663,31 +2663,37 @@
         },
         {
             "name": "mpociot/laravel-apidoc-generator",
-            "version": "2.1.8",
+            "version": "dev-master",
             "source": {
                 "type": "git",
                 "url": "https://github.com/mpociot/laravel-apidoc-generator.git",
-                "reference": "f586f10e1b59a1dd6a6345cea98f39b450ac38fa"
+                "reference": "932d38bc4bf5a6d276f8146f4276386d30ace1c6"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/mpociot/laravel-apidoc-generator/zipball/f586f10e1b59a1dd6a6345cea98f39b450ac38fa",
-                "reference": "f586f10e1b59a1dd6a6345cea98f39b450ac38fa",
+                "url": "https://api.github.com/repos/mpociot/laravel-apidoc-generator/zipball/932d38bc4bf5a6d276f8146f4276386d30ace1c6",
+                "reference": "932d38bc4bf5a6d276f8146f4276386d30ace1c6",
                 "shasum": ""
             },
             "require": {
-                "fzaninotto/faker": "~1.0",
-                "laravel/framework": "~5.4",
+                "fzaninotto/faker": "~1.8",
+                "illuminate/console": "5.5.* || 5.6.* || 5.7.*",
+                "illuminate/routing": "5.5.* || 5.6.* || 5.7.*",
+                "illuminate/support": "5.5.* || 5.6.* || 5.7.*",
                 "mpociot/documentarian": "^0.2.0",
-                "mpociot/reflection-docblock": "^1.0",
-                "php": ">=5.5.0",
-                "ramsey/uuid": "^3.0"
+                "mpociot/reflection-docblock": "^1.0.1",
+                "php": ">=7.0.0",
+                "ramsey/uuid": "^3.8"
             },
             "require-dev": {
-                "dingo/api": "1.0.*@dev",
-                "mockery/mockery": "^0.9.5",
-                "orchestra/testbench": "~3.0",
-                "phpunit/phpunit": "~4.0 || ~5.0"
+                "dingo/api": "2.0.0-alpha1",
+                "league/fractal": "^0.17.0",
+                "mockery/mockery": "^1.2.0",
+                "orchestra/testbench": "3.5.* || 3.6.* || 3.7.*",
+                "phpunit/phpunit": "^6.0.0 || ^7.4.0"
+            },
+            "suggest": {
+                "league/fractal": "Required for transformers support"
             },
             "type": "library",
             "extra": {
@@ -2698,8 +2704,8 @@
                 }
             },
             "autoload": {
-                "psr-0": {
-                    "Mpociot\\ApiDoc": "src/"
+                "psr-4": {
+                    "Mpociot\\ApiDoc\\": "src/"
                 }
             },
             "notification-url": "https://packagist.org/downloads/",
@@ -2719,7 +2725,7 @@
                 "documentation",
                 "laravel"
             ],
-            "time": "2018-10-08T18:00:27+00:00"
+            "time": "2018-10-16T09:02:30+00:00"
         },
         {
             "name": "mpociot/reflection-docblock",
@@ -7265,6 +7271,7 @@
     "aliases": [],
     "minimum-stability": "stable",
     "stability-flags": {
+        "mpociot/laravel-apidoc-generator": 20,
         "tymon/jwt-auth": 5
     },
     "prefer-stable": false,

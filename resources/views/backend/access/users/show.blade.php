@@ -31,9 +31,16 @@
                     </li>
 
                     <li role="presentation">
-                        <a href="#history" aria-controls="history"
+                        <a href="#history" aria-controls="history" onclick="getOrders('chef')"
                            role="tab" data-toggle="tab">
-                            Orders
+                            Orders as chef
+                        </a>
+                    </li>
+                    <li role="presentation">
+                        <a href="#order-as-customer" aria-controls="order-as-customer"
+                           onclick="getOrders('customer')"
+                           role="tab" data-toggle="tab">
+                            Orders as customer
                         </a>
                     </li>
                 </ul>
@@ -72,7 +79,34 @@
                             </table>
                         </div><!--table-responsive-->
                     </div><!--tab panel history-->
-
+                    <div role="tabpanel" class="tab-pane mt-30" id="order-as-customer">
+                        <div class="table-responsive data-table-wrapper">
+                            <table id="orders-table-customer" class="table table-condensed table-hover table-bordered">
+                                <thead>
+                                <tr>
+                                    <th>{{ trans('labels.backend.orders.table.id') }}</th>
+                                    <th>Invoice number</th>
+                                    <th>Chef</th>
+                                    <th>Customer</th>
+                                    <th>Status</th>
+                                    <th>{{ trans('labels.backend.orders.table.createdat') }}</th>
+                                    <th>{{ trans('labels.general.actions') }}</th>
+                                </tr>
+                                </thead>
+                                <thead class="transparent-bg">
+                                <tr>
+                                    <th></th>
+                                    <th></th>
+                                    <th></th>
+                                    <th></th>
+                                    <th></th>
+                                    <th></th>
+                                    <th></th>
+                                </tr>
+                                </thead>
+                            </table>
+                        </div><!--table-responsive-->
+                    </div><!--tab panel history-->
                 </div><!--tab content-->
 
             </div><!--tab panel-->
@@ -84,14 +118,30 @@
     {{-- For DataTables --}}
     {{ Html::script(mix('js/dataTable.js')) }}
     <script>
-        //Below written line is short form of writing $(document).ready(function() { })
-        $(function () {
-            var dataTable = $('#orders-table').dataTable({
+        function getOrders(orderFor) {
+            var tableToPopulate;
+            if (orderFor == 'customer') {
+                tableToPopulate = $("#orders-table-customer");
+            }
+            if (orderFor == 'chef') {
+                tableToPopulate = $("#orders-table");
+            }
+            var dataTable = tableToPopulate.dataTable({
                 processing: true,
                 serverSide: true,
                 ajax: {
                     url: '{{ route("admin.orders.get") }}',
-                    type: 'post'
+                    type: 'post',
+                    data: function (d) {
+                        switch (orderFor) {
+                            case 'chef':
+                                d.for_user = 'chef';
+                                break;
+                            default:
+                                d.for_user = 'customer';
+                        }
+                        d.user_id = '{!! $user->id !!}';
+                    }
                 },
                 columns: [
                     {data: 'id', name: 'id'},
@@ -105,6 +155,7 @@
                 order: [[0, "desc"]],
                 searchDelay: 500,
                 dom: 'lBfrtip',
+                destroy: true,
                 buttons: {
                     buttons: [
                         {extend: 'copy', className: 'copyButton', exportOptions: {columns: [0, 1]}},
@@ -115,8 +166,7 @@
                     ]
                 }
             });
-
-            //FinBuilders.DataTableSearch.init(dataTable);
-        });
+            //dataTable.ajax.reload();
+        }
     </script>
 @stop

@@ -36,7 +36,9 @@ class OrdersTableController extends Controller
      */
     public function __invoke(ManageOrderRequest $request)
     {
-        return Datatables::of($this->order->getForDataTable())
+        $userId = ($request->has('user_id')) ? $request->user_id : null;
+        $forUser = ($request->has('for_user')) ? $request->for_user : null;
+        return Datatables::of($this->order->getForDataTable($userId, $forUser))
             ->escapeColumns(['id'])
             ->addColumn('created_at', function ($order) {
                 return Carbon::parse($order->created_at)->toDateString();
