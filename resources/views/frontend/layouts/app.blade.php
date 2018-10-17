@@ -25,7 +25,7 @@
 @yield('after-styles')
 {!! Html::style(asset('frontend/pincode-input/bootstrap-pincode-input.css')) !!}
 {!! Html::style('//cdnjs.cloudflare.com/ajax/libs/x-editable/1.5.0/bootstrap3-editable/css/bootstrap-editable.css') !!}
-{!! Html::style(asset('frontend/dropzone/dropzone.css')) !!}
+{!! Html::style(asset('frontend/imageuploadify')) !!}
 <!-- Scripts -->
     <script>
         window.Laravel = <?php echo json_encode([
@@ -36,7 +36,7 @@
     echo $google_analytics ?? null;
     ?>
     <style>
-        
+
     </style>
 </head>
 <body id="app-layout">
