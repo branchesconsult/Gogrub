@@ -1,7 +1,8 @@
 <header>
     <nav class="navbar navbar-expand-lg navbar-light">
-        <a class="navbar-brand" href="#">
-            <img src="{!! asset('frontend/images/Symbol-1-2@2x.png') !!}" width="148" height="48"/></a>
+        <a class="navbar-brand" href="{!! url('/') !!}">
+            <img src="{!! asset('frontend/images/Symbol-1-2@2x.png') !!}"
+                 width="148" height="48"/></a>
         <button class="navbar-toggler" type="button" data-toggle="collapse"
                 data-target="#navbarSupportedContent"
                 aria-controls="navbarSupportedContent"
