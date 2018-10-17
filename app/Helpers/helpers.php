@@ -422,8 +422,8 @@ function getImgSrc($src, $width = null, $height = null, $options = [])
 {
     $filePhyPath = str_replace(asset('/'), '', $src);
     if (\File::exists($filePhyPath) && !empty($src)) {
-        return $src;
-        return asset(\Croppa::url($src, $width, $height));
+        return asset(\Image::url($src, $width, $height, array('crop')));
+        //return asset(\Croppa::url($src, $width, $height));
     } else {
         return asset('img/no_img.png');
     }
