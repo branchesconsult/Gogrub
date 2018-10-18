@@ -42,6 +42,7 @@
                                                class="ddUpload"
                                                name="nic[]"
                                                accept="image/*"
+                                               class="ddUpload"
                                                multiple>
                                     </div>
                                 </div>
@@ -78,6 +79,7 @@
                             <fieldset>
                                 <h3>We will review and send you confirmation in 48 hours.</h3>
                             </fieldset>
+                            <div class="clearfix"></div>
                         </form>
                     </div>
                 </div>
@@ -94,6 +96,7 @@
     {!! Html::script(asset('frontend/imageuploadify/imageuploadify.min.js')) !!}
     <script>
         $(document).ready(function () {
+
             $('input[type="file"].ddUpload').imageuploadify();
             //jQuery time
             var current_fs, next_fs, previous_fs; //fieldsets
@@ -121,9 +124,11 @@
                         opacity = 1 - now;
                         current_fs.css({
                             'transform': 'scale(' + scale + ')',
-                            'position': 'absolute'
+							'position':'absolute', 'top': '50px'
+
                         });
-                        next_fs.css({'left': left, 'opacity': opacity});
+                        next_fs.css({'left': left, 'opacity': opacity, 'top': '0',
+							'position':'relative'});
                     },
                     duration: 800,
                     complete: function () {
@@ -156,8 +161,10 @@
                         left = ((1 - now) * 50) + "%";
                         //3. increase opacity of previous_fs to 1 as it moves in
                         opacity = 1 - now;
-                        current_fs.css({'left': left});
-                        previous_fs.css({'transform': 'scale(' + scale + ')', 'opacity': opacity});
+                        current_fs.css({'left': left,
+							'position':'absolute', 'top': '50px'});
+                        previous_fs.css({'transform': 'scale(' + scale + ')', 'opacity': opacity, 'top': '0',
+						'position':'relative'});
                     },
                     duration: 800,
                     complete: function () {
