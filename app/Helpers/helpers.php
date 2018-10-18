@@ -436,7 +436,13 @@ function breakLatLng($latLng)
     return $latLng = explode(',', $latLng);
 }
 
-
+/**
+ * Get chefs within distance specified
+ * @param $lat
+ * @param $lng
+ * @param null $searchWithIn
+ * @return array
+ */
 function getChefWithinDistance($lat, $lng, $searchWithIn = null)
 {
     $searchWithIn = (empty($searchWithIn)) ? \Config::get('constants.search_distance') : $searchWithIn;
