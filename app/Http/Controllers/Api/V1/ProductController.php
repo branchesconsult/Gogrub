@@ -118,7 +118,7 @@ class ProductController extends Controller
     {
         $products = Product::with(['images', 'cuisine', 'chef' => function ($q) {
             $q->with(['ratingReviews' => function ($q1) {
-
+                $q1->with('user');
             }, 'meta']);
         }])
             //->where('availability_form', '>=', Carbon::now())

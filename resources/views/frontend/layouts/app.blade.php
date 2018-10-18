@@ -118,6 +118,8 @@
 @yield('cart-page-scripts')
 @yield('chef-verification-uploads-scripts')
 @yield('search-banner-js')
+@yield('google-map-modal-scripts')
+
 <script>
     $(document).ready(function () {
         initMap();
@@ -154,6 +156,10 @@
             $("#" + modelId).modal('show');
         }, 700);
         return false;
+    }
+
+    function redirectTo(pgUrl) {
+        return window.location.href = pgUrl;
     }
 </script>
 </body>

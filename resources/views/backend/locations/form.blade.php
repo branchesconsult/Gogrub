@@ -88,7 +88,7 @@
                 getAddressByLatLng(latLng.geometry.location);
             });
                     @if(!empty($location))
-            var map = new GMaps({
+                var map = new GMaps({
                     div: '#location_map',
                     lat: 32.127236058579,
                     lng: 74.004938739844

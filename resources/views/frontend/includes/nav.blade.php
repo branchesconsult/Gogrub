@@ -130,7 +130,7 @@
                    role="button"
                    id="cart-dd"
                    data-toggle="dropdown"
-                   onclick="{!! \Auth::check() ? '':"openBsModal('login')" !!}"
+                   onclick="{!! \Auth::check() ? "redirectTo('".route('frontend.checkout.page')."')":"openBsModal('login')" !!}"
                    aria-haspopup="true" aria-expanded="false">
                     <i class="fa fa-shopping-cart"></i>
                     <span id="head-cart-count">{!! Cart::count() !!}</span>
