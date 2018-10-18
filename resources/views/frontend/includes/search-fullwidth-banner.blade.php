@@ -19,3 +19,14 @@
         </div>
     </div>
 </section>
+@section('search-banner-js')
+    <script>
+        $(document).ready(function () {
+            $("#address-autocomplete")
+                .geocomplete()
+                .bind("geocode:result", function (event, result) {
+                    console.log(result, result.geometry.location.lat());
+                });
+        });
+    </script>
+@stop

@@ -117,10 +117,10 @@
 @yield('add-to-card-modal-scripts')
 @yield('cart-page-scripts')
 @yield('chef-verification-uploads-scripts')
+@yield('search-banner-js')
 <script>
     $(document).ready(function () {
         initMap();
-        $("#address-autocomplete").geocomplete();
         //Global ajax spinner
         $(document)
             .ajaxStart(function () {
@@ -138,18 +138,11 @@
         jQuery(".triggerbtn").click(function () {
             jQuery(this).closest('div').find('#files').click();
         });
-        jQuery('#step-1').click(function () {
-            jQuery(this).parent().parent().parent().hide().next().show();//hide parent and show next
-        });
-
         //Replace all broken images
-        {{--$("img").each(function () {--}}
-        {{--$(this).attr("onerror", "this.src='http://gogrub.docs/frontend/images/images@2x.png'");--}}
-        {{--});--}}
+        $("img").each(function () {
+            $(this).attr("onerror", "this.src='http://gogrub.docs/frontend/images/images@2x.png'");
+        });
     });
-    function editName(number) {
-        document.getElementById('name' + number).readOnly = false;
-    };
     // locate you.
     function initMap() {
 

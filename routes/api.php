@@ -65,6 +65,8 @@ Route::group(['namespace' => 'Api\V1',
                 Route::resource('orders', 'ChefOrderController', ['except' => ['update']]);
                 Route::post('orders/{id}', 'ChefOrderController@update');
                 Route::get('earnings', 'ChefReportingController@getEarnings');
+                Route::resource('products', 'ChefProductController', ['only' => ['index', 'store', 'show']]);
+                Route::post('products/{id}', 'ChefProductController@update');
             });
         });
         // Users

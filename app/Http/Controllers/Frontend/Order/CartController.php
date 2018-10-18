@@ -44,9 +44,9 @@ class CartController extends Controller
             return redirect()->to(route('frontend.auth.login'));
         }
         $data['cart_contents'] = Cart::content()->toArray();
-        $data['subtotal'] = Cart::subtotal();
+        $data['subtotal'] = Cart::subtotal(0, '.', '');
         $data['delivery_charges'] = 10;
-        $data['total'] = Cart::total() + $data['delivery_charges'];
+        $data['total'] = Cart::total(0, '.', '') + $data['delivery_charges'];
         $minDelieveryTime = 50;
         $data['delivery_slots'][] = 'ASAP';
         $addedTime = 45;
