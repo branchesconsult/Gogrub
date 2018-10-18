@@ -435,3 +435,12 @@ function breakLatLng($latLng)
 {
     return $latLng = explode(',', $latLng);
 }
+
+
+function getChefWithinDistance($lat, $lng, $searchWithIn = 7000)
+{
+    $chefQuery = \App\Models\Location\Location::distance('location_point', new \Grimzy\LaravelMysqlSpatial\Types\Point($lat, $lng, $searchWithIn), $searchWithIn)
+        ->get(['locationable_id'])
+        ->toArray();
+    return array_column($chefQuery, 'locationable_id');
+}
