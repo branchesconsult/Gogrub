@@ -25,7 +25,12 @@
     <script>
         $(document).ready(function () {
             $("#address-autocomplete")
-                .geocomplete()
+                .geocomplete({
+                    map: "#location-map-in-popup",
+                    markerOptions: {
+                        draggable: true
+                    }
+                })
                 .bind("geocode:result", function (event, result) {
                     console.log(result, result.geometry.location.lat());
                     $.ajax({
@@ -49,7 +54,10 @@
                 getAddressByLatLng(latLng);
             });
         });
-
+        /**
+         * get lat long
+         * @param latlng
+         */
         function getAddressByLatLng(latlng) {
             new google.maps.Geocoder().geocode({'latLng': latlng}, function (results, status) {
                 if (status == google.maps.GeocoderStatus.OK) {
@@ -57,24 +65,18 @@
                     if (results[0]) {
                         $.each(results[0].address_components, function (index, data) {
                             if (data.types[0] == "country") {
-                                $("#country").val(data.long_name)
+
                             }
                             if (data.types[0] == "administrative_area_level_1") {
-                                $("#administrative_area_level_1").val(data.long_name);
                             }
                             if (data.types[0] == "administrative_area_level_2") {
-                                $("#district").val(data.long_name);
                             } else {
-                                $("#district").val('');
                             }
 
                             if (data.types[0] == "country") {
-                                console.log("Country=" + data.long_name)
                             }
                             if (data.types[0] == "postal_code") {
-                                $("#postal_code").val(data.long_name)
                             } else {
-                                $("#postal_code").val('')
                             }
                             //$("#address").val(results[1].formatted_address);
                         });

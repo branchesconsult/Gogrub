@@ -24,18 +24,18 @@
     </div>
 </div>
 @section('google-map-modal-scripts')
-    <script type="text/javascript">
-        $(document).ready(function () {
-            $("#location-map-in-popup").geocomplete({
-                map: "#location-map-in-popup",
-                markerOptions: {
-                    draggable: true
-                }
-            }).bind('geocode:dragged', function (event, latLng) {
-                getAddressByLatLng(latLng);
-            }).bind('geocode:result', function (event, latLng) {
-                getAddressByLatLng(latLng.geometry.location);
-            });
-        });
-    </script>
+    {{--<script type="text/javascript">--}}
+    {{--$(document).ready(function () {--}}
+    {{--$("#location-map-in-popup").geocomplete({--}}
+    {{--map: "#location-map-in-popup",--}}
+    {{--markerOptions: {--}}
+    {{--draggable: true--}}
+    {{--}--}}
+    {{--}).bind('geocode:dragged', function (event, latLng) {--}}
+    {{--getAddressByLatLng(latLng);--}}
+    {{--}).bind('geocode:result', function (event, latLng) {--}}
+    {{--getAddressByLatLng(latLng.geometry.location);--}}
+    {{--});--}}
+    {{--});--}}
+    {{--</script>--}}
 @stop
