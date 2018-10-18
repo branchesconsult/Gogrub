@@ -41,8 +41,10 @@ Route::group(['middleware' => 'auth'], function () {
 */
 Route::get('pages/{slug}', 'FrontendController@showPage')->name('pages.show');
 
+//Product routs
 Route::group(['prefix' => 'products', 'middleware' => ['web'], 'namespace' => 'Product'], function () {
     Route::get('{slug}', 'ProductController@show')->name('product.detail');
+    Route::get('/', 'ProductController@index')->name('products.list');
 });
 
 Route::group(['prefix' => 'cart', 'middleware' => ['web'], 'namespace' => 'Order'], function () {

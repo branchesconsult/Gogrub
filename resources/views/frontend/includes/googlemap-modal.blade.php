@@ -10,14 +10,14 @@
                 </button>
             </div>
             <div class="arrow-down"><img src="{!! asset('frontend/images/Path828@2x.png') !!}"/></div>
-            <div class="modal-body var-num">
+            <div class="modal-body var-num" style="padding: 0">
                 <div class="col-12 food-quan d-inline-flex">
                     <div id="location-map-in-popup" style="height: 500px;width: 100%;"></div>
                 </div>
             </div>
             <div class="modal-footer">
-                <button type="submit" class="btn-success btn">
-                    Add to cart
+                <button onclick="setUserGlobalLocation()" class="btn-success btn">
+                    Update location
                 </button>
             </div>
         </div>

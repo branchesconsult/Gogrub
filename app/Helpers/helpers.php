@@ -429,3 +429,9 @@ function getImgSrc($src, $width = null, $height = null, $options = [])
         return asset('img/no_img.png');
     }
 }
+
+
+function breakLatLng($latLng)
+{
+    return $latLng = explode(',', $latLng);
+}
