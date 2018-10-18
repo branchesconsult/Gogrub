@@ -1,7 +1,7 @@
 @extends('frontend.layouts.app')
 
 @section('content')
-    @include('frontend.includes.search-fullwidth-banner')
+    {{--@include('frontend.includes.search-fullwidth-banner')--}}
     <section class="food-detail my-order">
         <div class="container">
             <div class="row">
