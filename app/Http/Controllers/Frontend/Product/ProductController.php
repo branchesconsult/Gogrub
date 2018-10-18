@@ -26,9 +26,7 @@ class ProductController extends Controller
             ->where('availability_to', '>=', Carbon::now())
             ->where('status', 1)
             ->orderBy('id', 'DESC')
-            ->limit(16)
-            ->get()
-            ->toArray();
+            ->paginate(1);
         return view('frontend.products.product-list', $data);
     }
 

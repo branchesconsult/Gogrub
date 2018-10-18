@@ -7,6 +7,9 @@
     <div class="container">
         <div class="row">
             @include('frontend.partials.product-grid', ['colSize' => 3])
+            <div class="col-12">
+                {{ $products->links() }}
+            </div>
         </div>
     </div>
 @stop
