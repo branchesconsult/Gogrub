@@ -1502,17 +1502,6 @@ h5.food-head{
     border: 1px solid #23D25B;
 	height:110px;}
 
-.new-post{}
-
-.new-post{}
-
-
-
-
-
-
-
-
 
 
 
@@ -1614,7 +1603,6 @@ h5.food-head{
 	margin-bottom: 10px;
 	width: 100%;
 	box-sizing: border-box;
-	font-family: montserrat;
 	color: #2C3E50;
 	font-size: 13px;
 }
@@ -1774,10 +1762,37 @@ h5.food-head{
     padding: 0px 25px 20px;
 }
 
+#msform .imageuploadify {
+    border: none;
+    position: relative;
+    min-height: auto;
+    min-width: auto;
+    max-width: auto;
+    margin: auto;
+    display: flex;
+    padding: 0;
+    flex-direction: column;
+    text-align: center;
+    background-color: #fff;
+    color: #3AA0FF;
+}
+#msform .imageuploadify .imageuploadify-images-list button.btn-default{
+	width:140px;
+	font-size:16px;
+    background-color: #fff !important;
+	border-radius:15px !important;
+	color:#23d25b !important;
+	border-color: #23d25b !important;}
+
+#msform .imageuploadify .imageuploadify-images-list .imageuploadify-container{
+	display:inline-block;
+	float:none;}
+	
 /* My account */
 
 .btn-primary,.btn-primary:hover,
-.btn-primary:not(:disabled):not(.disabled).active, .btn-primary:not(:disabled):not(.disabled):active, .show>.btn-primary.dropdown-toggle{
+.btn-primary:not(:disabled):not(.disabled).active, .btn-primary:not(:disabled):not(.disabled):active, .show>.btn-primary.dropdown-toggle,
+.btn-outline-success:not(:disabled):not(.disabled).active, .btn-outline-success:not(:disabled):not(.disabled):active, .show>.btn-outline-success.dropdown-toggle{
 	background:#23d25b;
 	border-color:#23d25b;}
 
@@ -1841,7 +1856,44 @@ footer ul{
 footer li{
 	list-style:none;}
 
+/* Nav responsive */
 
+.navbar-collapse{
+	text-align: center;}
+
+.navbar-collapse .navbar-nav{
+	margin-bottom:20px;}
+
+.navbar-collapse .navbar-nav li{
+	text-align:center;
+	background: #23d25b;
+	display: block;}
+
+.navbar-collapse .navbar-nav li a{
+	color:#fff;
+	padding: 10px 15px 0;
+    display: block;
+	font-size: 16px;}
+
+.navbar-collapse .navbar-nav li:last-child a{
+	padding-bottom:10px;}
+
+.navbar-collapse .dropdown{
+	display:inline-block;
+	vertical-align: middle;
+	width:60px;}
+
+.navbar-collapse a.prof-pic img {
+    width: 60px;}
+
+.navbar-collapse a.prof-pic span{
+	width: 10px;
+    height: 10px;
+	right: 10px;
+    bottom: 14px;}
+
+.navbar-collapse a.prof-pic{
+	margin:0;}
 
 
 
@@ -1856,7 +1908,9 @@ footer li{
 
 @media (max-width: 1200px){
 	.container {
-		max-width: 1100px;}
+		max-width: 1000px;}
+	header{
+		padding:0 20px;}
 	section.banner{
 		margin-bottom:0;}
 	.steps-block h3{
@@ -1867,6 +1921,8 @@ footer li{
 		font-size:45px;}
 	.apps-banner img{
 		width:280px;}
+	.food-block .food-name{
+		font-size:15px;}
 	.apps-block{
 		margin:180px 0 0;}
 	.apps-block a{
@@ -1890,15 +1946,63 @@ footer li{
     	padding: 70px 0;}
 }
 
+@media (max-width: 1100px){
+	.container{
+		max-width:960px;}
+	.become-chef-block .col-6,
+	.apps-block .col-6 {
+    	padding: 70px 25px;}
+}
+
+@media (max-width: 992px){
+	.apps-block{
+		margin:80px 0 0;}
+	.become-chef-block .col-6, .apps-block .col-6{
+		padding:45px 25px;}
+	.apps-block a img{
+		width:150px;}
+	.apps-banner img {
+   		width: 220px;}
+	.apps-block h2 {
+    	font-size: 40px;}
+	footer .footer-logo{
+		text-align:center;}
+}
+
 @media (max-width: 768px){
 	section.banner .container{
 		max-width:90%;}
+	.gopop .modal-dialog {
+    	max-width: 600px;}
+	.gopop .modal-body {
+	    padding: 30px 60px 20px;}
+	.gopop .modal-header img {
+    	width: 30px;}
+	.gopop .modal-header .modal-title {
+		font-size: 20px;}
+	.gopop .modal-header{
+		padding:15px 30px}
+	.gopop .modal-header .close{
+		top: -15px;
+   		right: -25px;}
+	.gopop .modal-footer{
+		font-size: 14px;
+    	padding: 20px 10px;}
+	.gopop .form-control {
+		height: calc(2.25rem + 5px);}
+	.gopop .btn-sign {
+		padding-top: 10px;
+		padding-bottom: 10px;}
+	.gopop button.btn.btn-primary{
+		font-size: 14px;
+    	padding: 5px 25px;}
+	.gopop .form-group label{
+		font-size:14px;}
+	.gopop .arrow-down img {
+		width: 25px;}
+
 }
 /*
-@media (min-width: 992px){
-.container {
-    max-width: 980px;
-}}
 
 @media (min-width: 768px){
 .container {
