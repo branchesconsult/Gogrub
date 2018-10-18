@@ -33,7 +33,7 @@
                     </div>
                 </div>
                 <div class="col-8">
-                    <h5 class="food-head">Food by William</h5>
+                    <h5 class="food-head">Food by {!! $chef['full_name'] !!}</h5>
                     <div class="row">
                     @include('frontend.partials.product-grid', [
                         'products' => $chef['products'],
