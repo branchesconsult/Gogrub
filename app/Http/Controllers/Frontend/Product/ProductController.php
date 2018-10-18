@@ -16,8 +16,7 @@ class ProductController extends Controller
     {
         //Meter distance
         $latLng = breakLatLng(session()->get('customer.customer_location'));
-        $searchWithIn = 12;
-        $chefsInLocaton = getChefWithinDistance($latLng[0], $latLng[1], $searchWithIn);
+        $chefsInLocaton = getChefWithinDistance($latLng[0], $latLng[1], 12);
         $data['products'] = Product::with(['images' => function ($q) {
 
         }, 'cuisine', 'chef'])
@@ -41,7 +40,11 @@ class ProductController extends Controller
         }, 'images'])
             ->where('slug', $productSlug)
             ->firstOrFail()->toArray();
-        //dd($data);
+
+        $latLng = breakLatLng(session()->get('customer.customer_location'));
+        $chefDistance = getChefDistanceFromUserLocation(
+            $data['product']['chef']['id'],
+            breakLatLng(session()->get('customer.customer_location')));
         return view('frontend.products.product-detail', $data);
     }
 }

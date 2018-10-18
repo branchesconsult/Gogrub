@@ -437,10 +437,44 @@ function breakLatLng($latLng)
 }
 
 
-function getChefWithinDistance($lat, $lng, $searchWithIn = 7000)
+function getChefWithinDistance($lat, $lng, $searchWithIn = null)
 {
-    $chefQuery = \App\Models\Location\Location::distance('location_point', new \Grimzy\LaravelMysqlSpatial\Types\Point($lat, $lng, $searchWithIn), $searchWithIn)
-        ->get(['locationable_id'])
-        ->toArray();
-    return array_column($chefQuery, 'locationable_id');
+    $searchWithIn = (empty($searchWithIn)) ? \Config::get('constants.search_distance') : $searchWithIn;
+    $chefQuery = "SELECT locationable_id, ST_X(location_point) AS lat, 
+          ST_Y(location_point) AS lng,
+         ROUND(ST_Distance_Sphere(
+            POINT(ST_X(location_point), ST_Y(location_point)),
+            POINT($lng, $lat)
+          )/1000, 2) AS dist  FROM locations
+          HAVING dist <= $searchWithIn";
+    $chefQueryRes = \DB::select($chefQuery);
+    if (empty($chefQueryRes)) {
+        return [];
+    }
+    return array_column($chefQueryRes, 'locationable_id');
+}
+
+/**
+ * Get user and chef distance distance in km
+ * @param $chefId
+ * @param array $latLng
+ * @return array
+ */
+function getChefDistanceFromUserLocation($chefId, $latLng = array())
+{
+    //Distance in km
+    $distanceSql = "SELECT ST_X(location_point) AS lat, 
+          ST_Y(location_point) AS lng,
+         ROUND(ST_Distance_Sphere(
+            POINT(ST_X(location_point), ST_Y(location_point)),
+            POINT($latLng[1], $latLng[0])
+          )/1000) AS dist  
+          FROM locations
+          WHERE locationable_id = $chefId ORDER BY id DESC 
+          LIMIT 1";
+    $distanceSqlRes = \DB::select($distanceSql);
+    if (empty($distanceSqlRes)) {
+        return [];
+    }
+    return $distanceSqlRes[0]->dist;
 }

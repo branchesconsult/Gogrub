@@ -5,6 +5,27 @@
 @stop
 @section('content')
     {{--@include('frontend.includes.search-fullwidth-banner')--}}
+    <section class="check-food-delivery-location">
+        {!! Form::open(['route' => 'frontend.products.list',
+                'class' =>'form-inline banner-form', 'method' => 'GET']) !!}
+            {!! Form::search(
+                's', session()->get('customer.customer_address'),
+                ['class' => 'form-control mr-sm-2',
+                'placeholder' => 'Find yourself on map',
+                'id' => 'address-autocomplete',
+                ]
+            ) !!}
+            <div style="display: none;">
+                <input type="text" name="session_customer_address" id="session_customer_address"/>
+                <input type="text" name="session_customer_location" id="session_customer_location"/>
+                <input type="text" name="session_customer_city" id="session_customer_city"/>
+                <input type="text" name="session_customer_country" id="session_customer_country"/>
+            </div>
+            <a href="#"></a>
+            <button class="btn btn-outline-success my-2 my-sm-0 active" type="submit">Find Food Around Me
+            </button>
+        {!! Form::close() !!}
+    </section>
     <section class="food-detail">
         <div class="container">
             <div class="row">
