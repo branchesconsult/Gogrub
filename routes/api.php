@@ -15,6 +15,8 @@
 Route::group(['namespace' => 'Api\V1',
     'prefix' => 'v1', 'as' => 'v1.',
     'middleware' => ['sessions']], function () {
+    //SEnd pass
+    Route::post('password/email', 'ForgotPasswordController@sendResetLinkEmail');
     //Cousine
     Route::resource('cuisine', 'CuisineController', ['only' => ['index']]);
     // Page
@@ -41,7 +43,7 @@ Route::group(['namespace' => 'Api\V1',
         Route::post('logout', 'AuthController@logout');
         Route::post('refresh', 'AuthController@refresh');
         // Password Reset Routes
-        Route::post('password/email', 'ForgotPasswordController@sendResetLinkEmail');
+        //Route::post('password/email', 'ForgotPasswordController@sendResetLinkEmail');
         // Route::post('password/reset', 'ResetPasswordController@reset')->name('password.reset');
         //Products
         Route::group(['middleware' => 'mobile.verify'], function () {
@@ -65,6 +67,9 @@ Route::group(['namespace' => 'Api\V1',
                 Route::resource('orders', 'ChefOrderController', ['except' => ['update']]);
                 Route::post('orders/{id}', 'ChefOrderController@update');
                 Route::get('earnings', 'ChefReportingController@getEarnings');
+                Route::resource('products', 'ChefProductController', ['only' =>
+                    ['index', 'store', 'show', 'update', 'destroy']]);
+                Route::post('products/{id}', 'ChefProductController@update');
             });
         });
         // Users

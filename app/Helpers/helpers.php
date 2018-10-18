@@ -421,11 +421,26 @@ function formatPrice($price)
 
 function getImgSrc($src, $width = null, $height = null, $options = [])
 {
-    $filePhyPath = str_replace(asset('/'), '', $src);
+    $filePhyPath = str_replace([asset('/')], '', $src);
     if (\File::exists($filePhyPath) && !empty($src)) {
         return asset(\Image::url($src, $width, $height, array('crop')));
         //return asset(\Croppa::url($src, $width, $height));
     } else {
         return asset('img/no_img.png');
     }
+}
+
+
+function breakLatLng($latLng)
+{
+    return $latLng = explode(',', $latLng);
+}
+
+
+function getChefWithinDistance($lat, $lng, $searchWithIn = 7000)
+{
+    $chefQuery = \App\Models\Location\Location::distance('location_point', new \Grimzy\LaravelMysqlSpatial\Types\Point($lat, $lng, $searchWithIn), $searchWithIn)
+        ->get(['locationable_id'])
+        ->toArray();
+    return array_column($chefQuery, 'locationable_id');
 }

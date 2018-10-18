@@ -13,9 +13,9 @@
                         <div class="col-12 food-main">
                             <ul id="product-detail-banner">
                                 @foreach($product['images'] as $key => $val)
-                                    <li data-src="{!! $val['image_large'] !!}"
-                                        data-thumb="{!! $val['small_thumb'] !!}">
-                                        <img src="{!! $val['medium_thumb'] !!}"/>
+                                    <li data-src="{!! getImgSrc($val['image_large']) !!}"
+                                        data-thumb="{!! getImgSrc($val['small_thumb']) !!}">
+                                        <img src="{!! getImgSrc($val['medium_thumb'], 480, 480) !!}"/>
                                     </li>
                                 @endforeach
                             </ul>
@@ -113,7 +113,7 @@
                 gallery: true,
                 item: 1,
                 vertical: true,
-                verticalHeight: 400,
+                verticalHeight: 480,
                 vThumbWidth: 120,
                 thumbItem: 8,
                 thumbMargin: 10,

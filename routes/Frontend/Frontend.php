@@ -41,8 +41,10 @@ Route::group(['middleware' => 'auth'], function () {
 */
 Route::get('pages/{slug}', 'FrontendController@showPage')->name('pages.show');
 
+//Product routs
 Route::group(['prefix' => 'products', 'middleware' => ['web'], 'namespace' => 'Product'], function () {
     Route::get('{slug}', 'ProductController@show')->name('product.detail');
+    Route::get('/', 'ProductController@index')->name('products.list');
 });
 
 Route::group(['prefix' => 'cart', 'middleware' => ['web'], 'namespace' => 'Order'], function () {
@@ -53,4 +55,8 @@ Route::group(['prefix' => 'cart', 'middleware' => ['web'], 'namespace' => 'Order
 
 Route::group(['prefix' => 'chef', 'middleware' => ['web'], 'namespace' => 'Chef'], function () {
     Route::get('detail/{chefId}', 'ChefController@detail')->name('chef.detail');
+});
+//Locatin
+Route::group(['prefix' => 'location', 'middleware' => ['web'], 'namespace' => 'Location'], function () {
+    Route::post('save', 'LocationController@setGlobalUserLocation')->name('session.location.store');
 });

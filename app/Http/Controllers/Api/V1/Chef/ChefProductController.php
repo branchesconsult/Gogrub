@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Controllers\Api\V1;
+namespace App\Http\Controllers\Api\V1\Chef;
 
 use App\Http\Requests\Api\Products\AddProductRequest;
 use App\Http\Requests\Api\Products\GetProductsRequest;
@@ -14,11 +14,11 @@ use App\Http\Controllers\Controller;
 use Unisharp\FileApi\FileApi;
 
 /**
- * @resource Products
+ * @resource Chef products
  *
- * All product related functions
+ * All Orders related functions
  */
-class ProductController extends Controller
+class ChefProductController extends Controller
 {
     /**
      * variable to store the repository object
@@ -42,18 +42,12 @@ class ProductController extends Controller
      */
     public function index(GetProductsRequest $request)
     {
-        $chefId = ($request->has('chef_id')) ? $request->get('chef_id') : null;
-        $products = Product::with(['images', 'chef' => function ($q) {
-            $q->with(['ratingReviews' => function ($q1) {
-                $q1->take(1);
-            }]);
-        }])
-            //->where('availability_form', '>=', Carbon::now())
-            ->where('status', '=', 1);
-        if (!empty($chefId)) {
-            $products = $products->where('chef_id', $chefId);
-        }
-        $products = $products->orderByDesc('id')->get();
+        $products = Product::where('chef_id', \Auth::id())
+            ->with(['images', 'chef' => function ($q) {
+                $q->with(['ratingReviews' => function ($q1) {
+
+                }]);
+            }])->orderByDesc('id')->get();
         return response()->json([
             'products' => $products
         ]);
@@ -118,7 +112,7 @@ class ProductController extends Controller
     {
         $products = Product::with(['images', 'cuisine', 'chef' => function ($q) {
             $q->with(['ratingReviews' => function ($q1) {
-                $q1->with('user');
+
             }, 'meta']);
         }])
             //->where('availability_form', '>=', Carbon::now())
@@ -174,6 +168,12 @@ class ProductController extends Controller
      */
     public function destroy($id)
     {
-        //
+        try {
+            $product = Product::findOrFail($id);
+        } catch (\Exception $exception) {
+            return apiErrorRes(404, $exception->getMessage());
+        }
+        $product->delete();
+        return apiSuccessRes('Product deleted successfully');
     }
 }

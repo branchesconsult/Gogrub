@@ -13,6 +13,14 @@
         <div class="collapse navbar-collapse justify-content-end" id="navbarSupportedContent">
             <ul class="navbar-nav">
                 {{ renderMenuItems(getMenuItems('frontend', 2)) }}
+                @if(!access()->hasRole('Chef'))
+                    <li>
+                        <a href="#" class="btn btn-outline-success my-2 my-sm-0 active">
+                            Become our chef
+                            <small>Its free!</small>
+                        </a>
+                    </li>
+                @endif
             </ul>
             @if(!\Auth::check())
                 <button
@@ -122,7 +130,7 @@
                    role="button"
                    id="cart-dd"
                    data-toggle="dropdown"
-                   onclick="openBsModal('login')"
+                   onclick="{!! \Auth::check() ? "redirectTo('".route('frontend.checkout.page')."')":"openBsModal('login')" !!}"
                    aria-haspopup="true" aria-expanded="false">
                     <i class="fa fa-shopping-cart"></i>
                     <span id="head-cart-count">{!! Cart::count() !!}</span>

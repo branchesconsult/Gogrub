@@ -65,7 +65,12 @@
                     beforeSend: function () {
                     },
                     success: function (data) {
-                        window.location = '{!! route('frontend.checkout.page') !!}';
+                        @if(\Auth::check())
+                            $('#wait-overley').show();
+                            window.location = '{!! route('frontend.checkout.page') !!}';
+                        @else
+                            openBsModal('login');
+                        @endif
                         $("#addToCartModel").modal('hide');
                         $("#head-cart-count").html(data.cart_count);
                     },

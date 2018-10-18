@@ -58,29 +58,30 @@
         </div>
     </section>
 
-    <section class="become-chef-block">
-        <div class="container">
-            <div class="row">
-                <div class="col-6">
-                    <h2>Be a Chef in 3 easy steps</h2>
-                    <ul>
-                        <li>1- Sign up</li>
-                        <li>2- Complete your profile</li>
-                        <li>3- get yourself approved by admin</li>
-                    </ul>
-                    <button class="btn btn-outline-success my-2 my-sm-0"
-                            onclick="openBsModal('{!! (\Auth::check()) ? 'becomechef' : 'login' !!}')"
-                            type="submit">
-                        Become a Chef
-                    </button>
-                </div>
-                <div class="become-chef-banner">
-                    <img src="{!! asset('frontend/images/chef_PNG140@2x.png') !!}"/>
+    @if(!access()->hasRole('Chef'))
+        <section class="become-chef-block">
+            <div class="container">
+                <div class="row">
+                    <div class="col-6">
+                        <h2>Be a Chef in 3 easy steps</h2>
+                        <ul>
+                            <li>1- Sign up</li>
+                            <li>2- Complete your profile</li>
+                            <li>3- get yourself approved by admin</li>
+                        </ul>
+                        <button class="btn btn-outline-success my-2 my-sm-0"
+                                onclick="openBsModal('{!! (\Auth::check()) ? 'becomechef' : 'login' !!}')"
+                                type="submit">
+                            Become a Chef
+                        </button>
+                    </div>
+                    <div class="become-chef-banner">
+                        <img src="{!! asset('frontend/images/chef_PNG140@2x.png') !!}"/>
+                    </div>
                 </div>
             </div>
-        </div>
-    </section>
-
+        </section>
+    @endif
     <section class="steps-block">
         <div class="container">
             <div class="row">

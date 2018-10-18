@@ -36,7 +36,7 @@ class ChefAuthController extends Controller
             }
         }
         Usermeta::insert($userMetaRecord);
-        return apiSuccessRes('Thank you for your interest, we will get back to you within 48 workign hours');
+        return apiSuccessRes('Thank you for your interest, we will get back to you within 48 working hours');
     }
 
     public function uploadChefDocs($imagesInput)

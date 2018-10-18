@@ -39,6 +39,7 @@
                                     <div class="field">
                                         <p>Take a clean snap of your ID Card both front and back</p>
                                         <input type="file"
+                                               class="ddUpload"
                                                name="nic[]"
                                                accept="image/*"
                                                class="ddUpload"
@@ -95,8 +96,8 @@
     {!! Html::script(asset('frontend/imageuploadify/imageuploadify.min.js')) !!}
     <script>
         $(document).ready(function () {
-            //$('input[type="file"]').imageuploadify();
-			$('input[type="file"].ddUpload').imageuploadify();
+
+            $('input[type="file"].ddUpload').imageuploadify();
             //jQuery time
             var current_fs, next_fs, previous_fs; //fieldsets
             var left, opacity, scale; //fieldset properties which we will animate
@@ -124,6 +125,7 @@
                         current_fs.css({
                             'transform': 'scale(' + scale + ')',
 							'position':'absolute', 'top': '50px'
+
                         });
                         next_fs.css({'left': left, 'opacity': opacity, 'top': '0',
 							'position':'relative'});
