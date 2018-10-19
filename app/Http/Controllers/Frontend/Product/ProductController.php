@@ -15,18 +15,25 @@ class ProductController extends Controller
     public function index()
     {
         //Meter distance
-        $latLng = breakLatLng(session()->get('customer.customer_location'));
-        $chefsInLocaton = getChefWithinDistance($latLng[0], $latLng[1], 12);
-        $data['products'] = Product::with(['images' => function ($q) {
+        $chefsInLocaton = [];
+        if (session()->has('customer.customer_location')) {
+            $latLng = breakLatLng(session()->get('customer.customer_location'));
+            $chefsInLocaton = getChefWithinDistance($latLng[0], $latLng[1], 12);
+        }
 
-        }, 'cuisine', 'chef'])
-            ->whereIn('chef_id', $chefsInLocaton)
-            ->where('availability_from', '<=', Carbon::now())
+        $products = Product::with(['images' => function ($q) {
+
+        }, 'cuisine', 'chef']);
+        if (!empty($chefsInLocaton)) {
+            $products = $products->whereIn('chef_id', $chefsInLocaton);
+        }
+
+        $products = $products->where('availability_from', '<=', Carbon::now())
             ->where('availability_to', '>=', Carbon::now())
             ->where('status', 1)
             ->orderBy('id', 'DESC')
             ->paginate(16);
-        return view('frontend.products.product-list', $data);
+        return view('frontend.products.product-list', compact('products'));
     }
 
     public function show($productSlug)
