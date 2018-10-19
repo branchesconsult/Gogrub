@@ -44,8 +44,6 @@
 <div id="wait-overley"></div>
 <section id="pg-area-to-change"><!--Section Id Start-->
     <div id="app">
-        @include('frontend.includes.nav')
-        @include('includes.partials.messages')
         @if(request()->has('error_message') && !empty(request()->get('error_message')))
             <div class="col-12">
                 <div class="alert alert-danger">
@@ -53,6 +51,8 @@
                 </div>
             </div>
         @endif
+        @include('frontend.includes.nav')
+        @include('includes.partials.messages')
         @yield('content')
     </div><!--#app-->
 </section><!----------- Section Id Closed -------------->
