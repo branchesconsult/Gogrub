@@ -6,7 +6,9 @@ $(document).ready(function () {
         })
         .listen('.order.updated', (e) => {
             makeToast(e.message_type, e.message);
-        })
+        });
+    //Sending chat
+    Echo.channel('order-chat-' + currentUserId)
         .listen('.chat.receive', (e) => {
             console.log(e);
             makeToast(e.message_type, e.message);

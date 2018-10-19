@@ -11,6 +11,8 @@ class Chat extends BaseModel
 {
     protected $table = 'chats';
 
+    protected $appends = ['is_sender'];
+
     public function sender()
     {
         return $this->belongsTo(User::class, 'sender_id');
@@ -25,4 +27,9 @@ class Chat extends BaseModel
 //    {
 //        return Carbon::createFromTimeStamp(strtotime($this->created_at))->diffForHumans();
 //    }
+
+    public function getIsSenderAttribute()
+    {
+        return ($this->sender_id == \Auth::id()) ? true : false;
+    }
 }
