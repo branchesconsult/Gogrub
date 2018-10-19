@@ -260,6 +260,7 @@ class OrderController extends Controller
     {
         return response()->json([
             'prepration_time' => 23,
+            'delievery_charges' => 60,
             'delivery_slots' => [
                 45,
                 60,
