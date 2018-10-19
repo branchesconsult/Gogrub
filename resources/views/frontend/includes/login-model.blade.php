@@ -44,7 +44,9 @@
                 </div>
             </div>
             <div class="modal-footer">
-                Connect using Social Media Accounts
+                <a href="{!! route('frontend.auth.social.login', ['provider' => 'facebook']) !!}">
+                    Connect using Social Media Accounts
+                </a>
             </div>
         </div>
     </div>
