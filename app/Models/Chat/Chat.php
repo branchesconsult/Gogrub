@@ -21,8 +21,8 @@ class Chat extends BaseModel
         return $this->belongsTo(User::class, 'receiver_id');
     }
 
-    public function getCreatedAtAttribute()
-    {
-        return Carbon::createFromTimeStamp(strtotime($this->created_at))->diffForHumans();
-    }
+//    public function getCreatedAtAttribute()
+//    {
+//        return Carbon::createFromTimeStamp(strtotime($this->created_at))->diffForHumans();
+//    }
 }
