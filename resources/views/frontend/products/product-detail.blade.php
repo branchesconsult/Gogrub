@@ -4,28 +4,16 @@
     {!! Html::style(asset('frontend/lightslider/css/lightslider.css')) !!}
 @stop
 @section('content')
-    {{--@include('frontend.includes.search-fullwidth-banner')--}}
-    <section class="check-food-delivery-location">
-        {!! Form::open(['route' => 'frontend.products.list',
-                'class' =>'form-inline banner-form', 'method' => 'GET']) !!}
-            {!! Form::search(
-                's', session()->get('customer.customer_address'),
-                ['class' => 'form-control mr-sm-2',
-                'placeholder' => 'Find yourself on map',
-                'id' => 'address-autocomplete',
-                ]
-            ) !!}
-            <div style="display: none;">
-                <input type="text" name="session_customer_address" id="session_customer_address"/>
-                <input type="text" name="session_customer_location" id="session_customer_location"/>
-                <input type="text" name="session_customer_city" id="session_customer_city"/>
-                <input type="text" name="session_customer_country" id="session_customer_country"/>
+    <div id="product-detail-page">
+        @include('frontend.includes.search-fullwidth-banner')
+        @if(!userSetLocation())
+            <div class="tooltip-msg">
+                <div class="alert alert-info">
+                    Chef do not deliver to your area
+                </div>
             </div>
-            <a href="#"></a>
-            <button class="btn btn-outline-success my-2 my-sm-0 active" type="submit">Find Food Around Me
-            </button>
-        {!! Form::close() !!}
-    </section>
+        @endif
+    </div>
     <section class="food-detail">
         <div class="container">
             <div class="row">
@@ -53,7 +41,9 @@
                         </div>
 
                         <div class="col-3">
-                            <h3 class="text-right"><strong>{!! $product['price_view'] !!}</strong></h3>
+                            <h3 class="text-right">
+                                <strong>{!! $product['price_view'] !!}</strong>
+                            </h3>
                         </div>
 
                         <div class="col-12">
@@ -92,12 +82,29 @@
 
                         <div class="col-12 food-chef">
                             <img src="{!! getImgSrc($product['chef']['avatar'], 70, 70) !!}"/>
-                            <h5><strong>{!! $product['chef']['full_name'] !!}</strong>
+                            <h5>
+                                <strong>
+                                    {!! $product['chef']['full_name'] !!}
+                                </strong>
                             </h5>
                             {{--<i class="fa fa-comment"></i> <span>text chef for any query</span>--}}
-                            <button onclick="openBsModal('addToCartModel')" class="btn btn-success">
-                                Add to meal
-                            </button>
+                            @if(!userSetLocation())
+                                <button
+                                        onclick="scrollToEle('address-autocomplete')"
+                                        class="btn btn-success">
+                                    Add to meal
+                                </button>
+                            @elseif(userSetLocation() && $chefDistance <= getMinDeliveryDistance())
+                                <button
+                                        onclick="openBsModal(addToCartModel)"
+                                        class="btn btn-success">
+                                    Add to meal
+                                </button>
+                            @else
+                                <div class="alert alert-info">
+                                    Chef do not deliver to your address
+                                </div>
+                            @endif
                         </div>
                     </div>
                 </div>

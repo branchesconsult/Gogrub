@@ -47,11 +47,14 @@ class ProductController extends Controller
         }, 'images'])
             ->where('slug', $productSlug)
             ->firstOrFail()->toArray();
-
-        $latLng = breakLatLng(session()->get('customer.customer_location'));
-        $chefDistance = getChefDistanceFromUserLocation(
-            $data['product']['chef']['id'],
-            breakLatLng(session()->get('customer.customer_location')));
+        if (session()->has('customer.customer_location')) {
+            $latLng = breakLatLng(session()->get('customer.customer_location'));
+            $data['chefDistance'] = getChefDistanceFromUserLocation(
+                $data['product']['chef']['id'],
+                $latLng
+            );
+            //dd($latLng);
+        }
         return view('frontend.products.product-detail', $data);
     }
 }

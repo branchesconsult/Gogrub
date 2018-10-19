@@ -35,6 +35,24 @@ class SendChatEvent implements ShouldBroadcast, ShouldQueue
      */
     public function broadcastOn()
     {
-        return new PrivateChannel('order-chat.' . $this->chat->receiver_id);
+        return [
+            'order-chat-' . $this->chat->order_id,
+            'order-chat-1'
+        ];
+    }
+
+    /**
+     * Get the data to broadcast.
+     *
+     * @return array
+     */
+    public function broadcastWith()
+    {
+        return [
+            'chat' => $this->chat,
+            'message' => $this->chat->message,
+            'message_type' => 'Message',
+            'is_sender' => true //Chepi for android developer, Altough no sender recive the broadcast
+        ];
     }
 }

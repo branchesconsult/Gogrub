@@ -492,3 +492,17 @@ function getChefDistanceFromUserLocation($chefId, $latLng = array())
     }
     return $distanceSqlRes[0]->dist;
 }
+
+
+function userSetLocation()
+{
+    if (session()->has('customer.customer_location')) {
+        return true;
+    }
+    return false;
+}
+
+function getMinDeliveryDistance()
+{
+    return \Config::get('constants.max_delivery_distance');
+}

@@ -18,6 +18,7 @@ class CreateChatsTable extends Migration
             $table->integer('order_id')->unsigned();
             $table->integer('sender_id')->unsigned();
             $table->integer('receiver_id')->unsigned();
+            $table->longText('message');
             $table->boolean('is_read')->default(0);
             $table->timestamps();
         });

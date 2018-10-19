@@ -167,6 +167,11 @@
     function redirectTo(pgUrl) {
         return window.location.href = pgUrl;
     }
+    function scrollToEle(eleId) {
+        $('html, body').animate({
+            scrollTop: $("#" + eleId).offset().top
+        }, 800);
+    }
 </script>
 </body>
 </html>
