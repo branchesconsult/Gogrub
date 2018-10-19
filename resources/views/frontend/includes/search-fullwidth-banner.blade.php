@@ -11,16 +11,22 @@
                     ['class' => 'form-control mr-sm-2',
                     'placeholder' => 'Find yourself on map',
                     'id' => 'address-autocomplete',
+                    'required' => 'required'
                     ]
                 ) !!}
                 <div style="display: none;">
-                    <input type="text" name="session_customer_address" id="session_customer_address"/>
-                    <input type="text" name="session_customer_location" id="session_customer_location"/>
-                    <input type="text" name="session_customer_city" id="session_customer_city"/>
-                    <input type="text" name="session_customer_country" id="session_customer_country"/>
+                    {!! Form::text('session_customer_address', null, ['id' => 'session_customer_address']) !!}
+                    {!! Form::text('session_customer_location', null, ['id' => 'session_customer_location']) !!}
+                    {!! Form::text('session_customer_city', null, ['id' => 'session_customer_city']) !!}
+                    {!! Form::text('session_customer_country', null, ['id' => 'session_customer_country']) !!}
                 </div>
                 <a href="#"></a>
-                <button class="btn btn-outline-success my-2 my-sm-0 active" type="submit">Find Food Around Me
+                <button
+                        id="btn-search-food"
+                        class="btn btn-outline-success my-2 my-sm-0 active"
+                        disabled="disabled"
+                        type="submit">
+                    Find Food Around Me
                 </button>
                 {!! Form::close() !!}
             </div>
@@ -126,6 +132,7 @@
                 beforeSend: function () {
                 },
                 success: function (data) {
+                    $("#btn-search-food").attr('disabled', false);
                     $(".modal").modal('hide');
                 },
                 error: function (data) {
