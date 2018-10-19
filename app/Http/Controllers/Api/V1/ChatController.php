@@ -49,6 +49,7 @@ class ChatController extends Controller
         $chat->order_id = $request->order_id;
         $chat->sender_id = \Auth::id();
         $chat->receiver_id = $request->receiver_id;
+        $chat->message = $request->message;
         $chat->save();
         event(new SendChatEvent($chat));
         return response()->json([
