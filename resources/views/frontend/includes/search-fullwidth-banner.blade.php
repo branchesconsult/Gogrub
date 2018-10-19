@@ -15,10 +15,10 @@
                     ]
                 ) !!}
                 <div style="display: none;">
-                    {!! Form::text('session_customer_address', null, ['id' => 'session_customer_address']) !!}
-                    {!! Form::text('session_customer_location', null, ['id' => 'session_customer_location']) !!}
-                    {!! Form::text('session_customer_city', null, ['id' => 'session_customer_city']) !!}
-                    {!! Form::text('session_customer_country', null, ['id' => 'session_customer_country']) !!}
+                    {!! Form::text('session_customer_address', session()->get('customer.customer_address'), ['id' => 'session_customer_address']) !!}
+                    {!! Form::text('session_customer_location', session()->get('customer.customer_location'), ['id' => 'session_customer_location']) !!}
+                    {!! Form::text('session_customer_city', session()->get('customer.customer_location'), ['id' => 'session_customer_city']) !!}
+                    {!! Form::text('session_customer_country', session()->get('customer.customer_country'), ['id' => 'session_customer_country']) !!}
                 </div>
                 <a href="#"></a>
                 <button
@@ -129,8 +129,7 @@
                     session_customer_city: $("#session_customer_city").val(),
                     session_customer_country: $("#session_customer_country").val()
                 },
-                beforeSend: function () {
-                },
+                beforeSend: function () {},
                 success: function (data) {
                     $("#btn-search-food").attr('disabled', false);
                     $(".modal").modal('hide');
