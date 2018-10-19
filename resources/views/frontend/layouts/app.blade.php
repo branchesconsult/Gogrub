@@ -46,7 +46,7 @@
     <div id="app">
         @include('frontend.includes.nav')
         @include('includes.partials.messages')
-        @if(isset(request()->get('error_message')) && !empty(request()->get('error_message')))
+        @if(request()->has('error_message') && !empty(request()->get('error_message')))
             <div class="col-12">
                 <div class="alert alert-danger">
                     {!! request()->get('error_message') !!}
