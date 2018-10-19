@@ -41,20 +41,20 @@ class SendChatEvent implements ShouldBroadcast, ShouldQueue
         ];
     }
 
-//    /**
-//     * Get the data to broadcast.
-//     *
-//     * @return array
-//     */
-//    public function broadcastWith()
-//    {
-//        return [
-//            'chat' => $this->chat,
-//            'message' => $this->chat->message,
-//            'message_type' => 'Message',
-//            'is_sender' => false //Chepi for android developer, Altough no sender recive the broadcast
-//        ];
-//    }
+    /**
+     * Get the data to broadcast.
+     *
+     * @return array
+     */
+    public function broadcastWith()
+    {
+        return [
+            'chat' => $this->chat,
+            'message' => $this->chat->message,
+            'message_type' => 'Message',
+            'is_sender' => false //Chepi for android developer, Altough no sender recive the broadcast
+        ];
+    }
 
     /**
      * The event's broadcast name.
