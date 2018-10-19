@@ -20,7 +20,7 @@ class ChatController extends Controller
     {
         $messagesList = Chat::where('order_id', $request->order_id)
             ->with('sender', 'receiver')
-            ->orderBy('id', 'DESC')
+            ->orderBy('id', 'ASC')
             ->get();
         return response()->json([
             'chats' => $messagesList
