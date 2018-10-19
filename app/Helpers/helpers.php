@@ -445,6 +445,7 @@ function breakLatLng($latLng)
  */
 function getChefWithinDistance($lat, $lng, $searchWithIn = null)
 {
+    //mySQL latest ST_Distance_Sphere
     //Distance in km
     if (empty($lat) || empty($lng)) {
         return 50000;
@@ -452,7 +453,7 @@ function getChefWithinDistance($lat, $lng, $searchWithIn = null)
     $searchWithIn = (empty($searchWithIn)) ? \Config::get('constants.search_distance') : $searchWithIn;
     $chefQuery = "SELECT locationable_id, ST_X(location_point) AS lat, 
           ST_Y(location_point) AS lng,
-         ROUND(ST_Distance_Sphere(
+         ROUND(ST_Distance(
             POINT(ST_X(location_point), ST_Y(location_point)),
             POINT($lng, $lat)
           )/1000, 2) AS dist  FROM locations
@@ -479,7 +480,7 @@ function getChefDistanceFromUserLocation($chefId, $latLng = array())
     }
     $distanceSql = "SELECT ST_X(location_point) AS lat, 
           ST_Y(location_point) AS lng,
-         ROUND(ST_Distance_Sphere(
+         ROUND(ST_Distance(
             POINT(ST_X(location_point), ST_Y(location_point)),
             POINT($latLng[1], $latLng[0])
           )/1000) AS dist  
