@@ -6,6 +6,11 @@ use App\Models\Image\Image;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 
+/**
+ * @resource Chef images
+ *
+ * All Orders related functions
+ */
 class ChefImageController extends Controller
 {
     /**
