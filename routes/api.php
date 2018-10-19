@@ -64,12 +64,17 @@ Route::group(['namespace' => 'Api\V1',
         Route::group(['prefix' => 'chef', 'namespace' => 'Chef'], function () {
             Route::post('apply', 'ChefAuthController@storeRegistraton');
             Route::group(['middleware' => ['chef']], function () {
+                //Orders
                 Route::resource('orders', 'ChefOrderController', ['except' => ['update']]);
                 Route::post('orders/{id}', 'ChefOrderController@update');
+                //Earnings
                 Route::get('earnings', 'ChefReportingController@getEarnings');
+                //Products
                 Route::resource('products', 'ChefProductController', ['only' =>
                     ['index', 'store', 'show', 'update', 'destroy']]);
                 Route::post('products/{id}', 'ChefProductController@update');
+                //Image
+                Route::resource('images', 'ChefImageController');
             });
         });
         // Users
