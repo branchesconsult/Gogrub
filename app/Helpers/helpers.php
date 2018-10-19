@@ -468,7 +468,11 @@ function getChefWithinDistance($lat, $lng, $searchWithIn = null)
  */
 function getChefDistanceFromUserLocation($chefId, $latLng = array())
 {
+
     //Distance in km
+    if (empty($latLng)) {
+        return 0;
+    }
     $distanceSql = "SELECT ST_X(location_point) AS lat, 
           ST_Y(location_point) AS lng,
          ROUND(ST_Distance_Sphere(
@@ -480,7 +484,7 @@ function getChefDistanceFromUserLocation($chefId, $latLng = array())
           LIMIT 1";
     $distanceSqlRes = \DB::select($distanceSql);
     if (empty($distanceSqlRes)) {
-        return [];
+        return 0;
     }
     return $distanceSqlRes[0]->dist;
 }
