@@ -470,7 +470,7 @@ function getChefDistanceFromUserLocation($chefId, $latLng = array())
 {
 
     //Distance in km
-    if (empty($latLng)) {
+    if (empty($latLng) || !is_array($latLng)) {
         return 0;
     }
     $distanceSql = "SELECT ST_X(location_point) AS lat, 
