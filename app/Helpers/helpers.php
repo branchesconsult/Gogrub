@@ -468,10 +468,8 @@ function getChefWithinDistance($lat, $lng, $searchWithIn = null)
  */
 function getChefDistanceFromUserLocation($chefId, $latLng = array())
 {
-
-    dd($latLng);
     //Distance in km
-    if (empty($latLng) || !is_array($latLng)) {
+    if ((empty($latLng) || !is_array($latLng)) || (!isset($latLng[0]) && !isset($latLng[0]))) {
         return 0;
     }
     $distanceSql = "SELECT ST_X(location_point) AS lat, 
