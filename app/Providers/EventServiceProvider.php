@@ -3,6 +3,7 @@
 namespace App\Providers;
 
 use App\Events\ExampleEvent;
+use App\Events\Frontend\Chat\SendChatEvent;
 use App\Events\Frontend\Order\OrderCreateEvent;
 use App\Events\Frontend\Order\OrderUpdateEvent;
 use App\Listeners\Frontend\Order\OrderCreateListener;
@@ -29,7 +30,9 @@ class EventServiceProvider extends ServiceProvider
         \App\Events\Backend\Order\OrderUpdateEvent::class => [
             \App\Listeners\Backend\Order\OrderUpdateListener::class
         ],
-
+        SendChatEvent::class => [
+            
+        ]
         //ExampleEvent::class => []
     ];
 
