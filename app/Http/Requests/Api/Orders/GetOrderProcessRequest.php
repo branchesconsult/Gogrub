@@ -24,7 +24,7 @@ class GetOrderProcessRequest extends FormRequest
     public function rules()
     {
         return [
-            'product' => 'array|required'
+           // 'product' => 'array|required'
         ];
     }
 }
