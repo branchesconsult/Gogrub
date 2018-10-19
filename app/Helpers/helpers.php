@@ -445,6 +445,10 @@ function breakLatLng($latLng)
  */
 function getChefWithinDistance($lat, $lng, $searchWithIn = null)
 {
+    //Distance in km
+    if (empty($lat) || empty($lng)) {
+        return 50000;
+    }
     $searchWithIn = (empty($searchWithIn)) ? \Config::get('constants.search_distance') : $searchWithIn;
     $chefQuery = "SELECT locationable_id, ST_X(location_point) AS lat, 
           ST_Y(location_point) AS lng,
