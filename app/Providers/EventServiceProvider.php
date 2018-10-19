@@ -6,6 +6,7 @@ use App\Events\ExampleEvent;
 use App\Events\Frontend\Chat\SendChatEvent;
 use App\Events\Frontend\Order\OrderCreateEvent;
 use App\Events\Frontend\Order\OrderUpdateEvent;
+use App\Listeners\Frontend\Chat\SendChatEventListener;
 use App\Listeners\Frontend\Order\OrderCreateListener;
 use App\Listeners\Frontend\Order\OrderUpdateListener;
 use Illuminate\Foundation\Support\Providers\EventServiceProvider as ServiceProvider;
@@ -31,7 +32,7 @@ class EventServiceProvider extends ServiceProvider
             \App\Listeners\Backend\Order\OrderUpdateListener::class
         ],
         SendChatEvent::class => [
-            
+            SendChatEventListener::class
         ]
         //ExampleEvent::class => []
     ];
