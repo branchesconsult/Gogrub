@@ -52,7 +52,7 @@ class SendChatEvent implements ShouldBroadcast, ShouldQueue
             'chat' => $this->chat,
             'message' => $this->chat->message,
             'message_type' => 'Message',
-            'is_sender' => true //Chepi for android developer, Altough no sender recive the broadcast
+            'is_sender' => false //Chepi for android developer, Altough no sender recive the broadcast
         ];
     }
 
