@@ -28,7 +28,8 @@ class EventServiceProvider extends ServiceProvider
         ],
         \App\Events\Backend\Order\OrderUpdateEvent::class => [
             \App\Listeners\Backend\Order\OrderUpdateListener::class
-        ]
+        ],
+
         //ExampleEvent::class => []
     ];
 

@@ -55,4 +55,14 @@ class SendChatEvent implements ShouldBroadcast, ShouldQueue
             'is_sender' => true //Chepi for android developer, Altough no sender recive the broadcast
         ];
     }
+
+    /**
+     * The event's broadcast name.
+     *
+     * @return string
+     */
+    public function broadcastAs()
+    {
+        return 'chat.receive';
+    }
 }
