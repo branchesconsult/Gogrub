@@ -45,8 +45,14 @@
 <section id="pg-area-to-change"><!--Section Id Start-->
     <div id="app">
         @include('frontend.includes.nav')
-
         @include('includes.partials.messages')
+        @if(isset(request()->get('error_message')) && !empty(request()->get('error_message')))
+            <div class="col-12">
+                <div class="alert alert-danger">
+                    {!! request()->get('error_message') !!}
+                </div>
+            </div>
+        @endif
         @yield('content')
     </div><!--#app-->
 </section><!----------- Section Id Closed -------------->
