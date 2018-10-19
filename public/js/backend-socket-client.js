@@ -6,6 +6,10 @@ $(document).ready(function () {
         })
         .listen('.order.updated', (e) => {
             makeToast(e.message_type, e.message);
+        })
+        .listen('.chat.receive', (e) => {
+            console.log(e);
+            makeToast(e.message_type, e.message);
         });
 });
 
