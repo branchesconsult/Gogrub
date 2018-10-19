@@ -469,6 +469,7 @@ function getChefWithinDistance($lat, $lng, $searchWithIn = null)
 function getChefDistanceFromUserLocation($chefId, $latLng = array())
 {
 
+    dd($latLng);
     //Distance in km
     if (empty($latLng) || !is_array($latLng)) {
         return 0;
