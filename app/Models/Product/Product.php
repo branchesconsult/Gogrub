@@ -31,10 +31,12 @@ class Product extends Model
      */
     protected $table = 'products';
 
-    protected $appends = ['remaining_servings',
+    protected $appends = [
+        'remaining_servings',
         'posted_at', 'price_view',
         'availability_time',
-        'servings_left'];
+        'servings_left',
+    ];
 
     /**
      * Default values for model fields
@@ -87,15 +89,15 @@ class Product extends Model
     }
 
 
-    public function getAvailabilityFormAttribute($val)
-    {
-        return $this->getGlobalDateTimeFormat($val);
-    }
+//    public function getAvailabilityFormAttribute($val)
+//    {
+//        return $this->getGlobalDateTimeFormat($val);
+//    }
 
-    public function getAvailabilityToAttribute($val)
-    {
-        return $this->getGlobalDateTimeFormat($val);
-    }
+//    public function getAvailabilityToAttribute($val)
+//    {
+//        return $this->getGlobalDateTimeFormat($val);
+//    }
 
     public function getRemainingServingsAttribute()
     {
