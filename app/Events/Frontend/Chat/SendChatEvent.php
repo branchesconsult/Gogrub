@@ -36,7 +36,7 @@ class SendChatEvent implements ShouldBroadcast, ShouldQueue
     public function broadcastOn()
     {
         return [
-            'order-chat-' . $this->chat->order_id . '-10',
+            'order-chat-' . $this->chat->order_id . '-' . $this->chat->receiver_id,
             //'order-chat-1'
         ];
     }
