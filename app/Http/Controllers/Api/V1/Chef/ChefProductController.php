@@ -151,13 +151,7 @@ class ChefProductController extends Controller
                 Product::find($id)->images()->save(new Image($val));
             }
         }
-        return response()->json([
-            'message_title' => "Success",
-            'message' => 'Your product added successfully',
-            'status_code' => 200,
-            'success' => true,
-            'product' => Product::where('id', $id)->with('images')->first()
-        ]);
+        return apiSuccessRes('Product updated successfuly.');
     }
 
     /**
