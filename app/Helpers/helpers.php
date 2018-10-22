@@ -345,7 +345,7 @@ function numToDecimal($number, $getOriginal = false)
  * @return mixed
  */
 function sendPushNotificationToFCMSever($fcmToken, $message,
-                                        $linkTo = 'orderDetail',
+                                        $type = 'orderDetail',
                                         $notifyID = NULL,
                                         $object = array())
 {
@@ -358,7 +358,7 @@ function sendPushNotificationToFCMSever($fcmToken, $message,
 
     $encodeMessage = json_encode([
         "message" => $message,
-        "type" => "order",
+        "type" => $type,
         //"linkTo" => $linkTo,
         "object" => $object
     ]);
@@ -367,18 +367,6 @@ function sendPushNotificationToFCMSever($fcmToken, $message,
         'data' => ["aps" => $encodeMessage],
     );
 
-//    $fields = array(
-//        'registration_ids' => $fcmToken,
-//        'priority' => 10,
-//        'notification' => [
-//            'title' => env('APP_NAME'),
-//            'body' => $message,
-//            'sound' => 'Default',
-//            'linkTo' => $linkTo,
-//            //'image' => 'Notification Image',
-//            'object' => $object
-//        ],
-//    );
     $headers = array(
         'Authorization:key=' . env('FCM_SERVER_KEY'),
         'Content-Type:application/json'
