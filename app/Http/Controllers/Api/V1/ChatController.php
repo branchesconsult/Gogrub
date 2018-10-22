@@ -16,7 +16,20 @@ class ChatController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index(GetMessagesRequest $request)
+    public function index()
+    {
+        $allChats = Chat::where('sender_id', \Auth::id())
+            ->orWhere('receiver_id', \Auth::id())
+            ->with('sender')
+            ->groupBy('order_id')
+            ->orderBy('id', 'ASC')
+            ->get();
+        return response()->json([
+            'chats' => $allChats
+        ]);
+    }
+
+    public function getOrderChat(GetMessagesRequest $request)
     {
         $messagesList = Chat::where('order_id', $request->order_id)
             ->with('sender', 'receiver')

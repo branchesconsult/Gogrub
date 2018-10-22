@@ -58,6 +58,7 @@ Route::group(['namespace' => 'Api\V1',
             Route::resource('notifications', 'NotificationController', ['only' => ['index']]);
             //Chats
             Route::resource('chat', 'ChatController', ['only' => ['index', 'store']]);
+            Route::get('chat/order', 'ChatController@getOrderChat');
         });
 
 
