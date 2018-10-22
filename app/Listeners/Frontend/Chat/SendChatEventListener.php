@@ -15,7 +15,6 @@ class SendChatEventListener implements ShouldQueue
      */
     public function __construct(SendChatEvent $event)
     {
-        \Log::info(print_r($event->toArray(), true));
         return false;
     }
 
