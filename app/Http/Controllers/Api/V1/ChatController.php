@@ -22,10 +22,10 @@ class ChatController extends Controller
             ->orWhere('receiver_id', \Auth::id())
             ->with('sender')
             ->groupBy('order_id')
-            ->orderBy('id', 'ASC')
+            ->orderBy('id', 'DESC')
             ->get();
         return response()->json([
-            'chats' => $allChats
+            'chats_summery' => $allChats,
         ]);
     }
 
