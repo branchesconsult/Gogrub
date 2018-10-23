@@ -347,7 +347,7 @@ function numToDecimal($number, $getOriginal = false)
 function sendPushNotificationToFCMSever($fcmToken, $message,
                                         $type = 'orderDetail',
                                         $notifyID = NULL,
-                                        $object = array())
+                                        $object = array(), $objKey = NULL)
 {
     if (!empty($fcmToken)) {
         if (is_multi_array($fcmToken->toArray())) {

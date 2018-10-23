@@ -23,8 +23,9 @@ class ChatController extends Controller
             ->orWhere('receiver_id', \Auth::id())
             ->with('sender')
             ->orderBy('id', 'DESC')
-            ->get()
-            ->unique('order_id');
+            ->groupBy('order_id')
+            ->get();
+        //->unique('order_id');
         return response()->json([
             'chats_summery' => $allChats,
         ]);
