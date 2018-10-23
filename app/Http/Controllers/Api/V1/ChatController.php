@@ -21,7 +21,7 @@ class ChatController extends Controller
         $allChats = Chat::where('sender_id', \Auth::id())
             ->orWhere('receiver_id', \Auth::id())
             ->with('sender')
-            ->orderBy('created_at', 'DESC')
+            ->latest('id')
             ->groupBy('order_id')
             ->get();
         return response()->json([
