@@ -65,9 +65,10 @@ class ChatController extends Controller
         $chat->receiver_id = $request->receiver_id;
         $chat->message = $request->message;
         $chat->save();
-        event(new SendChatEvent($chat));
+        $chatObj = $chat->where('id', $chat->id)->with('sender', 'receiver')->first();
+        event(new SendChatEvent($chatObj));
         return response()->json([
-            'chat' => $chat->where('id', $chat->id)->with('sender', 'receiver')->first()
+            'chat' => $chatObj
         ]);
     }
 
