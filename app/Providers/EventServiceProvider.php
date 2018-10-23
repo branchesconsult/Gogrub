@@ -34,7 +34,6 @@ class EventServiceProvider extends ServiceProvider
         SendChatEvent::class => [
             SendChatEventListener::class
         ]
-        //ExampleEvent::class => []
     ];
 
     /**

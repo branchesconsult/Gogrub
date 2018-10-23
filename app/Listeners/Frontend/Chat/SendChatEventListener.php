@@ -17,6 +17,7 @@ class SendChatEventListener implements ShouldQueue
      */
     public function __construct(SendChatEvent $event)
     {
+        //
     }
 
     /**
@@ -25,7 +26,7 @@ class SendChatEventListener implements ShouldQueue
      * @param  object $event
      * @return void
      */
-    public function handle($event)
+    public function handle(SendChatEvent $event)
     {
         $recieverToken = Device::where('user_id', $event->chat->receiver_id)->get(['fcm_token']);
         sendPushNotificationToFCMSever($recieverToken, $event->chat->message, 'chat_message', null, $event->chat);

@@ -16,7 +16,7 @@ class SendChatEvent implements ShouldBroadcast, ShouldQueue
 {
     use Dispatchable, InteractsWithSockets, SerializesModels;
 
-    private $chat;
+    public $chat;
 
     /**
      * Create a new event instance.
