@@ -117,7 +117,7 @@ class Order extends BaseModel
 
     public function getAvgRatingAttribute()
     {
-        return 3;
+        return number_format($this->ratingReviews()->avg('rating')) ?? 0.00;
     }
 
     public function getHasRatedAttribute()
