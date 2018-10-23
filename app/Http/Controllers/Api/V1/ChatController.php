@@ -6,6 +6,7 @@ use App\Events\Frontend\Chat\SendChatEvent;
 use App\Http\Requests\Api\Chat\GetMessagesRequest;
 use App\Http\Requests\Api\Chat\SendMessageRequest;
 use App\Models\Chat\Chat;
+use App\Models\Device\Device;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 
@@ -65,6 +66,12 @@ class ChatController extends Controller
         $chat->message = $request->message;
         $chat->save();
         event(new SendChatEvent($chat));
+
+
+        $recieverToken = Device::where('user_id', $request->receiver_id)->get(['fcm_token']);
+        sendPushNotificationToFCMSever($recieverToken, $request->message, 'chat_message', null, $chat);
+
+
         return response()->json([
             'chat' => $chat->where('id', $chat->id)->with('sender', 'receiver')->first()
         ]);
