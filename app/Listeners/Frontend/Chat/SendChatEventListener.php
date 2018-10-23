@@ -3,8 +3,10 @@
 namespace App\Listeners\Frontend\Chat;
 
 use App\Events\Frontend\Chat\SendChatEvent;
+use App\Models\Device\Device;
 use Illuminate\Queue\InteractsWithQueue;
 use Illuminate\Contracts\Queue\ShouldQueue;
+use phpDocumentor\Reflection\Types\Null_;
 
 class SendChatEventListener implements ShouldQueue
 {
@@ -26,6 +28,8 @@ class SendChatEventListener implements ShouldQueue
      */
     public function handle($event)
     {
-        //
+        $recieverToken = Device::where('user_id', $event->chat->receiver_id)->get(['fcm_token']);
+        sendPushNotificationToFCMSever($recieverToken, $event->chat->message, 'chat_message', null, $event->chat);
+        return false;
     }
 }
