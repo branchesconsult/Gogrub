@@ -17,7 +17,6 @@ class SendChatEventListener implements ShouldQueue
      */
     public function __construct(SendChatEvent $event)
     {
-        return false;
     }
 
     /**

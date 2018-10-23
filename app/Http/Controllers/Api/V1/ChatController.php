@@ -68,8 +68,8 @@ class ChatController extends Controller
         event(new SendChatEvent($chat));
 
 
-        $recieverToken = Device::where('user_id', $request->receiver_id)->get(['fcm_token']);
-        sendPushNotificationToFCMSever($recieverToken, $request->message, 'chat_message', null, $chat);
+//        $recieverToken = Device::where('user_id', $request->receiver_id)->get(['fcm_token']);
+//        sendPushNotificationToFCMSever($recieverToken, $request->message, 'chat_message', null, $chat);
 
 
         return response()->json([
