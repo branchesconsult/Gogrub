@@ -25,4 +25,9 @@ class RatingReview extends BaseModel
     {
         return Carbon::createFromTimeStamp(strtotime($this->created_at))->diffForHumans();
     }
+
+    public function getRatingAttribute($val)
+    {
+        return number_format($val, 2);
+    }
 }
