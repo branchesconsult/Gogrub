@@ -101,7 +101,7 @@ class User extends Authenticatable implements JWTSubject
 
     public function getAvgRatingAttribute()
     {
-        return number_format($this->ratingReviews()->avg('rating')) ?? 0.00;
+        return number_format($this->ratingReviews()->avg('rating'), 2) ?? number_format(0, 2);
     }
 
     public function getAppliedAsChefAttribute()
