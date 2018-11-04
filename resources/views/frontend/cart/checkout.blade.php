@@ -60,12 +60,27 @@
                                         <textarea class="form-control" id="inputInformation"></textarea>
                                     </div>
                                 </div>
-                                <div class="clearfix">
-                                    <button type="submit" class="btn btn-primary">Save</button>
-                                </div>
                             </div>
                             <div class="receipt-form">
                                 <h2>Personal details</h2>
+                                <div class="form-row">
+                                    <div class="form-group col-md-6">
+                                        <label for="fullName">Full name</label>
+                                        <input value="{!! \Auth::user()->full_name !!}" type="text" class="form-control"
+                                               id="fullName" name="">
+                                    </div>
+                                    <div class="form-group col-md-6">
+                                        <label for="customerMobile">Mobile</label>
+                                        <span>+92</span>
+                                        <input type="text" value="{!! \Auth::user()->mobile !!}"
+                                               class="form-control" id="customerMobile">
+                                    </div>
+                                </div>
+                                <div class="form-row">
+                                    <div class="clearfix">
+                                        <button type="submit" class="btn btn-primary">Save</button>
+                                    </div>
+                                </div>
                             </div>
                             {!! Form::close() !!}
                         </div>

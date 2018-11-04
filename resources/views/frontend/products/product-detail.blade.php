@@ -96,7 +96,7 @@
                                 </button>
                             @elseif(userSetLocation() && $chefDistance <= getMinDeliveryDistance())
                                 <button
-                                        onclick="openBsModal(addToCartModel)"
+                                        onclick="openBsModal('addToCartModel')"
                                         class="btn btn-success">
                                     Add to meal
                                 </button>
