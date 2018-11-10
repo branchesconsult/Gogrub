@@ -40,7 +40,13 @@ class OrderController extends Controller
     public function liveStatus()
     {
         \Cart::destroy();
-        $activeOrdersOfUser = Order::where('customer_id', \Auth::id())->get();
-        return view('frontend.cart.order-live-status');
+        $activeOrdersOfUser = Order::where('customer_id', \Auth::id())
+            ->whereIn('orderstatus_id', [
+                Order::ORDER_ACTIVE, Order::ORDER_PENDING
+            ])->get();
+        //$activeOrdersOfUserdd($activeOrdersOfUser->toArray());
+        return view('frontend.cart.order-live-status', compact(
+            'activeOrdersOfUser'
+        ));
     }
 }

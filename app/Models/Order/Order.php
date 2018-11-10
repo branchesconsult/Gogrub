@@ -21,7 +21,7 @@ class Order extends BaseModel
     }
 
     const ORDER_ACTIVE = 2;
-    const ORDER_PENDING = 1;
+    const ORDER_PENDING = 1; //initialy it was 1
     const ORDER_CANCELLED = 4;
     const ORDER_DELIEVRED = 3;
 
