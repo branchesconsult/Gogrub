@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Frontend\Order;
 
 use App\Http\Requests\Frontend\Orders\MakeOrderRequest;
+use App\Models\Order\Order;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Carbon;
@@ -17,8 +18,8 @@ class OrderController extends Controller
         $request->merge(['customer_lat' => $customerLocationInfo[0]]);
         $request->merge(['customer_lng' => $customerLocationInfo[1]]);
         $placeOrderRes = $orderApiController->store(new \App\Http\Requests\Api\Orders\MakeOrderRequest($request->all()));
-        dd($request->all(), $customerLocationInfo, $placeOrderRes->toJson());
-
+        //dd($request->all(), $customerLocationInfo, $placeOrderRes->toJson());
+        return redirect()->to(route('frontend.order.live-status'))->with('message', 'Order has been placed, please check your status here');
     }
 
     public function formatProductsForCart()
@@ -33,5 +34,12 @@ class OrderController extends Controller
             $loopCounter++;
         }
         return $result;
+    }
+
+
+    public function liveStatus()
+    {
+        $activeOrdersOfUser = Order::where('customer_id', \Auth::id())->get();
+        return view('frontend.cart.order-live-status');
     }
 }

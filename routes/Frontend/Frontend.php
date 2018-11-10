@@ -61,6 +61,7 @@ Route::group(['prefix' => 'location', 'middleware' => ['web'], 'namespace' => 'L
     Route::post('save', 'LocationController@setGlobalUserLocation')->name('session.location.store');
 });
 
-Route::group(['prefix' => 'checkout', 'namespace' => 'Order'], function () {
+Route::group(['prefix' => 'checkout', 'namespace' => 'Order', 'middleware' => ['auth']], function () {
     Route::Post('order', 'OrderController@store')->name('order.checkout');
+    Route::get('order-status', 'OrderController@liveStatus')->name('order.live-status');
 });
