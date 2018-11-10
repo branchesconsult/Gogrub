@@ -79672,6 +79672,7 @@ window.axios.defaults.headers.common = {
  */
 
 
+
 window.io = __webpack_require__("./node_modules/socket.io-client/lib/index.js");
 
 window.Echo = new __WEBPACK_IMPORTED_MODULE_0_laravel_echo___default.a({

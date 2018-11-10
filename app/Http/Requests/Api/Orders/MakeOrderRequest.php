@@ -38,11 +38,10 @@ class MakeOrderRequest extends FormRequest
             'customer_lat' => 'required|numeric',
             'customer_lng' => 'required|numeric',
             //MISC
-            'payment_method' => 'sometimes|in:cod',
+            'payment_method' => 'required|in:cod,mobicash',
             'coupon_code' => 'sometimes',
             'estimate_delivery_mins' => 'required|integer',
             'user_comments' => 'sometimes',
-            'payment_method' => 'required|in:cod,mobicash'
         ];
 
 

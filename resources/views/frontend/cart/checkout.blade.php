@@ -4,6 +4,7 @@
 @stop
 @section('content')
     <section class="my-order">
+        {!! Form::open(['route' => 'frontend.order.checkout']) !!}
         <div class="container">
             <div class="row justify-content-md-center">
                 <div class="col-10">
@@ -16,13 +17,12 @@
                                     <i onclick="removeItemFromCart('{!! $key !!}')" class="fa fa-close"></i>
                                 </div>
                             @endforeach
-
-                            {!! Form::open([]) !!}
                             <div class="receipt-form">
                                 <h2>Delivery time</h2>
                                 <div class="form-row">
                                     <div class="form-group col-md-12">
-                                        <select class="form-control">
+                                        <select id="estimate_delivery_mins" name="estimate_delivery_mins"
+                                                class="form-control">
                                             @foreach($delivery_slots as $key => $val)
                                                 <option value="{!! $val !!}">
                                                     {!! $val !!}
@@ -33,31 +33,20 @@
                                 </div>
                                 <h2>Delivery Address</h2>
                                 <div class="form-row">
-                                    <div class="form-group col-md-6">
-                                        <label for="inputBuilding">Building</label>
-                                        <input type="text" class="form-control" id="inputBuilding"
-                                               placeholder="Apartment, studio, or floor">
-                                    </div>
-                                    <div class="form-group col-md-6">
-                                        <label for="inputStreet">Street</label>
-                                        <input type="text" class="form-control" id="inputStreet"
-                                               placeholder="1234 Main St">
+                                    <div class="form-group col-md-12">
+                                        <label for="inputBuilding">Complete Address</label>
+                                        <textarea class="form-control"
+                                                  placeholder="Nearest Land mark, Floor, building, street, house number etc"
+                                                  name="customer_address"
+                                                  id="customer_address"></textarea>
                                     </div>
                                 </div>
-                                <div class="form-row">
-                                    <div class="form-group col-md-6">
-                                        <label for="inputArea">Area</label>
-                                        <input type="text" class="form-control" id="inputArea">
-                                    </div>
-                                    <div class="form-group col-md-6">
-                                        <label for="inputFloor">Floor/unit(optional)</label>
-                                        <input type="text" class="form-control" id="inputFloor">
-                                    </div>
-                                </div>
+
                                 <div class="form-row">
                                     <div class="form-group col-md-12">
                                         <label for="inputInformation">Additional Delivery Information</label>
-                                        <textarea class="form-control" id="inputInformation"></textarea>
+                                        <textarea class="form-control" name="special_instructions"
+                                                  id="special_instructions"></textarea>
                                     </div>
                                 </div>
                             </div>
@@ -72,17 +61,15 @@
                                     <div class="form-group col-md-6">
                                         <label for="customerMobile">Mobile</label>
                                         <span>+92</span>
-                                        <input type="text" value="{!! \Auth::user()->mobile !!}"
-                                               class="form-control" id="customerMobile">
-                                    </div>
-                                </div>
-                                <div class="form-row">
-                                    <div class="clearfix">
-                                        <button type="submit" class="btn btn-primary">Save</button>
+                                        <input type="text"
+                                               value="{!! \Auth::user()->mobile !!}"
+                                               class="form-control"
+                                               id="customer_phone"
+                                               name="customer_phone"
+                                        >
                                     </div>
                                 </div>
                             </div>
-                            {!! Form::close() !!}
                         </div>
                         <div class="col-4">
                             <div class="cart-detail">
@@ -106,6 +93,16 @@
                                     <h5><strong>Total</strong></h5>
                                     <span>{!! formatPrice($total) !!}</span>
                                 </div>
+
+                                <div class="cart-box">
+                                    <h5><strong>Payment Method</strong></h5>
+                                    <span>
+                                         <label>
+                                            <input type="radio" value="cod" required name="payment_method"/> Cash On
+                                            Delivery
+                                        </label>
+                                    </span>
+                                </div>
                                 <button type="submit" class="btn btn-primary btn-lg btn-block">
                                     Checkout
                                 </button>
@@ -115,6 +112,7 @@
                 </div>
             </div>
         </div>
+        {!! Form::close() !!}
     </section>
 @stop
 @section('cart-page-scripts')

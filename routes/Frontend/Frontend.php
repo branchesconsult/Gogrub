@@ -60,3 +60,7 @@ Route::group(['prefix' => 'chef', 'middleware' => ['web'], 'namespace' => 'Chef'
 Route::group(['prefix' => 'location', 'middleware' => ['web'], 'namespace' => 'Location'], function () {
     Route::post('save', 'LocationController@setGlobalUserLocation')->name('session.location.store');
 });
+
+Route::group(['prefix' => 'checkout', 'namespace' => 'Order'], function () {
+    Route::Post('order', 'OrderController@store')->name('order.checkout');
+});

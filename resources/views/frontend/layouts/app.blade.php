@@ -21,11 +21,10 @@
 {!! Html::style(asset('frontend/css/font-awesome.min.css')) !!}
 {!! Html::style(asset('frontend/css/star-rating.css')) !!}
 {!! Html::style(asset('frontend/css/style.css')) !!}
+{!! Html::style(mix('css/frontend.css')) !!}
 @yield('before-styles')
 @yield('after-styles')
-{!! Html::style(asset('frontend/pincode-input/bootstrap-pincode-input.css')) !!}
 {!! Html::style('//cdnjs.cloudflare.com/ajax/libs/x-editable/1.5.0/bootstrap3-editable/css/bootstrap-editable.css') !!}
-{!! Html::style(asset('frontend/imageuploadify/imageuploadify.min.css')) !!}
 
 <!-- Scripts -->
     <script>
@@ -130,6 +129,7 @@
     $(document).ready(function () {
         initMap();
         //Global ajax spinner
+        $('.tooltip-input').tooltip();
         $(document)
             .ajaxStart(function () {
                 $("#wait-overley").show();
@@ -170,7 +170,7 @@
     function scrollToEle(eleId) {
         $('html, body').animate({
             scrollTop: $("#" + eleId).offset().top
-        }, 800);
+        }, 200, 'linear', $('.tooltip-input').tooltip('show'));
     }
 </script>
 </body>

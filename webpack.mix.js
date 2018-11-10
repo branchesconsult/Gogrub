@@ -1,4 +1,4 @@
-const { mix } = require('laravel-mix');
+const {mix} = require('laravel-mix');
 const WebpackRTLPlugin = require('webpack-rtl-plugin');
 
 /*
@@ -24,10 +24,16 @@ mix.sass('resources/assets/sass/frontend/app.scss', 'public/css/frontend.css')
         'public/css/loader.css',
         'public/css/bootstrap-datetimepicker.min.css'
     ], 'public/css/backend-custom.css')
+    .styles([
+        'public/frontend/pincode-input/bootstrap-pincode-input.css',
+        'public/frontend/imageuploadify/imageuploadify.min.css',
+        'node_modules/jquery-confirm/dist/jquery-confirm.min.css',
+    ], 'public/css/frontend.css')
     .js([
         'resources/assets/js/frontend/app.js',
         'resources/assets/js/plugin/sweetalert/sweetalert.min.js',
-        'resources/assets/js/plugins.js'
+        'resources/assets/js/plugins.js',
+        'node_modules/jquery-confirm/dist/jquery-confirm.min.js'
     ], 'public/js/frontend.js')
     .js([
         'resources/assets/js/backend/app.js',

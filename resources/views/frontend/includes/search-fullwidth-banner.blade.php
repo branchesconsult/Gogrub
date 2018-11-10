@@ -8,10 +8,12 @@
                 'class' =>'form-inline banner-form', 'method' => 'GET']) !!}
                 {!! Form::search(
                     's', session()->get('customer.customer_address'),
-                    ['class' => 'form-control mr-sm-2',
+                    ['class' => 'form-control mr-sm-2 tooltip-input',
                     'placeholder' => 'Find yourself on map',
                     'id' => 'address-autocomplete',
-                    'required' => 'required'
+                    'required' => 'required',
+                    'data-placement'=>"bottom",
+                     'title'=>"Please enter your current location"
                     ]
                 ) !!}
                 <div style="display: none;">
