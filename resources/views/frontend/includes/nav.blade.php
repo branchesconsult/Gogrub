@@ -35,6 +35,12 @@
                 </button>
             @endif
             @if(\Auth::check())
+                @if(access()->hasRole('Chef') || access()->hasRole('Admin'))
+                    <a href="{!! route('frontend.chef.dashboard') !!}"
+                       class="btn btn-outline-success my-2 my-sm-0 activate">
+                        Chef Dashboard
+                    </a>
+                @endif
             <!--User avatar-->
                 <div class="dropdown">
                     <a class="prof-pic dropdown-toggle" href="#" role="button" id="prof-pic" data-toggle="dropdown"
@@ -47,11 +53,7 @@
                         {{ link_to_route('frontend.auth.logout', 'Logout', [], ['class' => 'dropdown-item']) }}
                     </div>
                 </div>
-                @if(!access()->hasRole('Chef'))
-                    {{ link_to_route('frontend.user.account',
-                    'Chef Dashboard', [], ['class' => 'dropdown-item']) }}
-                @endif
-            <!--Messages-->
+                <!--Messages-->
                 <div class="dropdown massage">
                     <a class="top-massage dropdown-toggle" href="#" role="button" id="top-massage"
                        data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
