@@ -47,7 +47,11 @@
                         {{ link_to_route('frontend.auth.logout', 'Logout', [], ['class' => 'dropdown-item']) }}
                     </div>
                 </div>
-                <!--Messages-->
+                @if(!access()->hasRole('Chef'))
+                    {{ link_to_route('frontend.user.account',
+                    'Chef Dashboard', [], ['class' => 'dropdown-item']) }}
+                @endif
+            <!--Messages-->
                 <div class="dropdown massage">
                     <a class="top-massage dropdown-toggle" href="#" role="button" id="top-massage"
                        data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
