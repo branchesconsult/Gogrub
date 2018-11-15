@@ -81,7 +81,7 @@
                 </div>
             </div>
         </section>
-    @endif
+ 
     <section class="steps-block">
         <div class="container">
             <div class="row">
@@ -101,6 +101,7 @@
             </div>
         </div>
     </section>
+       @endif
 
     <section class="apps-block">
         <div class="container">
