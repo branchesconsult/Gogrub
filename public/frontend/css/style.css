@@ -363,7 +363,8 @@ a.dropdown-item:hover,
     background: #23D25B;
     font-size: 17px;
     border-color: #23D25B;
-    padding: 8px 32px;}
+    padding: 8px 32px;
+	color:#fff;}
 
 .gopop .btn-sign{
 	padding-top: 30px;
@@ -1966,6 +1967,14 @@ footer li{
     	font-size: 40px;}
 	footer .footer-logo{
 		text-align:center;}
+	footer .footer-nav,
+	footer .col-sm-12{
+		text-align:center;}
+	footer .form-inline{
+		width: 260px;
+    	margin: 0 auto;}
+	footer .form-control{
+		width:auto;}
 	/* Nav responsive */
 	.navbar-collapse{
 		text-align: center;}
@@ -1995,6 +2004,34 @@ footer li{
 		bottom: 14px;}
 	.navbar-collapse a.prof-pic{
 		margin:0;}
+	.my-order h1{
+		font-size:100px;}
+	.my-order .post-new button{
+		font-size: 14px;
+		padding: 5px 15px;}
+	.my-order .dash-menu a {
+	    font-size: 16px;}
+	.my-order .dash-menu li {
+	    padding: 0px 15px;}
+	.my-order .chef-profile img {
+		border-radius: 100%;
+		max-width: 260px;
+		margin-bottom: 25px;}
+	.receipt-form{
+		margin-top: 60px;}
+	.cart-detail{
+		margin-top: 60px;}
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
 }
 
 @media (max-width: 768px){
@@ -2028,7 +2065,58 @@ footer li{
 		font-size:14px;}
 	.gopop .arrow-down img {
 		width: 25px;}
-
+	.apps-block h2{
+		font-size:30px;}
+	.apps-block a img {
+   		swidth: 120px;}
+	section.banner h1{
+		font-size:70px;}
+	section.banner h3 {
+	    font-size: 35px;}
+	section.banner .banner-form input{
+		width: 100%;
+		margin-bottom: 15px;}
+	section.banner .banner-form button{
+		margin-left:0;}
+	section.banner .banner-form a{
+		margin-top: -15px;}
+	.my-order .chef-circles .round{
+		font-size:16px;
+		width: 65px;
+    	height: 65px;}
+	.my-order .chef-circles p{
+		font-size:16px;
+		padding-bottom:0;}
+	.my-order h1 {
+	    font-size: 60px;}
+	.my-order .dash-menu li {
+	    padding: 0;}
+	#product-detail-page section.banner {
+	    height: 320px;
+	    padding: 15px 0;}
+	.receipt h3{
+		font-size:24px;
+		margin: 0;}
+	.receipt span {
+    	font-size: 24px;
+		line-height: 24px;}
+	.receipt i{
+		font-size: 12px;
+		padding: 3px 4px;}
+	.chef-detail{
+		padding-right:0;
+		border:none;
+		margin-right:0;}
+	.chef-detail img{
+		border-radius:100%;
+		max-width: 260px;}
+	.food-detail h2{
+		font-size:24px;}
+	.food-detail p{
+		padding: 10px 0;}
+	
+	
+	
 }
 /*
 

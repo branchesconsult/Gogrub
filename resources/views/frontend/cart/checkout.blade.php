@@ -7,9 +7,9 @@
         {!! Form::open(['route' => 'frontend.order.checkout']) !!}
         <div class="container">
             <div class="row justify-content-md-center">
-                <div class="col-10">
+                <div class="col-xl-10 col-md-12">
                     <div class="row">
-                        <div class="col-8">
+                        <div class="col-xl-8 col-md-12">
                             @foreach($cart_contents as $key => $val)
                                 <div class="receipt" id="item-{!! $key !!}">
                                     <h3>{!! $val['qty'] !!} x {!! $val['name'] !!}</h3>
@@ -71,7 +71,7 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="col-4">
+                        <div class="col-xl-4 col-md-12">
                             <div class="cart-detail">
                                 @foreach($cart_contents as $key => $val)
                                     <div class="cart-box">

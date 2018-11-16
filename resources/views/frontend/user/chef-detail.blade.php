@@ -5,7 +5,7 @@
     <section class="food-detail my-order">
         <div class="container">
             <div class="row">
-                <div class="col-4 text-center">
+                <div class="col-xl-4 col-md-5 col-sm-12 text-center">
                     <div class="chef-detail">
                         <img src="{!! getImgSrc($chef['avatar'], 300, 300) !!}"/>
                         <h2>Hi! i am {!! $chef['full_name'] !!}</h2>
@@ -32,7 +32,7 @@
                         </p>
                     </div>
                 </div>
-                <div class="col-8">
+                <div class="col-xl-8 col-md-7 col-sm-12">
                     <h5 class="food-head">Food by {!! $chef['full_name'] !!}</h5>
                     <div class="row">
                     @include('frontend.partials.product-grid', [

@@ -64,28 +64,28 @@
             </div>
         </div>
         <div class="row">
-            <div class="col-2">
+            <div class="col-xl-3 col-md-6 col-sm-12">
                 <ul class="footer-nav">
                     <li><a href="">About Us</a></li>
                     <li><a href="">Contact</a></li>
                     <li><a href="">Terms and Condition</a></li>
                 </ul>
             </div>
-            <div class="col-2">
+            <div class="col-xl-3 col-md-6 col-sm-12">
                 <ul class="footer-nav">
                     <li><a href="">Facebook</a></li>
                     <li><a href="">Twitter</a></li>
                     <li><a href="">Instagram</a></li>
                 </ul>
             </div>
-            <div class="col-4">
+            <div class="col-xl-3 col-md-6 col-sm-12">
                 <p>Send Us Your Feedback</p>
                 <form class="form-inline">
                     <input class="form-control mr-sm-2" type="email" placeholder="Email Address" aria-label="Search">
                     <button class="btn btn-outline-success my-2 my-sm-0" type="submit">OK</button>
                 </form>
             </div>
-            <div class="col-4">
+            <div class="col-xl-3 col-md-6 col-sm-12">
                 <div class="footer-info">
                     497 Evergreen Rd. Roseville, CA 95673<br/>
                     +44 345 678 903<br/>

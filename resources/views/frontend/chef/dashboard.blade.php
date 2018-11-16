@@ -100,7 +100,7 @@
                         </ul>
                     </div>
                 </div>
-                <div class="col-6">
+                <div class="col-xl-6 col-md-8 col-sm-12">
                     <div class="chef-profile">
                         <img src="images/alleanza_albania_-2@2x.png"/>
                         <div class="input mb-3">

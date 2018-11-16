@@ -1,4 +1,4 @@
-<div class="col-{!! $colSize !!}">
+<div class="col-xl-7 col-md-12">
     @if(count($rating_reviews) > 0)
         <div class="order-comments">
             <h2>Reviews ({!! count($rating_reviews) !!})</h2>
