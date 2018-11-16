@@ -41,18 +41,6 @@
                         Chef Dashboard
                     </a>
                 @endif
-            <!--User avatar-->
-                <div class="dropdown">
-                    <a class="prof-pic dropdown-toggle" href="#" role="button" id="prof-pic" data-toggle="dropdown"
-                       aria-haspopup="true" aria-expanded="false">
-                        <img src="{!! getImgSrc(\Auth::user()->avatar, 60, 60) !!}"/>
-                        <span></span>
-                    </a>
-                    <div class="dropdown-menu" aria-labelledby="prof-pic">
-                        {{ link_to_route('frontend.user.account', 'Profie', [], ['class' => 'dropdown-item']) }}
-                        {{ link_to_route('frontend.auth.logout', 'Logout', [], ['class' => 'dropdown-item']) }}
-                    </div>
-                </div>
                 <!--Messages-->
                 <div class="dropdown massage">
                     <a class="top-massage dropdown-toggle" href="#" role="button" id="top-massage"
@@ -142,6 +130,18 @@
                     <span id="head-cart-count">{!! Cart::count() !!}</span>
                 </a>
             </div>
+            <!--User avatar-->
+                <div class="dropdown">
+                    <a class="prof-pic dropdown-toggle" href="#" role="button" id="prof-pic" data-toggle="dropdown"
+                       aria-haspopup="true" aria-expanded="false">
+                        <img src="{!! getImgSrc(\Auth::user()->avatar, 60, 60) !!}"/>
+                        <span></span>
+                    </a>
+                    <div class="dropdown-menu" aria-labelledby="prof-pic">
+                        {{ link_to_route('frontend.user.account', 'Profie', [], ['class' => 'dropdown-item']) }}
+                        {{ link_to_route('frontend.auth.logout', 'Logout', [], ['class' => 'dropdown-item']) }}
+                    </div>
+                </div>
         </div>
     </nav>
 </header>
