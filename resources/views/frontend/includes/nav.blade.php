@@ -110,6 +110,18 @@
                     </div>
                 </div>
                 <!--btn verify-->
+            <!--User avatar-->
+                <div class="dropdown">
+                    <a class="prof-pic dropdown-toggle" href="#" role="button" id="prof-pic" data-toggle="dropdown"
+                       aria-haspopup="true" aria-expanded="false">
+                        <img src="{!! getImgSrc(\Auth::user()->avatar, 60, 60) !!}"/>
+                        <span></span>
+                    </a>
+                    <div class="dropdown-menu" aria-labelledby="prof-pic">
+                        {{ link_to_route('frontend.user.account', 'Profie', [], ['class' => 'dropdown-item']) }}
+                        {{ link_to_route('frontend.auth.logout', 'Logout', [], ['class' => 'dropdown-item']) }}
+                    </div>
+                </div>
             @endif
             @if(\Auth::check() && \Auth::user()->confirmed == 0)
                 <button class="btn btn-outline-success my-2 my-sm-0 active" data-toggle="modal"
@@ -130,18 +142,6 @@
                     <span id="head-cart-count">{!! Cart::count() !!}</span>
                 </a>
             </div>
-            <!--User avatar-->
-                <div class="dropdown">
-                    <a class="prof-pic dropdown-toggle" href="#" role="button" id="prof-pic" data-toggle="dropdown"
-                       aria-haspopup="true" aria-expanded="false">
-                        <img src="{!! getImgSrc(\Auth::user()->avatar, 60, 60) !!}"/>
-                        <span></span>
-                    </a>
-                    <div class="dropdown-menu" aria-labelledby="prof-pic">
-                        {{ link_to_route('frontend.user.account', 'Profie', [], ['class' => 'dropdown-item']) }}
-                        {{ link_to_route('frontend.auth.logout', 'Logout', [], ['class' => 'dropdown-item']) }}
-                    </div>
-                </div>
         </div>
     </nav>
 </header>

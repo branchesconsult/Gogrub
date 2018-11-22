@@ -62,7 +62,7 @@
         <section class="become-chef-block">
             <div class="container">
                 <div class="row">
-                    <div class="col-6">
+                    <div class="space col-sm-6 col-md-6 col-lg-6 col-xl-6">
                         <h2>Be a Chef in 3 easy steps</h2>
                         <ul>
                             <li>1- Sign up</li>
@@ -106,7 +106,7 @@
     <section class="apps-block">
         <div class="container">
             <div class="row">
-                <div class="col-6">
+                <div class="space col-sm-6 col-md-6 col-lg-6 col-xl-6">
                     <h2>Take us<br/>
                         with You<br/>
                         wherever you go</h2>

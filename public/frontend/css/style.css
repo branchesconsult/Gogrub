@@ -920,7 +920,7 @@ h5.food-head{
 	position:relative;
 	margin:180px 0 200px;}
 
-.become-chef-block .col-6{
+.become-chef-block .space{
 	padding:140px 0;}
 
 .become-chef-block h2{
@@ -974,8 +974,8 @@ h5.food-head{
 	position:relative;
 	margin:240px 0 0px;}
 
-.apps-block .col-6{
-	padding:100px 0;}
+.apps-block .space{
+	padding:100px 30px;}
 
 .apps-block h2{
 	font-size:70px;
@@ -1929,7 +1929,7 @@ footer li{
 		margin:0;}
 	.apps-block a img{
 		width:180px;}
-	.apps-block .col-6{
+	.apps-block .space{
 		padding:50px 0;}
 	.become-chef-banner img{
 		width:330px;}
@@ -1942,22 +1942,22 @@ footer li{
 		font-size:16px;}
 	.become-chef-block button{
 		font-size:26px;}
-	.become-chef-block .col-6 {
+	.become-chef-block .space {
     	padding: 70px 0;}
 }
 
 @media (max-width: 1100px){
 	.container{
 		max-width:960px;}
-	.become-chef-block .col-6,
-	.apps-block .col-6 {
+	.become-chef-block .space,
+	.apps-block .space {
     	padding: 70px 25px;}
 }
 
 @media (max-width: 992px){
 	.apps-block{
 		margin:80px 0 0;}
-	.become-chef-block .col-6, .apps-block .col-6{
+	.become-chef-block .space, .apps-block .space{
 		padding:45px 25px;}
 	.apps-block a img{
 		width:150px;}
@@ -1966,13 +1966,15 @@ footer li{
 	.apps-block h2 {
     	font-size: 40px;}
 	footer .footer-logo{
-		text-align:center;}
+		text-align:center;
+		padding-bottom: 30px;}
 	footer .footer-nav,
 	footer .col-sm-12{
 		text-align:center;}
 	footer .form-inline{
 		width: 260px;
-    	margin: 0 auto;}
+    	margin: 0 auto;
+		padding-bottom: 20px;}
 	footer .form-control{
 		width:auto;}
 	/* Nav responsive */
@@ -2114,15 +2116,74 @@ footer li{
 		font-size:24px;}
 	.food-detail p{
 		padding: 10px 0;}
-	
-	
-	
-}
-/*
+	.become-chef-banner{
+		right:0;}
+	.become-chef-block button {
+	    font-size: 20px;}
+	.become-chef-block h2 {
+    	font-size: 24px;}
+	.become-chef-block li{
+		font-size:14px;}
+	.steps-block h3,
+	.steps-block p{
+		padding:0;
+		text-align:center;}
 
-@media (min-width: 768px){
-.container {
-    max-width: 750px;
-}}*/
+}
+
+@media (max-width: 575px){
+	section.banner{
+		height:300px;
+		padding:40px 0;}
+	section.banner h3 {
+	    font-size: 30px;}
+	section.banner h1 {
+	    font-size: 56px;
+		margin-bottom:0;}
+	section.banner .banner-form button.btn-outline-success:disabled,
+	section.banner .banner-form button{
+		font-size:14px;
+		padding:5px 15px;}
+	section.banner .banner-form input{
+		font-size:0.9rem;
+		padding: 15px;}
+	section.banner .banner-form a{
+		width:20px;
+		height:20px;
+		background-size:contain;
+		margin-left:-25px;}
+	.apps-banner{
+		position:static;
+		margin: 0 auto;
+		padding-bottom:20px;
+		padding-top: 20px;}
+	.apps-block h2{
+		padding-bottom:0;}
+	.apps-block .space{
+		padding-top:20px;
+		text-align:center;
+		padding-bottom:0;}
+	.become-chef-banner{
+		position:static;
+		margin:0 auto;}
+	.become-chef-block .space{
+		text-align:center;}
+	.become-chef-block{
+		margin-bottom:45px;
+		margin-top:50px;}
+	.apps-block{
+		margin-top:45px;}
+	.food-block .food-image{
+		text-align:center;}
+	.food-boxes{
+		display:block !important;
+		padding: 0;}
+	.food-box{
+		border-right:0;
+		padding: 10px;
+		border-bottom:1px solid #707070;}
+	.gopop .modal-body {
+	    padding: 20px 30px 20px;}
+}
 
 
