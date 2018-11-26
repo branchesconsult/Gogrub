@@ -47,9 +47,6 @@
                 </div>
                 <div class="desc-edit">
                     <textarea rows="4" class="form-control" id="chef-name" value="William Smith" readonly>Lorem Ipsum je fiktívny text, používaný pri návrhu tlačovín a typografie. Lorem Ipsum je štandardným výplňovým textom už od 16. storočia, keď neznámy tlačiar zobral sadzobnicu plnú tlačových znakov a pomiešal ich, aby tak vytvoril vzorkovú knihu. Prežil nielen päť storočí, ale aj skok do elektronickej</textarea>
-                    <div class="input-group-addon">
-                      <span class="fa fa-pencil" onclick=editName('1')></span>
-                    </div>
                 </div>
         	</div>
         </div>
