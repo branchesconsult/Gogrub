@@ -57,7 +57,11 @@ Route::group(['prefix' => 'chef', 'middleware' => ['web'], 'namespace' => 'Chef'
     Route::get('detail/{chefId}', 'ChefController@detail')->name('chef.detail');
     Route::get('dashboard', 'DashboardController@index')->name('chef.dashboard');
     //
-    Route::get('orders', 'ChefOrderController@index')->name('chef.orders');
+    Route::group(['prefix' => 'orders'], function () {
+        Route::get('/', 'ChefOrderController@index')->name('chef.orders');
+        Route::get('chat', 'ChefOrderController@chefOrderChat')->name('chef.order.chat');
+    });
+    Route::get('products', 'ChefProductController@index')->name('chef.own.products');
 });
 //Locatin
 Route::group(['prefix' => 'location', 'middleware' => ['web'], 'namespace' => 'Location'], function () {

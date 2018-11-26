@@ -33,6 +33,9 @@
                                                 <button type="button" class="active">
                                                     Cancel
                                                 </button>
+                                                <a href="{!! route('frontend.chef.order.chat') !!}">
+                                                    Chat
+                                                </a>
                                             </div>
                                         </div>
                                     </div>

@@ -98,7 +98,7 @@
                             <a class="nav-link" href="{!! route('frontend.chef.orders') !!}">Orders</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="#">My Posts</a>
+                            <a class="nav-link" href="{!! route('frontend.chef.own.products') !!}">My Posts</a>
                         </li>
                     </ul>
                 </div>

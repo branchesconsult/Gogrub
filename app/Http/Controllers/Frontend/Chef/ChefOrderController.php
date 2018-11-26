@@ -97,4 +97,10 @@ class ChefOrderController extends Controller
     {
         //
     }
+
+
+    public function chefOrderChat()
+    {
+        return view('frontend.chef.orders.chat');
+    }
 }
