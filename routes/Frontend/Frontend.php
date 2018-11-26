@@ -56,6 +56,8 @@ Route::group(['prefix' => 'cart', 'middleware' => ['web'], 'namespace' => 'Order
 Route::group(['prefix' => 'chef', 'middleware' => ['web'], 'namespace' => 'Chef'], function () {
     Route::get('detail/{chefId}', 'ChefController@detail')->name('chef.detail');
     Route::get('dashboard', 'DashboardController@index')->name('chef.dashboard');
+    //
+    Route::get('orders', 'ChefOrderController@index')->name('chef.orders');
 });
 //Locatin
 Route::group(['prefix' => 'location', 'middleware' => ['web'], 'namespace' => 'Location'], function () {
