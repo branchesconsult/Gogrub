@@ -17,7 +17,7 @@
     <section class="food-detail">
         <div class="container">
             <div class="row">
-                <div class="col-6">
+                <div class="col-xl-6 col-md-12">
                     <div class="row">
                         <div class="col-12 food-main">
                             <ul id="product-detail-banner">
@@ -31,7 +31,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="col-6">
+                <div class="col-xl-6 col-md-12">
                     <div class="row">
 
                         <div class="col-9 food-title">
@@ -115,7 +115,7 @@
                 'rating_reviews' => $product['chef']['rating_reviews'],
                 'colSize' => 7
                 ])
-                <div class="col-5">
+                <div class="col-xl-5 col-md-12">
                     @if(!empty($product['chef']['products']))
                         <p class="text-center">Other Meals by <strong>{!! $product['chef']['full_name'] !!}</strong></p>
                         <div class="row">
