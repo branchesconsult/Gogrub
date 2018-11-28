@@ -85,16 +85,16 @@
     <section class="steps-block">
         <div class="container">
             <div class="row">
-                <div class="col-4">
+                <div class=" col-sm-12 col-md-4 col-lg-4 col-xl-4">
                     <h3>SignUp</h3>
                     <p>Fill in the form with <br/>your phone and email</p>
                 </div>
-                <div class="col-4">
+                <div class=" col-sm-12 col-md-4 col-lg-4 col-xl-4">
                     <h3>Set up your kitchen</h3>
                     <p>Provide us with some cool pictures or your kitchen and necessary information that we will ask
                         you</p>
                 </div>
-                <div class="col-4">
+                <div class=" col-sm-12 col-md-4 col-lg-4 col-xl-4">
                     <h3>Admin Approval</h3>
                     <p>Provide us clear image of your CNIC and get yourself approved and your are ready to go</p>
                 </div>

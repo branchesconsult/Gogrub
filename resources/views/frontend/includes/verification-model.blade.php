@@ -68,7 +68,7 @@
                 <h5 class="modal-title" id="loginTitle">Mobile verified</h5>
                 <a href="{!! asset('/') !!}"
                 >
-                    <span aria-hidden="true">&times;</span>
+                    <span aria-hidden="true" class="close">&times;</span>
                 </a>
             </div>
             <div class="arrow-down"><img src="{!! asset('frontend/images/Path828@2x.png') !!}"/></div>

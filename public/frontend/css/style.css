@@ -615,7 +615,7 @@ ul.lSPager.lSGallery li.active,
 /* Chef List */
 
 .chef-list .nav-tabs{ 
-	margin-top:50px;
+	margin-top:10px;
 	border:none;
 	width:100%;
 	display: inline-block;}
@@ -626,7 +626,7 @@ ul.lSPager.lSGallery li.active,
 
 .chef-list .nav-tabs .nav-item .nav-link{
 	color: #717171;
-    font-size: 18px;
+    font-size: 16px;
     font-weight: bold;
     border: none;
     border-bottom: 5px solid #fff;}
@@ -643,7 +643,7 @@ ul.lSPager.lSGallery li.active,
 
 .chef-list .filters button{
 	color: #717171;
-    font-size: 18px;
+    font-size: 16px;
     font-weight: bold;
 	background:none;
 	border:none;}
@@ -653,8 +653,8 @@ ul.lSPager.lSGallery li.active,
 	background-size:cover;
 	display: inline-block;
 	vertical-align: text-bottom;
-	height:20px;
-	width:20px;
+	height:18px;
+	width:18px;
 	margin-left:10px;}
 
 /* Food Tab */
@@ -800,7 +800,7 @@ h5.food-head{
 	font-weight:bold;}
 
 .chef-block .chef-name{
-	font-size:24px;
+	font-size:20px;
 	font-weight:bold;
 	color:#060606;}
 
@@ -918,13 +918,13 @@ h5.food-head{
 	background:#23D25B;
 	color:#fff;
 	position:relative;
-	margin:180px 0 200px;}
+	margin:150px 0 150px;}
 
 .become-chef-block .space{
-	padding:140px 0;}
+	padding:100px 0;}
 
 .become-chef-block h2{
-	font-size:31px;
+	font-size:28px;
 	font-weight:bold;
 	padding-bottom:20px;
 	color:#fff;}
@@ -934,7 +934,7 @@ h5.food-head{
 
 .become-chef-block li{
 	list-style:none;
-	font-size:21px;
+	font-size:18px;
 	padding-bottom:10px;}
 
 .become-chef-block button{
@@ -944,7 +944,7 @@ h5.food-head{
 	display:inline-block;
 	border:none;	
 	border-radius:10px;
-	font-size:31px;
+	font-size:28px;
 	color:#fff;
 	box-shadow:10px 14px 30px #00000040;}
 
@@ -952,6 +952,9 @@ h5.food-head{
 	position:absolute;
 	right:10%;
 	bottom:0;}
+
+.become-chef-banner img{
+	max-width:450px;}
 
 /* Steps Block */
 
@@ -972,26 +975,33 @@ h5.food-head{
 	background:#F1C204;
 	color:#fff;
 	position:relative;
-	margin:240px 0 0px;}
+	margin:160px 0 -50px;}
 
 .apps-block .space{
-	padding:100px 30px;}
+	padding:90px 30px;}
 
 .apps-block h2{
-	font-size:70px;
+	font-size:58px;
 	padding-bottom:20px;
 	font-family: 'Abril Fatface';
 	color:#fff;}
 
 .apps-block a{
 	padding:10px 25px 0 0;
-	margin-top:50px;
+	margin-top:15px;
 	display:inline-block;}
+
+.apps-block a img{
+	max-width:180px;}
 
 .apps-banner{
 	position:absolute;
 	right:10%;
 	bottom:0;}
+
+.apps-banner img{
+	max-width:350px;}
+
 
 /* My Orders */
 
@@ -1924,7 +1934,7 @@ footer li{
 	.food-block .food-name{
 		font-size:15px;}
 	.apps-block{
-		margin:180px 0 0;}
+		margin:180px 0 -50px;}
 	.apps-block a{
 		margin:0;}
 	.apps-block a img{
@@ -1932,7 +1942,8 @@ footer li{
 	.apps-block .space{
 		padding:50px 0;}
 	.become-chef-banner img{
-		width:330px;}
+		width:330px;
+		max-width:100%;}
 	.become-chef-block{
 		margin:180px 0 70px;}
 	.become-chef-block h2{
@@ -1955,8 +1966,11 @@ footer li{
 }
 
 @media (max-width: 992px){
+	section.banner{
+		height:470px;
+		padding: 100px 0;}
 	.apps-block{
-		margin:80px 0 0;}
+		margin:80px 0 -50px;}
 	.become-chef-block .space, .apps-block .space{
 		padding:45px 25px;}
 	.apps-block a img{
