@@ -34,6 +34,15 @@ Route::group(['namespace' => 'Api\V1',
     //Route::resource('pages', 'PagesController', ['only' => ['show']]);
     //Registration
     Route::post('register', 'RegisterController@register');
+    //Rider App
+      Route::group(['prefix'=>'rider','namespace'=>'Rider'],function(){
+             Route::post('/register','RiderAuthController@register');
+        Route::group(['middleware' => ['jwt.auth']], function () {
+
+            Route::get('/profile','RiderAuthController@profile');
+        });
+
+        });
     Route::post('login', 'AuthController@login')->name('api.user.login');
     Route::group(['middleware' => ['jwt.auth']], function () {
         Route::get('refresh-user', function () {
@@ -86,6 +95,8 @@ Route::group(['namespace' => 'Api\V1',
                 Route::resource('images', 'ChefImageController');
             });
         });
+
+
         // Users
         //Route::resource('users', 'UsersController', ['except' => ['create', 'edit']]);
         Route::post('user/update', 'UsersController@update');
