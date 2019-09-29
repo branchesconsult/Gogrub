@@ -32,6 +32,7 @@ class AuthController extends APIController
      */
     public function login(UserLoginRequest $request)
     {
+        // dd("yeah stop in login");
         $credentials = $request->only(['mobile', 'password']);
 
         try {

@@ -45,7 +45,8 @@ class RegisterController extends APIController
      */
     public function register(UserRegistrationRequest $request)
     {
-
+        // call from api register 
+        
         $user = $this->repository->create($request->all());
 
         if (!Config::get('api.register.release_token')) {

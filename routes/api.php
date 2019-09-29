@@ -1,6 +1,6 @@
 <?php
 
-
+use App\Mail\ConfirmAcoountMail;
 /*
 |--------------------------------------------------------------------------
 | API Routes
@@ -17,6 +17,14 @@ Route::group(['namespace' => 'Api\V1',
     'middleware' => ['sessions']], function () {
     //SEnd pass
     Route::post('password/email', 'ForgotPasswordController@sendResetLinkEmail');
+    //Testoing
+// Route::get('send/mail',function()
+// {
+//     $name='111';
+// Mail::to('mianhaseeb8848@gmail.com')->send(new ConfirmAcoountMail($name));
+// });
+
+
     //Cousine
     Route::resource('cuisine', 'CuisineController', ['only' => ['index']]);
     // Page

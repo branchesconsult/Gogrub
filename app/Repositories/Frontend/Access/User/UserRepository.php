@@ -91,13 +91,15 @@ class UserRepository extends BaseRepository
      */
     public function create(array $data, $provider = false)
     {
+        // api call from regster api 
         $user = self::MODEL;
         $user = new $user();
         $user->full_name = $data['full_name'];
         $user->email = $data['email'];
         $user->mobile = $data['mobile'];
         $user->country_code = 92;
-        $user->confirmation_code = bcrypt(1234);//md5(uniqid(mt_rand('1111', '9999'), true)); //Mobile confirmation code
+        $confirmation_code=rand(1000, 9999);
+        $user->confirmation_code = bcrypt($confirmation_code);//md5(uniqid(mt_rand('1111', '9999'), true)); //Mobile confirmation code
         $user->status = 1;
         $user->password = $provider ? null : bcrypt($data['password']);
         $user->is_term_accept = 1;//$data['is_term_accept'];
@@ -144,7 +146,8 @@ class UserRepository extends BaseRepository
          * If this is a social account they are confirmed through the social provider by default
          */
         if (config('access.users.confirm_email') && $provider === false) {
-            $user->notify(new UserNeedsConfirmation($user->confirmation_code));
+            // dd("email should be sent");
+            $user->notify(new UserNeedsConfirmation($confirmation_code));
         }
 
         /*

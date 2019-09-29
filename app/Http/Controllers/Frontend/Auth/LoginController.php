@@ -167,6 +167,7 @@ class LoginController extends Controller
 
     public function login(Request $request)
     {
+        // dd("stop here ");
         if ($request->headers->has('Device-Type') && $request->header('Device-Type') == 'browser') {
             $success = false;
             $user = [];
