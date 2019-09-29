@@ -15,10 +15,17 @@
                 {{ renderMenuItems(getMenuItems('frontend', 2)) }}
                 @if(!access()->hasRole('Chef'))
                     <li>
-                        <a href="#" class="btn btn-outline-success my-2 my-sm-0 active">
-                            Become our chef
-                            <small>Its free!</small>
-                        </a>
+                        <button
+                        class="btn btn-outline-success my-2 my-sm-0"
+                        data-toggle="modal"
+                        data-target="#becomechef"
+                        type="submit">
+                    Became a chef
+                </button>
+                       <!--  <a href="#becomechef" class="btn btn-outline-success my-2 my-sm-0 active" -->
+                          <!--   Become our chef
+                            <small>Its free!</small> -->
+                        
                     </li>
                 @endif
             </ul>
