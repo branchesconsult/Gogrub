@@ -37,8 +37,9 @@ Route::group(['namespace' => 'Api\V1',
     //Rider App
       Route::group(['prefix'=>'rider','namespace'=>'Rider'],function(){
              Route::post('/register','RiderAuthController@register');
-        Route::group(['middleware' => ['jwt.auth']], function () {
+               Route::post('/login', 'RiderAuthController@login');
 
+        Route::group(['middleware' => ['jwt.auth']], function () {
             Route::get('/profile','RiderAuthController@profile');
         });
 
