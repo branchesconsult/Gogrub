@@ -78,7 +78,7 @@ function distance($lat1, $lon1, $lat2, $lon2) {
      // dd($order);
      $order = Order::with(['detail' => function ($q) {
             $q->with('product');
-        }, 'user', 'ratingReview'])
+        }, 'ratingReview'])
             ->where('id', $order->order_id)
             ->first();
             // dd($order);
