@@ -7,6 +7,7 @@ use App\Http\Requests\Api\Chef\ChefOrderUpdateRequest;
 use App\Http\Requests\Api\Chef\GetOrdersRequest;
 use App\Models\Order\Order;
 use Illuminate\Http\Request;
+use App\Repositories\Backend\RiderOrder\RiderOrderRepository;
 use App\Http\Controllers\Controller;
 
 /**
@@ -92,6 +93,14 @@ class ChefOrderController extends Controller
         $order = Order::find($id);
         $order->orderstatus_id = $request->orderstatus_id;
         $order->save();
+        $chef =$order->chef_location;
+        $status_id = 2;
+        if($status_id==2)
+        {
+            $rider=new RiderOrderRepository();
+           $rider->sendOrderNotfication($order);
+
+        }
         event(new OrderUpdateEvent($order));
         return apiSuccessRes('Order updated successfully.');
     }
