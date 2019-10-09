@@ -40,6 +40,7 @@ Route::group(['namespace' => 'Api\V1',
                Route::post('/login', 'RiderAuthController@login');
 
         Route::group(['middleware' => ['jwt.auth']], function () {
+            Route::get('/current/notify/order','RiderOrderController@notifyOfOrder');
             Route::get('/profile','RiderAuthController@profile');
         });
 

@@ -11,11 +11,13 @@ use App\Repositories\Frontend\Access\User\UserRepository;
 use Config;
 use JWTAuth;
 use Validator;
-use App\Http\Requests\Api\Auth\UserLoginRequest;use Tymon\JWTAuth\Exceptions\JWTException;
+use App\Http\Requests\Api\Auth\UserLoginRequest;
+use Tymon\JWTAuth\Exceptions\JWTException;
+use App\Http\Controllers\Api\V1\APIController;
 // use Validator;
 
 
-class RiderAuthController extends Controller
+class RiderAuthController extends APIController
 
 {  
 

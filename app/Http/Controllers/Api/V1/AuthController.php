@@ -22,7 +22,7 @@ use Validator;
  */
 class AuthController extends APIController
 {
-    /**
+    /**    
      * Log the user in.
      * mobile:3234225990
      * password:1234
