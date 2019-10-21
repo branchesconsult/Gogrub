@@ -30,10 +30,16 @@ class RiderOrderController extends Controller
 
     	$order=$this->riderOrderRepository->getNotifyOrder(Auth::user()->id);
     	// dd($order);
+      $message="Here is the orders";
+      if(empty($order))
+      {
+        $message="no current orders";
+      }
   		return response()->json([
   			'order'=> $order,
   			 'success'=>true,
-  			 'status'=>200
+  			 'status'=>200,
+         'message'=>$message
 
   		]);
   }
