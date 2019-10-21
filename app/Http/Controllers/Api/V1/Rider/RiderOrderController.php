@@ -5,7 +5,12 @@ namespace App\Http\Controllers\Api\V1\Rider;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Repositories\Backend\RiderOrder\RiderOrderRepository;
+use App\Http\Requests\Api\Chef\ChefOrderUpdateRequest;
 use Auth;
+use App\Models\Rider\RiderOrder\RiderOrder;
+use App\Models\Order\Order;
+use App\Models\Access\User\User;
+use App\Models\Rider\RiderOrder\RiderOrderNotification;
 
 
 class RiderOrderController extends Controller
@@ -32,5 +37,82 @@ class RiderOrderController extends Controller
 
   		]);
   }
+
+  public function setOrderStatus(ChefOrderUpdateRequest $request, $id,$user_id)
+    {
+        
+       //$id is order id
+// dd($id);
+        $order = Order::find($id);
+
+        /*
+  @check if order is already accepted by another rider then the message will be throw 
+  oops you are so late ! Order Already accpted by another Rider
+       */
+if($request->orderstatus_id==3)
+{
+  $order->orderstatus_id=$request->orderstatus_id;
+  $rider_order = RiderOrder::where('rider_id',$user_id)
+  ->where('order_id',$order->id)->first();
+   $rider_order->is_completed=1;
+   $rider_order->save();
+
+}
+else
+{
+
+  $orderAccepted = RiderOrder::where('order_id',$order->id)->first();
+  // dd($orderAccepted);
+
+  if(!$orderAccepted)
+    { 
+
+         $user = User::find($user_id);
+         $order->orderstatus_id = $request->orderstatus_id;
+         $order->save();
+         $rider_order = new RiderOrder();
+         $rider_order->order_id = $order->id;
+         $rider_order->rider_id = $user->id;
+         $rider_order->save();
+        $notification = RiderOrderNotification::where('order_id',$order->id)->delete();
+
+
+         return response()->json([
+
+            'status'=>200,
+            'message'=>'Order Accepted Successfully'
+
+                             ]);
+         
+
+    }
+
+  else
+
+    {
+      return response()->json([
+
+                   'status'=>200,
+                   'message'=>'Opps ! you are late ! order has  Already accepted by another Rider'
+
+                             ]);
+    }  
+  } 
+ }
+
+ public function history()
+
+ {
+
+  $rider_order = $this->riderOrderRepository->history();
+
+  // dd($rider_order);
+  return response()->json([
+    'status'=>200,
+    'rider_order'=>$rider_order
+  ]);
+
+
+ }
 
 }
