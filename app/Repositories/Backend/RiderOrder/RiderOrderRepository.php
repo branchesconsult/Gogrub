@@ -99,6 +99,9 @@ function distance($lat1, $lon1, $lat2, $lon2) {
      $order=RiderOrderNotification::where('rider_id',$id)->with('order')->first();
      // dd($rider);
      // dd($order);
+     if($order)
+     {
+
      $order = Order::with(['detail' => function ($q) {
             $q->with('product');
         }, 'ratingReview'])
@@ -106,7 +109,13 @@ function distance($lat1, $lon1, $lat2, $lon2) {
             ->first();
             // dd($order);
 // dd($order->order_id);
+            return $order;
+    }
+    else
+    {
+      $order=[];
       return $order;
+    }
    }
 
    public function history()
