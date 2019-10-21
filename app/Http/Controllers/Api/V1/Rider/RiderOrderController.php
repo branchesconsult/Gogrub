@@ -51,7 +51,7 @@ class RiderOrderController extends Controller
        */
 if($request->orderstatus_id==3)
 {
-  $order->orderstatus_id=$request->orderstatus_id;
+
   $rider_order = RiderOrder::where('rider_id',$user_id)
   ->where('order_id',$order->id)->first();
    $rider_order->is_completed=1;
@@ -68,8 +68,6 @@ else
     { 
 
          $user = User::find($user_id);
-         $order->orderstatus_id = $request->orderstatus_id;
-         $order->save();
          $rider_order = new RiderOrder();
          $rider_order->order_id = $order->id;
          $rider_order->rider_id = $user->id;
