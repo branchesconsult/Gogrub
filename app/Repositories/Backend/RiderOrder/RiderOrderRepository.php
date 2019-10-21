@@ -9,6 +9,9 @@ use Illuminate\Database\Eloquent\Model;
 use App\Traits\Firebase\FirebaseTrait;
 use App\Models\Rider\RiderOrder\RiderOrderNotification;
 use App\Models\Access\User\User;
+use DB;
+use App\Models\Rider\RiderOrder\RiderOrder;
+use Auth;
 
 
 class RiderOrderRepository extends BaseRepository
@@ -30,22 +33,41 @@ class RiderOrderRepository extends BaseRepository
      $chefLng =$order->chef_location->getLng();
   
 // dd($allRiders);
-
+// $start = microtime(true);
 	 foreach ($allRiders as $key => $value) {
 	 
    $distance = $this->distance($chefLat,$chefLng,$value['lat'],$value['lng']);
    
    //if user is in table and status is 0 then we can't insert into table
+   // DB::enableQueryLog();
+   
+// Execute the query
+        $rider_exist= RiderOrderNotification::where('rider_id',$key)
+        ->where('is_accepted',0)
+        ->get();
+        
 
+    // $query = DB::getQueryLog();
+// dd($time);
+      
+        
      if($distance<6)
-     { 
-         $rider_order_not = new RiderOrderNotification();
-         $rider_order_not->rider_id = $key;
-         $rider_order_not->order_id = $order->id;
-         $rider_order_not->save();
+     {    
+          if(!$rider_exist)   // if  none of the order is assign then we assign order to rider
+         {
+           
+              $rider_order_not = new RiderOrderNotification();
+              $rider_order_not->rider_id = $key;
+              $rider_order_not->order_id = $order->id;
+              $rider_order_not->save();
+
+         }
+            
      }
 	 	
 	 }
+   // $time = microtime(true) - $start;
+   // dd($time);
 	 
 }
 
@@ -71,6 +93,7 @@ function distance($lat1, $lon1, $lat2, $lon2) {
 
 
   public function getNotifyOrder($id)
+  
   {
     // dd($id);
      $order=RiderOrderNotification::where('rider_id',$id)->with('order')->first();
@@ -84,7 +107,29 @@ function distance($lat1, $lon1, $lat2, $lon2) {
             // dd($order);
 // dd($order->order_id);
       return $order;
-  }
+   }
+
+   public function history()
+{
+
+    $rider_order = RiderOrder::with(['orders'=>function($u)
+    {
+      $u->select('id','chef_full_name','customer_full_name')->get();
+    },'orders.detail'=>function($u)
+    {
+      $u->with(['product'=>function($u)
+        {
+          $u->select('id','name');
+        }]);
+    }])
+    ->where('rider_id', Auth::user()->id )
+    ->where('is_completed',1)->get();
+    // dd($rider_order);
+  
+           return $rider_order;
+
+   }
+
 
 }
 

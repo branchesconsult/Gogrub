@@ -13,7 +13,8 @@ class ChefOrderUpdateRequest extends FormRequest
      */
     public function authorize()
     {
-        return access()->hasRole('chef');
+        return true;
+        // return access()->hasRoles('chef','Rider');
     }
 
     /**

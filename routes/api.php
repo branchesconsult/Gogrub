@@ -39,10 +39,13 @@ Route::group(['namespace' => 'Api\V1',
              Route::post('/register','RiderAuthController@register');
                Route::post('/login', 'RiderAuthController@login');
 
-        Route::group(['middleware' => ['jwt.auth']], function () {
-            Route::get('/current/notify/order','RiderOrderController@notifyOfOrder');
-            Route::get('/profile','RiderAuthController@profile');
-        });
+    Route::group(['middleware' => ['jwt.auth']], function () {
+         Route::get('/current/notify/order','RiderOrderController@notifyOfOrder');
+         Route::get('/profile','RiderAuthController@profile');
+         Route::get('/orders/history','RiderOrderController@history');
+         Route::post('/order/update/{orderId}/{userId}','RiderOrderController@setOrderStatus');
+        
+    });
 
         });
     Route::post('login', 'AuthController@login')->name('api.user.login');
