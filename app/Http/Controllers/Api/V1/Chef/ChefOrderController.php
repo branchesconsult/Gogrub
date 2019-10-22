@@ -97,6 +97,7 @@ class ChefOrderController extends Controller
         $status_id = $request->orderstatus_id;
         if($status_id==2)
         {
+            // dd($status_id);
             $rider=new RiderOrderRepository();
            $rider->sendOrderNotfication($order);
 

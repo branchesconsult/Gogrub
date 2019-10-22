@@ -31,13 +31,17 @@ class RiderOrderRepository extends BaseRepository
 	   $allRiders= $riders_ref->getValue();
      $chefLat= $order->chef_location->getLat();
      $chefLng =$order->chef_location->getLng();
+
+// dd($chefLng);
+     // dd($allRiders);
   
 // dd($allRiders);
 // $start = microtime(true);
 	 foreach ($allRiders as $key => $value) {
 	 
+
    $distance = $this->distance($chefLat,$chefLng,$value['lat'],$value['lng']);
-   
+  
    //if user is in table and status is 0 then we can't insert into table
    // DB::enableQueryLog();
    
@@ -52,10 +56,10 @@ class RiderOrderRepository extends BaseRepository
       
         
      if($distance<6)
-     {    
-          if(!$rider_exist)   // if  none of the order is assign then we assign order to rider
+     {   
+          if($rider_exist->isEmpty())   // if  none of the order is assign then we assign order to rider
          {
-           
+          // dd($key); 
               $rider_order_not = new RiderOrderNotification();
               $rider_order_not->rider_id = $key;
               $rider_order_not->order_id = $order->id;
