@@ -94,7 +94,7 @@ class ChefOrderController extends Controller
         $order->orderstatus_id = $request->orderstatus_id;
         $order->save();
         $chef =$order->chef_location;
-        $status_id = 2;
+        $status_id = $request->orderstatus_id;
         if($status_id==2)
         {
             $rider=new RiderOrderRepository();
