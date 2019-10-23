@@ -70,7 +70,7 @@ else
   $orderAccepted = RiderOrder::where('order_id',$order->id)->first();
   // dd($orderAccepted);
 
-  if(!$orderAccepted)
+  if($orderAccepted->isEmpty())
     { 
 
          $user = User::find($user_id);
