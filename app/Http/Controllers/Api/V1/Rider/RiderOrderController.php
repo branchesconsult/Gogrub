@@ -70,7 +70,7 @@ elseif($request->orderstatus_id==5)
   $orderAccepted = RiderOrder::where('order_id',$order->id)->first();
   // dd($orderAccepted);
 
-  if(count($orderAccepted)==0)
+  if($orderAccepted==null)
     { 
 
          $user = User::find($user_id);
@@ -113,7 +113,7 @@ elseif($request->orderstatus_id==5)
   // dd($rider_order);
   return response()->json([
     'status'=>200,
-    'rider_order'=>$rider_order
+    'rider_order'=>$rider_order,
   ]);
 
 
