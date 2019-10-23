@@ -60,9 +60,27 @@ if($request->orderstatus_id==3)
 
   $rider_order = RiderOrder::where('rider_id',$user_id)
   ->where('order_id',$order->id)->first();
+  if($rider_order)
+  {
+
    $rider_order->is_completed=1;
    $rider_order->save();
+   return response()->json([
 
+            'status'=>200,
+            'message'=>'Order Update successfully'
+
+                             ]);
+  }
+  else
+  {
+     return response()->json([
+
+            'status'=>200,
+            'message'=>'No order found from given order id'
+
+                             ]);
+  }
 }
 elseif($request->orderstatus_id==5)
 {
