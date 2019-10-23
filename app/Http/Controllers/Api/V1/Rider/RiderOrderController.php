@@ -70,7 +70,7 @@ elseif($request->orderstatus_id==5)
   $orderAccepted = RiderOrder::where('order_id',$order->id)->first();
   // dd($orderAccepted);
 
-  if(count($orderAccepted==0))
+  if(count($orderAccepted)==0)
     { 
 
          $user = User::find($user_id);
