@@ -64,7 +64,7 @@ if($request->orderstatus_id==3)
    $rider_order->save();
 
 }
-else
+elseif($request->orderstatus_id==5)
 {
 
   $orderAccepted = RiderOrder::where('order_id',$order->id)->first();
