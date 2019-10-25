@@ -11,6 +11,7 @@ use App\Models\Rider\RiderOrder\RiderOrder;
 use App\Models\Order\Order;
 use App\Models\Access\User\User;
 use App\Models\Rider\RiderOrder\RiderOrderNotification;
+use DB;
 
 
 class RiderOrderController extends Controller
@@ -90,14 +91,14 @@ elseif($request->orderstatus_id==5)
 
   if($orderAccepted==null)
     { 
-
+        // dd($order->id);
          $user = User::find($user_id);
          $rider_order = new RiderOrder();
          $rider_order->order_id = $order->id;
          $rider_order->rider_id = $user->id;
          $rider_order->save();
-        $notification = RiderOrderNotification::where('order_id',$order->id)->delete();
-
+         $not=DB::table('orders_rider_notifications')->where('order_id',$order->id)->delete();
+      
 
          return response()->json([
 
