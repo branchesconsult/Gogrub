@@ -44,6 +44,7 @@ Route::group(['namespace' => 'Api\V1',
          Route::get('/profile','RiderAuthController@profile');
          Route::get('/orders/history','RiderOrderController@history');
          Route::post('/order/update/{orderId}/{userId}','RiderOrderController@setOrderStatus');
+         Route::get('/current/order','RiderOrderController@currentOrder');
         
     });
 
