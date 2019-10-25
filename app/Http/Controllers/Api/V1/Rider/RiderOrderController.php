@@ -137,5 +137,21 @@ elseif($request->orderstatus_id==5)
 
 
  }
+ public function currentOrder()
+ {
+  $order= $this->riderOrderRepository->getCurrentOrder();
+  $message="Here is the orders";
+      if(empty($order))
+      {
+        $message="no current orders";
+      }
+      return response()->json([
+        'order'=> $order,
+         'success'=>true,
+         'status'=>200,
+         'message'=>$message
+
+      ]);
+ }
 
 }
