@@ -142,7 +142,33 @@ function distance($lat1, $lon1, $lat2, $lon2) {
            return $rider_order;
 
    }
+   public function getCurrentOrder()
+   {
+     // dd($id);
+     $order=RiderOrder::where('rider_id',Auth::user()->id)->with('orders')->first();
+     // dd($rider);
+     // dd($order);
+     // dd($order->order_id);
 
+     if($order)
+     {
+
+     $order = Order::with(['detail' => function ($q) {
+            $q->with('product');
+        }, 'ratingReview'])
+            ->where('id', $order->order_id)
+            ->first();
+            // dd($order);
+// dd($order->order_id);
+            return $order;
+    }
+    else
+    {
+      $object = (object)[];
+      return $order;
+    }
+
+  }
 
 }
 
