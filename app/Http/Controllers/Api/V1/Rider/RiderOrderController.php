@@ -131,6 +131,12 @@ elseif($request->orderstatus_id==5)
      $not=DB::table('orders_rider_notifications')->where('order_id',$order->id)
      ->where('rider_id',$user_id)
      ->delete();
+     return response()->json([
+
+            'status'=>200,
+            'message'=>'Order declined Successfully'
+
+                             ]);
   }
  
  }
