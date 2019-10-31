@@ -145,7 +145,7 @@ function distance($lat1, $lon1, $lat2, $lon2) {
    public function getCurrentOrder()
    {
      // dd($id);
-     $order=RiderOrder::where('rider_id',Auth::user()->id)->with('orders')->first();
+     $order=RiderOrder::where('rider_id',Auth::user()->id)->where('is_completed',0)->with('orders')->first();
      // dd($rider);
      // dd($order);
      // dd($order->order_id);
@@ -165,7 +165,7 @@ function distance($lat1, $lon1, $lat2, $lon2) {
     else
     {
       $object = (object)[];
-      return $order;
+      return $object;
     }
 
   }

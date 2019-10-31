@@ -66,6 +66,7 @@ if($request->orderstatus_id==3)
 
    $rider_order->is_completed=1;
    $rider_order->save();
+    $not=DB::table('orders_rider_notifications')->where('order_id',$order->id)->delete();
    return response()->json([
 
             'status'=>200,
@@ -97,7 +98,10 @@ elseif($request->orderstatus_id==5)
          $rider_order->order_id = $order->id;
          $rider_order->rider_id = $user->id;
          $rider_order->save();
-         $not=DB::table('orders_rider_notifications')->where('order_id',$order->id)->delete();
+
+         $not=DB::table('orders_rider_notifications')->where('order_id',$order->id)
+        ->where('rider_id','!=',$user->id)  
+         ->delete();
       
 
          return response()->json([
@@ -121,6 +125,14 @@ elseif($request->orderstatus_id==5)
                              ]);
     }  
   } 
+
+  else if($request->orderstatus_id==6) //Order decline Api
+  {
+     $not=DB::table('orders_rider_notifications')->where('order_id',$order->id)
+     ->where('rider_id',$user_id)
+     ->delete();
+  }
+ 
  }
 
  public function history()

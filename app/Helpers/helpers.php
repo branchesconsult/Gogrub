@@ -356,17 +356,21 @@ function sendPushNotificationToFCMSever($fcmToken, $message,
     }
     $path_to_firebase_cm = 'https://fcm.googleapis.com/fcm/send';
 
-    $encodeMessage = json_encode([
-        "message" => $message,
-        "type" => $type,
-        //"linkTo" => $linkTo,
-        "object" => $object
-    ]);
-    $fields = array(
-        'registration_ids' => $fcmToken,
-        'data' => ["aps" => $encodeMessage],
+   $fields = array(
+        'registration_ids' => $token,
+        'priority' => 10,
+        'notification' => [
+            'title' => env('APP_NAME'),
+            'body' => $message,
+            'sound' => 'Default',
+            'linkTo' => $linkTo,
+            //'image' => 'Notification Image',
+            'object' => [
+                'order_id' => $notifyID
+            ]
+        ],
     );
-
+   
     $headers = array(
         'Authorization:key=' . env('FCM_SERVER_KEY'),
         'Content-Type:application/json'
