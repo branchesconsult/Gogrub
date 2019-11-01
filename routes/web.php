@@ -9,7 +9,7 @@
 Route::get('lang/{lang}', 'LanguageController@swap');
 
 /* ----------------------------------------------------------------------- */
-
+Route::get('/testNotification','testController@test');
 /*
  * Frontend Routes
  * Namespaces indicate folder structure

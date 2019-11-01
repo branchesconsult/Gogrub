@@ -64,6 +64,10 @@ class RiderOrderRepository extends BaseRepository
               $rider_order_not->rider_id = $key;
               $rider_order_not->order_id = $order->id;
               $rider_order_not->save();
+              $token = array_column(Device::where('user_id',$key)->get(['fcm_token'])
+              ->toArray(),'fcm_token');
+              sendPushNotificationToFCMSever($token,"New Order Place ! Kindly Check");
+
 
          }
             

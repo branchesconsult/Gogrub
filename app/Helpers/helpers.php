@@ -344,20 +344,17 @@ function numToDecimal($number, $getOriginal = false)
  * @string $notifyID
  * @return mixed
  */
-function sendPushNotificationToFCMSever($fcmToken, $message,
-                                        $type = 'orderDetail',
-                                        $notifyID = NULL,
-                                        $object = array(), $objKey = NULL)
+function sendPushNotificationToFCMSever($fcmToken, $message, $notifyID = NULL, $linkTo = 'orderDetail')
 {
-    if (!empty($fcmToken)) {
-        if (is_multi_array($fcmToken->toArray())) {
-            $fcmToken = array_column($fcmToken->toArray(), 'fcm_token');
-        }
-    }
+    // if (!empty($fcmToken)) {
+    //     if (is_multi_array($fcmToken->toArray())) {
+    //         $fcmToken = array_column($fcmToken->toArray(), 'fcm_token');
+    //     }
+    // }
     $path_to_firebase_cm = 'https://fcm.googleapis.com/fcm/send';
 
    $fields = array(
-        'registration_ids' => $token,
+        'registration_ids' => $fcmToken,
         'priority' => 10,
         'notification' => [
             'title' => env('APP_NAME'),
