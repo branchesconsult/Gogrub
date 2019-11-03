@@ -14,6 +14,11 @@ use Validator;
 use App\Http\Requests\Api\Auth\UserLoginRequest;
 use Tymon\JWTAuth\Exceptions\JWTException;
 use App\Http\Controllers\Api\V1\APIController;
+use App\Http\Requests\riderRegReq;
+use App\Models\Access\Usermeta\Usermeta;
+use Carbon\Carbon;
+use Unisharp\FileApi\FileApi;
+
 // use Validator;
 
 
@@ -122,5 +127,46 @@ class RiderAuthController extends APIController
             'status_code' => 200,
             'success' => true,
         ]);
+    }
+
+     public function storeRegistraton(riderRegReq $request)
+    {
+        $chefDocImages = [];
+        //Upload cnic
+        
+     $chefDocImages['cnic_image'] = $this->uploadChefDocs($request->file('cnic_image'));
+    
+        //upload kitchen
+     $chefDocImages['licence_image'] = $this->uploadChefDocs($request->file('licence_image'));
+
+        $userMetaRecord = [];
+        $couter = 0;
+        foreach ($chefDocImages as $key => $val) {
+            foreach ($val as $k1 => $v1) {
+                $userMetaRecord[$couter]['meta_key'] = $key . '_' . $k1;
+                // dd($v1);
+                $userMetaRecord[$couter]['meta_value'] =$v1;
+                $userMetaRecord[$couter]['user_id'] = \Auth::id();
+                $userMetaRecord[$couter]['created_at'] = Carbon::now();
+                $userMetaRecord[$couter]['updated_at'] = Carbon::now();
+                // dd( $userMetaRecord[$couter]['meta_value']);
+                $couter++;
+            }
+        }
+        Usermeta::insert($userMetaRecord);
+        return apiSuccessRes('Thank you for your interest, we will get back to you within 48 working hours');
+    }
+
+    public function uploadChefDocs($imagesInput)
+    { 
+
+        // dd($imagesInput);
+        $chefDocs = [];
+        $chefDocsUploadPath = env('LFM_UPLOADS_Rider_DOCS');
+        foreach ($imagesInput as $key => $val) {
+            $fileApi = new FileApi($chefDocsUploadPath);
+            $chefDocs[] = $chefDocsUploadPath . $fileApi->save($val);
+        }
+        return $chefDocs;
     }
 }
