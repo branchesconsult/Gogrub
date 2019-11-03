@@ -4,6 +4,7 @@ namespace App\Http;
 
 use App\Http\Middleware\CartCountMiddleware;
 use App\Http\Middleware\IsChef;
+use App\Http\Middleware\DocsVerify;
 use App\Http\Middleware\IsMobileVerified;
 use Illuminate\Foundation\Http\Kernel as HttpKernel;
 use Illuminate\Session\Middleware\StartSession;
@@ -88,5 +89,6 @@ class Kernel extends HttpKernel
         'chef' => IsChef::class,
         'bindings' => \Illuminate\Routing\Middleware\SubstituteBindings::class,
         'cart.haveItems' => CartCountMiddleware::class,
+        'DocsVerify' => DocsVerify::class,
     ];
 }
