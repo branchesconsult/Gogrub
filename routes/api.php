@@ -39,7 +39,7 @@ Route::group(['namespace' => 'Api\V1',
              Route::post('/register','RiderAuthController@register');
                Route::post('/login', 'RiderAuthController@login');
 
-    Route::group(['middleware' => ['jwt.auth','mobile.verify','DocsVerify']], function () {
+    Route::group(['middleware' => ['jwt.auth','mobile.verify']], function () {
             Route::post('/apply','RiderAuthController@storeRegistraton');
  Route::group(['middleware' => ['DocsVerify']], function () {
 
