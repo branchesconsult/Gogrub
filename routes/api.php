@@ -40,7 +40,9 @@ Route::group(['namespace' => 'Api\V1',
                Route::post('/login', 'RiderAuthController@login');
 
     Route::group(['middleware' => ['jwt.auth','mobile.verify','DocsVerify']], function () {
-         Route::post('/apply','RiderAuthController@storeRegistraton');
+            Route::post('/apply','RiderAuthController@storeRegistraton');
+ Route::group(['middleware' => ['DocsVerify']], function () {
+
          Route::get('/current/notify/order','RiderOrderController@notifyOfOrder');
          Route::get('/profile','RiderAuthController@profile');
          Route::get('/orders/history','RiderOrderController@history');
@@ -50,6 +52,7 @@ Route::group(['namespace' => 'Api\V1',
     });
 
         });
+      });
     Route::post('login', 'AuthController@login')->name('api.user.login');
     Route::group(['middleware' => ['jwt.auth']], function () {
         Route::get('refresh-user', function () {
