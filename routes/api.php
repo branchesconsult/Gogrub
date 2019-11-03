@@ -39,7 +39,8 @@ Route::group(['namespace' => 'Api\V1',
              Route::post('/register','RiderAuthController@register');
                Route::post('/login', 'RiderAuthController@login');
 
-    Route::group(['middleware' => ['jwt.auth']], function () {
+    Route::group(['middleware' => ['jwt.auth','mobile.verify','DocsVerify']], function () {
+         Route::post('/apply','RiderAuthController@storeRegistraton');
          Route::get('/current/notify/order','RiderOrderController@notifyOfOrder');
          Route::get('/profile','RiderAuthController@profile');
          Route::get('/orders/history','RiderOrderController@history');
