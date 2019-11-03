@@ -95,6 +95,7 @@ class ChefProductController extends Controller
     {
         $productsImages = [];
         $productUploadPath = env('LFM_UPLOADS_PRODUCTS');
+        // dd($productUploadPath);
         foreach ($imagesInput as $key => $val) {
             $fileApi = new FileApi($productUploadPath);
             $productsImages[$key]['image_url'] = $productUploadPath . $fileApi->save($val);

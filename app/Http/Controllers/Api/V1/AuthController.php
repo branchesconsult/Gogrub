@@ -8,6 +8,7 @@ use App\Http\Requests\Api\Auth\UpdateNonVerifyMobileRequest;
 use App\Http\Requests\Api\Auth\UserLoginRequest;
 use App\Http\Requests\Api\Auth\UserLogoutRequest;
 use App\Http\Requests\Api\Auth\UserMobileVerificationRequest;
+use App\Notifications\Frontend\Auth\UserNeedsConfirmation;
 use App\Models\Access\User\User;
 use App\Models\Device\Device;
 use Illuminate\Http\Request;
@@ -123,8 +124,10 @@ class AuthController extends APIController
      * @return \Illuminate\Http\JsonResponse
      */
     public function verifyMobile(UserMobileVerificationRequest $request)
-    {
+    {  
+        // dd($request);
         $dbConfirmationCode = \Auth::user()->confirmation_code;
+        // dd($dbConfirmationCode);
         if (\Hash::check($request->get('confirmation_code'), $dbConfirmationCode)) {
             $user = User::find(\Auth::id());
             $user->confirmed = 1;
@@ -169,9 +172,11 @@ class AuthController extends APIController
      */
     public function resendVerificationCode(ResendVerificationCodeRequest $request)
     {
-        $user = User::find(\Auth::id());
-        $user->confirmation_code = bcrypt(1234);
+         $user = User::find(\Auth::id());
+         $confirmation_code=rand(1000, 9999);
+        $user->confirmation_code = bcrypt($confirmation_code);//md5(uniqid(mt_rand('1111', 
         $user->save();
+         $user->notify(new UserNeedsConfirmation($confirmation_code));
         return $this->respond([
             'message_title' => "Success",
             'message' => 'Verification code resend, for now its 1234.',

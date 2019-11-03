@@ -12,6 +12,7 @@ use App\Models\Access\User\User;
 use DB;
 use App\Models\Rider\RiderOrder\RiderOrder;
 use Auth;
+use App\Models\Device\Device;
 
 
 class RiderOrderRepository extends BaseRepository

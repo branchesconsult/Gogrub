@@ -28,6 +28,7 @@
                         <th>Mobile</th>
                         <th>{{ trans('labels.backend.access.users.table.email') }}</th>
                         <th>{{ trans('labels.backend.access.users.table.confirmed') }}</th>
+                         <th>Docs confirmed</th>
                         <th>{{ trans('labels.backend.access.users.table.roles') }}</th>
                         <th>{{ trans('labels.backend.access.users.table.created') }}</th>
                         <th>{{ trans('labels.backend.access.users.table.last_updated') }}</th>
@@ -49,6 +50,7 @@
                             <a class="reset-data" href="javascript:void(0)"><i class="fa fa-times"></i></a>
                         </th>
                         <th></th>
+                           <th></th>
                         <th>
                             {!! Form::text('roles', null, ["class" => "search-input-text form-control", "data-column" => 4, "placeholder" => trans('labels.backend.access.users.table.roles')]) !!}
                             <a class="reset-data" href="javascript:void(0)"><i class="fa fa-times"></i></a>
@@ -101,6 +103,7 @@
                     {data: 'mobile', name: '{{config('access.users_table')}}.mobile'},
                     {data: 'email', name: '{{config('access.users_table')}}.email'},
                     {data: 'confirmed', name: '{{config('access.users_table')}}.confirmed'},
+                    {data: 'docs_confirmed', name: '{{config('access.users_table')}}.docs_confirmed'},
                     {data: 'roles', name: '{{config('access.roles_table')}}.name', sortable: false},
                     {data: 'created_at', name: '{{config('access.users_table')}}.created_at'},
                     {data: 'updated_at', name: '{{config('access.users_table')}}.updated_at'},

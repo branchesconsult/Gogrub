@@ -48,6 +48,12 @@
                             Earnings
                         </a>
                     </li>
+                      <li role="presentation">
+                        <a href="#docs-tbl" aria-controls="docs-tbl"
+                           role="tab" data-toggle="tab">
+                           Documents
+                        </a>
+                    </li>
                 </ul>
 
                 <div class="tab-content">
@@ -66,6 +72,9 @@
                     </div><!--tab panel history-->
                     <div role="tabpanel" class="tab-pane mt-30" id="earnings-tbl">
                         @include('backend.access.users.includes.user-earnings')
+                    </div>
+                     <div role="tabpanel" class="tab-pane mt-30" id="docs-tbl">
+                        @include('backend.access.users.includes.documents')
                     </div>
                 </div><!--tab content-->
 

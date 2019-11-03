@@ -146,6 +146,7 @@ return [
                     'active'                  => 'Active',
                     'associated_roles'        => 'Associated Roles',
                     'confirmed'               => 'Confirmed',
+                     'docs_confirmed'               => 'Confirmed',
                     'email'                   => 'E-mail Address',
                     'firstName'               => 'First Name',
                     'lastName'                => 'Last Name',

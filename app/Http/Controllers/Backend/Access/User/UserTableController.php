@@ -38,6 +38,17 @@ class UserTableController extends Controller
             ->editColumn('confirmed', function ($user) {
                 return $user->confirmed_label;
             })
+             ->editColumn('docs_confirmed', function ($user) {
+                  if($user->docs_confirmed)
+                  {
+                    return "yes";
+                  }
+                  else
+                  {
+                    return "no";
+                  }
+                     
+            })
             ->addColumn('roles', function ($user) {
                 return $user->roles;
             })
@@ -51,5 +62,7 @@ class UserTableController extends Controller
                 return $user->action_buttons;
             })
             ->make(true);
-    }
+                  }
+                  
+    
 }

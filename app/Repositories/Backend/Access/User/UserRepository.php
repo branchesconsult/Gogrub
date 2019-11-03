@@ -69,6 +69,7 @@ class UserRepository extends BaseRepository
                 config('access.users_table') . '.email',
                 config('access.users_table') . '.status',
                 config('access.users_table') . '.confirmed',
+                  config('access.users_table') . '.docs_confirmed',
                 config('access.users_table') . '.created_at',
                 config('access.users_table') . '.updated_at',
                 config('access.users_table') . '.deleted_at',
@@ -134,6 +135,8 @@ class UserRepository extends BaseRepository
      */
     public function update($user, $request)
     {
+        // dd($user);
+        // dd($request->toArray());
         $data = $request->except('assignees_roles', 'permissions');
         $roles = $request->get('assignees_roles');
         $permissions = $request->get('permissions');
@@ -144,7 +147,7 @@ class UserRepository extends BaseRepository
             if ($user->update($data)) {
                 $user->status = isset($data['status']) && $data['status'] == '1' ? 1 : 0;
                 $user->confirmed = isset($data['confirmed']) && $data['confirmed'] == '1' ? 1 : 0;
-
+            $user->docs_confirmed = isset($data['docs_confirmed']) && $data['docs_confirmed'] == '1' ? 1 : 0;
                 $user->save();
 
                 $this->checkUserRolesCount($roles);

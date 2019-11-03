@@ -4,19 +4,19 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateRiderOrdersTable extends Migration
+class ChangeUsersTable extends Migration
 {
     /**
      * Run the migrations.
      *
      * @return void
      */
-    public function up()
+     public function up()
     {
-        Schema::create('rider_orders', function (Blueprint $table) {
-            $table->increments('id');
-            $table->timestamps();
-        });
+         Schema::table('users', function (Blueprint $table) {
+                $table->boolean('docs_confirmed')->default(0)->change();
+
+         });
     }
 
     /**
@@ -26,6 +26,6 @@ class CreateRiderOrdersTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('rider_orders');
+      
     }
 }

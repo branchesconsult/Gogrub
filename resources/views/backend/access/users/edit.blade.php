@@ -69,6 +69,22 @@
                     </div><!--col-lg-1-->
                 </div><!--form control-->
 
+                  {{-- Docs Confirmed --}}
+                  <h3>Docs </h3>
+                <div class="form-group">
+                    {{ Form::label('docs-confirmed', trans('validation.attributes.backend.access.users.docs_confirmed'), ['class' => 'col-lg-2 control-label']) }}
+ 
+                    <div class="col-lg-1">
+                        <div class="control-group">
+                            <label class="control control--checkbox">
+                                {{ Form::checkbox('docs_confirmed', '1', $user->docs_confirmed == 1) }}
+                                <div class="control__indicator"></div>
+                            </label>
+                        </div>
+                    </div><!--col-lg-1 -->
+                </div><!--form control-->
+                
+
                 {{-- Associated Roles --}}
                 <div class="form-group">
                     {{ Form::label('status', trans('validation.attributes.backend.access.users.associated_roles'), ['class' => 'col-lg-2 control-label']) }}
