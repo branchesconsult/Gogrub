@@ -203,7 +203,7 @@ class AuthController extends APIController
             'message_title' => "Success",
             'status_code' => 200,
             'success' => true,
-            'no_confirmed'=> $confirmed,
+            'is_confirmed'=> $confirmed,
             'docs_confirmed'=> $docs_confirmed
         ]);   
 
