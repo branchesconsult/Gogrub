@@ -20,6 +20,7 @@ class Setting extends BaseModel
     const DEFAULT_GOGRUB_COMMISSION = 'gogrub_default_commission';
     const COMPANY_ADDRESS = 'company_address';
     const COMPANY_PHONE = 'company_phone';
+    const RIDER_PER_ORDER = 50;
     /**
      * The attributes that are mass assignable.
      *

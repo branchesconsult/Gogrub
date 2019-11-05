@@ -15,6 +15,7 @@ use Illuminate\Http\Request;
 use JWTAuth;
 use Tymon\JWTAuth\Exceptions\JWTException;
 use Validator;
+use Auth;
 
 /**
  * @resource Auth
@@ -184,5 +185,27 @@ class AuthController extends APIController
             'success' => true,
             'user' => \Auth::user()
         ]);
+    }
+    public function isConfirmed()
+    {
+        $user = User::find(\Auth::id());
+        $confirmed=0;
+        $docs_confirmed = 0;
+        if($user->confirmed)
+        {
+            $confirmed=1;
+        }
+        if($user->docs_confirmed)
+        {
+            $docs_confirmed = 1;
+        }
+          return $this->respond([
+            'message_title' => "Success",
+            'status_code' => 200,
+            'success' => true,
+            'no_confirmed'=> $confirmed,
+            'docs_confirmed'=> $docs_confirmed
+        ]);   
+
     }
 }

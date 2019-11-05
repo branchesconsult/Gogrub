@@ -44,7 +44,7 @@
                     </li>
                     <li role="presentation">
                         <a href="#earnings-tbl" aria-controls="earnings-tbl"
-                           role="tab" data-toggle="tab">
+                           role="tab" data-toggle="tab" onclick="getEarnings('rider')">
                             Earnings
                         </a>
                     </li>
@@ -136,6 +136,11 @@
                 }
             });
             //dataTable.ajax.reload();
+        }
+
+        function getEarnings(earnings)
+        {
+            
         }
     </script>
 @stop

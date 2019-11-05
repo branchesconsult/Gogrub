@@ -41,6 +41,7 @@ Route::group(['namespace' => 'Api\V1',
 
     Route::group(['middleware' => ['jwt.auth','mobile.verify']], function () {
             Route::post('/apply','RiderAuthController@storeRegistraton');
+
  Route::group(['middleware' => ['DocsVerify']], function () {
 
          Route::get('/current/notify/order','RiderOrderController@notifyOfOrder');
@@ -48,13 +49,13 @@ Route::group(['namespace' => 'Api\V1',
          Route::get('/orders/history','RiderOrderController@history');
          Route::post('/order/update/{orderId}/{userId}','RiderOrderController@setOrderStatus');
          Route::get('/current/order','RiderOrderController@currentOrder');
-        
     });
 
         });
       });
     Route::post('login', 'AuthController@login')->name('api.user.login');
     Route::group(['middleware' => ['jwt.auth']], function () {
+          Route::get('/check/verification','AuthController@isConfirmed');
         Route::get('refresh-user', function () {
             $user = \App\Models\Access\User\User::where('id', \Auth::id())->first();
             return response()->json([
@@ -73,7 +74,7 @@ Route::group(['namespace' => 'Api\V1',
         //Route::post('password/email', 'ForgotPasswordController@sendResetLinkEmail');
         // Route::post('password/reset', 'ResetPasswordController@reset')->name('password.reset');
         //Products
-        Route::group(['middleware' => 'mobile.verify'], function () {
+      Route::group(['middleware' => 'mobile.verify'], function () {
             //Products
             Route::resource('products', 'ProductController', ['only' => ['index', 'store', 'show']]);
             Route::post('products/{id}', 'ProductController@update');
@@ -86,7 +87,7 @@ Route::group(['namespace' => 'Api\V1',
             //Chats
             Route::resource('chat', 'ChatController', ['only' => ['index', 'store']]);
             Route::get('chat/order', 'ChatController@getOrderChat');
-        });
+    });
 
 
         Route::group(['prefix' => 'chef', 'namespace' => 'Chef'], function () {
