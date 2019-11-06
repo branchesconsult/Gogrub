@@ -56,6 +56,7 @@ Route::group(['namespace' => 'Api\V1',
     Route::post('login', 'AuthController@login')->name('api.user.login');
     Route::group(['middleware' => ['jwt.auth']], function () {
           Route::get('/check/verification','AuthController@isConfirmed');
+          
         Route::get('refresh-user', function () {
             $user = \App\Models\Access\User\User::where('id', \Auth::id())->first();
             return response()->json([

@@ -17,6 +17,7 @@ use App\Models\Settings\Setting;
 use function foo\func;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+// use App\Models\Device\Device;
 
 /**
  * @resource Orders
@@ -99,7 +100,12 @@ class OrderController extends Controller
             $order['gogrub_commission'] = $gogrubCommission;
             $insertedOrderId = Order::create($order)->id;
             $this->insertOrderProducts($insertedOrderId, $products);
-            $orderCreated = Order::with('detail.product', 'status')->where('id', $insertedOrderId)->first();
+
+//Notification 
+  $token = array_column(Device::where('user_id',$chef->id)->get(['fcm_token'])
+              ->toArray(),'fcm_token');
+sendPushNotificationToFCMSever($token,"New Order Placed");
+   $orderCreated = Order::with('detail.product', 'status')->where('id', $insertedOrderId)->first();
             event(new OrderCreateEvent($orderCreated));
             return response()->json([
                 'message_title' => "Success",

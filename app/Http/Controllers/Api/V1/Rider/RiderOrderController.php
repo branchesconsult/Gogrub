@@ -12,6 +12,7 @@ use App\Models\Order\Order;
 use App\Models\Access\User\User;
 use App\Models\Rider\RiderOrder\RiderOrderNotification;
 use DB;
+use App\Models\Device\Device;
 
 
 class RiderOrderController extends Controller
@@ -51,7 +52,9 @@ class RiderOrderController extends Controller
        //$id is order id
 // dd($id);
         $order = Order::find($id);
-
+// dd($order->chef_id);
+        $token = array_column(Device::where('user_id',$order->chef_id)->get(['fcm_token'])
+              ->toArray(),'fcm_token');
         /*
   @check if order is already accepted by another rider then the message will be throw 
   oops you are so late ! Order Already accpted by another Rider
@@ -66,6 +69,9 @@ if($request->orderstatus_id==3)
 
    $rider_order->is_completed=1;
    $rider_order->save();
+    
+              sendPushNotificationToFCMSever($token,"Your order # $order->id has delivered by Rider");
+// dd($token);
     $not=DB::table('orders_rider_notifications')->where('order_id',$order->id)->delete();
    return response()->json([
 
@@ -98,6 +104,7 @@ elseif($request->orderstatus_id==5)
          $rider_order->order_id = $order->id;
          $rider_order->rider_id = $user->id;
          $rider_order->save();
+          sendPushNotificationToFCMSever($token,"Your order # $order->id has accepted by Rider");
 
          $not=DB::table('orders_rider_notifications')->where('order_id',$order->id)
         ->where('rider_id','!=',$user->id)  
@@ -131,6 +138,8 @@ elseif($request->orderstatus_id==5)
      $not=DB::table('orders_rider_notifications')->where('order_id',$order->id)
      ->where('rider_id',$user_id)
      ->delete();
+      sendPushNotificationToFCMSever($token,"Your order # $order->id has declined
+           by Rider");
      return response()->json([
 
             'status'=>200,
