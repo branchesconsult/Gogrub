@@ -85,7 +85,7 @@ class RiderAuthController extends APIController
             'token' => $token,
             'status_code' => 200,
             'success' => true,
-            'user' => User::select('id','full_name','email','mobile')->where('id'
+            'user' => User::select('id','full_name','email','mobile','confirmed','docs_confirmed')->where('id'
 ,Auth::user()->id)->first(),
         ]);
 

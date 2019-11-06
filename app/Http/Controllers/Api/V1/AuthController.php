@@ -189,15 +189,15 @@ class AuthController extends APIController
     public function isConfirmed()
     {
         $user = User::find(\Auth::id());
-        $confirmed=0;
-        $docs_confirmed = 0;
+        $confirmed=false;
+        $docs_confirmed = false;
         if($user->confirmed)
         {
-            $confirmed=1;
+            $confirmed=true;
         }
         if($user->docs_confirmed)
         {
-            $docs_confirmed = 1;
+            $docs_confirmed = true;
         }
           return $this->respond([
             'message_title' => "Success",
