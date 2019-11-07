@@ -28,20 +28,20 @@ class RiderOrderRepository extends BaseRepository
     // $user=$user->toJson();
     // dd($user);
      $database = $this->getDatabase();
-     $riders_ref = $database->getReference('riders');
+     $riders_ref = $database->getReference('Online_Drivers');
 	   $allRiders= $riders_ref->getValue();
      $chefLat= $order->chef_location->getLat();
      $chefLng =$order->chef_location->getLng();
 
 // dd($chefLng);
-     // dd($allRiders);
+   //  dd($allRiders);
   
 // dd($allRiders);
 // $start = microtime(true);
 	 foreach ($allRiders as $key => $value) {
 	 
 
-   $distance = $this->distance($chefLat,$chefLng,$value['lat'],$value['lng']);
+   $distance = $this->distance($chefLat,$chefLng,$value['Lat'],$value['Lng']);
   
    //if user is in table and status is 0 then we can't insert into table
    // DB::enableQueryLog();
