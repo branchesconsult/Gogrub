@@ -125,8 +125,15 @@ class UserController extends Controller
      * @return \App\Http\Responses\RedirectResponse
      */
     public function destroy(User $user, DeleteUserRequest $request)
+    { 
+
+    if($user->deleted_at==null)
     {
-        $this->users->delete($user);
+      $user->forceDelete();
+
+    }
+    
+        // $this->users->delete($user);
 
         return new RedirectResponse(route('admin.access.user.index'), ['flash_success' => trans('alerts.backend.users.deleted')]);
     }
