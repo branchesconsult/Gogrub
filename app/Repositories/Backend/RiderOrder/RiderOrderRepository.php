@@ -159,7 +159,7 @@ function distance($lat1, $lon1, $lat2, $lon2) {
      {
 
      $order = Order::with(['detail' => function ($q) {
-            $q->with('product');
+            $q->with('product','product.images');
         }, 'ratingReview'])
             ->where('id', $order->order_id)
             ->first();
