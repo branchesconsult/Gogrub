@@ -104,7 +104,8 @@ class UsersController extends APIController
         }
         //Upoad avatar
         if ($request->hasFile('avatar')) {
-            $avatarUploadPath = env('LFM_UPLOADS_AVATAR');
+            // dd($request->file('avatar'));
+            $avatarUploadPath =  env('LFM_UPLOADS_Rider_DOCS');
             $fileApi = new FileApi($avatarUploadPath);
             $user->avatar = $avatarUploadPath . $fileApi->save($request->file('avatar'));
         }
