@@ -48,9 +48,11 @@ class LocationRepository extends BaseRepository
      */
     public function create(array $input)
     {
+        // dd($input);
         $location = self::MODEL;
         $location = new $location();
-        switch ($input['user_role']) {
+        switch ($input['user_role'])
+         {
             case in_array($input['user_role'], Location::USER_ROLES) == true:
                 User::find($input['locationable_id'])->locations()->save(new Location($input));
                 return true;

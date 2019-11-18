@@ -24,6 +24,8 @@ Route::group(['namespace' => 'Api\V1',
 // Mail::to('mianhaseeb8848@gmail.com')->send(new ConfirmAcoountMail($name));
 // });
 
+Route::post('/location/save','LocationController@store');
+
 
     //Cousine
     Route::resource('cuisine', 'CuisineController', ['only' => ['index']]);

@@ -92,8 +92,10 @@ class Location extends Model
 
     public function setLocationPointAttribute($val)
     {
+        // dd($val);
         //$val = lat,lng
         $val = explode(',', $val);
+        // dd($val);
         $this->attributes['location_point'] = new Point($val[0], $val[1]);
     }
 

@@ -17,7 +17,7 @@ use App\Models\Device\Device;
 
 class RiderOrderRepository extends BaseRepository
 {
-	use FirebaseTrait;
+	 use FirebaseTrait;
 
   public function sendOrderNotfication(Order $order)
   { 

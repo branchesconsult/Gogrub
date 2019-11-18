@@ -61,6 +61,8 @@ class LocationsController extends Controller
      */
     public function create(CreateLocationRequest $request)
     {
+
+        // dd("");
         $data['locationable_type'] = '';
         if ($request->has('chef_id')) {
             $data['locationable_type'] = Location::USER_ROLES['Chef'];
@@ -81,6 +83,7 @@ class LocationsController extends Controller
      */
     public function store(StoreLocationRequest $request)
     {
+        // dd($request->all());
         //Input received from the request
         $input = $request->except(['_token']);
         //Create the model using repository create method
