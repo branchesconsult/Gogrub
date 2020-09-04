@@ -39,7 +39,7 @@
     "lightslider": "^1.1.6",
     "moment": "^2.18.1",
     "nestable2": "^1.5.0",
-    "node-sass": "^4.9.0",
+    "node-sass": "^4.13.1",
     "pluralize": "^7.0.0",
     "select2": "^4.0.4",
     "socket.io-client": "^2.1.1",
