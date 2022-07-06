@@ -41,7 +41,7 @@
     "nestable2": "^1.5.0",
     "node-sass": "^4.9.0",
     "pluralize": "^7.0.0",
-    "select2": "^4.0.4",
+    "select2": "^4.0.6",
     "socket.io-client": "^2.1.1",
     "tinymce": "^4.5.8",
     "vue-template-compiler": "^2.5.17"
