@@ -42,7 +42,7 @@
     "node-sass": "^4.9.0",
     "pluralize": "^7.0.0",
     "select2": "^4.0.4",
-    "socket.io-client": "^2.1.1",
+    "socket.io-client": "^2.5.0",
     "tinymce": "^4.5.8",
     "vue-template-compiler": "^2.5.17"
   }
